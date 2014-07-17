@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<!--#include file="connect.inc" -->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>U.S. Mission Jakarta e-Billing</title>
+<style type="text/css">
+<!--
+.style1 {
+	font-size: large;
+	font-weight: bold;
+	}
+
+.FontText {
+	font-size: small;
+}
+
+.FontContent {
+	font-size: small;
+        color: blue;
+}
+
+.FontJudul {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.FontComment {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+-->
+</style>
+<STYLE TYPE="text/css"><!--
+  A:ACTIVE { color:#003399; font-size:8pt; font-family:Verdana; }
+  A:HOVER { color:#003399; font-size:8pt; font-family:Verdana; }
+  A:LINK { color:#003399; font-size:8pt; font-family:Verdana; }
+  A:VISITED { color:#003399; font-size:8pt; font-family:Verdana; }
+  body {scrollbar-3dlight-color:#FFFFFF; scrollbar-arrow-color:#E3DCD5; scrollbar-base-color:#FFFFFF; scrollbar-darkshadow-color:#FFFFFF;	scrollbar-face-color:#FFFFFF; scrollbar-highlight-color:#E3DCD5; scrollbar-shadow-color:#E3DCD5; }
+  p { font-family: verdana; font-size: 12px; font-style: normal; line-height: normal; font-weight: normal; font-variant: normal; color: #003399; text-decoration: none}
+  h3 { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 16px; font-style: normal; line-height: normal; font-weight: bold; color: #003399; letter-spacing: normal; word-spacing: normal; font-variant: small-caps}
+  td { font-family: verdana; font-size: 12px; font-style: normal; font-weight: normal; color: #003399}
+  .title { font-size:22px; font-weight:bold; color:#000080; }
+  .SubTitle { font-size:16px; font-weight:bold; color:#000080;  }
+  A.menu { text-decoration:none; font-weight:bold; }
+  A.mmenu { text-decoration:none; color:#FFFFFF; font-weight:bold; }
+  .normal { font-family:Verdana,Arial; color:black}
+  .style5 {color: #FFFFFF;}
+  .ActivePage {color: red; font-weight:bold; }
+--></STYLE>
+<script language="JavaScript">
+function validate_form()
+{
+	valid = true;
+
+	if (document.frmAgencyEdit.txtAgencyName.value == "" )
+	{
+		alert("Please fill the agency name !!!");
+		valid = false;
+	}
+
+	if (document.frmAgencyEdit.txtAgencyStripe.value == "" )
+	{
+		alert("Please fill the agency stripe !!!");
+		valid = false;
+	}
+
+	if (document.frmAgencyNew.txtAgencyStripe.value == "" )
+	{
+		alert("Please fill the Fiscal Strip VAT !!!");
+		valid = false;
+	}
+
+	if (document.frmAgencyNew.txtAgencyStripeNonVAT.value == "" )
+	{
+		alert("Please fill the Fiscal Strip Non VAT !!!");
+		valid = false;
+	}
+
+	return valid;
+}
+</script>
+<%
+
+Dim user_ , user1_, UserRole_
+
+user_ = request.servervariables("remote_user")
+user1_ = right(user_,len(user_)-4)
+
+ID_ = request.querystring("ID")
+'response.write "ServiceRecordID : " & serviceRecordId & "<br>"
+
+%>
+</head>
+<!--#include file="Header.inc" -->
+  <TR>
+  	<TD COLSPAN="4" ALIGN="center" Class="SubTitle">Agency Edit</TD>
+  </TR>
+  <tr>
+	<td colspan="3" align="Left" width="20%"><A HREF="Default.asp">Home</A></td>
+	<td align="Right" width="20%"><A HREF="AgencyList.asp">Back</A></td>
+  </tr> 
+  <tr>
+  	<td COLSPAN="4"><HR style="LEFT: 10px; TOP: 59px" align=center></td>
+   </tr>
+  </TABLE>
+<form method="post" name="frmAgencyEdit" id="frmAgencyEdit" action="AgencySave.asp?Mode=U" onsubmit="return validate_form()">
+<%
+strsql = "select * from Users where loginId='" & user1_ & "'"
+set RS_Query = server.createobject("adodb.recordset")
+'response.write strsql & "<br>"
+set RS_Query = BillingCon.execute(strsql)
+'response.write RS_Query("RoleID") & "<br>"
+
+
+if (trim(RS_Query("RoleID")) = "Admin") or (trim(RS_Query("RoleID")) = "Voucher") or (trim(RS_Query("RoleID")) = "FMC") then    
+%>
+	<table align="center">
+	<%
+	   dim rsAgency
+	   strsql = "Select * From AgencyFunding Where AgencyID =" & ID_ 
+	   set rsAgency= server.createobject("adodb.recordset")    
+	'response.write strsql & "<br>"
+	   set rsAgency= BillingCon.execute(strsql) 	  
+'	   Response.write rsAgency("Disabled")
+	%>
+	<tr>
+		<td align="right">Agency Code:</td>
+		<td align="left"><input name="txtAgencyCode" type="Input" size="8" value='<%=rsAgency("AgencyFundingCode")%>' ></td>
+	</tr>	
+	<tr>
+		<td align="right">Agency Name :</td>
+		<td align="left"><input name="txtAgencyName" type="Input" size="60" value='<%=rsAgency("AgencyDesc")%>'></td>
+	</tr>
+	<tr>
+		<td align="right">Fiscal Strip  VAT :</td>
+		<td align="left"><input name="txtAgencyStripe" type="Input" size="100" value='<%=rsAgency("FiscalStripVAT")%>'></td>
+	</tr>
+	<tr>
+		<td align="right">Fiscal Strip Non VAT :</td>
+		<td align="left"><input name="txtAgencyStripeNonVAT" type="Input" size="100" value='<%=rsAgency("FiscalStripNonVAT")%>'></td>
+	</tr>
+	<tr>
+		<td align="right">Disabled :</td>
+		<td align="left">
+		     <select name="txtAgencyType">
+			<option value="">--Select--</option>
+			<% if rtrim(rsAgency("Disabled"))="Y" then%>
+				<option value="Y" selected>Yes</option>
+			<%Else%>
+				<option value="Y">Yes</option>
+			<%End If%>
+			<% if rtrim(rsAgency("Disabled"))="N" then%>
+				<option value="N" Selected>No</option>
+			<%Else%>
+				<option value="N">No</option>
+			<%End If%>
+		     </select>
+	</tr>
+  	 <tr>
+		<td colspan=2 align="center">
+        		<input type="submit" value="Submit">
+			&nbsp;<input type="button" value="Cancel" onClick="javascript:location.href='AgencyList.asp'">
+			<INPUT TYPE="HIDDEN" NAME="txtID" value=<%=ID_%>>
+    		</td>
+  	</tr>
+	</table>
+<%Else %>
+	<table>
+		<tr>
+			<td>You do not have permission to access this site.</td>
+		</tr>
+		<tr>
+			<td>Please contact Jakarta CSC Helpdesk at ext.9111.</td>
+		</tr>
+	</table>
+
+<% end if %>
+</form>
+</body>
+</html>

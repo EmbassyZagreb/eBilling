@@ -1,0 +1,203 @@
+<%@ Language=VBScript %>
+<!--#include file="connect.inc" -->
+<html>
+<head>
+<style type="text/css">
+<!--
+.FontContent {
+	font-size: 12px;
+        color: blue;
+}
+-->
+</style>
+<TITLE>U.S. Mission Jakarta e-Billing</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<STYLE TYPE="text/css"><!--
+  A:ACTIVE { color:#003399; font-size:8pt; font-family:Verdana; }
+  A:HOVER { color:#003399; font-size:8pt; font-family:Verdana; }
+  A:LINK { color:#003399; font-size:8pt; font-family:Verdana; }
+  A:VISITED { color:#003399; font-size:8pt; font-family:Verdana; }
+  body {scrollbar-3dlight-color:#FFFFFF; scrollbar-arrow-color:#E3DCD5; scrollbar-base-color:#FFFFFF; scrollbar-darkshadow-color:#FFFFFF;	scrollbar-face-color:#FFFFFF; scrollbar-highlight-color:#E3DCD5; scrollbar-shadow-color:#E3DCD5; }
+  p { font-family: verdana; font-size: 12px; font-style: normal; line-height: normal; font-weight: normal; font-variant: normal; color: #003399; text-decoration: none}
+  h3 { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 16px; font-style: normal; line-height: normal; font-weight: bold; color: #003399; letter-spacing: normal; word-spacing: normal; font-variant: small-caps}
+  td { font-family: verdana; font-size: 10px; font-style: normal; font-weight: normal; color: #000000}
+  .title { font-size:16px; font-weight:bold; color:#000080; }
+  .SubTitle { font-size:16px; font-weight:bold; color:#000080;  }
+  A.menu { text-decoration:none; font-weight:bold; }
+  A.mmenu { text-decoration:none; color:#FFFFFF; font-weight:bold; }
+  .normal { font-family:Verdana,Arial; color:black}
+  .style5 {color: #FFFFFF;}
+  .ActivePage {color: red; font-weight:bold; }
+--></STYLE>
+</HEAD>
+<!--#include file="Header.inc" -->
+  <TR>
+  	<TD COLSPAN="4" ALIGN="center" Class="title">Monthly Billing</TD>
+   </TR>
+  <TR>
+  	<TD COLSPAN="4"><HR style="LEFT: 10px; TOP: 59px" align=center></TD>
+   </TR>
+  </TABLE>
+<% 
+ dim user_ 
+ dim user1_  
+ dim rst 
+ dim strsql
+ 
+user1_ = Request("LoginID")
+'response.write user1_ & "<br>"
+
+MonthP = Request("Month")
+YearP = Request("Year")
+
+Period_ = MonthP &"-"&YearP 
+%>  
+<table cellspadding="1" cellspacing="0" width="60%" bgColor="white">  
+<%
+strsql = "Select * from vwMonthlyBilling Where LoginID='" & user1_ & "' And MonthP='" & MonthP & "' And YearP='" & YearP & "'"
+'response.write strsql & "<br>"
+set rsData = server.createobject("adodb.recordset") 
+set rsData = BillingCon.execute(strsql) 
+Period_ = MonthP & " - " & YearP
+'response.write Period_  & "<br>"
+if not rsData.eof then
+	EmpName_ = rsData("EmpName")
+	Office_ = rsData("Agency") & " - " & rsData("Office")
+	Position_ = rsData("WorkingTitle")
+	OfficePhone_ = rsData("WorkPhone")
+	HomePhone_ = rsData("HomePhone")
+	MobilePhone_ = rsData("MobilePhone")
+	ExchangeRate_ = rsData("ExchangeRate")
+	HomePhoneBillRp_ = rsData("HomePhoneBillRp")
+	HomePhoneBillDlr_ = rsData("HomePhoneBillDlr")
+	OfficePhonePrsBillRp_ = rsData("OfficePhonePrsBillRp")
+	OfficePhonePrsBillDlr_ = rsData("OfficePhonePrsBillDlr")
+	OfficePhoneBillRp_ = rsData("OfficePhoneBillRp")
+	OfficePhoneBillDlr_ = rsData("OfficePhoneBillDlr")
+	TotalShuttleBillRp_ = rsData("TotalShuttleBillRp")
+	TotalShuttleBillDlr_ = rsData("TotalShuttleBillDlr")
+	TotalBillingRp_ = rsData("TotalBillingRp")
+	TotalBillingDlr_ = rsData("TotalBillingDlr")
+	TotalBilling_ = CDbl(HomePhoneBillRp_) + CDbl(OfficePhoneBillRp_)+ CDbl(TotalShuttleBillRp_)
+	ProgressID_ = rsData("ProgressID")
+	ProgressStatus_ = rsData("ProgressDesc")
+'response.write Period_  & "<br>"
+%>
+
+<tr>
+	<td colspan="6" align="center"><u>Billing Period (Month - Year) : <a class="FontContent"><%=Period_%></a></u></td>
+</tr>
+<tr>
+          <td align="Left"><u><b>Personal Info<b></u></TD>
+</tr>  
+<tr>
+	<td width="20%">Employee Name</td>
+	<td width="1%">:</td>
+	<td class="FontContent"><%=EmpName_%></td>
+	<td>Agency / Office</td>
+	<td width="1%">:</td>
+	<td class="FontContent"><%=Office_%></td>
+</tr>
+<tr>
+	<td>Position</td>
+	<td width="1%">:</td>
+	<td class="FontContent"><%=Position_ %></td>
+	<td>Office Phone/Ext.</td>
+	<td width="1%">:</td>
+	<td class="FontContent"><%=OfficePhone_ %></td>
+</tr>
+<tr>
+	<td>Homephone</td>
+	<td width="1%">:</td>
+	<td class="FontContent"><%=HomePhone_ %></td>
+</tr>
+<tr>
+	<td>Mobile Phone</td>
+	<td width="1%">:</td>
+	<td class="FontContent"><%=MobilePhone_ %></td>
+	<td>Exchange Rate</td>
+	<td width="1%">:</td>
+	<td class="FontContent">Rp. <%= FormatNumber(ExchangeRate_,0) %> / Dollar</td>
+
+</tr>
+<tr>
+	<td>Payment Status</td>
+	<td width="1%">:</td>
+	<td class="FontContent" colspan="4">
+	<%If (ProgressID_ = 1) or (ProgressID_ = 3) then %>
+		<a href="OfficePhoneDetail.asp?Extension=<%=OfficePhone_ %>&MonthP=<%=MonthP%>&YearP=<%=YearP%>" target="_blank"><%=ProgressStatus_%></a>
+	<%Else%>
+		<%=ProgressStatus_%>
+	<%End if%>
+	</td>
+</tr>
+<tr>
+	<td colspan="6"><hr></td>
+</tr>
+
+<tr>
+	<td align="Left" colspan="5"><u><b>Billing detail :<b></u></TD>
+</tr>
+<tr>
+	<td colspan="6">*Click on each billing type for more detail</td>
+</tr>
+<tr>
+	<td align="Left" colspan="6">
+	<table cellspadding="1" border="1" bordercolor="black" cellspacing="0" width="100%" bgColor="white" border="0">  
+	<tr align="center">
+		<td rowspan="2"><b>Type</b></td>
+		<td rowspan="2"><b>Billing (Rp.)</b></td>
+		<td colspan="2"><b>Should be paid</b></td>
+	</tr>
+	<tr>
+		<td align="center"><b>In Rupiah (Rp.)</b></td>
+		<td align="center"><b>In US Dollar ($)</b></td>
+	</tr>
+	<tr>
+		<td><a href="OfficePhoneDetail.asp?Extension=<%=OfficePhone_ %>&MonthP=<%=MonthP%>&YearP=<%=YearP%>" target="_blank">Office Phone</a></td>
+		<td width="20%" class="FontContent" align="right"><%=formatnumber(OfficePhoneBillRp_,0) %>&nbsp;</td>
+		<td width="20%" class="FontContent" align="right"><%=formatnumber(OfficePhonePrsBillRp_ ,0) %>&nbsp;</td>
+		<td width="20%" class="FontContent" align="right"><%=formatnumber(OfficePhonePrsBillDlr_,2) %>&nbsp;</td>		
+	</tr>
+	<tr>
+		<td><a href="HomePhoneDetail.asp?HomePhone=<%=HomePhone_%>&MonthP=<%=MonthP%>&YearP=<%=YearP%>" target="_blank">Home Phone</a></td>		
+		<td class="FontContent" align="right"><%=formatnumber(HomePhoneBillRp_ ,0) %>&nbsp;</td>
+		<td class="FontContent" align="right"><%=formatnumber(HomePhoneBillRp_ ,0) %>&nbsp;</td>
+		<td class="FontContent" align="right"><%=formatnumber(HomePhoneBillDlr_ ,2) %>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>Mobile Phone</td>
+		<td class="FontContent" align="right">- &nbsp;</td>
+		<td class="FontContent" align="right">- &nbsp;</td>
+		<td class="FontContent" align="right">-&nbsp;</td>
+	</tr>
+	<tr>
+		<td><a href="ShuttleBusBillDetail.asp?Username=<%=user1_ %>&MonthP=<%=MonthP%>&YearP=<%=YearP%>" target="_blank">Shuttle Bus</a></td>
+		<td class="FontContent" align="right"><%=formatnumber(TotalShuttleBillRp_ ,0) %>&nbsp;</td>
+		<td class="FontContent" align="right"><%=formatnumber(TotalShuttleBillRp_ ,0) %>&nbsp;</td>
+		<td class="FontContent" align="right"><%=formatnumber(TotalShuttleBillDlr_,2) %>&nbsp;</td>
+	</tr>
+	</table>
+	</TD>
+</tr>
+<tr>
+	<td colspan="6">
+	<table cellspadding="1" cellspacing="0" width="100%" bgColor="white" border="0">
+	<tr>
+		<td align="center"><b>Total</b></td>
+		<td width="20%" class="FontContent" align="right"><!-- <b><u><%=formatnumber(TotalBilling_ , 0) %></u></b> -->&nbsp;</td>
+		<td width="20%" class="FontContent" align="right"><b><u><%=formatnumber(TotalBillingRp_ , 0) %></u></b>&nbsp;</td>
+		<td width="20%" class="FontContent" align="right"><b><u><%=formatnumber(TotalBillingDlr_ ,2) %></u></b>&nbsp;</td>
+	</tr>
+	</table>	
+	</td>
+</tr>
+<%Else%>
+<tr>
+	<td colspan="6" align="center">there is no data.</td>	
+</tr>
+<% end if %>
+</table>
+</BODY>
+</html>

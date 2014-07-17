@@ -1,0 +1,112 @@
+<HTML>
+<HEAD>
+<!--#include file="connect.inc" -->
+<!--METADATA TYPE="typelib" UUID="CD000000-8B95-11D1-82DB-00C04FB1625D"  NAME="CDO for Windows 2000 Library" --> 
+<style type="text/css">
+<!--
+.FontJudul {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+-->
+</style>
+<TITLE>U.S. Mission Jakarta e-Billing</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<STYLE TYPE="text/css"><!--
+  A:ACTIVE { color:#003399; font-size:8pt; font-family:Verdana; }
+  A:HOVER { color:#003399; font-size:8pt; font-family:Verdana; }
+  A:LINK { color:#003399; font-size:8pt; font-family:Verdana; }
+  A:VISITED { color:#003399; font-size:8pt; font-family:Verdana; }
+  body {scrollbar-3dlight-color:#FFFFFF; scrollbar-arrow-color:#E3DCD5; scrollbar-base-color:#FFFFFF; scrollbar-darkshadow-color:#FFFFFF;	scrollbar-face-color:#FFFFFF; scrollbar-highlight-color:#E3DCD5; scrollbar-shadow-color:#E3DCD5; }
+  p { font-family: verdana; font-size: 12px; font-style: normal; line-height: normal; font-weight: normal; font-variant: normal; color: #003399; text-decoration: none}
+  h3 { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 16px; font-style: normal; line-height: normal; font-weight: bold; color: #003399; letter-spacing: normal; word-spacing: normal; font-variant: small-caps}
+  td { font-family: verdana; font-size: 10px; font-style: normal; font-weight: normal; color: #000000}
+  .title { font-size:14px; font-weight:bold; color:#000080; }
+  .SubTitle { font-size:16px; font-weight:bold; color:#000080;  }
+  A.menu { text-decoration:none; font-weight:bold; }
+  A.mmenu { text-decoration:none; color:#FFFFFF; font-weight:bold; }
+  .normal { font-family:Verdana,Arial; color:black}
+  .style5 {color: #FFFFFF;}
+  .ActivePage {color: red; font-weight:bold; }
+--></STYLE>
+</HEAD>
+<!--#include file="Header.inc" -->
+  <TR>
+  	<TD COLSPAN="4" ALIGN="center" Class="title">PAYMENT OF HOME PHONE UPDATE</TD>
+   </TR>
+<tr>
+        <td colspan="4" align="left"><FONT color=#330099 size=2><A HREF="Default.asp">Main Menu</A></font></TD>
+</tr>
+  <TR>
+  	<TD COLSPAN="4"><HR style="LEFT: 10px; TOP: 59px" align=center></TD>
+   </TR>
+  </TABLE>
+
+<%
+   EmpID_ = request.form("txtEmpID")
+   HomePhone_ = request.form("txtHomePhone")
+   ReceiptNo_ = Request.Form("txtReceiptNo")
+'   response.write ReceiptNo_ & "<br>"
+   PaidAmount_ = Request.Form("txtPaidAmount")
+   PaidDate_  = Request.Form("txtPaymentDate")
+'   response.write PaidDate_ & "<br>"
+   CashierRemark_ = replace(Request.Form("txtCashierRemark"),"'","''")
+'   response.write CashierRemark_ & "<br>"
+   MonthP_ = Request.Form("txtMonthP")
+   'response.write MonthP_ & "<br>"
+   YearP_ = Request.Form("txtYearP")
+   'response.write YearP_ & "<br>"
+   TotCost_ = Request.Form("txtTotCost")
+   'response.write TotCost_ & "<br>"
+   if cdbl(PaidAmount_)>cdbl(TotCost_) then
+	TotPaid_ = TotCost_
+   else
+	TotPaid_ = PaidAmount_
+   end if
+%>
+
+<%
+'4. SHOW
+%>
+
+
+<p>
+<table border="0" align=center width="100%" cellspacing="0" cellpadding="1">
+</tr>
+<tr>
+	<td colspan="2" align="center">Billing Period : <Label style="color:blue"><%=MonthP_%> - <%=YearP_%></lable></td>
+</tr>
+<tr>
+	<td colspan="2" align="center"><br></td>
+</tr>
+<%
+	'3. SAVING TO Billing Header
+	strsql = "Update HomePhone Set Status='P', PaidAmount=" & PaidAmount_ & ", ReceiptNo='" & ReceiptNo_ & "', PaidDate ='" & PaidDate_ & "', CashierRemark ='" & CashierRemark_ & "' Where Nomor='" & HomePhone_ & "' And MonthP='" & MonthP_ & "' And YearP='" & YearP_ & "'"
+	'response.write strsql
+	BillingCon.execute(strsql)
+
+	'Update to MonthBill
+	strsql = "Update MonthlyBilling Set PaidAmount=" & TotPaid_ & " Where EmpID='" & EmpID_ & "' And MonthP='" & MonthP_ & "' And YearP='" & YearP_ & "'"
+	'response.write strsql
+	BillingCon.execute(strsql)
+
+
+%>
+<tr>
+	<td align="center" colspan="2">This data has already been saved.</td>
+</tr>
+<tr>
+	<td colspan="2"><br></td>
+</tr>
+<tr>
+	<td colspan="2" align=center>
+		<input type="button" value="Back" id="btnMain" onclick="javascript:document.location.href('HomePhoneSelfPaymentList.asp')">
+	        &nbsp;&nbsp;<input type="button" value="Close this window" onclick="javascript:window.close();" name=btnclose>
+        </td>
+</tr>
+</table>
+</p>
+</BODY>
+</HTML>

@@ -1,0 +1,148 @@
+<%@ Language=VBScript %>
+<!--#include file="connect.inc" -->
+<html>
+<head>
+<style type="text/css">
+<!--
+.FontContent {
+	font-size: 12px;
+        color: blue;
+}
+-->
+</style>
+<script type="text/javascript">
+function validate_form()
+{
+	valid = true;
+	msg = ""
+
+	if (document.frmPersonalPhone.txtPhoneNumber.value == "" )
+	{
+		msg = msg + "Please fill in Phone Number!!!\n"
+		valid = false;
+	}
+
+	if (valid == false)
+	{
+		alert(msg);
+	}
+	return valid;
+}
+</script>
+<% 
+ dim user_ 
+ dim user1_  
+
+ 
+ user_ = request.servervariables("remote_user") 
+ user1_ = right(user_,len(user_)-4)
+'user1_ = "pranataw"
+'response.write user1_ & "<br>"
+
+%> 
+
+<TITLE>U.S. Mission Jakarta e-Billing</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<STYLE TYPE="text/css"><!--
+  A:ACTIVE { color:#003399; font-size:8pt; font-family:Verdana; }
+  A:HOVER { color:#003399; font-size:8pt; font-family:Verdana; }
+  A:LINK { color:#003399; font-size:8pt; font-family:Verdana; }
+  A:VISITED { color:#003399; font-size:8pt; font-family:Verdana; }
+  body {scrollbar-3dlight-color:#FFFFFF; scrollbar-arrow-color:#E3DCD5; scrollbar-base-color:#FFFFFF; scrollbar-darkshadow-color:#FFFFFF;	scrollbar-face-color:#FFFFFF; scrollbar-highlight-color:#E3DCD5; scrollbar-shadow-color:#E3DCD5; }
+  p { font-family: verdana; font-size: 12px; font-style: normal; line-height: normal; font-weight: normal; font-variant: normal; color: #003399; text-decoration: none}
+  h3 { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 16px; font-style: normal; line-height: normal; font-weight: bold; color: #003399; letter-spacing: normal; word-spacing: normal; font-variant: small-caps}
+  td { font-family: verdana; font-size: 10px; font-style: normal; font-weight: normal; color: #000000}
+  .title { font-size:14px; font-weight:bold; color:#000080; }
+  .SubTitle { font-size:16px; font-weight:bold; color:#000080;  }
+  A.menu { text-decoration:none; font-weight:bold; }
+  A.mmenu { text-decoration:none; color:#FFFFFF; font-weight:bold; }
+  .normal { font-family:Verdana,Arial; color:black}
+  .style5 {color: #FFFFFF;}
+  .ActivePage {color: red; font-weight:bold; }
+--></STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0080FF" ALINK="0080FF" VLINK="#0055AA" MARGINWIDTH="8" MARGINHEIGHT="0" LEFTMARGIN="8" TOPMARGIN="0">
+<CENTER>
+<form method="post" name="frmPersonalPhone" action="PersonalPhoneSaveAddOn.asp" onsubmit="return validate_form();"> 
+<%  
+ dim rst 
+ dim strsql
+
+ID_ = request("ID")
+State_ = request("State")
+
+strsql = "select RoleID from Users where loginId ='" & user1_ & "'"
+set UserRS = server.createobject("adodb.recordset")
+'response.write strsql & "<br>"
+set UserRS = BillingCon.execute(strsql)
+if not UserRS.eof then
+	UserRole_ = UserRS("RoleID")
+Else
+	UserRole_ = ""
+end if
+
+  if not UserRS.eof then 
+'     if (trim(rst("RoleID")) = "Admin") or (trim(rst("RoleID")) = "IM") then  
+      If (UserRole_ <> "") Then
+	if State_ = "E" then
+	        strsql = " select * from MsPersonalPhone where ID = " & ID_
+       		set rst1 = server.createobject("adodb.recordset") 
+		'response.write strsql 
+        	set rst1 = BillingCon.execute(strsql)
+	       	if not rst1.eof then 
+        	   PhoneNumber_ = rst1("PhoneNumber") 
+		   Remark_ = rst1("Remark")
+        	end if
+       	end if
+	'response.write State_ & "<br>"
+%>             
+	<table align=center>  
+	<tr>
+	  <td>Phone Number</td>
+	  <td width="1px">:</td>
+	  <td><input type="input" name="txtPhoneNumber" value='<%=PhoneNumber_ %>' size="30" maxlength="50" /></td>
+	</tr> 
+	<tr>
+	  <td>Remark</td>
+	  <td>:</td>
+	  <td><input type="input" name="txtRemark" value='<%=Remark_ %>' size="60" maxlength="100" /></td>
+	</tr>
+	<tr>
+	  <td>&nbsp;</td>
+	  <td width="1%">&nbsp;</td>
+	  <td><input type="submit" name="btnSubmit" value="Submit">
+		<%if State_= "E" then %>
+		      <input type="hidden" name="txtID" value='<%=ID_ %>'>
+		<%End If%>
+	      <input type="hidden" name="State" value=<%=State_ %> >
+	      &nbsp;<input type="button" value="Cancel" name="btnCancel" onClick="Javascript:history.go(-1)">
+	 </td>
+	</tr>  
+	<tr>
+		<td colspan=3>&nbsp;</td></tr>
+	</table>
+    <%else %>
+	<table>
+	<tr>
+		<td>You do not have permission to access this site.</td>
+	</tr>
+	<tr>
+		<td>Please <a href="http://jakartaws01.eap.state.sbu/CSC">Submit Request </a> or contact Jakarta CSC Helpdesk at ext.9111.</td>
+	</tr>
+	</table>
+<%   end if 
+else %>
+	<table align="center">
+		<tr>
+			<td>You do not have permission to access this site.</td>
+		</tr>
+		<tr>
+			<td>Please <a href="http://jakartaws01.eap.state.sbu/CSC">Submit Request </a> or contact Jakarta CSC Helpdesk at ext.9111.</td>
+		</tr>
+	</table>
+
+<%end if %>
+</form>
+</BODY>
+</html>

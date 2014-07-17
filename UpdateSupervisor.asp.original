@@ -1,0 +1,174 @@
+
+<!--#include file="connect.inc" -->
+<html>
+<head>
+<script type="text/javascript">
+function validate_form()
+{
+	valid = true;
+	msg = ""
+
+	if (document.frmUpdateSupervisor.cmbEmpFrom.value == "" )
+	{
+		msg = msg + "Please select From Supervisor."
+		valid = false;
+	}
+
+	if (document.frmUpdateSupervisor.cmbEmpTo.value == "" )
+	{
+		msg = msg + "Please select To Supervisor. "
+		valid = false;
+	}
+
+
+	if (valid == false)
+	{
+		alert(msg)
+	}
+	return valid;
+}
+</script>
+<style type="text/css">
+<!--
+.FontContent {
+	font-size: 12px;
+        color: blue;
+}
+-->
+</style>
+<% 
+ dim user_ 
+ dim user1_  
+
+ 
+ user_ = request.servervariables("remote_user") 
+ user1_ = right(user_,len(user_)-4)
+'user1_ = "pranataw"
+'response.write user1_ & "<br>"
+
+%> 
+
+<TITLE>U.S. Mission Jakarta e-Billing</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<STYLE TYPE="text/css"><!--
+  A:ACTIVE { color:#003399; font-size:8pt; font-family:Verdana; }
+  A:HOVER { color:#003399; font-size:8pt; font-family:Verdana; }
+  A:LINK { color:#003399; font-size:8pt; font-family:Verdana; }
+  A:VISITED { color:#003399; font-size:8pt; font-family:Verdana; }
+  body {scrollbar-3dlight-color:#FFFFFF; scrollbar-arrow-color:#E3DCD5; scrollbar-base-color:#FFFFFF; scrollbar-darkshadow-color:#FFFFFF;	scrollbar-face-color:#FFFFFF; scrollbar-highlight-color:#E3DCD5; scrollbar-shadow-color:#E3DCD5; }
+  p { font-family: verdana; font-size: 12px; font-style: normal; line-height: normal; font-weight: normal; font-variant: normal; color: #003399; text-decoration: none}
+  h3 { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 16px; font-style: normal; line-height: normal; font-weight: bold; color: #003399; letter-spacing: normal; word-spacing: normal; font-variant: small-caps}
+  td { font-family: verdana; font-size: 10px; font-style: normal; font-weight: normal; color: #000000}
+  .title { font-size:14px; font-weight:bold; color:#000080; }
+  .SubTitle { font-size:16px; font-weight:bold; color:#000080;  }
+  A.menu { text-decoration:none; font-weight:bold; }
+  A.mmenu { text-decoration:none; color:#FFFFFF; font-weight:bold; }
+  .normal { font-family:Verdana,Arial; color:black}
+  .style5 {color: #FFFFFF;}
+  .ActivePage {color: red; font-weight:bold; }
+--></STYLE>
+</HEAD>
+<!--#include file="Header.inc" -->
+  <TR>
+  	<TD COLSPAN="4" ALIGN="center" Class="title">UPDATE SUPERVISOR</TD>
+   </TR>
+<tr>
+        <td colspan="4" align="left"><FONT color=#330099 size=2><A HREF="Default.asp">Main Menu</A></font></TD>
+</tr>
+  <TR>
+  	<TD COLSPAN="4"><HR style="LEFT: 10px; TOP: 59px" align=center></TD>
+   </TR>
+  </TABLE>
+<form method="post" name="frmUpdateSupervisor" action="UpdateSupervisorSave.asp" onsubmit="return validate_form();">	
+<%  
+' State_ = "I"
+  strsql = "select * from Users where loginId='" & user1_ & "'"
+'response.write user1_ & "<br>"
+'response.write strsql 
+  set rst = server.createobject("adodb.recordset") 
+  set rst = BillingCon.execute(strsql)
+  if not rst.eof then 
+     if trim(rst("RoleID")) = "Admin" or trim(rst("RoleID")) = "FMC" or trim(rst("RoleID")) = "Voucher" then 
+'response.write State_ & "<br>"
+%>             
+<table align=center>  
+<tr>
+	<td>From Supervisor</td>
+	<td>:</td>
+	<td>
+<%
+ 				strsql ="select EmpID, EmpName from vwPhoneCustomerList order by EmpName"
+				set EmpRS = server.createobject("adodb.recordset")
+				set EmpRS = BillingCon.execute(strsql)
+'				response.write strStr 
+%>	
+				<Select name="cmbEmpFrom">
+					<Option value=''>--Select--</Option>
+<%				Do While not EmpRS.eof 
+%>
+					<Option value='<%=EmpRS("EmpID")%>' <%if trim(EmpID_) = trim(EmpRS("EmpID")) then %>Selected<%End If%> ><%=EmpRS("EmpName") %></Option>
+					
+<%					EmpRS.MoveNext
+				Loop%>
+				</select>
+
+			</td>	
+</tr>
+<tr>
+	<td>To Supervisor</td>
+	<td>:</td>
+	<td>
+<%
+ 				strsql ="select EmpID, EmpName from vwPhoneCustomerList order by EmpName"
+				set EmpRS = server.createobject("adodb.recordset")
+				set EmpRS = BillingCon.execute(strsql)
+'				response.write strStr 
+%>	
+				<Select name="cmbEmpTo">
+					<Option value=''>--Select--</Option>
+<%				Do While not EmpRS.eof 
+%>
+					<Option value='<%=EmpRS("EmpID")%>' <%if trim(EmpID_) = trim(EmpRS("EmpID")) then %>Selected<%End If%> ><%=EmpRS("EmpName") %></Option>
+					
+<%					EmpRS.MoveNext
+				Loop%>
+				</select>
+
+	</td>	
+</tr>
+<tr>
+  <td colspan="2"></td>
+  <td><input type="submit" name="btnSubmit" value="Update"> </td>
+</tr>  
+<tr><td colspan=2>&nbsp;</td></tr>
+</table>
+<%
+   else 
+%>
+	<table>
+		<tr>
+			<td>You do not have permission to access this site.</td>
+		</tr>
+		<tr>
+			<td>Please <a href="http://jakartaws01.eap.state.sbu/CSC">Submit Request </a> or contact Jakarta CSC Helpdesk at ext.9111.</td>
+		</tr>
+	</table>
+'      response.write "You do not have permission as ADMINISTRATOR to access this site.<BR> Please <a href="http://jakartaws01.eap.state.sbu/CSC">Submit Request </a> or contact Jakarta CSC Helpdesk at ext.9111.   
+<%   end if 
+else %>
+	<table align="center">
+		<tr>
+			<td>You do not have permission to access this site.</td>
+		</tr>
+		<tr>
+			<td>Please <a href="http://jakartaws01.eap.state.sbu/CSC">Submit Request </a> or contact Jakarta CSC Helpdesk at ext.9111.</td>
+		</tr>
+	</table>
+
+<%
+end if 
+%>
+</form>
+</BODY>
+</html>

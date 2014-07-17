@@ -1,0 +1,94 @@
+<%@ Language=VBScript %>
+<!--#include file="connect.inc" -->
+<html>
+<head>
+<TITLE>U.S. Mission Jakarta e-Billing</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<STYLE TYPE="text/css"><!--
+  A:ACTIVE { color:#003399; font-size:8pt; font-family:Verdana; }
+  A:HOVER { color:#003399; font-size:8pt; font-family:Verdana; }
+  A:LINK { color:#003399; font-size:8pt; font-family:Verdana; }
+  A:VISITED { color:#003399; font-size:8pt; font-family:Verdana; }
+  body {scrollbar-3dlight-color:#FFFFFF; scrollbar-arrow-color:#E3DCD5; scrollbar-base-color:#FFFFFF; scrollbar-darkshadow-color:#FFFFFF;	scrollbar-face-color:#FFFFFF; scrollbar-highlight-color:#E3DCD5; scrollbar-shadow-color:#E3DCD5; }
+  p { font-family: verdana; font-size: 12px; font-style: normal; line-height: normal; font-weight: normal; font-variant: normal; color: #003399; text-decoration: none}
+  h3 { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 16px; font-style: normal; line-height: normal; font-weight: bold; color: #003399; letter-spacing: normal; word-spacing: normal; font-variant: small-caps}
+  td { font-family: verdana; font-size: 12px; font-style: normal; font-weight: normal; color: #003399}
+  .title { font-size:16px; font-weight:bold; color:#000080; }
+  .SubTitle { font-size:16px; font-weight:bold; color:#000080;  }
+  A.menu { text-decoration:none; font-weight:bold; }
+  A.mmenu { text-decoration:none; color:#FFFFFF; font-weight:bold; }
+  .normal { font-family:Verdana,Arial; color:black}
+  .style5 {color: #FFFFFF;}
+  .ActivePage {color: red; font-weight:bold; }
+--></STYLE>
+</HEAD>
+<!--#include file="Header.inc" -->
+  <TR>
+  	<TD COLSPAN="4"><HR style="LEFT: 10px; TOP: 59px" align=center></TD>
+   </TR>
+  </TABLE>
+<form method="post"> 
+<% 
+ dim user_ 
+ dim user1_  
+ dim rst 
+ dim strsql
+ 'response.end
+ user_ = request.servervariables("remote_user") 
+'response.write user_ & "<br>"
+  user1_ = right(user_,len(user_)-4)
+
+if (session("Month") = "") or (session("Year") = "") then
+	strsql = "Select MonthP, YearP From Period"
+	'response.write strsql & "<br>"
+	set rsData = server.createobject("adodb.recordset") 
+	set rsData = BillingCon.execute(strsql)
+	if not rsData.eof then
+		session("Month") = rsData("MonthP")
+		session("Year") = rsData("YearP")
+	end if
+end if
+
+strsql = "select RoleID from Users where loginId ='" & user1_ & "'"
+set UserRS = server.createobject("adodb.recordset")
+'response.write strsql & "<br>"
+set UserRS = BillingCon.execute(strsql)
+if not UserRS.eof then
+	UserRole_ = UserRS("RoleID")
+end if
+%>       
+
+<table cellspadding="1" cellspacing="1" width="500px">  
+<tr>
+	<td align="left" valign="top">
+	   <UL><UL TYPE="square">
+		<LI class="normal"><B>Employee</b>
+			<UL TYPE="">
+				<li><A HREF="MonthlyBillingAddOn.asp"><B>Monthly Billing</B></A></li>
+				<li><A HREF="MonthlyBillingTrackingAddOn.asp"><B>Tracking Status</B></A></li>
+				<li><A HREF="MonthlyBillListAddOn.asp"><B>Monthly Billing Report</B></A></li>
+				<li><A HREF="UserSettingAddOn.asp"><B>Supervisor Setting</B></A></li>
+				<li><A HREF="PersonalPhoneListAddOn.asp"><B>Personal Phone List</B></A></li>
+			</ul>	
+		</li>
+		   </UL>
+		</UL>
+	</td>
+	<td align="left" valign="top">
+	   <UL>
+		<UL TYPE="square">
+		<LI class="normal"><B>Supervisor</B>
+			<UL TYPE="">
+				<li><A HREF="BillingApprovalListAddOn.asp"><B>Approval List</B></A></li>
+			</ul>	
+		</li>
+		   </UL></UL>
+	</td>
+</tr>
+
+</table>
+
+</form>
+</BODY>
+</html>

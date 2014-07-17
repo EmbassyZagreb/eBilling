@@ -1,0 +1,119 @@
+<%@ Language=VBScript %>
+<!--#include file="connect.inc" -->
+<html>
+<head>
+<script language="JavaScript" src="calendar.js"></script>
+<STYLE TYPE="text/css"><!--
+  A:ACTIVE { color:#003399; font-size:8pt; font-family:Verdana; }
+  A:HOVER { color:#003399; font-size:8pt; font-family:Verdana; }
+  A:LINK { color:#003399; font-size:8pt; font-family:Verdana; }
+  A:VISITED { color:#003399; font-size:8pt; font-family:Verdana; }
+  body {scrollbar-3dlight-color:#FFFFFF; scrollbar-arrow-color:#E3DCD5; scrollbar-base-color:#FFFFFF; scrollbar-darkshadow-color:#FFFFFF;	scrollbar-face-color:#FFFFFF; scrollbar-highlight-color:#E3DCD5; scrollbar-shadow-color:#E3DCD5; }
+  p { font-family: verdana; font-size: 12px; font-style: normal; line-height: normal; font-weight: normal; font-variant: normal; color: #003399; text-decoration: none}
+  h3 { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 16px; font-style: normal; line-height: normal; font-weight: bold; color: #003399; letter-spacing: normal; word-spacing: normal; font-variant: small-caps}
+  td { font-family: verdana; font-size: 12px; font-style: normal; font-weight: normal; color: #003399}
+  .title { font-size:16px; font-weight:bold; color:#000080; }
+  .SubTitle { font-size:16px; font-weight:bold; color:#000080;  }
+  A.menu { text-decoration:none; font-weight:bold; }
+  A.mmenu { text-decoration:none; color:#FFFFFF; font-weight:bold; }
+  .normal { font-family:Verdana,Arial; color:black}
+  .style5 {color: #FFFFFF;}
+  .ActivePage {color: red; font-weight:bold; }
+  .Hint {color: red;}
+  .Hint2 {color: blue;}
+--></STYLE>
+</head>
+<!--#include file="Header.inc" -->
+  <TR>
+  	<TD COLSPAN="4" ALIGN="center" Class="title">GENERATE MONTHLY BILL</TD>
+   </TR>
+<tr>
+        <td colspan="3" align="left"><FONT color=#330099 size=2><A HREF="Default.asp">Main Menu</A></font></TD>
+        <td align="right"><FONT color=#330099 size=2><A HREF="GenerateMonthlyBill.asp">Back</A></font></TD>
+</tr>
+  <TR>
+  	<TD COLSPAN="4"><HR style="LEFT: 10px; TOP: 59px" align=center></TD>
+   </TR>
+  </TABLE>
+<% 
+ dim user_ 
+ dim user1_  
+ dim rst 
+ dim strsql
+ 
+user_ = request.servervariables("remote_user")
+user1_ = right(user_,len(user_)-4)
+strsql = "select * from Users where loginId='" & user1_ & "'"
+set RS_Query = server.createobject("adodb.recordset")
+'response.write strsql & "<br>"
+set RS_Query = BillingCon.execute(strsql)
+
+if not RS_Query.eof then
+	UserRole_ = RS_Query("RoleID")
+end if
+
+MonthP = Request.Form("MonthList")
+'response.write MonthP
+'MonthP="08"
+YearP = Request.Form("YearList")
+'response.write YearP
+'YearP ="2013"
+EmpID = Request.Form("cmbEmp")
+ 
+strsql = "select * from ExchangeRate where ExchangeMonth='" & MonthP & "' and ExchangeYear='" & YearP & "'"
+set RS_Query = BillingCon.execute(strsql)
+If RS_Query.eof then
+	response.write "<div class='Hint'>Please input exchange rate for period :<b> " & MonthP & " - " & YearP & "</b>, before generates monthly bill !!!</div>"
+else
+	strsql = "Exec spGenerateMonthlyBilling '" & MonthP & "','" & YearP & "','" & EmpID & "'"
+	set RS_Query = BillingCon.execute(strsql)
+	response.write "<div class='Hint2'>Process generates monthly bill completed !!!</div>"
+
+	strsql = "Select * from vwProgressLog Where MonthP='" & MonthP & "' and YearP='" & YearP & "' order by Description"
+	set SummaryRS = server.createobject("adodb.recordset")
+	set SummaryRS = BillingCon.execute(strsql)
+'	response.write strsql 
+	if not SummaryRS.eof then
+%>
+		<table align="center" cellpadding="1" cellspacing="0" width="600px" border="1" bordercolor="black"> 
+		<TR BGCOLOR="#000099" align="center" cellpadding="0" cellspacing="0" >
+			<TD width="3px"><strong><label STYLE=color:#FFFFFF>No.</label></strong></TD>
+	       		<TD><strong><label STYLE=color:#FFFFFF>Billing Status</label></strong></TD>
+			<TD><strong><label STYLE=color:#FFFFFF>Number of Record</label></strong></TD>
+		       	<TD><strong><label STYLE=color:#FFFFFF>Total Billing</label></strong></TD>
+		</TR>    
+<% 
+		dim no_  
+   		no_ = 1
+   		TotalRecord_ = 0
+  		TotalBilling_ = 0
+   		do while not SummaryRS.eof
+	   		if bg="#D7E3F4" then bg="ffffff" else bg="#D7E3F4" 
+%>
+		 	<TR bgcolor="<%=bg%>">
+		        	<TD align="right"><FONT color=#330099 size=2><%=no_ %>&nbsp;</font></TD>
+	        		<TD>&nbsp;<%=SummaryRS("Description") %></TD>
+	        		<TD align="right"><%=formatnumber(SummaryRS("TotalRecord"),0) %>&nbsp;</TD>
+		        	<TD align="right"><%=formatnumber(SummaryRS("TotalBill"),0) %>&nbsp;</TD>
+			</TR>
+<%
+			TotalRecord_ = formatnumber(cdbl(TotalRecord_)+cdbl(SummaryRS("TotalRecord")),0)
+			TotalBilling_ = formatnumber(cdbl(TotalBilling_)+cdbl(SummaryRS("TotalBill")),0)
+			SummaryRS.movenext
+		   	no_ = no_ + 1 
+		loop 
+%>
+		<TR cellpadding="0" cellspacing="0" >
+	       		<TD colspan="2" align="center"><strong>Total</strong></TD>
+			<TD align="right"><strong><%=TotalRecord_ %></strong>&nbsp;</TD>
+		       	<TD align="right"><strong><%=TotalBilling_ %></strong>&nbsp;</TD>
+		</TR>    
+		</table>
+		<br>
+		<div align="center"><a href="GenerateMonthlyBillProcessExport.asp?MonthP=<%=MonthP%>&YearP=<%=YearP%>">Save Log</a></div>
+<%
+	end if
+end if
+%>
+</BODY>
+</html>

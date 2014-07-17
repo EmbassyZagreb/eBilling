@@ -1,0 +1,384 @@
+<HTML>
+<HEAD><TITLE>Billing</TITLE>
+<style type='text/css'>
+<!--
+.style4 {color: #FFFFFF; font-weight: bold;}
+.smallfont{font-size: x-small;}
+-->
+</style>
+</HEAD>
+<BODY>
+<form>
+   <table cellpadding='0' cellspacing='0' border='0' width='100%'>
+      <tr>
+		<td><b>Personal Usage Detail for Period <b>08 - 2013</b> :</b></td>
+      </tr>
+     <tr>
+		<td>&nbsp;</td>
+     </tr>
+     <tr>
+     	<td align='Center'>
+     		<table cellspadding='0' cellspacing='0' bordercolor='black' border='1' width='90%' bgColor='white'>
+     		<tr align='center' cellpadding='0' cellspacing='0'>
+     			<TD width='5%'><strong>No</strong></TD>
+     		     	<TD><strong>Dialed Date/time</strong></TD>
+     			<TD width='20%'><strong>Dialed Number</strong></TD>
+     			<TD><strong>Call Type</strong></TD>
+     			<TD><strong>Duration</strong></TD>
+     			<TD width='10%'><strong>Amount (Rp)</strong></TD>
+     		</tr>
+     		<tr bgcolor='#D7E3F4'>
+     			<td align='right'>1&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;7/16/2013 3:22:34 PM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;08121359195</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek T</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:04:13</font></td>
+     			<td align='right'><FONT color=#330099 size=2>3,250</font></td>
+			</tr>
+     		<tr bgcolor='ffffff'>
+     			<td align='right'>2&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;7/18/2013 5:50:47 PM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;628121163616</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek T</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:01:54</font></td>
+     			<td align='right'><FONT color=#330099 size=2>1,500</font></td>
+			</tr>
+     		<tr bgcolor='#D7E3F4'>
+     			<td align='right'>3&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;7/19/2013 9:00:46 AM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;0</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;smspush2200</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;1</font></td>
+     			<td align='right'><FONT color=#330099 size=2>2,000</font></td>
+			</tr>
+     		<tr bgcolor='ffffff'>
+     			<td align='right'>4&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;7/20/2013 2:56:18 PM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;6281282069703</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek T</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:01:29</font></td>
+     			<td align='right'><FONT color=#330099 size=2>1,250</font></td>
+			</tr>
+     		<tr bgcolor='#D7E3F4'>
+     			<td align='right'>5&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;7/23/2013 8:13:24 AM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;081288008873</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek T</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:06:50</font></td>
+     			<td align='right'><FONT color=#330099 size=2>5,250</font></td>
+			</tr>
+     		<tr bgcolor='ffffff'>
+     			<td align='right'>6&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;7/23/2013 10:15:36 AM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;6281383705736</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek T</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:08:59</font></td>
+     			<td align='right'><FONT color=#330099 size=2>6,750</font></td>
+			</tr>
+     		<tr bgcolor='#D7E3F4'>
+     			<td align='right'>7&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;7/24/2013 7:04:29 AM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;081288008873</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek T</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:08:26</font></td>
+     			<td align='right'><FONT color=#330099 size=2>6,500</font></td>
+			</tr>
+     		<tr bgcolor='ffffff'>
+     			<td align='right'>8&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;7/24/2013 9:21:38 AM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;6281282069703</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek T</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:01:40</font></td>
+     			<td align='right'><FONT color=#330099 size=2>1,250</font></td>
+			</tr>
+     		<tr bgcolor='#D7E3F4'>
+     			<td align='right'>9&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;7/24/2013 10:20:58 AM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;6281383705736</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek T</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:27:01</font></td>
+     			<td align='right'><FONT color=#330099 size=2>20,500</font></td>
+			</tr>
+     		<tr bgcolor='ffffff'>
+     			<td align='right'>10&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;7/24/2013 10:48:57 AM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;6281282069703</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek T</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:02:25</font></td>
+     			<td align='right'><FONT color=#330099 size=2>2,000</font></td>
+			</tr>
+     		<tr bgcolor='#D7E3F4'>
+     			<td align='right'>11&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;7/24/2013 5:26:54 PM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;08158887487</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek Banten M</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:03:16</font></td>
+     			<td align='right'><FONT color=#330099 size=2>3,000</font></td>
+			</tr>
+     		<tr bgcolor='ffffff'>
+     			<td align='right'>12&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;7/24/2013 5:33:43 PM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;08158887487</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek Banten M</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:01:54</font></td>
+     			<td align='right'><FONT color=#330099 size=2>1,800</font></td>
+			</tr>
+     		<tr bgcolor='#D7E3F4'>
+     			<td align='right'>13&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;7/24/2013 7:11:25 PM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;081288008873</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek T</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:04:29</font></td>
+     			<td align='right'><FONT color=#330099 size=2>3,500</font></td>
+			</tr>
+     		<tr bgcolor='ffffff'>
+     			<td align='right'>14&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;7/24/2013 9:24:58 PM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;081288008873</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek T</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:05:29</font></td>
+     			<td align='right'><FONT color=#330099 size=2>4,250</font></td>
+			</tr>
+     		<tr bgcolor='#D7E3F4'>
+     			<td align='right'>15&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;7/25/2013 7:47:17 AM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;081288008873</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek T</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:09:37</font></td>
+     			<td align='right'><FONT color=#330099 size=2>7,250</font></td>
+			</tr>
+     		<tr bgcolor='ffffff'>
+     			<td align='right'>16&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;7/25/2013 10:17:49 AM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;081288008873</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek T</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:02:08</font></td>
+     			<td align='right'><FONT color=#330099 size=2>1,750</font></td>
+			</tr>
+     		<tr bgcolor='#D7E3F4'>
+     			<td align='right'>17&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;7/25/2013 12:46:26 PM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;081288008873</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek T</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:01:40</font></td>
+     			<td align='right'><FONT color=#330099 size=2>1,250</font></td>
+			</tr>
+     		<tr bgcolor='ffffff'>
+     			<td align='right'>18&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;7/25/2013 3:52:47 PM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;6281282069703</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek T</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:01:56</font></td>
+     			<td align='right'><FONT color=#330099 size=2>1,500</font></td>
+			</tr>
+     		<tr bgcolor='#D7E3F4'>
+     			<td align='right'>19&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;7/25/2013 4:29:02 PM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;622136780783</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek P</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:01:30</font></td>
+     			<td align='right'><FONT color=#330099 size=2>1,500</font></td>
+			</tr>
+     		<tr bgcolor='ffffff'>
+     			<td align='right'>20&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;7/25/2013 10:14:33 PM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;081288008873</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek T</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:12:55</font></td>
+     			<td align='right'><FONT color=#330099 size=2>9,750</font></td>
+			</tr>
+     		<tr bgcolor='#D7E3F4'>
+     			<td align='right'>21&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;7/26/2013 7:55:23 AM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;081317136759</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek T</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:03:09</font></td>
+     			<td align='right'><FONT color=#330099 size=2>2,500</font></td>
+			</tr>
+     		<tr bgcolor='ffffff'>
+     			<td align='right'>22&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;7/26/2013 10:28:27 AM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;02191928262</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek P</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:04:43</font></td>
+     			<td align='right'><FONT color=#330099 size=2>4,500</font></td>
+			</tr>
+     		<tr bgcolor='#D7E3F4'>
+     			<td align='right'>23&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;7/26/2013 10:33:43 AM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;02191928262</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek P</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:18:00</font></td>
+     			<td align='right'><FONT color=#330099 size=2>16,200</font></td>
+			</tr>
+     		<tr bgcolor='ffffff'>
+     			<td align='right'>24&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;7/26/2013 11:01:02 AM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;622136780783</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek P</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:01:19</font></td>
+     			<td align='right'><FONT color=#330099 size=2>1,200</font></td>
+			</tr>
+     		<tr bgcolor='#D7E3F4'>
+     			<td align='right'>25&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;7/26/2013 10:53:17 PM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;081288008873</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek T</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:12:39</font></td>
+     			<td align='right'><FONT color=#330099 size=2>9,500</font></td>
+			</tr>
+     		<tr bgcolor='ffffff'>
+     			<td align='right'>26&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;7/27/2013 8:01:19 PM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;6281286569508</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek T</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:02:09</font></td>
+     			<td align='right'><FONT color=#330099 size=2>1,750</font></td>
+			</tr>
+     		<tr bgcolor='#D7E3F4'>
+     			<td align='right'>27&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;7/27/2013 9:30:10 PM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;081288008873</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek T</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:08:37</font></td>
+     			<td align='right'><FONT color=#330099 size=2>6,500</font></td>
+			</tr>
+     		<tr bgcolor='ffffff'>
+     			<td align='right'>28&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;7/29/2013 3:09:17 PM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;6281286569508</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek T</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:01:24</font></td>
+     			<td align='right'><FONT color=#330099 size=2>1,250</font></td>
+			</tr>
+     		<tr bgcolor='#D7E3F4'>
+     			<td align='right'>29&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;7/29/2013 9:21:07 PM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;081288008873</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek T</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:03:45</font></td>
+     			<td align='right'><FONT color=#330099 size=2>3,000</font></td>
+			</tr>
+     		<tr bgcolor='ffffff'>
+     			<td align='right'>30&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;7/31/2013 10:24:50 AM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;081288008873</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek T</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:01:44</font></td>
+     			<td align='right'><FONT color=#330099 size=2>1,500</font></td>
+			</tr>
+     		<tr bgcolor='#D7E3F4'>
+     			<td align='right'>31&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;7/31/2013 10:52:22 AM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;02191928262</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek P</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:03:50</font></td>
+     			<td align='right'><FONT color=#330099 size=2>3,600</font></td>
+			</tr>
+     		<tr bgcolor='ffffff'>
+     			<td align='right'>32&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;7/31/2013 1:23:39 PM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;02191928262</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek P</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:02:47</font></td>
+     			<td align='right'><FONT color=#330099 size=2>2,700</font></td>
+			</tr>
+     		<tr bgcolor='#D7E3F4'>
+     			<td align='right'>33&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;8/1/2013 10:15:32 AM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;02191928262</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek P</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:07:23</font></td>
+     			<td align='right'><FONT color=#330099 size=2>6,900</font></td>
+			</tr>
+     		<tr bgcolor='ffffff'>
+     			<td align='right'>34&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;8/1/2013 10:23:49 AM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;02191928262</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek P</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:06:53</font></td>
+     			<td align='right'><FONT color=#330099 size=2>6,300</font></td>
+			</tr>
+     		<tr bgcolor='#D7E3F4'>
+     			<td align='right'>35&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;8/2/2013 10:23:15 AM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;02191928262</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek P</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:06:01</font></td>
+     			<td align='right'><FONT color=#330099 size=2>5,700</font></td>
+			</tr>
+     		<tr bgcolor='ffffff'>
+     			<td align='right'>36&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;8/3/2013 7:18:16 PM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;02195619420</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek P</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:01:04</font></td>
+     			<td align='right'><FONT color=#330099 size=2>1,200</font></td>
+			</tr>
+     		<tr bgcolor='#D7E3F4'>
+     			<td align='right'>37&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;8/4/2013 2:52:33 PM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;02195598887</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek P</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:01:28</font></td>
+     			<td align='right'><FONT color=#330099 size=2>1,500</font></td>
+			</tr>
+     		<tr bgcolor='ffffff'>
+     			<td align='right'>38&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;8/5/2013 9:04:28 AM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;6281286569508</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek T</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:02:38</font></td>
+     			<td align='right'><FONT color=#330099 size=2>2,000</font></td>
+			</tr>
+     		<tr bgcolor='#D7E3F4'>
+     			<td align='right'>39&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;8/6/2013 11:36:28 AM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;081288008873</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek T</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:02:42</font></td>
+     			<td align='right'><FONT color=#330099 size=2>2,250</font></td>
+			</tr>
+     		<tr bgcolor='ffffff'>
+     			<td align='right'>40&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;8/6/2013 2:59:56 PM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;081288008873</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek T</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:02:17</font></td>
+     			<td align='right'><FONT color=#330099 size=2>1,750</font></td>
+			</tr>
+     		<tr bgcolor='#D7E3F4'>
+     			<td align='right'>41&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;7/6/2013 7:32:20 PM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;08561191557</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek Banten M</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:01:35</font></td>
+     			<td align='right'><FONT color=#330099 size=2>1,500</font></td>
+			</tr>
+     		<tr bgcolor='ffffff'>
+     			<td align='right'>42&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;8/6/2013 5:54:44 PM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;6281282069703</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek T</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:02:08</font></td>
+     			<td align='right'><FONT color=#330099 size=2>1,750</font></td>
+			</tr>
+     		<tr bgcolor='#D7E3F4'>
+     			<td align='right'>43&nbsp;</td>
+     			<td><FONT color=#330099 size=2>&nbsp;8/9/2013 2:47:19 PM</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;081288008873</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;Jabotabek T</font></td>
+     			<td><FONT color=#330099 size=2>&nbsp;00:01:49</font></td>
+     			<td align='right'><FONT color=#330099 size=2>1,500</font></td>
+			</tr>
+     		<tr>
+     			<td align='center' colspan='5'><b>Total (Rp.) </b>&nbsp;</td>
+				<td align='right'><b><u>172,350</u></b>&nbsp;</td>
+			</tr>
+			</table>
+		</td>
+	</tr>
+	</table>
+</form>
+</BODY>
+</HTML>
