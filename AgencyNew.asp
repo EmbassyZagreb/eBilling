@@ -42,7 +42,7 @@ function validate_form()
 Dim user_ , user1_, UserRole_
 
 user_ = request.servervariables("remote_user")
-user1_ = right(user_,len(user_)-4)
+user1_ = user_  'user1_ = right(user_,len(user_)-4)
 
 'response.write "ServiceRecordID : " & serviceRecordId & "<br>"
 Mode = request.querystring("Mode")

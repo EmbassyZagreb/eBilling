@@ -44,7 +44,7 @@ Message = Request("msg")
 Dim user_ , user1_, UserRole_
 
 user_ = request.servervariables("remote_user")
-user1_ = right(user_,len(user_)-4)
+user1_ = user_  'user1_ = right(user_,len(user_)-4)
 
 
 strsql = "select * from Users where loginId='" & user1_ & "'"
@@ -136,12 +136,12 @@ end if
 	</tr>
 <%	end if	%>
 	</table>
-     <table width="100%">
+     <table width="70%">
 	<tr>
 		<td align="left"><a href="AgencyNew.asp">Add New Agency</a></td>
 	</tr>
      </table>
-	<table border="1" bordercolor="#EEEEEE" cellpadding="2" cellspacing="0" width="100%"  class="FontText">
+	<table border="1" bordercolor="#EEEEEE" cellpadding="2" cellspacing="0" width="90%"  class="FontText">
 	    <TR BGCOLOR="#330099" align="center">
 		 <TD width=3%><strong><label STYLE=color:#FFFFFF>No.</label></strong></TD>
 	         <TD width=8%><strong><label STYLE=color:#FFFFFF>Agency Code</label></strong></TD>

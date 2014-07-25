@@ -17,7 +17,7 @@
 
  
  user_ = request.servervariables("remote_user") 
- user1_ = right(user_,len(user_)-4)
+ user1_ = user_  'user1_ = right(user_,len(user_)-4)
 'user1_ = "pranataw"
 'response.write user1_ & "<br>"
 

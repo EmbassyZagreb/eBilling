@@ -55,7 +55,7 @@ PageIndex=request("PageIndex")
 
 
 user_ = request.servervariables("remote_user")
-user1_ = right(user_,len(user_)-4)
+user1_ = user_  'user1_ = right(user_,len(user_)-4)
 
 EmpName_ = trim(request.form("txtEmpName"))
 if EmpName_ ="" then

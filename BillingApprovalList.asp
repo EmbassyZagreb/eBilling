@@ -47,7 +47,7 @@ function checkall(obj)
 Dim user_ , user1_
 
 user_ = request.servervariables("remote_user")
-user1_ = right(user_,len(user_)-4)
+user1_ = user_  'user1_ = right(user_,len(user_)-4)
 'response.write user1_ & "<br>"
 
 strSql = "select EmailAddress from vwPhoneCustomerList where LoginID='" & user1_ & "'"
@@ -171,7 +171,7 @@ dim hlm
 <%
 
 
-'strsql = "Exec spApprovalList '" & user1_ & "','" & MonthP & "','" & YearP & "'"
+
 If MonthP="XX" then
 	if ProgressID ="X" then
 		strsql = "Select * From vwMonthlyBilling Where SupervisorEmail='" & SPVEmailAddress_ & "'"
@@ -238,17 +238,8 @@ if not DataRS.eof Then
 		</TD>
 	        <TD align="right">&nbsp;<%= DataRS("MobilePhone")%></font>&nbsp;</TD>
 	        <TD align="right">&nbsp;<%= DataRS("MonthP")%>-<%= DataRS("YearP")%></font>&nbsp;</TD>
-<!--	        <TD><FONT color=#330099 size=2>&nbsp;<%=DataRS("WorkPhone") %> </font></TD> -->
-<!--	        <TD align="right"><FONT color=#330099 size=2><%= formatnumber(DataRS("HomePhoneBillRp"),-1) %>&nbsp;</font></TD> -->
-<!--	        <TD align="right"><%= formatnumber(DataRS("OfficePhoneBillRp"),-1) %>&nbsp;</font></TD> -->
 	        <TD align="right"><%= formatnumber(DataRS("CellPhoneBillRp"),-1) %>&nbsp;</font></TD>
-<!--	        <TD align="right"><FONT color=#330099 size=2><%= formatnumber(DataRS("TotalShuttleBillRp"),-1) %>&nbsp;</font></TD> -->
-<!--	        <TD align="right"><FONT color=#330099 size=2><%= formatnumber(DataRS("HomePhonePrsBillRp"),-1) %>&nbsp;</font></TD> -->
-<!--	        <TD align="right"><%= formatnumber(DataRS("OfficePhonePrsBillRp"),-1) %>&nbsp;</font></TD> -->
 	        <TD align="right"><%= formatnumber(DataRS("CellPhonePrsBillRp"),-1) %>&nbsp;</font></TD>
-<!--	        <TD align="right"><FONT color=#330099 size=2><%= formatnumber(DataRS("TotalShuttleBillRp"),-1) %>&nbsp;</font></TD> -->
-<!--	        <TD align="right"><%= formatnumber(DataRS("TotalBillingAmountPrsRp"),-1) %>&nbsp;</font></TD> -->
-<!--	        <TD><FONT color=#330099 size=2>&nbsp;<%= DataRS("Notes") %></font></TD> -->
 		<TD>&nbsp;<%= DataRS("ProgressDesc") %></font></TD>
 		<td align="center">
 			<%if DataRS("ProgressID")=2 then%>

@@ -59,7 +59,7 @@ function validate_form()
  dim strsql
  
 user_ = request.servervariables("remote_user") 
-user1_ = right(user_,len(user_)-4)
+user1_ = right(user_,len(user_)-10)
 'user1_ = "pranataw"
 'response.write user1_ & "<br>"
 
@@ -228,8 +228,8 @@ if not rsData.eof then
 	EmpName_ = rsData("EmpName")
 	Office_ = rsData("Agency") & " - " & rsData("Office")
 	Position_ = rsData("WorkingTitle")
-	OfficePhone_ = rsData("WorkPhone")
-	HomePhone_ = rsData("HomePhone")
+	'OfficePhone_ = rsData("WorkPhone")
+	'HomePhone_ = rsData("HomePhone")
 	MobilePhone_ = rsData("MobilePhone")
 	ExchangeRate_ = rsData("ExchangeRate")
 	HomePhoneBillRp_ = rsData("HomePhoneBillRp")

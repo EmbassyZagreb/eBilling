@@ -18,7 +18,7 @@
 
  
  user_ = request.servervariables("remote_user") 
- user1_ = right(user_,len(user_)-4)
+ user1_ = user_  'user1_ = right(user_,len(user_)-4)
 'user1_ = "pranataw"
 'response.write user1_ & "<br>"
 
@@ -56,7 +56,7 @@
 	Type_ = rsData("EmpType")
 	EmpName_ = rsData("EmpName")
 	Office_ = rsData("Office")
-	WorkPhone_ = rsData("WorkPhone")
+	'WorkPhone_ = rsData("WorkPhone")
 	MobilePhone_ = rsData("MobilePhone")
 	EmailAddress_ = rsData("EmailAddress")
 	ReportTo_ = rsData("SupervisorId")

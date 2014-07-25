@@ -18,7 +18,7 @@ Response.Clear()
 Dim user_ , user1_
 
 user_ = request.servervariables("remote_user")
-user1_ = right(user_,len(user_)-4)
+user1_ = user_  'user1_ = right(user_,len(user_)-4)
 'response.write user1_ & "<br>"
 
 strsql = "select RoleID from Users where loginId ='" & user1_ & "'"
@@ -145,7 +145,7 @@ if not DataRS.eof Then
 <%		Else %>
 			0
 <%		End If %>
-		</td>
+		&nbsp;</td>
 <!--		<td align="right">
 <%		If CDbl(DataRS("TotalShuttleBillRp")) > 0 Then %>
 			<%= formatnumber(DataRS("TotalShuttleBillRp"),-1) %>
@@ -157,7 +157,7 @@ if not DataRS.eof Then
 		<TD>&nbsp;<%= DataRS("PaidDate") %></font></TD>
 		<TD>&nbsp;<%= DataRS("ReceiptNo") %></font></TD>
 		<TD>&nbsp;<%= DataRS("PaymentTypeName") %></font></TD> 
-	        <TD align="right"><%= formatnumber(DataRS("PaidAmount"),-1) %></font></TD>
+	        <TD align="right"><%= formatnumber(DataRS("PaidAmount"),-1) %>&nbsp;</font></TD>
 <!--		<TD>&nbsp;<%= DataRS("Currency") %></font></TD>  -->
 		<TD>&nbsp;<%= DataRS("Aging") %></font></TD> 
 		<TD>&nbsp;<%= DataRS("AgencyFunding") %></font></TD> 

@@ -14,7 +14,7 @@
 Dim user_ , user1_
 
 user_ = request.servervariables("remote_user")
-user1_ = right(user_,len(user_)-4)
+user1_ = user_  'user1_ = right(user_,len(user_)-4)
 'response.write user1_ & "<br>"
 
 strsql = "Select Max(YearP+MonthP) As Period From vwMonthlyBilling Where LoginID='" & user1_ & "'"
@@ -187,7 +187,7 @@ dim hlm
 sPeriod = sYearP&sMonthP
 ePeriod = eYearP&eMonthP
 
-'strsql = "Exec spApprovalList '" & user1_ & "','" & MonthP & "','" & YearP & "'"
+
 If MonthP="XX" then
 	if Status ="X" then
 		strsql = "Select * From vwMonthlyBilling Where LoginID ='" & user1_& "'"

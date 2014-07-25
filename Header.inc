@@ -4,4 +4,5 @@
 <CENTER>
   <IMG SRC="images/embassytitle2.jpeg" WIDTH="661" HEIGHT="80" BORDER="0"> 
   <TABLE WIDTH="65%" BORDER="0" CELLPADDING="0" CELLSPACING="0">
-  <CAPTION><H3 STYLE="font-size:17px;color:#000040">Mission Zagreb - Billing Application - BETA Version</H3></CAPTION>
+  <CAPTION><H3 STYLE="font-size:17px;color:#000040">Mission Zagreb - Billing Application</H3></CAPTION>
+  <CAPTION><H3 STYLE="font-size:19px;color:#ff00ff">Dev Site Version</H3></CAPTION>

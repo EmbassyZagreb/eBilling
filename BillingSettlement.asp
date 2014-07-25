@@ -56,7 +56,7 @@ function checkall(obj)
 Dim user_ , user1_
 
 user_ = request.servervariables("remote_user")
-user1_ = right(user_,len(user_)-4)
+user1_ = user_  'user1_ = right(user_,len(user_)-4)
 'response.write user1_ & "<br>"
 
 strsql = "select RoleID from Users where loginId ='" & user1_ & "'"
@@ -371,8 +371,8 @@ if not DataRS.eof Then
 	EmpName_ = DataRS("EmpName")
 	Office_ = DataRS("Agency") & " - " & DataRS("Office")
 	Position_ = DataRS("WorkingTitle")
-	OfficePhone_ = DataRS("WorkPhone")
-	HomePhone_ = DataRS("HomePhone")
+	'OfficePhone_ = DataRS("WorkPhone")
+	'HomePhone_ = DataRS("HomePhone")
 	MobilePhone_ = DataRS("MobilePhone")
 	ExchangeRate_ = DataRS("ExchangeRate")
 	LoginID_ = DataRS("LoginID")
@@ -440,36 +440,8 @@ if not DataRS.eof Then
 		<td width=20%><b>Billing (Kn.)</b></td>
 		<td width=20%><b>Personal Used (Kn.)</b></td>
 	</tr>
-<!-- <%if cdbl(OfficePhoneBillRp_) > 0 Then %>
-	<tr>
-		<td><a href="OfficePhoneDetail.asp?Extension=<%=OfficePhone_ %>&MonthP=<%=MonthP%>&YearP=<%=YearP%>" target="_blank">Office Phone</a></td>
-		<td width="20%" class="FontContent" align="right"><%=formatnumber(OfficePhoneBillRp_,-1) %>&nbsp;</td>
-		<td width="20%" class="FontContent" align="right"><%=formatnumber(OfficePhonePrsBillRp_ ,-1) %>&nbsp;</td>
-		<td width="20%" class="FontContent" align="right"><%=formatnumber(OfficePhonePrsBillDlr_,-1) %>&nbsp;</td>		
-	</tr>
-<%else%>
-	<tr>
-		<td>Office Phone</td>
-		<td class="FontContent" align="right">- &nbsp;</td>
-		<td class="FontContent" align="right">- &nbsp;</td>
-		<td class="FontContent" align="right">- &nbsp;</td>
-	</tr>
-<%end if%> -->
-<!-- <%if cdbl(HomePhoneBillRp_) > 0 Then %>
-	<tr>
-		<td><a href="HomePhoneDetail.asp?HomePhone=<%=HomePhone_%>&MonthP=<%=MonthP%>&YearP=<%=YearP%>" target="_blank">Home Phone</a></td>
-		<td class="FontContent" align="right"><%=formatnumber(HomePhoneBillRp_ ,-1) %>&nbsp;</td>
-		<td class="FontContent" align="right"><%=formatnumber(HomePhonePrsBillRp_ ,-1) %>&nbsp;</td>
-		<td class="FontContent" align="right"><%=formatnumber(HomePhonePrsBillDlr_ ,-1) %>&nbsp;</td>
-	</tr>
-<%else%>
-	<tr>
-		<td>Home Phone</td>
-		<td class="FontContent" align="right">- &nbsp;</td>
-		<td class="FontContent" align="right">- &nbsp;</td>
-		<td class="FontContent" align="right">- &nbsp;</td>
-	</tr>
-<%end if%> -->
+
+
 <%if cdbl(CellPhoneBillRp_ ) > 0 Then %>
 	<tr height=26>
 		<TD align="right">&nbsp;-</font>&nbsp;</TD>
@@ -510,116 +482,6 @@ if not DataRS.eof Then
 		<td align="Left" colspan="5"><u><b>Billing detail :<b></u></TD>
 	</tr>	
 	
-<%
-strsql = "Exec spGetBilling 'Detail','" & OfficePhone_ & "','" & MonthP_ & "','" & YearP_ & "'"
-'response.write strsql & "<br>"
-set rsOfficePhone = BillingCon.execute(strsql) 
-no_ = 1 
-if not rsOfficePhone.eof then
-%>
-	<tr>
-		<td colspan="6">
-		<table cellspadding="1" cellspacing="1" width="100%" align="center">
-		<tr>
-			<td align="Left" colspan="5"><u><b>Office Phone detail :<b></u></TD>
-		</tr>
-		<tr align="center" cellpadding="0" cellspacing="0" >
-			<TD width="5%"><strong>No.</strong></TD>
-		       	<TD width="30%"><strong>Dialed Date/time</strong></TD>
-			<TD><strong>Dialed Number</strong></TD>
-			<TD width="15%"><strong>Amount (Kn.)</strong></TD>
-			<TD width="15%"><strong>Personal used</strong></TD>
-		</tr>
-<%
-
-		do while not rsOfficePhone.eof
-   			if bg="#D7E3F4" then bg="ffffff" else bg="#D7E3F4" 
-%>
-		<tr bgcolor="<%=bg%>">
-			<td align="right"><%=No_%>&nbsp;</td>
-		        <td>&nbsp;<%=rsOfficePhone("DialedDatetime")%></font></td> 
-		       	<td>&nbsp;<%=rsOfficePhone("DialedNumber")%></font></td> 
-		        <td align="right"><%=formatnumber(rsOfficePhone("Cost"),-1)%>&nbsp;</font></td> 
-<%			if (ProgressID_ = 1) or (ProgressID_ = 3) then %>
-			        <td align="center">
-				<%if rsOfficePhone("isPersonal") = "Y" then%>
-					<Input type="Checkbox" Id="cbPersonal" name="cbPersonal" Value='<%=rsOfficePhone("CallRecordID")%>' Checked>				
-				<%else%>
-					<Input type="Checkbox" Id="cbPersonal" name="cbPersonal" Value='<%=rsOfficePhone("CallRecordID")%>' >
-				<%end if%>
-				</td>
-<%			else%>
-			        <td align="center">
-				<%if rsOfficePhone("isPersonal") = "Y" then%>
-					<Input type="Checkbox" Id="cbPersonal" name="cbPersonal" Value='<%=rsOfficePhone("CallRecordID")%>' Checked disabled>				
-				<%else%>
-					<Input type="Checkbox" Id="cbPersonal" name="cbPersonal" Value='<%=rsOfficePhone("CallRecordID")%>'  disabled>
-				<%end if%>
-				</td>
-<%			end if %>
-		<%   
-			rsOfficePhone.movenext
-			no_ = no_ + 1
-		loop
-		%>
-		</tr>
-		<tr>
-			<td align="right" colspan="3"><b>Sub Total (Kn.) </b>&nbsp;</td>
-			<td width="15%" class="FontContent" align="right"><b><%=formatnumber(OfficePhoneBillRp_,-1)%></b>&nbsp;</td>
-			<td width="15%" class="FontContent" align="right"><b><u><%=formatnumber(OfficePhonePrsBillRp_ ,-1)%></u></b>&nbsp;</td>
-		</tr>
-		</table>
-		</td>
-	</tr>
-	<%end if%>
-<%
-strsql = "Exec spGetHomephone '2','" & HomePhone_ & "','" & MonthP_ & "','" & YearP_ & "'"
-'response.write strsql & "<br>"
-set rsHomePhone = BillingCon.execute(strsql) 
-if not rsHomePhone.eof then
-%>
-	<tr>
-	<td colspan="6">
-		<table cellspadding="1" cellspacing="1" width="100%" align="center">
-		<tr>
-			<td align="Left" colspan="5"><u><b>Home Phone detail :<b></u></TD>
-		</tr>
-		<tr align="center" cellpadding="0" cellspacing="0" >
-			<TD width="5%"><strong>No.</strong></TD>
-		       	<TD width="30%"><strong>Dialed Date/time</strong></TD>
-			<TD><strong>Dialed Number</strong></TD>
-			<TD width="15%"><strong>Amount (Kn.)</strong></TD>
-			<TD width="15%"><strong>Personal used</strong></TD>
-		</tr>
-
-<%
-		no_ = 1 
-		do while not rsHomePhone.eof
-   			if bg="#D7E3F4" then bg="ffffff" else bg="#D7E3F4" 
-%>
-		<tr bgcolor="<%=bg%>">
-			<td align="right"><%=No_%>&nbsp;</td>
-		        <td>&nbsp;<%=rsHomePhone("DialedDatetime")%></font></td> 
-		       	<td>&nbsp;<%=rsHomePhone("DialedNumber")%></font></td> 
-		        <td align="right"><%=formatnumber(rsHomePhone("Cost"),-1)%>&nbsp;</font></td> 
-			<td align="center">
-				<Input type="Checkbox" name="cbPersonal" <%if rsHomePhone("isPersonal") = "Y" then%> Checked<%end if%> Disabled>
-			</td>
-		</tr>
-		<%   
-			rsHomePhone.movenext
-			no_ = no_ + 1
-		loop
-		%>
-		<tr>
-			<td align="right" colspan="3"><b>Sub Total (Kn.) </b>&nbsp;</td>
-			<td width="15%" class="FontContent" align="right"><b><%=formatnumber(HomePhoneBillRp_ ,-1)%></b>&nbsp;</td>
-			<td width="15%" class="FontContent" align="right"><b><u><%=formatnumber(HomePhonePrsBillRp_ ,-1)%></u></b>&nbsp;</td>
-		</tr>
-		</table>
-	</td>
-  	</tr>
-<%End if%>
 
 <%
 strsql = "Select * from CellPhoneDt Where PhoneNumber='" & MobilePhone_ & "' and MonthP='" & MonthP_ & "' and YearP='" & YearP_ & "' order by DialedDatetime"
@@ -668,65 +530,6 @@ if not rsCellPhone.eof then
 		</table>
 	</td>
   	</tr>
-<%End if%>
-<%
-strsql = "Exec spGetShuttleBusList '" & LoginID_ & "','" & MonthP_ & "','" & YearP_ & "'"
-'response.write strsql & "<br>"
-set rsShuttle = server.createobject("adodb.recordset") 
-set rsShuttle = BillingCon.execute(strsql) 
-If not rsShuttle.eof then
-%>
-	<tr>
-		<td colspan="6">
-		<table cellspadding="1" cellspacing="1" width="100%" align="center">
-		<tr>
-			<td align="Left" colspan="8"><u><b>Shuttle Bus detail :<b></u></TD>
-		</tr>
-		<TR align="center" cellpadding="0" cellspacing="0" >
-			<TD width="6%"><strong>No.</strong></TD>
-			<TD><strong>Date</strong></TD>
-			<TD width="10%"><strong>AM</strong></TD>
-			<TD width="10%"><strong>PM</strong></TD>
-			<TD width="20%"><strong>Tot. Shuttle Qty</strong></TD>
-			<TD width="20%"><strong>Tot. Shuttle Bill($)</strong></TD>
-		</TR>    
-<% 
-		dim TotalQty_ , TotalAmount_ 
-		no_ = 1 
-		TotalQty_ = 0
-		TotalAmount_ = 0
-		do while not rsShuttle.eof 
-	   	if bg="#D7E3F4" then bg="ffffff" else bg="#D7E3F4" 
-			TotalQty_ = TotalQty_ + rsShuttle("TotalPerDay")
-%> 
-	 	<TR bgcolor="<%=bg%>">
-			<td align="right"><%=No_%>&nbsp;</td>
-	        	<td><FONT color=#330099 size=2><%=rsShuttle("ShuttleDate")%>&nbsp;</font></td> 
-        		<td align="right"><%=rsShuttle("AM")%>&nbsp;</font></td> 
-			<td align="right"><%=rsShuttle("PM")%>&nbsp;</font></td> 
-	        	<td align="right"><%=rsShuttle("TotalPerDay")%>&nbsp;</font></td> 
-			<td align="right"><%=rsShuttle("TotalAmountPerDay")%>&nbsp;</font></td>
-	  	 </TR>
-<%   
-		TotalAmount_ = CDbl(TotalAmount_) + formatnumber(rsShuttle("TotalAmountPerDay"),-1)
-		'response.write rsShuttle("TotalAmountPerDay")
-		'response.write TotalAmount_ 
- 		rsShuttle.movenext
-   		no_ = no_ + 1
-		loop
-%>	
-		<tr>
-			<td align="right" colspan="4"><b>Sub Total&nbsp;</b></td>
-			<td width="10%" class="FontContent" align="right"><b><%=formatnumber(TotalQty_ ,-1)%></b></td>
-			<td width="10%" class="FontContent" align="right"><b>$&nbsp;&nbsp;&nbsp;<%=formatnumber(TotalAmount_ ,-1)%></b></td>
-		</tr>
-		<tr>
-			<td align="right" colspan="5"><b>&nbsp;</b></td>
-			<td width="10%" class="FontContent" align="right"><b>Kn.&nbsp;&nbsp;&nbsp;<u><%=formatnumber(TotalShuttleBillRp_ ,-1)%></u></b></td>
-		</tr>
-		</table>
-		</td>
-	</tr>
 <%End if%>
 	<tr>
 		<td colspan="6" align="center">~End of Settlement~</td>

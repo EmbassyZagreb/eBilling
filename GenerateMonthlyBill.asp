@@ -97,7 +97,7 @@
  dim strsql
  
 user_ = request.servervariables("remote_user")
-user1_ = right(user_,len(user_)-4)
+user1_ = user_  'user1_ = right(user_,len(user_)-4)
 strsql = "select * from Users where loginId='" & user1_ & "'"
 set RS_Query = server.createobject("adodb.recordset")
 'response.write strsql & "<br>"

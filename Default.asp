@@ -23,18 +23,18 @@
  'response.end
  user_ = request.servervariables("remote_user") 
 'response.write user_ & "<br>"
-  user1_ = right(user_,len(user_)-4)
+user1_ = user_  'user1_ = right(user_,len(user_)-4)
 
-if (session("Month") = "") or (session("Year") = "") then
-	strsql = "Select MonthP, YearP From Period"
-	'response.write strsql & "<br>"
-	set rsData = server.createobject("adodb.recordset") 
-	set rsData = BillingCon.execute(strsql)
-	if not rsData.eof then
-		session("Month") = rsData("MonthP")
-		session("Year") = rsData("YearP")
-	end if
-end if
+'if (session("Month") = "") or (session("Year") = "") then
+'	strsql = "Select MonthP, YearP From Period"
+'	'response.write strsql & "<br>"
+'	set rsData = server.createobject("adodb.recordset") 
+'	set rsData = BillingCon.execute(strsql)
+'	if not rsData.eof then
+'		session("Month") = rsData("MonthP")
+'		session("Year") = rsData("YearP")
+'	end if
+'end if
 
 strsql = "select RoleID from Users where loginId ='" & user1_ & "'"
 set UserRS = server.createobject("adodb.recordset")
@@ -76,7 +76,7 @@ end if
 		<br><LI class="normal"><B>IM/IPC reports :
 			<UL TYPE="">
 				<LI>&nbsp;<A HREF="LongDistanceCallsReport.asp"><b>Long Distance Calls Report</b></A>
-				<LI>&nbsp;<A HREF="CellphoneCallsReport.asp"><b>Cell phone Calls Report</b></A>
+<!--				<LI>&nbsp;<A HREF="CellphoneCallsReport.asp"><b>Cell phone Calls Report</b></A> -->
 				<LI>&nbsp;<A HREF="LineUsagesReport.asp"><b>Line Usages Report</b></A>
 <!--				<LI>&nbsp;<A HREF="NoLineUsagesReport.asp"><b>No Line Usages Report</b></A> -->
 			</ul>
@@ -109,9 +109,6 @@ end if
 				<li><A HREF="EmployeeList.asp"><B> Employee List</B></A></li>
 <!--				<li><A HREF="NonEmployeeList.asp"><B>Non Employee List</B></A></li> -->
 				<li><A HREF="CellPhoneNumberList.asp"><B>Cell Phone</B></A></li>
-<!--				<li><A HREF="HomePhoneNumberList.asp"><B>Home Phone</B></A></li> -->
-<!--				<li><A HREF="OfficePhoneNumberList.asp"><B>Office Phone</B></A></li> -->
-<!--				<li><A HREF="PrefixNumberList.asp"><B>Prefix Number</B></A></li> -->
 			</ul>
 		
 <%end if%>

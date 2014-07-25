@@ -55,7 +55,7 @@ function checkall(obj)
 Dim user_ , user1_
 
 user_ = request.servervariables("remote_user")
-user1_ = right(user_,len(user_)-4)
+user1_ = user_  'user1_ = right(user_,len(user_)-4)
 'response.write user1_ & "<br>"
 
 strsql = "select RoleID from Users where loginId ='" & user1_ & "'"
@@ -470,20 +470,7 @@ if not DataRS.eof Then
 		<TD>&nbsp;<%=DataRS("MobilePhone") %></TD>
 	        <TD align="right">&nbsp;<%= DataRS("MonthP")%>-<%= DataRS("YearP")%></font>&nbsp;</TD>
 	        <TD>&nbsp;<%=DataRS("Office") %> </font></TD>
-<!--		<td align="right">
-<%		If CDbl(DataRS("HomePhonePrsBillRp")) > 0 Then %>
-			<a href="HomePhoneDetail.asp?HomePhone=<%=DataRS("HomePhone")%>&MonthP=<%= DataRS("MonthP")%>&YearP=<%= DataRS("YearP")%>" target="_blank"><%= formatnumber(DataRS("HomePhonePrsBillRp"),-1) %></a>
-<%		Else %>
-			-
-<%		End If %>
-		&nbsp;</td>
-		<td align="right">
-<%		If CDbl(DataRS("OfficePhonePrsBillRp")) > 0 Then %>
-			<a href="OfficePhoneDetail.asp?Extension=<%=DataRS("WorkPhone")%>&MonthP=<%= DataRS("MonthP")%>&YearP=<%= DataRS("YearP")%>" target="_blank"><%= formatnumber(DataRS("OfficePhonePrsBillRp"),-1) %></a>
-<%		Else %>
-			-
-<%		End If %>
-		&nbsp;</td> -->
+
 <td align="right">
 <%		If CDbl(DataRS("CellPhoneBillRp")) > 0 Then %>
 			<a href="CellPhoneDetail.asp?CellPhone=<%=DataRS("MobilePhone")%>&MonthP=<%= DataRS("MonthP")%>&YearP=<%= DataRS("YearP")%>" target="_blank"><%= formatnumber(DataRS("CellPhoneBillRp"),-1) %></a>

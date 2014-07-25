@@ -10,16 +10,16 @@
 
 <script language="JavaScript" src="calendar.js"></script>
 <%
-if (session("Month") = "") or (session("Year") = "") then
-	strsql = "Select MonthP, YearP From Period"
-	'response.write strsql & "<br>"
-	set rsData = server.createobject("adodb.recordset") 
-	set rsData = BillingCon.execute(strsql)
-	if not rsData.eof then
-		session("Month") = rsData("MonthP")
-		session("Year") = rsData("YearP")
-	end if
-end if
+'if (session("Month") = "") or (session("Year") = "") then
+'	strsql = "Select MonthP, YearP From Period"
+'	'response.write strsql & "<br>"
+'	set rsData = server.createobject("adodb.recordset") 
+'	set rsData = BillingCon.execute(strsql)
+'	if not rsData.eof then
+'		session("Month") = rsData("MonthP")
+'		session("Year") = rsData("YearP")
+'	end if
+'end if
 
 StartDate_ = Request.Form("txtStartDate")
 'response.write "StartDate :" & StartDate_
@@ -144,7 +144,7 @@ intpageSize=50
 PageIndex=request("PageIndex")
 
 user_ = request.servervariables("remote_user")
-user1_ = right(user_,len(user_)-4)
+user1_ = user_  'user1_ = right(user_,len(user_)-4)
 'response.write user1_ & "<br>"
 
 strsql = "select RoleID from Users where loginId ='" & user1_ & "'"
