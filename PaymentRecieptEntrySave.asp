@@ -25,6 +25,7 @@
    'response.write MonthP_ & "<br>"
    YearP_ = Request.Form("txtYearP")
    'response.write YearP_ & "<br>"
+   MobilePhone_ = Request.Form("txtCellPhone")   
    ReceiptNo_ = Request.Form("txtReceiptNo")
 '   response.write ReceiptNo_ & "<br>"
 '   CurrencyType_ = Request.Form("cmbCurrencyType")
@@ -75,7 +76,8 @@ srPageIndex_ = Request.Form("txtsrPageIndex")
 </tr>
 <%
 	'3. SAVING TO Billing Header
-	strsql = "spPaymentReceipt_IUD 'I',0,'" & EmpID_ & "','" & MonthP_ & "','" & YearP_ & "','" & ReceiptNo_ & "','" & CurrencyType_ & "'," & PaidAmountDlr_ & "," & PaidAmountRp_ & ",'" & PaidDate_ & "','" & CashierRemark_ & "','" & PaymentType_ & "'"
+	'strsql = "spPaymentReceipt_IUD 'I',0,'" & EmpID_ & "','" & MonthP_ & "','" & YearP_ & "','" & ReceiptNo_ & "','" & CurrencyType_ & "'," & PaidAmountDlr_ & "," & PaidAmountRp_ & ",'" & PaidDate_ & "','" & CashierRemark_ & "','" & PaymentType_ & "'"
+	strsql = "spPaymentReceipt_IUD 'I',0,'" & EmpID_ & "','" & MonthP_ & "','" & YearP_ & "','" & MobilePhone_ & "','" & ReceiptNo_ & "','" & CurrencyType_ & "'," & PaidAmountDlr_ & "," & PaidAmountRp_ & ",'" & PaidDate_ & "','" & CashierRemark_ & "','" & PaymentType_ & "'"
 	'response.write strsql
 	BillingCon.execute(strsql)
 

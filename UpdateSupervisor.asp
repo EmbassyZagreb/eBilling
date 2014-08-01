@@ -74,7 +74,8 @@ function validate_form()
 	<td>:</td>
 	<td>
 <%
- 				strsql ="select EmpID, EmpName from vwPhoneCustomerList Where EmpType = 'AMER' order by EmpName"
+ 				'strsql ="select EmpID, EmpName from vwPhoneCustomerList Where EmpType = 'AMER' order by EmpName"
+ 				strsql ="select EmpID, EmpName from vwDirectReport Where Type = 'AMER' order by EmpName"				
 				set EmpRS = server.createobject("adodb.recordset")
 				set EmpRS = BillingCon.execute(strsql)
 '				response.write strStr 
@@ -96,7 +97,8 @@ function validate_form()
 	<td>:</td>
 	<td>
 <%
- 				strsql ="select EmpID, EmpName from vwPhoneCustomerList Where EmpType = 'AMER' order by EmpName"
+ 				'strsql ="select EmpID, EmpName from vwPhoneCustomerList Where EmpType = 'AMER' order by EmpName"
+ 				strsql ="select EmpID, EmpName from vwDirectReport Where Type = 'AMER' order by EmpName"				
 				set EmpRS = server.createobject("adodb.recordset")
 				set EmpRS = BillingCon.execute(strsql)
 '				response.write strStr 
@@ -118,6 +120,9 @@ function validate_form()
   <td><input type="submit" name="btnSubmit" value="Update"> </td>
 </tr>  
 <tr><td colspan=2>&nbsp;</td></tr>
+</table>
+<table>  
+<tr><td>Note:</td><td>'Generate Monthly Billing' procedure must be executed for users whose supervisor is updated!</td></tr>
 </table>
 <%
    else 

@@ -182,7 +182,7 @@ If (UserRole_ = "Admin") or (UserRole_ = "Voucher") or (UserRole_ = "FMC") or (U
 			<td>:</td>
 			<td>
 <%
- 				strsql ="select EmpID, EmpName from vwPhoneCustomerList order by EmpName"
+ 				strsql ="select distinct EmpID, EmpName from vwPhoneCustomerList order by EmpName"
 				set EmpRS = server.createobject("adodb.recordset")
 				set EmpRS = BillingCon.execute(strsql)
 '				response.write strStr 

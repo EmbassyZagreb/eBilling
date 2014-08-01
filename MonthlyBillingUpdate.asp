@@ -46,11 +46,13 @@
 
 
 	'Save Header
-	strsql = "Update MonthlyBilling Set SupervisorEmail='" & SpvEmail_ & "', Notes='" & Notes_ & "' Where EmpID='" & EmpID_ & "' And MonthP='" & MonthP_ & "' And YearP='" & YearP_ &"'"
+	strsql = "Update MonthlyBilling Set SupervisorEmail='" & SpvEmail_ & "', Notes='" & Notes_ & "' Where EmpID='" & EmpID_ & "' And PhoneNumber='" & MobilePhone_ & "' And MonthP='" & MonthP_ & "' And YearP='" & YearP_ &"'"
+	'strsql = "Update MonthlyBilling Set SupervisorEmail='" & SpvEmail_ & "', Notes='" & Notes_ & "' Where EmpID='" & EmpID_ & "' And MonthP='" & MonthP_ & "' And YearP='" & YearP_ &"'"
 	'response.write strsql & "<Br>"  
 	BillingCon.execute(strsql)
 
-	strsql = "Update MonthlyBilling Set ProgressId=2, ProgressIdDate=GetDate() Where EmpID='" & EmpID_ & "' And MonthP='" & MonthP_ & "' And YearP='" & YearP_ &"'"
+	strsql = "Update MonthlyBilling Set ProgressId=2, ProgressIdDate=GetDate() Where EmpID='" & EmpID_ & "' And PhoneNumber='" & MobilePhone_ & "' And MonthP='" & MonthP_ & "' And YearP='" & YearP_ &"'"
+	'strsql = "Update MonthlyBilling Set ProgressId=2, ProgressIdDate=GetDate() Where EmpID='" & EmpID_ & "' And MonthP='" & MonthP_ & "' And YearP='" & YearP_ &"'"
 	'response.write strsql & "<Br>"  
 	BillingCon.execute(strsql) 
 

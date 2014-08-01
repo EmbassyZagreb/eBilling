@@ -12,6 +12,9 @@ user_ = request.servervariables("remote_user")
 user1_ = user_  'user1_ = right(user_,len(user_)-4)
 %>
 <TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
+
+<meta http-equiv="refresh" content="1;url=Default.asp">
+
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </HEAD>
@@ -35,12 +38,14 @@ user1_ = user_  'user1_ = right(user_,len(user_)-4)
 %>               
 <tr><td align=center>Supervisor name has been updated.</td></tr>
 <tr><td>&nbsp;</td>
+<!--
 <tr><td align=center> 
 <input type="button" value="Close" id="btnclose">
 </td></tr>
 <tr>
 	<td align="center"><br><a href="ExchangeRateList.asp"><img src="images/Back.gif" border="0" alt="Go..Back" WIDTH="83" HEIGHT="25"></a></td>
 </tr>
+-->
 </table>
 
    </body>
