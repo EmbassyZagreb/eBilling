@@ -239,8 +239,7 @@ If (UserRole_ = "Admin") or (UserRole_ = "Voucher") or (UserRole_ = "FMC") or (U
 			<td>:</td>
 			<td>
 <%
- 				'strsql ="select EmpID, EmpName, MobilePhone from vwPhoneCustomerList Where MobilePhone <> '' order by EmpName"
-				strsql ="select distinct EmpID, EmpName from vwPhoneCustomerList Where MobilePhone <> '' order by EmpName"
+ 				strsql ="select EmpID, EmpName, MobilePhone from vwPhoneCustomerList Where MobilePhone <> '' order by EmpName"
 				set EmpRS = server.createobject("adodb.recordset")
 				set EmpRS = BillingCon.execute(strsql)
 '				response.write strStr 
@@ -249,7 +248,7 @@ If (UserRole_ = "Admin") or (UserRole_ = "Voucher") or (UserRole_ = "FMC") or (U
 					<Option value='X'>--All--</Option>
 <%				Do While not EmpRS.eof 
 %>
-					<Option value='<%=EmpRS("EmpID")%>' <%if trim(EmpID_) = trim(EmpRS("EmpID")) then %>Selected<%End If%> ><%=EmpRS("EmpName")%></Option>
+					<Option value='<%=EmpRS("EmpID")%>' <%if trim(EmpID_) = trim(EmpRS("EmpID")) then %>Selected<%End If%> ><%=EmpRS("EmpName")%> - <%=EmpRS("MobilePhone")%></Option>
 					
 <%					EmpRS.MoveNext
 				Loop%>

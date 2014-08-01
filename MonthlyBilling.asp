@@ -59,9 +59,9 @@ function validate_form()
  dim strsql
  
 user_ = request.servervariables("remote_user") 
-user1_ = user_  'user1_ = right(user_,len(user_)-4)
+user1_ = right(user_,len(user_)-10)
 'user1_ = "pranataw"
-response.write user1_ & "<br>"
+'response.write user1_ & "<br>"
 
 strsql = "Select Max(YearP+MonthP) As Period From vwMonthlyBilling Where LoginID='" & user1_ & "'"
 'response.write strsql & "<br>"
@@ -438,8 +438,7 @@ if not rsData.eof then
 			<%
 				'strsql = "Select EmailAddress, LastName, FirstName, Office, WorkingTitle From vwPhoneCustomerList Where Type='Amer' and EmailAddress<>'' Order by LastName"
 				'strsql = "Select EmailAddress, EmpName, Office, WorkingTitle From vwPhoneCustomerList Where len(EmailAddress)>5 and EmpType<>'Dummy' Order by EmpName"
-				'strsql = "Select EmailAddress, EmpName, Office, WorkingTitle From vwPhoneCustomerList Where len(EmailAddress)>5 and EmpType = 'AMER' Order by EmpName"
-				strsql = "Select EmailAddress, EmpName, Office, WorkingTitle From vwDirectReport Where len(EmailAddress)>5 and Type = 'AMER' Order by EmpName"
+				strsql = "Select EmailAddress, EmpName, Office, WorkingTitle From vwPhoneCustomerList Where len(EmailAddress)>5 and EmpType = 'AMER' Order by EmpName"
 				'response.write strsql & "<br>"
 				set rsSPV = server.createobject("adodb.recordset") 
 				set rsSPV = BillingCon.execute(strsql)				

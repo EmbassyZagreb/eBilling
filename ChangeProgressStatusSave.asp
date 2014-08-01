@@ -34,8 +34,6 @@
 <%	
 	EmpID_ = Request.Form("txtEmpID")
 '	response.write CellPhone_ & "<br>"
-	Mobilephone_ = Request.Form("txtCellphone")
-'	response.write MonthP_ & "<br>"
 	MonthP_ = Request.Form("txtMonthP")
 '	response.write MonthP_ & "<br>"
 	YearP_ = Request.Form("txtYearP")
@@ -44,7 +42,7 @@
 '	response.write YearP_ & "<br>"
 
 	'Save Detail
-	strsql = "Update MonthlyBilling Set ProgressId=" & Status_ & " Where EmpID='" & EmpID_ & "' And Phonenumber='" & Mobilephone_ & "' And MonthP='" & MonthP_ & "' And YearP='" & YearP_ & "'"
+	strsql = "Update MonthlyBilling Set ProgressId=" & Status_ & " Where EmpID='" & EmpID_ & "' And MonthP='" & MonthP_ & "' And YearP='" & YearP_ & "'"
 	'response.write strsql & "<Br>"  
 	BillingCon.execute(strsql) 
 

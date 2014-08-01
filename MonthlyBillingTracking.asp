@@ -190,15 +190,15 @@ ePeriod = eYearP&eMonthP
 
 If MonthP="XX" then
 	if Status ="X" then
-		strsql = "Select * From vwMonthlyBilling Where LoginID ='" & user1_& "' Order by MobilePhone"
+		strsql = "Select * From vwMonthlyBilling Where LoginID ='" & user1_& "'"
 	else
-		strsql = "Select * From vwMonthlyBilling Where LoginID ='" & user1_ & "' and Status='" & Status & "' Order by MobilePhone"
+		strsql = "Select * From vwMonthlyBilling Where LoginID ='" & user1_ & "' and Status='" & Status & "'"
 	end if
 Else
 	if Status ="X" then
-		strsql = "Select * From vwMonthlyBilling Where LoginID ='" & user1_ & "' and YearP+MonthP>='" & sPeriod & "' and YearP+MonthP<='" & ePeriod & "' Order by MobilePhone"
+		strsql = "Select * From vwMonthlyBilling Where LoginID ='" & user1_ & "' and YearP+MonthP>='" & sPeriod & "' and YearP+MonthP<='" & ePeriod & "'"
 	else
-		strsql = "Select * From vwMonthlyBilling Where LoginID='" & user1_ & "' and YearP+MonthP>='" & sPeriod & "' and YearP+MonthP<='" & ePeriod & "' and Status='" & Status & "' Order by MobilePhone" 
+		strsql = "Select * From vwMonthlyBilling Where LoginID='" & user1_ & "' and YearP+MonthP>='" & sPeriod & "' and YearP+MonthP<='" & ePeriod & "' and Status='" & Status & "'"
 	end if
 End If
 'response.write strsql & "<br>"
@@ -218,12 +218,10 @@ if not DataRS.eof Then
 	</tr>
 
 <% 
-   'PrevEmpName_ =""
-   PrevMobilePhone_ =""
+   PrevEmpName_ =""
    do while not DataRS.eof
 	   if bg="#dddddd" then bg="ffffff" else bg="#dddddd" 
-	    'if PrevEmpName_ <> DataRS("EmpName") Then
-		if PrevMobilePhone_ <> DataRS("MobilePhone") Then
+	    if PrevEmpName_ <> DataRS("EmpName") Then
 		SubTotalBill_ = 0
 		SubTotalPrs_ = 0
 %>
@@ -245,8 +243,7 @@ if not DataRS.eof Then
 	   </TR>
 
 <%   
-		'PrevEmpName_ = DataRS("EmpName")
-		PrevMobilePhone_ = DataRS("MobilePhone")
+		PrevEmpName_ = DataRS("EmpName")
 	   DataRS.movenext
    loop 
 %>

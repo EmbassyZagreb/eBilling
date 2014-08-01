@@ -86,7 +86,6 @@ function CurrencyOnChange(obj)
 EmpID = request("EmpID")
 MonthP = request("MonthP")
 YearP = request("YearP")
-CellPhone = request("CellPhone")
 AlternateEmailFlag=Request("AlternateEmailFlag")
 
 srStatus_ = Trim(request("srStatus"))
@@ -131,8 +130,7 @@ TotalBillingAmountPrsDlr_ =0
 TotalBillingRp_ = 0
 TotalBillingDlr_ = 0
 
-'strsql = "Select * from vwMonthlyBilling Where EmpID='" & EmpID & "' and MonthP='" & MonthP & "' and YearP='" & YearP & "'"
-strsql = "Select * from vwMonthlyBilling Where EmpID='" & EmpID & "' and MobilePhone='" & CellPhone & "' and MonthP='" & MonthP & "' and YearP='" & YearP & "'"
+strsql = "Select * from vwMonthlyBilling Where EmpID='" & EmpID & "' and MonthP='" & MonthP & "' and YearP='" & YearP & "'"
 'response.write strsql & "<br>"
 set rsData = server.createobject("adodb.recordset") 
 set rsData = BillingCon.execute(strsql) 
@@ -140,9 +138,9 @@ if not rsData.eof then
 	EmpName_ = rsData("EmpName")
 	Period_ = rsData("MonthP") & " - " & rsData("YearP")
 	Office_ = rsData("Office")
-	'OfficePhone_ = rsData("WorkPhone")
+	OfficePhone_ = rsData("WorkPhone")
 	MobilePhone_ = rsData("MobilePhone")
-	'HomePhone_ = rsData("HomePhone")
+	HomePhone_ = rsData("HomePhone")
 	ExchangeRate_ = rsData("ExchangeRate")
 	HomePhoneBillRp_ = rsData("HomePhoneBillRp")
 	HomePhoneBillDlr_ = rsData("HomePhoneBillDlr")
@@ -431,7 +429,6 @@ end if
 		<input type="hidden" name="txtEmpID" value='<%=EmpID%>' />
 		<input type="hidden" name="txtMonthP" value='<%=MonthP%>' />
 		<input type="hidden" name="txtYearP" value='<%=YearP%>' />
-		<input type="hidden" name="txtCellPhone" value='<%=MobilePhone_%>' />
 		<input type="hidden" name="txtExchangeRate" value='<%=ExchangeRate_%>' />
 		<input type="hidden" name="txtRemainingBillRp" value='<%= formatnumber(RemainingBillRp_ ,-1) %>' />
 		<input type="hidden" name="txtsrStatus" value='<%=srStatus_%>' />

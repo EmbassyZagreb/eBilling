@@ -360,8 +360,7 @@ If (UserRole_ = "Admin") or (UserRole_ = "Voucher") or (UserRole_ = "FMC") Then
 			<td>:</td>
 			<td>
 <%
- 				'strsql ="select EmpID, EmpName from vwPhoneCustomerList order by EmpName"
- 				strsql ="select EmpID, EmpName from vwDirectReport order by EmpName"				
+ 				strsql ="select EmpID, EmpName from vwPhoneCustomerList order by EmpName"
 				set EmpRS = server.createobject("adodb.recordset")
 				set EmpRS = BillingCon.execute(strsql)
 '				response.write strStr 
@@ -782,9 +781,8 @@ if (NoRecord_ = 1) then
 	        <TD align="center">&nbsp;<%=DataRS("SendMailStatusDesc") %> </font></TD>
 	        <TD>&nbsp;<%=DataRS("SendMailDate") %> </font></TD>
 	        <TD>&nbsp;<%=DataRS("EmailAddress") %> </font></TD>
-	        <TD><a title="click to update the status" href="ChangeProgressStatus.asp?EmpID=<%=DataRS("EmpID")%>&CellPhone=<%= DataRS("MobilePhone")%>&MonthP=<%= DataRS("MonthP")%>&YearP=<%= DataRS("YearP")%>" target="_blank"><%=DataRS("ProgressDesc") %> </font></a></TD>
-	<!--	<TD><a title="click to update the status" href="ChangeProgressStatus.asp?EmpID=<%=DataRS("EmpID")%>&MonthP=<%= DataRS("MonthP")%>&YearP=<%= DataRS("YearP")%>" target="_blank"><%=DataRS("ProgressDesc") %> </font></a></TD> -->
-		</TR>
+	        <TD><a title="click to update the status" href="ChangeProgressStatus.asp?EmpID=<%=DataRS("EmpID")%>&MonthP=<%= DataRS("MonthP")%>&YearP=<%= DataRS("YearP")%>" target="_blank"><%=DataRS("ProgressDesc") %> </font></a></TD>
+	    </TR>
 
 <%   
 	   DataRS.movenext

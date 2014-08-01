@@ -46,8 +46,7 @@ MonthP = Request.Form("MonthList")
 YearP = Request.Form("YearList")
 'response.write YearP
 'YearP ="2013"
-'EmpID = Request.Form("cmbEmp")
-MobilePhone = Request.Form("cmbMobilePhone")
+EmpID = Request.Form("cmbEmp")
  
 strsql = "select * from ExchangeRate where ExchangeMonth='" & MonthP & "' and ExchangeYear='" & YearP & "'"
 set RS_Query = BillingCon.execute(strsql)
@@ -67,8 +66,7 @@ If RS_Query.eof then
 	'response.write "<div class='Hint'>Please input exchange rate for period :<b> " & MonthP & " - " & YearP & "</b>, before generates monthly bill !!!</div>"
 'else
 end if
-	'strsql = "Exec spGenerateMonthlyBilling '" & MonthP & "','" & YearP & "','" & EmpID & "','%" & AlwaysExemptedCallType_ & "%','%" & ExemptedIfOfficialCallType_ & "%'"
-	strsql = "Exec spGenerateMonthlyBilling '" & MonthP & "','" & YearP & "','" & MobilePhone & "','%" & AlwaysExemptedCallType_ & "%','%" & ExemptedIfOfficialCallType_ & "%'"
+	strsql = "Exec spGenerateMonthlyBilling '" & MonthP & "','" & YearP & "','" & EmpID & "','%" & AlwaysExemptedCallType_ & "%','%" & ExemptedIfOfficialCallType_ & "%'"
 	set RS_Query = BillingCon.execute(strsql)
 	response.write "<div class='Hint2'>Process generates monthly bill completed !!!</div>"
 

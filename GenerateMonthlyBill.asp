@@ -200,13 +200,11 @@ end if
 				set EmpRS = BillingCon.execute(strsql)
 '				response.write strStr 
 %>	
-<!--			<Select name="cmbEmp">  -->
-				<Select name="cmbMobilePhone">
+				<Select name="cmbEmp">
 					<Option value=''>--All--</Option>
 <%				Do While not EmpRS.eof 
 %>
-<!--				<Option value='<%=EmpRS("EmpID")%>' <%if trim(EmpID_) = trim(EmpRS("EmpID")) then %>Selected<%End If%> ><%=EmpRS("EmpName")%> -<%=EmpRS("MobilePhone")%></Option> -->
-					<Option value='<%=EmpRS("MobilePhone")%>' <%if trim(EmpID_) = trim(EmpRS("EmpID")) then %>Selected<%End If%> ><%=EmpRS("EmpName")%> -<%=EmpRS("MobilePhone")%></Option>
+					<Option value='<%=EmpRS("EmpID")%>' <%if trim(EmpID_) = trim(EmpRS("EmpID")) then %>Selected<%End If%> ><%=EmpRS("EmpName")%> -<%=EmpRS("MobilePhone")%></Option>
 					
 <%					EmpRS.MoveNext
 				Loop%>

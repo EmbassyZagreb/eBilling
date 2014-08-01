@@ -266,8 +266,7 @@ function validate_form()
 		<option value="">-- Select --</option>
 <%
 		Dim UserRS
-		'strsql = "Select EmpID, ISNULL(EmpName,'')+' - '+ISNULL(Office,'') As EmpName from vwPhoneCustomerList Where LEN(ISNULL(EmpName,''))<>'' AND EmpType = 'AMER' Order by EmpName"
-		strsql = "Select EmpID, ISNULL(EmpName,'')+' - '+ISNULL(Office,'') As EmpName from vwDirectReport Where LEN(ISNULL(EmpName,''))<>'' AND Type = 'AMER' Order by EmpName"
+		strsql = "Select EmpID, ISNULL(EmpName,'')+' - '+ISNULL(Office,'') As EmpName from vwPhoneCustomerList Where LEN(ISNULL(EmpName,''))<>'' AND EmpType = 'AMER' Order by EmpName"
 		response.write strsql & "<br>"
 		set UserRS = server.createobject("adodb.recordset")
 		set UserRS =BillingCon.execute(strsql)				        

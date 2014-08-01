@@ -40,7 +40,6 @@
 EmpID = request("EmpID")
 MonthP = request("MonthP")
 YearP = request("YearP")
-CellPhone = request("CellPhone")
 AlternateEmailFlag=Request("AlternateEmailFlag")
 
 srStatus_ = Trim(request("srStatus"))
@@ -85,8 +84,7 @@ TotalBillingAmountPrsDlr_ =0
 TotalBillingRp_ = 0
 TotalBillingDlr_ = 0
 
-'strsql = "Select * from vwMonthlyBilling Where EmpID='" & EmpID & "' and MonthP='" & MonthP & "' and YearP='" & YearP & "'"
-strsql = "Select * from vwMonthlyBilling Where EmpID='" & EmpID & "' and MobilePhone='" & CellPhone & "' and MonthP='" & MonthP & "' and YearP='" & YearP & "'"
+strsql = "Select * from vwMonthlyBilling Where EmpID='" & EmpID & "' and MonthP='" & MonthP & "' and YearP='" & YearP & "'"
 'response.write strsql & "<br>"
 set rsData = server.createobject("adodb.recordset") 
 set rsData = BillingCon.execute(strsql) 
@@ -94,9 +92,9 @@ if not rsData.eof then
 	EmpName_ = rsData("EmpName")
 	Period_ = rsData("MonthP") & " - " & rsData("YearP")
 	Office_ = rsData("Office")
-	'OfficePhone_ = rsData("WorkPhone")
+	OfficePhone_ = rsData("WorkPhone")
 	MobilePhone_ = rsData("MobilePhone")
-	'HomePhone_ = rsData("HomePhone")
+	HomePhone_ = rsData("HomePhone")
 	ExchangeRate_ = rsData("ExchangeRate")
 	HomePhoneBillRp_ = rsData("HomePhoneBillRp")
 	HomePhoneBillDlr_ = rsData("HomePhoneBillDlr")
@@ -128,7 +126,7 @@ if not rsData.eof then
 
 end if
 
-strsql = "Select * From vwPaymentReceiptHistory Where EmpID='" & EmpID & "' and PhoneNumber='" & CellPhone & "' and MonthP='" & MonthP & "' and YearP='" & YearP & "'"
+strsql = "Select * From vwPaymentReceiptHistory Where EmpID='" & EmpID & "' and MonthP='" & MonthP & "' and YearP='" & YearP & "'"
 'response.write strsql & "<br>"
 set rsPayment = server.createobject("adodb.recordset") 
 set rsPayment = BillingCon.execute(strsql) 
