@@ -79,10 +79,20 @@ if (Order_ ="") then
 	end if
 end if
 
+Disabled_ = Request.Form("cmbDisabled")
+if (Disabled_  ="") then
+	if Request("Disabled")<>"" then
+		Disabled_ = Request("Disabled")	
+	Else
+		Disabled_ = "N"
+	end if
+end if
+
      if (trim(RS_Query("RoleID")) = "Admin") or (trim(RS_Query("RoleID")) = "Voucher") or (trim(RS_Query("RoleID")) = "FMC") then    
 '	strsql = "select * from AgencyFunding"
-	strsql = "select * from AgencyFunding"_
+	strsql = "select * from vwAgencyFunding"_
 		  &" Where (AgencyDesc like '%" & FundingAgency_  & "%' or '" & FundingAgency_ & "'='') "_
+		  &"And (Disabled='" & Disabled_ & "' or '" & Disabled_ & "'='A') "_		  
 		  &"Order by " & SortBy_ & " " & Order_ 
 
 	'response.write strsql & "<br>"
@@ -116,6 +126,17 @@ end if
 			</Select>
 			</td
 		</tr>
+				<tr>
+			<td colspan="4" align="right">Disabled</td>
+			<td>:</td>
+			<td>
+				<Select name="cmbDisabled"">
+					<Option value="A">-All-</Option>
+					<Option value="Y" <%if Disabled_ ="Y" then %>Selected<%End If%> >Yes</Option>
+					<Option value="N" <%if Disabled_ ="N" then %>Selected<%End If%> >No</Option>
+				</Select>&nbsp;
+			</td>
+		</tr>
 		<tr>
 			<td colspan="3"></td>
 			<td><input type="submit" name="btnSearch" value="Search"></td>
@@ -128,6 +149,11 @@ end if
 		</form>
 		</td>
 	</tr>
+	</table>
+	<table width="70%">
+			<tr>
+				<td class="Hint" align="left">*Funding Agency assigned in historical data cannot be Deleted, only Disabled.</td>
+			</tr>
 	</table>
 	<table width="70%">		
 <%	if Message<>"" then %>
@@ -144,7 +170,7 @@ end if
 	<table border="1" bordercolor="#EEEEEE" cellpadding="2" cellspacing="0" width="90%"  class="FontText">
 	    <TR BGCOLOR="#330099" align="center">
 		 <TD width=3%><strong><label STYLE=color:#FFFFFF>No.</label></strong></TD>
-	         <TD width=8%><strong><label STYLE=color:#FFFFFF>Agency Code</label></strong></TD>
+	         <TD width=5%><strong><label STYLE=color:#FFFFFF>Agency<br>Code</label></strong></TD>
 	         <TD width="15%"><strong><label STYLE=color:#FFFFFF>Funding Agency</label></strong></TD>
 	         <TD><strong><label STYLE=color:#FFFFFF>Fiscal Strip VAT</label></strong></TD>
 	         <TD><strong><label STYLE=color:#FFFFFF>Fiscal Strip Non VAT</label></strong></TD>
@@ -180,7 +206,12 @@ end if
 			&nbsp;<A HREF="AgencyEdit.asp?ID=<%= rsAgency("AgencyID")%>&Mode=E" >Edit</A></font>
 		</TD>
 		<TD>
-			&nbsp;<A HREF="AgencyDelete.asp?ID=<%= rsAgency("AgencyID")%>&AgencyDesc='<%= rsAgency("AgencyDesc")%>'">Delete</A></font>
+			&nbsp;
+<%			If rsAgency("ExistInMonthlyBilling")="N" Then %>				
+				<A HREF="AgencyDelete.asp?ID=<%= rsAgency("AgencyID")%>&AgencyDesc='<%= rsAgency("AgencyDesc")%>'">Delete</A></font>
+<%			else %>	
+				&nbsp;
+<%			end if %>
 		</TD>
 	   </TR>
 

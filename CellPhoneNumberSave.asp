@@ -28,7 +28,7 @@ PhoneNumber_ =  trim(request.form("txtPhoneNumber"))
 PhoneType_ =  trim(request.form("PhoneTypeList"))
 EmpID_ =  trim(request.form("EmployeeList"))
 AlternateEmail_ =  trim(request.form("txtAlternateEmail"))
-OwnerID_ =  trim(request.form("OwnerList"))
+OwnerID_ =  trim(request.form("EmployeeList"))
 Remark_ =  replace(trim(request.form("txtRemark")),"'","''")
 BillFlag_ =  trim(request.form("BillFlagList"))
 Discontinued_ = trim(request.form("cmbDiscontinued"))
@@ -87,7 +87,7 @@ End If
 <table border=0 width=100%>
 <%
        strsql = "Exec spCellPhoneNumber_IUD '" & State_ & "'," & ID_ & ",'" & PhoneNumber_ & "','" & PhoneType_ & "','" & EmpID_ & "','" & AlternateEmail_ & "','" & Remark_ & "','" & BillFlag_ & "','" & Discontinued_ & "','" & DiscontinuedDate_ & "','" & OwnerID_ & "','" & UserName_ & "'"
-       response.write strsql 
+       'response.write strsql 
        BillingCon.execute strsql
 %>               
 <tr><td align=center><%=Notification_%></td></tr>

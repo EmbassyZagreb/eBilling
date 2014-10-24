@@ -184,11 +184,12 @@ sPeriod = sYearP&sMonthP
 ePeriod = eYearP&eMonthP
 
 			Dim LastRS
-			strsql = "select Max(ProgressIDDate) AS LastMohican from vwMonthlyBilling Where YearP+MonthP>='" & sPeriod & "' and YearP+MonthP<='" & ePeriod & "'"
+			strsql = "select distinct CreateBy, CreateDate from vwReconciliationRpt Where YearP+MonthP>='" & sPeriod & "' and YearP+MonthP<='" & ePeriod & "'"
 			set LastRS = server.createobject("adodb.recordset")
 			set LastRS =BillingCon.execute(strsql)	
 			if not LastRS.eof Then
-				LastMohican_ = LastRS("LastMohican")
+				LastMohican1_ = LastRS("CreateBy")
+				LastMohican2_ = LastRS("CreateDate")
 			end if
 
 %>
@@ -197,7 +198,7 @@ ePeriod = eYearP&eMonthP
 		<td>&nbsp;</td>
 	</tr>
 	<tr>
-		<td><u><b>Reconciliation report on <%=LastMohican_%> when last Generate Monthly Billing procedure was executed:<b></u></td>
+		<td><u><b>Reconciliation report done by <%=LastMohican1_%> on <%=LastMohican2_%> when last Generate Monthly Billing procedure was executed:<b></u></td>
 	</tr>
 	<tr>
 		<td class="Hint" align="left">*Report shows mismatch numbers comparing to VIP's bill, ungenerated bills, or users without Login ID. Idealy it should be blank.</td>
@@ -230,11 +231,12 @@ if not DataRS.eof Then
          <TD width="3%" align="right"><strong><label STYLE=color:#FFFFFF>No.</label></strong></TD>
          <TD><strong><label STYLE=color:#FFFFFF>Error Type</label></strong></TD>
          <TD><strong><label STYLE=color:#FFFFFF>Log Time</label></strong></TD>
-         <TD width="100px"><strong><label STYLE=color:#FFFFFF>Billing Period</label></strong></TD>
-         <TD><strong><label STYLE=color:#FFFFFF>Phone Number</label></strong></TD>
+         <TD width="100px"><strong><label STYLE=color:#FFFFFF>Billing<br>Period</label></strong></TD>
+         <TD><strong><label STYLE=color:#FFFFFF>Phone<br>Number</label></strong></TD>
          <TD><strong><label STYLE=color:#FFFFFF>Employee Name</label></strong></TD>
          <TD><strong><label STYLE=color:#FFFFFF>Office</label></strong></TD>
-         <TD><strong><label STYLE=color:#FFFFFF>Bruto Total [Kn]</label></strong></TD>
+		 <TD><strong><label STYLE=color:#FFFFFF>Funding<br>Agency</label></strong></TD>
+         <TD><strong><label STYLE=color:#FFFFFF>Bruto Total<br>[Kn]</label></strong></TD>
     </TR>
 <% 
    dim no_  
@@ -251,6 +253,7 @@ if not DataRS.eof Then
 	        <TD>&nbsp;<%=DataRS("PhoneNumber") %> </font></TD>
 	        <TD>&nbsp;<%=DataRS("EmpName") %> </font></TD>
 	        <TD>&nbsp;<%=DataRS("Office") %> </font></TD>
+			<TD>&nbsp;<%=DataRS("AgencyFundingDesc") %> </font></TD>
 	        <TD align="right"><%= formatnumber(DataRS("CurrentBalance"),-1) %>&nbsp;</font></TD>
 	   </TR>
 

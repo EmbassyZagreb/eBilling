@@ -77,9 +77,10 @@ if not DataRS.eof Then
          <TD width="30px" align="right"><strong><label STYLE=color:#FFFFFF>No.</label></strong></TD>
          <TD><strong><label STYLE=color:#FFFFFF>Billing Period</label></strong></TD>
 <!--         <TD><strong><label STYLE=color:#FFFFFF>Description</label></strong></TD> -->
-         <TD><strong><label STYLE=color:#FFFFFF>Employee ID</label></strong></TD>
+<!--         <TD><strong><label STYLE=color:#FFFFFF>Employee ID</label></strong></TD> -->
          <TD><strong><label STYLE=color:#FFFFFF>Employee Name</label></strong></TD>
          <TD><strong><label STYLE=color:#FFFFFF>Phone Number</label></strong></TD>
+		 <TD><strong><label STYLE=color:#FFFFFF>Agency Funding</label></strong></TD>
          <TD><strong><label STYLE=color:#FFFFFF>Balance</label></strong></TD>
     </TR>
 <% 
@@ -95,9 +96,10 @@ if not DataRS.eof Then
 	        <TD align="right"><%=no_ %>&nbsp;</font></TD>
 	        <TD align="right">&nbsp;<%= DataRS("MonthP")%>-<%= DataRS("YearP")%></font>&nbsp;</TD>
 <!--	        <TD>&nbsp;<%=DataRS("ProgressDesc") %></font></TD> -->
-	        <TD>&nbsp;<%=DataRS("EmpID") %></font></TD>
+<!--	        <TD>&nbsp;<%=DataRS("EmpID") %></font></TD>  -->
 	        <TD>&nbsp;<%=DataRS("EmpName") %></font></TD>
-	        <TD>&nbsp;<%=DataRS("MobilePhone") %></font></TD>
+	        <TD>&nbsp;<%=DataRS("MobilePhone") %></font></TD>			
+			<TD>&nbsp;<%=DataRS("AgencyFundingDesc") %></font></TD>
 	        <TD align="right"><%=formatnumber(DataRS("TotalBillingRp"),-1) %>&nbsp;</font></TD>
 	   </TR>
 

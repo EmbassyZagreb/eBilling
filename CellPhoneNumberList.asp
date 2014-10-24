@@ -143,7 +143,7 @@ set RS_Query = BillingCon.execute(strsql)
 
   if not RS_Query.eof then 
      if (trim(RS_Query("RoleID")) = "Admin") or (trim(RS_Query("RoleID")) = "IM") or (mid(RS_Query("RoleID"),1,3) = "FMC") then     
-	strsql = "Select ID, PhoneNumber, PhoneTypeName, EmpName, Post, Office, Case When Len(isNull(EmailAddress,''))<4 Then AlternateEmail Else isNull(EmailAddress,'') End As EmailAddress, OwnerName, BillFlag, Discontinued, DiscontinuedDesc, DiscontinuedDate "_
+	strsql = "Select ID, PhoneNumber, PhoneTypeName, EmpName, Post, Office, Case When Len(isNull(EmailAddress,''))<4 Then AlternateEmail Else isNull(EmailAddress,'') End As EmailAddress, OwnerName, BillFlag, Discontinued, DiscontinuedDesc, DiscontinuedDate, ExistInMonthlyBilling "_
 		  &"From vwCellPhoneNumberList Where (PhoneNumber like '%" & PhoneNumber_  & "%' or '" & PhoneNumber_ & "'='') "_
 		  &"And (EmpName like '%" & EmpName_  & "%' or '" & EmpName_ & "'='') "_
 		  &"And (Post='" & Post_ & "' or '" & Post_ & "'='A') "_
@@ -305,7 +305,7 @@ set RS_Query = BillingCon.execute(strsql)
 		</tr>
 		<table width="70%">
 			<tr>
-				<td class="Hint" align="left">*To keep historical data of unused numbers, they should be set as Discontinued rather than Deleted.</td>
+				<td class="Hint" align="left">*Cellphone numbers found in historical data cannot be Deleted, only set as Discontinued.</td>
 			</tr>
 		</table>
 	</table>
@@ -349,7 +349,14 @@ set RS_Query = BillingCon.execute(strsql)
         <TD>&nbsp;<%= rs("Office") %></font>   </TD>
         <TD>&nbsp;<%= rs("EmailAddress") %></font>   </TD>
         <TD>&nbsp;<%= rs("OwnerName") %></font>   </TD>
-	<TD><A HREF="CellPhoneNumberDeleteConfirm.asp?ID=<%= rs("ID")%>&State=D" >Delete</A></font>   </TD>
+		
+		<TD>
+<%			If rs("ExistInMonthlyBilling")="N" Then %>				
+				<A HREF="CellPhoneNumberDeleteConfirm.asp?ID=<%= rs("ID")%>&State=D" >Delete</A>
+<%			else %>	
+				&nbsp;
+<%			end if %>
+		</TD>
 	<td align="center">
 <!--		<Input type="Checkbox" name="cbBillFlag" Value='<%=rs("ID")%>' <%if rs("BillFlag")="Y" then%> Checked <%end if%> disabled> -->
 		<%if rs("BillFlag")="Y" then%> Yes <%end if%>

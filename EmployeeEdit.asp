@@ -266,7 +266,8 @@ function validate_form()
 		<option value="">-- Select --</option>
 <%
 		Dim UserRS
-		strsql = "Select EmpID, ISNULL(EmpName,'')+' - '+ISNULL(Office,'') As EmpName from vwPhoneCustomerList Where LEN(ISNULL(EmpName,''))<>'' AND EmpType = 'AMER' Order by EmpName"
+		'strsql = "Select EmpID, ISNULL(EmpName,'')+' - '+ISNULL(Office,'') As EmpName from vwPhoneCustomerList Where LEN(ISNULL(EmpName,''))<>'' AND EmpType = 'AMER' Order by EmpName"
+		strsql = "Select EmpID, ISNULL(EmpName,'')+' - '+ISNULL(Office,'') As EmpName from vwDirectReport Where LEN(ISNULL(EmpName,''))<>'' AND Type = 'AMER' Order by EmpName"
 		response.write strsql & "<br>"
 		set UserRS = server.createobject("adodb.recordset")
 		set UserRS =BillingCon.execute(strsql)				        
@@ -345,6 +346,143 @@ function validate_form()
 <tr><td>Note:</td><td>Users with multiple cell phones must have the number entered in the Remark [Phone Number] field!</td></tr>
 <tr><td>&nbsp;</td><td>Users outside OpenNet system must use Alternate Email field. Leave Email Address blank.</td></tr>
 </table>
+
+
+
+
+<table border="0" bordercolor="#FFFFFF" cellpadding="2" cellspacing="0" width="65%"  class="FontText">
+	<tr>
+		<td><u><b>Historical assignment of Funding Agency:<b></u></td>
+	</tr>
+	<tr>
+		<td class="Hint" align="left">*To alter historical data 'Generate Monthly Billing' procedure must be executed. Procedure sets bill to 'Pending' status.</td>
+	</tr>
+</table>	
+
+
+
+
+
+
+
+
+
+<%
+
+strsql = "Select Distinct YearP+MonthP, YearP, MonthP, AgencyFundingCode, AgencyFundingDesc, FiscalStripVAT, FiscalStripNonVAT From vwMonthlyBilling Where EmpID = '" & EmpID_ & "' Order by (YearP+MonthP) Desc"
+set DataRS = server.createobject("adodb.recordset")
+DataRS.CursorLocation = 3
+DataRS.Open strsql,BillingCon
+'set DataRS=BillingCon.execute(strsql)
+
+dim intPageSize,PageIndex,TotalPages 
+dim RecordCount,RecordNumber,Count 
+intpageSize=10 
+PageIndex=request("PageIndex")
+
+if PageIndex ="" then PageIndex=1 
+
+if not DataRS.eof then
+	RecordCount = DataRS.RecordCount   
+	'response.write RecordCount & "<br>"
+	RecordNumber=(intPageSize * PageIndex) - intPageSize 
+	'response.write RecordNumber
+	DataRS.PageSize =intPageSize 
+	DataRS.AbsolutePage = PageIndex
+	TotalPages=DataRS.PageCount 
+	'response.write TotalPages & "<br>"
+End If
+'response.write strsql
+
+dim intPrev,intNext 	
+intPrev=PageIndex - 1 
+intNext=PageIndex +1 
+
+
+if not DataRS.eof Then
+
+%>
+<!-- <div align="right"><input type="submit" name="btnApproval" value="Approve" /></div> -->
+<!-- <div align="right"><input type="button" name="btnExport" value="Export to Excel" onClick="javascript:document.location.href('ARBillingReportAllPrint.asp?sMonthP=<%=sMonthP%>&sYearP=<%=sYearP%>&eMonthP=<%=eMonthP%>&eYearP=<%=eYearP%>&Agency=<%=Agency_%>&Section=<%=Section_%>&EmpID=<%=EmpID_%>&Status=<%=Status%>');"/></div> -->
+<table border="1" bordercolor="#EEEEEE" cellpadding="2" cellspacing="0" width="65%"  class="FontText">
+    <TR BGCOLOR="#330099" align="center">
+         <TD width="7%"><strong><label STYLE=color:#FFFFFF>Billing<br>Period</label></strong></TD>
+         <TD width="7%"><strong><label STYLE=color:#FFFFFF>Agency<br>Code</label></strong></TD>
+         <TD width="20%"><strong><label STYLE=color:#FFFFFF>Agency Name</label></strong></TD>
+         <TD width="33%"><strong><label STYLE=color:#FFFFFF>Fiscal Strip VAT</label></strong></TD>
+         <TD width="33%"><strong><label STYLE=color:#FFFFFF>Fiscal Strip Non VAT</label></strong></TD>
+
+
+    </TR>
+<% 
+   dim no_  
+   no_ = 1 + ((PageIndex*intPageSize)-intPageSize)
+   Count=1 
+   do while not DataRS.eof   and Count<=intPageSize
+	   if bg="#D7E3F4" then bg="ffffff" else bg="#D7E3F4" 
+%>
+      
+	   <TR bgcolor="<%=bg%>">
+	    <TD align="right">&nbsp;<%= DataRS("MonthP")%>-<%= DataRS("YearP")%></font>&nbsp;</TD>
+	    <TD>&nbsp;<%=DataRS("AgencyFundingCode") %></TD>
+	    <TD>&nbsp;<%=DataRS("AgencyFundingDesc") %> </font></TD>
+		<TD>&nbsp;<%= DataRS("FiscalStripVAT") %></font></TD>
+		<TD>&nbsp;<%= DataRS("FiscalStripNonVAT") %></font></TD>
+	   </TR>
+
+<%   
+		Count=Count +1
+	   DataRS.movenext
+	   no_ = no_ + 1 
+   loop 
+	PageNo=1
+%>
+</table>
+<table width="65%">
+	<tr>
+		<td align="right">
+<%
+		Do while PageNo<=TotalPages 
+			if trim(pageNo) = trim(PageIndex) Then
+%>		
+				<label class="ActivePage"><%=PageNo%></label>&nbsp;
+			<%Else%>
+				<a href="EmployeeEdit.asp?PageIndex=<%=PageNo%>&ID=<%=ID_%>&State=E"><%=PageNo%></a>&nbsp;
+<%	
+			End If						
+			PageNo=PageNo+1
+		Loop
+%>
+		</td>
+	</tr>
+</table>
+<%
+else 
+%>
+	<table cellspadding="1" cellspacing="0" width="100%">  
+	<tr>
+        	<td><br></TD>
+	</tr>
+	<tr>
+		<td align="center">not data.</td>
+	</tr>
+	<tr>
+        	<td><br></TD>
+	</tr>
+	<tr>
+		<td align="center"><a href="Default.asp"><img src="images/Back.gif" border="0" alt="Go..Back" WIDTH="83" HEIGHT="25"></a></td>
+	</tr>	
+	</table>
+<% end if %>
+
+
+
+
+
+
+
+
+
 </form>
 </BODY>
 </html>

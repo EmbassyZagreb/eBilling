@@ -301,7 +301,8 @@ DataRS.Open strsql,BillingCon
 if not DataRS.eof Then
 
 			Dim LastRS
-			strsql = "select Max(ProgressIDDate) AS LastMohican from vwMonthlyBilling Where YearP+MonthP>='" & sPeriod & "' and YearP+MonthP<='" & ePeriod & "'"
+			'strsql = "select Max(ProgressIDDate) AS LastMohican from vwMonthlyBilling Where YearP+MonthP>='" & sPeriod & "' and YearP+MonthP<='" & ePeriod & "'"
+			strsql = "select Max(CreateDate) AS LastMohican from vwReconciliationRpt Where YearP+MonthP>='" & sPeriod & "' and YearP+MonthP<='" & ePeriod & "'"
 			set LastRS = server.createobject("adodb.recordset")
 			set LastRS =BillingCon.execute(strsql)	
 			if not LastRS.eof Then

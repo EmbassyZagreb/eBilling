@@ -126,8 +126,8 @@ if YearP ="" then
 	YearP = curYear_ 
 end if
 %>  
-<%if (UserRole_= "Admin") or (UserRole_= "FMC") or (UserRole_= "Cashier") or (UserRole_= "Voucher") then %>		
-	<form action="ImportBillingProgress.asp" name="frmUpload" method="post" enctype="multipart/form-data">
+<%if (UserRole_= "Admin") then %>		
+	<form action="ImportBillingConfirm.asp" name="frmUpload" method="post" enctype="multipart/form-data">
 	<table cellspacing="0" cellpadding="2">  
 	<tr bgcolor="#000099">
 		<td height="25" colspan="3"><strong>&nbsp;<span class="style5">Data Parameters: </span></strong></td>

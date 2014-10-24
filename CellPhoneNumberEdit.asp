@@ -161,12 +161,14 @@ window.onload = function()
 	  </td>
 	</tr>
 	<tr>
-	  <td>Employee</td>
+	  <td>Owner</td>
 	  <td width="1%">:</td>
 	  <td>
 <%
 			Dim EmpRS
-			strsql = "select EmpID, EmpName, Office, EmpID, EmailAddress, Remark, Case When [Status]='C' Then 'Current' When [Status]='D' Then 'Departed' Else '' End As Status from vwPhoneCustomerList order by EmpName"
+			'strsql = "select EmpID, EmpName, Office, EmpID, EmailAddress, Remark, Case When [Status]='C' Then 'Current' When [Status]='D' Then 'Departed' Else '' End As Status from vwPhoneCustomerList order by EmpName"
+			strsql = "select EmpID, EmpName, Office, EmpID, EmailAddress, Remark, StatusName from vwDirectReport Where Status='C' order by EmpName"
+
 			'response.write strsql & "<br>"
 			set EmpRS = server.createobject("adodb.recordset")
 			set EmpRS =BillingCon.execute(strsql)	
@@ -177,7 +179,8 @@ window.onload = function()
 			        
 			do while not EmpRS.eof
 				Ename_ = EmpRS("EmpName") 
-				Ename_ = EName_ & "(" & EmpRS("EmpID") & "-" & EmpRS("Office") & "-" & EmpRS("EmailAddress") & " - " & EmpRS("Status") &" - " & EmpRS("Remark") &")" 
+				'Ename_ = EName_ & "(" & EmpRS("EmpID") & "-" & EmpRS("Office") & "-" & EmpRS("EmailAddress") & " - " & EmpRS("StatusName") &" - " & EmpRS("Remark") &")" 
+				Ename_ = EName_ & "(" & EmpRS("Office") & "-" & EmpRS("EmailAddress") & " - " & EmpRS("Remark") &")" 
 				if EmpRS("EmpID") = EmpID_  then		
 	%>
 				        <OPTION value='<%=EmpRS("EmpID")%>' Selected>  <%= EName_  %>
@@ -203,35 +206,6 @@ window.onload = function()
 	  </td>
 	</tr>
 -->
-	<tr>
-	  <td>Owner</td>
-	  <td>:</td>
-	  <td>
-<%
-			strsql = "select EmpID, EmpName, Office, Remark from vwPhoneCustomerList order by EmpName"
-			'response.write strsql & "<br>"
-			set EmpRS = server.createobject("adodb.recordset")
-			set EmpRS =BillingCon.execute(strsql)	
-%>
-		<select name="OwnerList">
-			<option value="">-- Vacant --</option>
-	<%
-			        
-			do while not EmpRS.eof
-				Ename_ = EmpRS("EmpName") 
-				Ename_ = EName_ & "(" & EmpRS("Office") & " - " & EmpRS("Remark") &")"
-				if EmpRS("EmpID") = OwnerID_  then		
-	%>
-				        <OPTION value='<%=EmpRS("EmpID")%>' Selected>  <%= EName_  %>
-	<%			Else%>
-			        	<OPTION value='<%=EmpRS("EmpID")%>'>  <%= EName_  %>
-	<%			End If
-        	         EmpRS.movenext
-	        	loop
-	%>  
-		</select>
-	  </td>
-	</tr>
 	<tr>
 	  <td valign="top">Remark</td>
 	  <td width="1%" valign="top">:</td>

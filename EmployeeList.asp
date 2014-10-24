@@ -175,7 +175,7 @@ set RS_Query = BillingCon.execute(strsql)
 
   if not RS_Query.eof then 
      if (trim(RS_Query("RoleID")) = "Admin") or (trim(RS_Query("RoleID")) = "IM") or (trim(RS_Query("RoleID")) = "FMC" or trim(user1_)= "PribanicM") then     
-	strsql = "Select EmpID, EmpName, PostName, StatusName, Agency, Office, Type, ReportToID, ReportToName, EmailAddress, AgencyFunding, Remark "_
+	strsql = "Select EmpID, EmpName, PostName, StatusName, Agency, Office, Type, ReportToID, ReportToName, EmailAddress, AgencyFunding, Remark, ExistInMonthlyBilling "_
 		  &"From vwDirectReport Where (PostName='" & Post_ & "' or '" & Post_ & "'='A') "_
 		  &"And (Office='" & Section_ & "' or '" & Section_ & "'='A') "_
 		  &"And (SectionGroup='" & SectionGroup_ & "' or '" & SectionGroup_ & "'='A') "_
@@ -325,6 +325,11 @@ set RS_Query = BillingCon.execute(strsql)
 		</td>
 	</tr>
 	</table>
+	<table width="70%">
+			<tr>
+				<td class="Hint" align="left">*Employee assigned in historical data cannot be Deleted, only set as Departed.</td>
+			</tr>
+	</table>	
      <form name="frmHomePhoneList" Action="HomePhoneListAll.asp" onSubmit="return ValidateForm()">
 	<table width="90%">
 		<tr>
@@ -336,13 +341,15 @@ set RS_Query = BillingCon.execute(strsql)
          <TD width="3%" align="center"><strong><label STYLE=color:#FFFFFF>NO</label></strong></TD>
          <TD><strong><label STYLE=color:#FFFFFF>&nbsp;Employee Name</label></strong></TD>
          <TD width="12%"><strong><label STYLE=color:#FFFFFF>&nbsp;Post</label></strong></TD>
-         <TD><strong><label STYLE=color:#FFFFFF>&nbsp;Status</label></strong></TD>
+
 	 <TD width="12%"><strong><label STYLE=color:#FFFFFF>&nbsp;Office</label></strong></TD>
          <TD><strong><label STYLE=color:#FFFFFF>Type</label></strong></TD>
          <TD><strong><label STYLE=color:#FFFFFF>&nbsp;Email Address</label></strong></TD>
          <TD><strong><label STYLE=color:#FFFFFF>&nbsp;Supervisor</label></strong></TD>
          <TD><strong><label STYLE=color:#FFFFFF>&nbsp;Agency Funding</label></strong></TD>
 	 <TD><strong><label STYLE=color:#FFFFFF>&nbsp;Remark</label></strong></TD>
+         <TD><strong><label STYLE=color:#FFFFFF>&nbsp;Status</label></strong></TD>	 
+	 <TD><strong><label STYLE=color:#FFFFFF>&nbsp;Action</label></strong></TD>
      </TR>    
 <% 
 	   dim no_  
@@ -357,13 +364,20 @@ set RS_Query = BillingCon.execute(strsql)
         <TD align=center > <%= no_ %> </font>   </TD>
         <TD><FONT color=#330099><A HREF="EmployeeEdit.asp?EmpID=<%= rs("EmpID")%>&Type=<%= rs("Type")%>&State=E"> <%= rs("EmpName") %></A></font>   </TD>
         <TD>&nbsp;<%= rs("PostName") %></font>   </TD>
-        <TD>&nbsp;<%= rs("StatusName") %></font>   </TD>
         <TD>&nbsp;<%= rs("Office") %></font>   </TD>
         <TD>&nbsp;<%= rs("Type") %></font>   </TD>
         <TD>&nbsp;<%= rs("EmailAddress") %></font>   </TD>
         <TD>&nbsp;<%= rs("ReportToName") %></font>   </TD>
         <TD>&nbsp;<%= rs("AgencyFunding") %></font>   </TD>
-	<TD>&nbsp;<%= rs("Remark") %></font>   </TD>
+		<TD>&nbsp;<%= rs("Remark") %></font>   </TD>
+	    <TD>&nbsp;<%= rs("StatusName") %></font>   </TD>
+			<TD>
+<%			If rs("ExistInMonthlyBilling")="N" Then %>				
+				<A HREF="EmployeeDelete.asp?ID=<%= rs("EmpID")%>&Name='<%= rs("EmpName")%>'">Delete</A></font>
+<%			else %>	
+				&nbsp;
+<%			end if %>
+		</TD>
       </TR>
 
 <%   

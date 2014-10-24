@@ -123,6 +123,16 @@ end if
 
 <%if (UserRole_= "Admin") then %>
 		<br><LI class="normal">
+			<b>Data Import:</b>
+				<UL TYPE="">
+						<li><A HREF="ImportBilling.asp"><B>Upload Billing Data</B></A></li>
+				       <LI><A HREF="LanguageTranslation.asp"><B>Language Translation</B></A>
+<!--				<LI class="normal"><A HREF="AdminPage.asp"><B>Admins Page(s)</B></A>-->
+			</ul>
+<%end if%>
+
+<%if (UserRole_= "Admin") then %>
+		<br><LI class="normal">
 			<b>Admins:</b>
 				<UL TYPE="">
 				       <LI><A HREF="UserList.asp"><B>Manage User(s)</B></A>

@@ -15,6 +15,9 @@
    </script>
 <!--METADATA TYPE="typelib" UUID="CD000000-8B95-11D1-82DB-00C04FB1625D"  NAME="CDO for Windows 2000 Library" --> 
 <%
+Dim State_, EmpID_, EmpName_, FundingAgency_
+
+
 EmpID_ = Request.form("txtEmpID")
 'EmpType_ = Request.form("txtEmpType")
 EmpType_ = Request.form("cmbType")
@@ -62,15 +65,22 @@ UserName_ = right(user_,len(user_)-4)
   </TABLE>
 <table border=0 width=100%>
 <%
-	strsql = "Exec spEmployee_IUD '" & State_ & "','" & EmpID_ & "','" & EmpName_  & "'," & FundingAgency_ & ",'" & Post_ & "','" & EmpType_ & "','" & Agency_ & "','" & OfficeSection_ & "','" & WorkingTitle_ & "','" & EmailAddress_ & "','" & AlternateEmail_ & "','" & ReportTo_ & "','" & LoginID_ & "','" & Remark_ & "','" & Status_ & "','" & UserName_ & "'"
+	strsql = "Exec spEmployee_IUD '" & State_ & "','" & EmpID_ & "','" & EmpName_  & "','" & FundingAgency_ & "','" & Post_ & "','" & EmpType_ & "','" & Agency_ & "','" & OfficeSection_ & "','" & WorkingTitle_ & "','" & EmailAddress_ & "','" & AlternateEmail_ & "','" & ReportTo_ & "','" & LoginID_ & "','" & Remark_ & "','" & Status_ & "','" & UserName_ & "'"
 
 
 	'strsql = "Update MsEmployee Set SupervisorId ='" & ReportTo_ & "', EmailAddress='" & Email_ & "', LoginID='" & LoginID_ & "', AlternateEmail='" & AlternateEmail_ & "', AgencyId=" & FundingAgency_ & " Where EmpId='" & EmpID_ & "'"
 	'response.write strsql 
 	BillingCon.execute strsql
 %>
-              
-<tr><td align=center>Your data has been updated.</td></tr>
+
+
+<%If State_="X" Then%>
+	<tr><td align=center>Employee has been deleted.</td></tr>
+<%Else%>
+	<tr><td align=center>Your data has been updated.</td></tr>
+<%End If%>
+
+          
 <tr><td>&nbsp;</td>
 
 <tr><td align=center>  
