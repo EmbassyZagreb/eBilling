@@ -1,7 +1,7 @@
 <%@ Language=VBScript%>
 <% ' VI 6.0 Scripting Object Model Enabled %>
- 
- 
+
+
 <html>
 <head>
 
@@ -25,7 +25,7 @@ function ValidateForm()
 	valid = true;
 	nRec = 0;
 	for (var x=0; x<frmBillingList.elements.length; x++)
-	{	
+	{
 		cbElement = frmBillingList.elements[x]
 		if ((cbElement.checked) && (cbElement.name=="cbApproval"))
 		{
@@ -71,7 +71,7 @@ end if
 
 strsql = "Select Max(YearP+MonthP) As Period From vwMonthlyBilling"
 'response.write strsql & "<br>"
-set rsPeriod = server.createobject("adodb.recordset") 
+set rsPeriod = server.createobject("adodb.recordset")
 set rsPeriod = BillingCon.execute(strsql)
 if not rsPeriod.eof Then
 	Period_ = rsPeriod("Period")
@@ -96,26 +96,26 @@ End If
 
 	if sMonthP = "" Then sMonthP = Request.Form("sMonthList")
 	if sMonthP = "" then
-		sMonthP = curMonth_ 
+		sMonthP = curMonth_
 	end if
 	'response.write sMonthP
 
 	sYearP = request("sYearP")
 	if sYearP ="" Then sYearP = Request.Form("sYearList")
 	if sYearP ="" then
-		sYearP = curYear_ 
+		sYearP = curYear_
 	end if
 
 	eMonthP = request("eMonthP")
 	if eMonthP = "" Then eMonthP = Request.Form("eMonthList")
 	if eMonthP = "" then
-		eMonthP = curMonth_ 
+		eMonthP = curMonth_
 	end if
 
 	eYearP = request("eYearP")
 	if eYearP = "" Then eYearP = Request.Form("eYearList")
 	if eYearP = "" then
-		eYearP = curYear_ 
+		eYearP = curYear_
 	end if
 
 	Section_ = request("Section")
@@ -155,7 +155,7 @@ End If
 
 <%
 
-dim rs 
+dim rs
 dim strsql
 dim tombol
 dim hlm
@@ -170,7 +170,7 @@ If (UserRole_ = "Admin") or (UserRole_ = "Voucher") or (UserRole_ = "FMC") or (U
 			<td height="25" colspan="6"><strong>&nbsp;<span class="style5">Criteria(s): </span></strong></td>
 		</tr>
 <tr>
-			<td width="15%">&nbsp;Period&nbsp;</td>				
+			<td width="15%">&nbsp;Period&nbsp;</td>
 			<td>:</td>
 			<td colspan="4">
 				<Select name="sMonthList">
@@ -194,9 +194,9 @@ If (UserRole_ = "Admin") or (UserRole_ = "Voucher") or (UserRole_ = "FMC") or (U
 				<Select name="sYearList">
 <% 				Do While Year_ <= Year(Date()) %>
 				<Option value='<%=Year_%>' <%if trim(Year_) = trim(sYearP) then %>Selected<%End If%> ><%=Year_%></Option>
-<% 
+<%
 			Year_ = Year_ + 1
-			Loop %>	
+			Loop %>
 				</Select>&nbsp;to&nbsp;
 				<Select name="eMonthList">
 					<Option value="01" <%if eMonthP ="01" then %>Selected<%End If%>>January</Option>
@@ -219,9 +219,9 @@ If (UserRole_ = "Admin") or (UserRole_ = "Voucher") or (UserRole_ = "FMC") or (U
 				<Select name="eYearList">
 <% 				Do While Year_ <= Year(Date()) %>
 				<Option value='<%=Year_%>' <%if trim(Year_) = trim(eYearP) then %>Selected<%End If%> ><%=Year_%></Option>
-<% 
+<%
 			Year_ = Year_ + 1
-			Loop %>	
+			Loop %>
 				</Select>
 			</td>
 		</tr>
@@ -233,13 +233,13 @@ If (UserRole_ = "Admin") or (UserRole_ = "Voucher") or (UserRole_ = "FMC") or (U
  				strsql ="select distinct Office from vwPhoneCustomerList Where Office<>'' order by Office"
 				set SectionRS = server.createobject("adodb.recordset")
 				set SectionRS = BillingCon.execute(strsql)
-'				response.write strStr 
-%>	
+'				response.write strStr
+%>
 				<Select name="cmbSection">
 					<Option value='X'>--All--</Option>
 <%				Do While not SectionRS.eof %>
 					<Option value='<%=SectionRS("Office")%>' <%if trim(Office_) = trim(SectionRS("Office")) then %>Selected<%End If%> ><%=SectionRS("Office")%></Option>
-					
+
 <%					SectionRS.MoveNext
 				Loop%>
 				</select>
@@ -259,13 +259,13 @@ If (UserRole_ = "Admin") or (UserRole_ = "Voucher") or (UserRole_ = "FMC") or (U
  				strsql ="select ProgressID, ProgressDesc from ProgressStatus Where ProgressID <10 Order By OrderNo"
 				set StatusRS = server.createobject("adodb.recordset")
 				set StatusRS = BillingCon.execute(strsql)
-'				response.write strStr 
-%>	
+'				response.write strStr
+%>
 				<Select name="cmbStatus">
 					<Option value='0'>--All--</Option>
 <%				Do While not StatusRS.eof %>
 					<Option value='<%=StatusRS("ProgressID")%>' <%if trim(Status_) = trim(StatusRS("ProgressID")) then %>Selected<%End If%> ><%=StatusRS("ProgressDesc")%></Option>
-					
+
 <%					StatusRS.MoveNext
 				Loop%>
 				</select>
@@ -279,24 +279,24 @@ If (UserRole_ = "Admin") or (UserRole_ = "Voucher") or (UserRole_ = "FMC") or (U
  				strsql ="select EmpID, EmpName, MobilePhone from vwPhoneCustomerList Where MobilePhone <> '' order by EmpName"
 				set EmpRS = server.createobject("adodb.recordset")
 				set EmpRS = BillingCon.execute(strsql)
-'				response.write strStr 
-%>	
+'				response.write strStr
+%>
 				<Select name="cmbEmp">
 					<Option value='X'>--All--</Option>
-<%				Do While not EmpRS.eof 
+<%				Do While not EmpRS.eof
 %>
 					<Option value='<%=EmpRS("EmpID")%>' <%if trim(EmpID_) = trim(EmpRS("EmpID")) then %>Selected<%End If%> ><%=EmpRS("EmpName")%> - <%=EmpRS("MobilePhone")%></Option>
-					
+
 <%					EmpRS.MoveNext
 				Loop%>
 				</select>
 
-			</td>	
+			</td>
 		</tr>
 		<tr>
 			<td colspan="2">&nbsp;</td>
 			<td align="left">
-				<input type="Button" name="btnReset" value="Reset" onClick="Javascript:ClearFilter();">	
+				<input type="Button" name="btnReset" value="Reset" onClick="Javascript:ClearFilter();">
 			</td>
 			<td align="Left" colspan="3">
 				<input type="submit" name="Submit" value="Search">
@@ -304,14 +304,14 @@ If (UserRole_ = "Admin") or (UserRole_ = "Voucher") or (UserRole_ = "FMC") or (U
 		</tr>
 		</table>
 	</td>
-</tr>	
+</tr>
 </table>
 </form>
 <%
 sPeriod = sYearP&sMonthP
 ePeriod = eYearP&eMonthP
 
-'response.write sPeriod & ePeriod 
+'response.write sPeriod & ePeriod
 strsql = "Select * From vwMonthlyBilling Where YearP+MonthP>='" & sPeriod & "' and YearP+MonthP<='" & ePeriod & "' and MobilePhone <> ''"
 strFilter=""
 If Section_ <> "X" then
@@ -335,35 +335,35 @@ DataRS.CursorLocation = 3
 DataRS.Open strsql,BillingCon
 'set DataRS=BillingCon.execute(strsql)
 
-dim intPageSize,PageIndex,TotalPages 
-dim RecordCount,RecordNumber,Count 
-intpageSize=20 
+dim intPageSize,PageIndex,TotalPages
+dim RecordCount,RecordNumber,Count
+intpageSize=20
 PageIndex=request("PageIndex")
 
-if PageIndex ="" then PageIndex=1 
+if PageIndex ="" then PageIndex=1
 
 if not DataRS.eof then
-	RecordCount = DataRS.RecordCount   
+	RecordCount = DataRS.RecordCount
 	'response.write RecordCount & "<br>"
-	RecordNumber=(intPageSize * PageIndex) - intPageSize 
+	RecordNumber=(intPageSize * PageIndex) - intPageSize
 	'response.write RecordNumber
-	DataRS.PageSize =intPageSize 
+	DataRS.PageSize =intPageSize
 	DataRS.AbsolutePage = PageIndex
-	TotalPages=DataRS.PageCount 
+	TotalPages=DataRS.PageCount
 	'response.write TotalPages & "<br>"
 End If
 'response.write strsql
 
-dim intPrev,intNext 	
-intPrev=PageIndex - 1 
-intNext=PageIndex +1 
+dim intPrev,intNext
+intPrev=PageIndex - 1
+intNext=PageIndex +1
 
 
 if not DataRS.eof Then
 
-   dim no_  
-   no_ = 1 + ((PageIndex*intPageSize)-intPageSize) 
-   Count=1 
+   dim no_
+   no_ = 1 + ((PageIndex*intPageSize)-intPageSize)
+   Count=1
    do while not DataRS.eof  and Count<=intPageSize
 	Period_ = DataRS("MonthP") & "-" & DataRS("YearP")
 	MonthP_ = DataRS("MonthP")
@@ -397,7 +397,7 @@ if not DataRS.eof Then
 	TotalBillingPrsAmount_ = DataRS("TotalBillingAmountPrsRp")
 	TotalBillingAmountPrsDlr_ = DataRS("TotalBillingAmountPrsDlr")
 %>
-	<table cellspadding="1" cellspacing="0" width="70%" bgColor="white">  
+	<table cellspadding="1" cellspacing="0" width="70%" bgColor="white">
  <!--     	<tr>
 		<td colspan="6" align="center"><u>Billing Period (Month - Year) : <a class="FontContent"><%=Period_%></a></u></td>
 	</tr> -->
@@ -407,7 +407,7 @@ if not DataRS.eof Then
 
 <tr>
 	<td colspan="6" align="Left">
-	<table cellspadding="1" border="2" bordercolor="black" cellspacing="3" width="100%" bgColor="#999999" border="0">  
+	<table cellspadding="1" border="2" bordercolor="black" cellspacing="3" width="100%" bgColor="#999999" border="0">
 
 		<tr BGCOLOR="#999999">
 			<td colspan="3" style="border: none;"><FONT color=#FFFFFF><b>Employee Name : <%=EmpName_%></b></font></td>
@@ -432,7 +432,7 @@ if not DataRS.eof Then
 
 <tr>
 	<td align="Left" colspan="6">
-	<table cellspadding="1" border="1" bordercolor="black" cellspacing="0" width="100%" bgColor="white" border="0">  
+	<table cellspadding="1" border="1" bordercolor="black" cellspacing="0" width="100%" bgColor="white" border="0">
 	<tr align="center" height=26>
 		<td width=20%><b>Action</b></td>
 		<td width=20%><b>Billing Period</b></td>
@@ -480,13 +480,13 @@ if not DataRS.eof Then
 
 	<tr>
 		<td align="Left" colspan="5"><u><b>Billing detail :<b></u></TD>
-	</tr>	
-	
+	</tr>
+
 
 <%
 strsql = "Select * from CellPhoneDt Where PhoneNumber='" & MobilePhone_ & "' and MonthP='" & MonthP_ & "' and YearP='" & YearP_ & "' order by DialedDatetime"
 'response.write strsql & "<br>"
-set rsCellPhone = BillingCon.execute(strsql) 
+set rsCellPhone = BillingCon.execute(strsql)
 if not rsCellPhone.eof then
 %>
 	<tr>
@@ -505,18 +505,18 @@ if not rsCellPhone.eof then
 		</tr>
 
 <%
-		no_ = 1 
+		no_ = 1
 		do while not rsCellPhone.eof
-   			if bg="#D7E3F4" then bg="ffffff" else bg="#D7E3F4" 
+   			if bg="#D7E3F4" then bg="ffffff" else bg="#D7E3F4"
 %>
 		<tr bgcolor="<%=bg%>">
 			<td align="right"><%=No_%>&nbsp;</td>
-		        <td>&nbsp;<%=rsCellPhone("DialedDatetime")%></font></td> 
-		       	<td>&nbsp;<%=rsCellPhone("DialedNumber")%></font></td> 
-		       	<td>&nbsp;<%=rsCellPhone("CallType")%></font></td> 
-		        <td align="right"><%=formatnumber(rsCellPhone("Cost"),-1)%>&nbsp;</font></td> 
+		        <td>&nbsp;<%=rsCellPhone("DialedDatetime")%></font></td>
+		       	<td>&nbsp;<%=rsCellPhone("DialedNumber")%></font></td>
+		       	<td>&nbsp;<%=rsCellPhone("CallType")%></font></td>
+		        <td align="right"><%=formatnumber(rsCellPhone("Cost"),-1)%>&nbsp;</font></td>
 		        <td align="center"><Input type="Checkbox" name="cbPersonal" <%if rsCellPhone("isPersonal") = "Y" then%> Checked<%end if%> disabled></td>
-		<%   
+		<%
 			rsCellPhone.movenext
 			no_ = no_ + 1
 		loop
@@ -538,11 +538,11 @@ if not rsCellPhone.eof then
 		<td colspan="6" align="center"><br><br></td>
 	</tr>
 	</table>
-<%   
+<%
 		Count=Count +1
 	   DataRS.movenext
-	   no_ = no_ + 1 
-   loop 
+	   no_ = no_ + 1
+   loop
 	PageNo=1
 %>
 </table>
@@ -552,14 +552,14 @@ if not rsCellPhone.eof then
 	<tr>
 		<td align="right">
 <%
-		Do while PageNo<=TotalPages 
+		Do while PageNo<=TotalPages
 			if trim(pageNo) = trim(PageIndex) Then
-%>		
+%>
 				<label class="ActivePage"><%=PageNo%></label>&nbsp;
 			<%Else%>
 				<a href="BillingSettlement.asp?PageIndex=<%=PageNo%>&sMonthP=<%=sMonthP%>&sYearP=<%=sYearP%>&eMonthP=<%=eMonthP%>&eYearP=<%=eYearP%>&Section=<%=Section_%>&EmpID=<%=EmpID_%>&Status=<%=Status%>"><%=PageNo%></a>&nbsp;
-<%	
-			End If						
+<%
+			End If
 			PageNo=PageNo+1
 		Loop
 %>
@@ -567,9 +567,9 @@ if not rsCellPhone.eof then
 	</tr>
 </table>
 <%
-else 
+else
 %>
-	<table cellspadding="1" cellspacing="0" width="100%">  
+	<table cellspadding="1" cellspacing="0" width="100%">
 	<tr>
         	<td><br></TD>
 	</tr>
@@ -581,7 +581,7 @@ else
 	</tr>
 	<tr>
 		<td align="center"><a href="Default.asp"><img src="images/Back.gif" border="0" alt="Go..Back" WIDTH="83" HEIGHT="25"></a></td>
-	</tr>	
+	</tr>
 	</table>
 <% end if %>
 <%Else%>
@@ -594,8 +594,6 @@ else
 		</tr>
 	</table>
 <% end if %>
-</body> 
+</body>
 
 </html>
-
-
