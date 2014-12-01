@@ -7,6 +7,7 @@
 <link href="style.css" rel="stylesheet" type="text/css">
 </HEAD>
 <!--#include file="Header.inc" -->
+<TABLE>
   <TR>
   	<TD COLSPAN="4" ALIGN="center" Class="title">Home</TD>
    </TR>
@@ -49,7 +50,7 @@ end if
 <tr>
 	<td align="left" valign="top">
 	   <UL><UL TYPE="square">
-		<LI class="normal"><B>Employee</b>
+		<LI class="normal"><strong>Employee</strong>
 			<UL TYPE="">
 <!--
 				<li><A HREF="HomePhoneBilling.asp"><B>Home Phone</B></A></li>
@@ -196,9 +197,8 @@ end if
 				<li><B>Reports :</B>
 					<UL TYPE="">    -->
 						<li><A HREF="ARPaymentReport.asp"><B>A/R Payment Report</B></A></li>
-<!--						<li><A HREF="ARReminder.asp"><B>A/R Reminder</B></A></li>
--->
-<!--						<li><A HREF="ARAgingReport.asp"><B>A/R Aging Report</B></A></li>
+<!--				<li><A HREF="ARReminder.asp"><B>A/R Reminder</B></A></li>-->
+<!--				<li><A HREF="ARAgingReport.asp"><B>A/R Aging Report</B></A></li>
 						<li><A HREF="OutstandingReport.asp"><B>Outstanding inquiry</B></A></li>
 					</ul>
 				</li>
@@ -212,9 +212,7 @@ end if
 	    </UL>
 	</td>
 </tr>
-
 </table>
-
 </form>
 </BODY>
 </html>
