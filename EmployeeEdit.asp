@@ -94,7 +94,7 @@ function validate_form()
  State_ = request("State")
 
 %> 
-<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />

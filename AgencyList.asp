@@ -7,7 +7,7 @@
 
 <META name=VI60_defaultClientScript content=VBScript>
 <meta NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
-<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
 <!--#include file="connect.inc" -->
 
 <link href="style.css" rel="stylesheet" type="text/css">

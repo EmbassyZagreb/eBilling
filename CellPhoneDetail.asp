@@ -46,7 +46,7 @@ if (Order_ ="") then
 end if
 %> 
 
-<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </HEAD>
@@ -193,22 +193,22 @@ end if
 			<td colspan="4">
 			<table cellspadding="0" cellspacing="0" bordercolor="black" width="100%" bgColor="white">  
 			<tr>
-				<td>&nbsp;<b>VPN Network Calls</b> / <i>Pozivi unutar VPN mreže<i/></td>
+				<td>&nbsp;<b>VPN Network Calls</b> / <i>Pozivi unutar VPN mreďż˝e<i/></td>
 				<td>&nbsp;Kn.</td>
 				<td align="right"><%=formatnumber(LocalCall_,-1) %>&nbsp;&nbsp;&nbsp;</td>
 			</tr>
 			<tr>
-				<td>&nbsp;<b>Calls to VIP Network</b> / <i>Pozivi prema VIP mobilnoj mreži<i/></td>
+				<td>&nbsp;<b>Calls to VIP Network</b> / <i>Pozivi prema VIP mobilnoj mreďż˝i<i/></td>
 				<td>&nbsp;Kn.</td>
 				<td align="right"><%=formatnumber(BalanceDue_,-1) %>&nbsp;&nbsp;&nbsp;</td>
 			</tr>
 			<tr>
-				<td>&nbsp;<b>Calls to Landlines in Croatia</b> / <i>Pozivi prema fiksnim mrežama u Hrvatskoj<i/></td>
+				<td>&nbsp;<b>Calls to Landlines in Croatia</b> / <i>Pozivi prema fiksnim mreďż˝ama u Hrvatskoj<i/></td>
 				<td>&nbsp;Kn.</td>
 				<td align="right"><%=formatnumber(Interlocal_,-1) %>&nbsp;&nbsp;&nbsp;</td>
 			</tr>
 			<tr>
-				<td>&nbsp;<b>Calls to Other Mobile Networks</b> / <i>Pozivi prema ostalim mobilnim mrežama<i/></td>
+				<td>&nbsp;<b>Calls to Other Mobile Networks</b> / <i>Pozivi prema ostalim mobilnim mreďż˝ama<i/></td>
 				<td>&nbsp;Kn.</td>
 				<td align="right"><%=formatnumber(IDD_,-1) %>&nbsp;&nbsp;&nbsp;</td>
 			</tr>

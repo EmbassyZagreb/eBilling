@@ -25,7 +25,7 @@ ExchangeRate_ = request.form("txtExchangeRate")
 State_ = request.form("txtState")
 
 %>
-<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 
 <meta http-equiv="refresh" content="1;url=ExchangeRateList.asp">
