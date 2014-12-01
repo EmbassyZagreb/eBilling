@@ -53,91 +53,91 @@ end if
 		<LI class="normal"><strong>Employee</strong>
 			<UL TYPE="">
 <!--
-				<li><A HREF="HomePhoneBilling.asp"><B>Home Phone</B></A></li>
-				<li><A HREF="OfficePhoneBilling.asp"><B>Office Phone</B></A></li>
+				<li><A HREF="HomePhoneBilling.asp"><strong>Home Phone</strong></A></li>
+				<li><A HREF="OfficePhoneBilling.asp"><strong>Office Phone</strong></A></li>
 -->
-				<li><A HREF="MonthlyBilling.asp"><B>Your Bills</B></A></li>
-				<li><A HREF="MonthlyBillingTracking.asp"><B>Billing History</B></A></li>
-<!--				<li><A HREF="MonthlyBillList.asp"><B>Print Monthly Billing</B></A></li> -->
-<!--				<li><A HREF="MonthlyBillList.asp"><B>Monthly Billing Report</B></A></li> -->
-				<li><A HREF="UserSetting.asp"><B>Supervisor Setting</B></A></li>
+				<li><A HREF="MonthlyBilling.asp"><strong>Your Bills</strong></A></li>
+				<li><A HREF="MonthlyBillingTracking.asp"><strong>Billing History</strong></A></li>
+<!--				<li><A HREF="MonthlyBillList.asp"><strong>Print Monthly Billing</strong></A></li> -->
+<!--				<li><A HREF="MonthlyBillList.asp"><strong>Monthly Billing Report</strong></A></li> -->
+				<li><A HREF="UserSetting.asp"><strong>Supervisor Setting</strong></A></li>
 <!--
-				<li><A HREF="PersonalPhoneList.asp"><B>Personal Phone List</B></A></li>
-				<li><A HREF="ePaymentForm.asp"><B>Pay.gov form</B></A></li>
+				<li><A HREF="PersonalPhoneList.asp"><strong>Personal Phone List</strong></A></li>
+				<li><A HREF="ePaymentForm.asp"><strong>Pay.gov form</strong></A></li>
 -->
 
 			</ul>
-		<br><LI class="normal"><B>Supervisor</B>
+		<br><LI class="normal"><strong>Supervisor</strong>
 			<UL TYPE="">
-<!--				<li><A HREF="BillingApprovalList.asp"><B>Office Phone</B></A></li> -->
-				<li><A HREF="BillingApprovalList.asp"><B>Subordinate Bill Approvals </B></A></li>
+<!--				<li><A HREF="BillingApprovalList.asp"><strong>Office Phone</strong></A></li> -->
+				<li><A HREF="BillingApprovalList.asp"><strong>Subordinate Bill Approvals </strong></A></li>
 			</ul>
 
 	<%if (UserRole_= "IM") or (UserRole_= "Admin") then %>
-		<br><LI class="normal"><B>IM/IPC reports :
+		<br><LI class="normal"><strong>IM/IPC reports :
 			<UL TYPE="">
-				<LI>&nbsp;<A HREF="LongDistanceCallsReport.asp"><b>Long Distance Calls Report</b></A>
-<!--				<LI>&nbsp;<A HREF="CellphoneCallsReport.asp"><b>Cell phone Calls Report</b></A> -->
-				<LI>&nbsp;<A HREF="LineUsagesReport.asp"><b>Line Usages Report</b></A>
-<!--				<LI>&nbsp;<A HREF="NoLineUsagesReport.asp"><b>No Line Usages Report</b></A> -->
+				<LI>&nbsp;<A HREF="LongDistanceCallsReport.asp"><strong>Long Distance Calls Report</strong></A>
+<!--				<LI>&nbsp;<A HREF="CellphoneCallsReport.asp"><strong>Cell phone Calls Report</strong></A> -->
+				<LI>&nbsp;<A HREF="LineUsagesReport.asp"><strong>Line Usages Report</strong></A>
+<!--				<LI>&nbsp;<A HREF="NoLineUsagesReport.asp"><strong>No Line Usages Report</strong></A> -->
 			</ul>
 	<%end if%>
 <!--	<%if (UserRole_= "Trs") or (UserRole_= "Admin") or (UserRole_= "FMC") then %>
-		<LI class="normal"><B>Transportation :
+		<LI class="normal"><strong>Transportation :
 			<UL TYPE="">
-				<li><A HREF="ShuttleBusList.asp"><B>Shuttle Bus Payment List</B></A></li>
-				<li><A HREF="ShuttleBusRateList.asp"><B>Setup Shuttle Bus Rate</B></A></li>
-				<li><A HREF="InputShuttleBusUsage.asp"><B>Input Shuttle Bus Usage</B></A></li>
+				<li><A HREF="ShuttleBusList.asp"><strong>Shuttle Bus Payment List</strong></A></li>
+				<li><A HREF="ShuttleBusRateList.asp"><strong>Setup Shuttle Bus Rate</strong></A></li>
+				<li><A HREF="InputShuttleBusUsage.asp"><strong>Input Shuttle Bus Usage</strong></A></li>
 			</ul>
 	<%end if%> -->
-<!--		<LI class="normal"><A HREF="BillingReportList.asp"><B>Reports</B></A> -->
+<!--		<LI class="normal"><A HREF="BillingReportList.asp"><strong>Reports</strong></A> -->
 <!--
-		<LI class="normal"><B>Reports:
+		<LI class="normal"><strong>Reports:
 			<UL TYPE="square">
-				<LI>&nbsp;<A HREF="HomePaymentBillingReport.asp"><b>Home Payment Billing Report</b></A>
-				<LI>&nbsp;<A HREF="LongDistanceCallsReport.asp"><b>Long Distance Calls Report</b></A>
-				<LI>&nbsp;<A HREF="CellphoneCallsReport.asp"><b>Cell phone Calls Report</b></A>
-				<LI>&nbsp;<A HREF="LineUsagesReport.asp"><b>Line Usages Report</b></A>
-				<LI>&nbsp;<A HREF="NoLineUsagesReport.asp"><b>No Line Usages Report</b></A>
-				<LI>&nbsp;<A HREF="MonthlyBillingByExtReport.asp"><b>Comparison Monthly Bill by Ext.</b></A>
+				<LI>&nbsp;<A HREF="HomePaymentBillingReport.asp"><strong>Home Payment Billing Report</strong></A>
+				<LI>&nbsp;<A HREF="LongDistanceCallsReport.asp"><strong>Long Distance Calls Report</strong></A>
+				<LI>&nbsp;<A HREF="CellphoneCallsReport.asp"><strong>Cell phone Calls Report</strong></A>
+				<LI>&nbsp;<A HREF="LineUsagesReport.asp"><strong>Line Usages Report</strong></A>
+				<LI>&nbsp;<A HREF="NoLineUsagesReport.asp"><strong>No Line Usages Report</strong></A>
+				<LI>&nbsp;<A HREF="MonthlyBillingByExtReport.asp"><strong>Comparison Monthly Bill by Ext.</strong></A>
 			</UL>
 -->
 <%if (UserRole_= "IM") or (UserRole_= "Admin") or (UserRole_= "FMC") then %>
 
-<!--		<LI class="normal"><A HREF="PhoneList.asp"><B>Phone/Extension Number List</B></A>&nbsp;[&nbsp;<A HREF="OfficePhoneNumberList.asp"><B>Office Phone</B></A>&nbsp;|&nbsp;<A HREF="HomePhoneNumberList.asp"><B>Home Phone</B></A>&nbsp;|&nbsp;<A HREF="CellPhoneNumberList.asp"><B>Cell Phone</B></A>&nbsp;]&nbsp; -->
-		<br><LI class="normal"><B>Others List :
+<!--		<LI class="normal"><A HREF="PhoneList.asp"><strong>Phone/Extension Number List</strong></A>&nbsp;[&nbsp;<A HREF="OfficePhoneNumberList.asp"><strong>Office Phone</strong></A>&nbsp;|&nbsp;<A HREF="HomePhoneNumberList.asp"><strong>Home Phone</strong></A>&nbsp;|&nbsp;<A HREF="CellPhoneNumberList.asp"><strong>Cell Phone</strong></A>&nbsp;]&nbsp; -->
+		<br><LI class="normal"><strong>Others List :
 			<UL TYPE="">
-				<li><A HREF="EmployeeList.asp"><B>Employee List</B></A></li>
-<!--				<li><A HREF="NonEmployeeList.asp"><B>Non Employee List</B></A></li> -->
-				<li><A HREF="CellPhoneNumberList.asp"><B>Cell Phone List</B></A></li>
+				<li><A HREF="EmployeeList.asp"><strong>Employee List</strong></A></li>
+<!--				<li><A HREF="NonEmployeeList.asp"><strong>Non Employee List</strong></A></li> -->
+				<li><A HREF="CellPhoneNumberList.asp"><strong>Cell Phone List</strong></A></li>
 			</ul>
 
 <%end if%>
 
 <%if (user1_= "PribanicM") then %>
 		<LI class="normal">
-			<b>Others List :</b>
+			<strong>Others List :</strong>
 				<UL TYPE="">
-				       <li><A HREF="EmployeeList.asp"><B>Employee List</B></A></li>
+				       <li><A HREF="EmployeeList.asp"><strong>Employee List</strong></A></li>
 			</ul>
 <%end if%>
 
 <%if (UserRole_= "Admin") then %>
 		<br><LI class="normal">
-			<b>Data Import:</b>
+			<strong>Data Import:</strong>
 				<UL TYPE="">
-						<li><A HREF="ImportBilling.asp"><B>Upload Billing Data</B></A></li>
-				       <LI><A HREF="LanguageTranslation.asp"><B>Language Translation</B></A>
-<!--				<LI class="normal"><A HREF="AdminPage.asp"><B>Admins Page(s)</B></A>-->
+						<li><A HREF="ImportBilling.asp"><strong>Upload Billing Data</strong></A></li>
+				       <LI><A HREF="LanguageTranslation.asp"><strong>Language Translation</strong></A>
+<!--				<LI class="normal"><A HREF="AdminPage.asp"><strong>Admins Page(s)</strong></A>-->
 			</ul>
 <%end if%>
 
 <%if (UserRole_= "Admin") then %>
 		<br><LI class="normal">
-			<b>Admins:</b>
+			<strong>Admins:</strong>
 				<UL TYPE="">
-				       <LI><A HREF="UserList.asp"><B>Manage User(s)</B></A>
-<!--				<LI class="normal"><A HREF="AdminPage.asp"><B>Admins Page(s)</B></A>-->
+				       <LI><A HREF="UserList.asp"><strong>Manage User(s)</strong></A>
+<!--				<LI class="normal"><A HREF="AdminPage.asp"><strong>Admins Page(s)</strong></A>-->
 <%end if%>
 			</ul>
 		</li>
@@ -147,63 +147,63 @@ end if
 	   <UL>
 		<UL TYPE="square">
 <%if (UserRole_= "Admin") or (UserRole_= "FMC") or (UserRole_= "Voucher") then %>
-		<LI class="normal"><b>FMC Voucher :
+		<LI class="normal"><strong>FMC Voucher :
 			<UL TYPE="">
-<!--				<li><A HREF="HomePhoneSelfPaymentList.asp"><B>Update Payment to Telkom</B></A></li> -->
-<!--				<li><A HREF="PaymentList.asp"><B>Update Payment</B></A></li>-->
-				<li><A HREF="AgencyList.asp"><B>Funding Agency List</B></A></li>
-<!--				<li><A HREF="ExchangeRateList.asp"><B>Exchange Rate</B></A></li> -->
-				<li><A HREF="SetupPaymentDueDate.asp"><B>Setup Payment Due Date & Ceiling Amount</B></A></li>
-	 		        <LI><A HREF="UpdateSupervisor.asp"><B>Auto update supervisor list</B></A></li>
-				<li><A HREF="SendNotification.asp"><B>Send Notification</B></A></li>
-<!--				<li><A HREF="SendNotificationAll.asp"><B>Send Notification - All </B></A></li> -->
-<!--				<li><A HREF="SendNotificationPayGov.asp"><B>Send Notification - PayGov.com</B></A></li> -->
+<!--				<li><A HREF="HomePhoneSelfPaymentList.asp"><strong>Update Payment to Telkom</strong></A></li> -->
+<!--				<li><A HREF="PaymentList.asp"><strong>Update Payment</strong></A></li>-->
+				<li><A HREF="AgencyList.asp"><strong>Funding Agency List</strong></A></li>
+<!--				<li><A HREF="ExchangeRateList.asp"><strong>Exchange Rate</strong></A></li> -->
+				<li><A HREF="SetupPaymentDueDate.asp"><strong>Setup Payment Due Date & Ceiling Amount</strong></A></li>
+	 		        <LI><A HREF="UpdateSupervisor.asp"><strong>Auto update supervisor list</strong></A></li>
+				<li><A HREF="SendNotification.asp"><strong>Send Notification</strong></A></li>
+<!--				<li><A HREF="SendNotificationAll.asp"><strong>Send Notification - All </strong></A></li> -->
+<!--				<li><A HREF="SendNotificationPayGov.asp"><strong>Send Notification - PayGov.com</strong></A></li> -->
 			</ul>
-		<br><LI class="normal"><b>Reconciliation Reports:</B>
+		<br><LI class="normal"><strong>Reconciliation Reports:</strong>
 			<UL TYPE="">
-				<LI><A HREF="GenerateMonthlyBill.asp"><B>Generate Monthly Bills (USE WITH CAUTION!)</B></A>
-			 	<LI><A HREF="ReconciliationReport.asp"><B>Reconciliation Report</B></A></li>
-			 	<LI><A HREF="SummaryofGenerateMonthlyBillsReport.asp"><B>Summary of Generate Monthly Bills Result</B></A></li>
+				<LI><A HREF="GenerateMonthlyBill.asp"><strong>Generate Monthly Bills (USE WITH CAUTION!)</strong></A>
+			 	<LI><A HREF="ReconciliationReport.asp"><strong>Reconciliation Report</strong></A></li>
+			 	<LI><A HREF="SummaryofGenerateMonthlyBillsReport.asp"><strong>Summary of Generate Monthly Bills Result</strong></A></li>
 			</ul>
-		<br><LI class="normal"><b>Reports:</b>
+		<br><LI class="normal"><strong>Reports:</strong>
 			<UL TYPE="">
-				<li><A HREF="BillingSettlement.asp"><B>Billing Settlement</B></A></li>
-<!--				<li><A HREF="ARBillingReport.asp"><B>A/R Billing Report(Personal)</B></A></li>-->
-				<li><A HREF="ARBillingReportAll.asp"><B>A/R Billing Report(Complete)</B></A></li>
-				<li><A HREF="ARPaymentReport.asp"><B>A/R Payment Report</B></A></li>
-				<li><A HREF="ARReminder.asp"><B>A/R Reminder</B></A></li>
-<!--				<li><A HREF="ARAgingReport.asp"><B>A/R Aging Report</B></A></li> -->
-				<li><A HREF="OutstandingReport.asp"><B>Outstanding inquiry</B></A></li>
-				<li><A HREF="TopBillingReport.asp"><B>Top X Bill List</B></A></li>
-				<li><A HREF="UnknownCellphoneReport.asp"><B>Unknown Cellphone Bill Report</B></A></li>
-				<li><A HREF="SupervisorReminder.asp"><B>Supervisor Reminder Report</B></A></li>
+				<li><A HREF="BillingSettlement.asp"><strong>Billing Settlement</strong></A></li>
+<!--				<li><A HREF="ARBillingReport.asp"><strong>A/R Billing Report(Personal)</strong></A></li>-->
+				<li><A HREF="ARBillingReportAll.asp"><strong>A/R Billing Report(Complete)</strong></A></li>
+				<li><A HREF="ARPaymentReport.asp"><strong>A/R Payment Report</strong></A></li>
+				<li><A HREF="ARReminder.asp"><strong>A/R Reminder</strong></A></li>
+<!--				<li><A HREF="ARAgingReport.asp"><strong>A/R Aging Report</strong></A></li> -->
+				<li><A HREF="OutstandingReport.asp"><strong>Outstanding inquiry</strong></A></li>
+				<li><A HREF="TopBillingReport.asp"><strong>Top X Bill List</strong></A></li>
+				<li><A HREF="UnknownCellphoneReport.asp"><strong>Unknown Cellphone Bill Report</strong></A></li>
+				<li><A HREF="SupervisorReminder.asp"><strong>Supervisor Reminder Report</strong></A></li>
 				<li>
-          <A HREF="FiscalDataReport.asp"><B>Fiscal Data Report</B></A>
+          <A HREF="FiscalDataReport.asp"><strong>Fiscal Data Report</strong></A>
         </li>
 			</ul>
 		</li>
 	<%end if%>
 	<%if (UserRole_= "Cashier") or (UserRole_= "Admin") or (UserRole_= "FMC") then %>
-		<br><LI class="normal"><B>FMC Cashier :
+		<br><LI class="normal"><strong>FMC Cashier :
 			<UL TYPE="">
-<!--				<li><A HREF="HomePhonePaymentList.asp"><B>Home Phone</B></A></li> -->
-<!--				<li><A HREF="OfficePhonePaymentList.asp"><B>Office Phone</B></A></li> -->
+<!--				<li><A HREF="HomePhonePaymentList.asp"><strong>Home Phone</strong></A></li> -->
+<!--				<li><A HREF="OfficePhonePaymentList.asp"><strong>Office Phone</strong></A></li> -->
 				<li>
-          <A HREF="PaymentReceiptList.asp"><B>Payment Receipt</B></A>
+          <A HREF="PaymentReceiptList.asp"><strong>Payment Receipt</strong></A>
         </li>
-<!--				<li><A HREF="MonthlyBillListAll.asp"><B>Print Monthly Bill</B></A></li> -->
-<!--				<li><A HREF="MonthlyBillListAll.asp"><B>Monthly Billing Report</B></A></li>-->
+<!--				<li><A HREF="MonthlyBillListAll.asp"><strong>Print Monthly Bill</strong></A></li> -->
+<!--				<li><A HREF="MonthlyBillListAll.asp"><strong>Monthly Billing Report</strong></A></li>-->
 <!--
-				<li><B>Reports :</B>
+				<li><strong>Reports :</strong>
 					<UL TYPE="">    -->
-						<li><A HREF="ARPaymentReport.asp"><B>A/R Payment Report</B></A></li>
-<!--				<li><A HREF="ARReminder.asp"><B>A/R Reminder</B></A></li>-->
-<!--				<li><A HREF="ARAgingReport.asp"><B>A/R Aging Report</B></A></li>
-						<li><A HREF="OutstandingReport.asp"><B>Outstanding inquiry</B></A></li>
+						<li><A HREF="ARPaymentReport.asp"><strong>A/R Payment Report</strong></A></li>
+<!--				<li><A HREF="ARReminder.asp"><strong>A/R Reminder</strong></A></li>-->
+<!--				<li><A HREF="ARAgingReport.asp"><strong>A/R Aging Report</strong></A></li>
+						<li><A HREF="OutstandingReport.asp"><strong>Outstanding inquiry</strong></A></li>
 					</ul>
 				</li>
 
-				<li><A HREF="ExchangeRateList.asp"><B>Exchange Rate</B></A></li>
+				<li><A HREF="ExchangeRateList.asp"><strong>Exchange Rate</strong></A></li>
 -->
 			</ul>
 	<%end if%>
