@@ -119,7 +119,7 @@ TotalBillingDlr_ = 0
 			objMail.To = send_to 	
 '			if ProgressID_ ="7" and EmpID_ <> "2490L" then
 			if ProgressID_ ="7" then
-				objMail.Subject = "Info: zBilling System - No Invoice This Period"
+				objMail.Subject = "Info: eBilling System - No Invoice This Period"
 				objMail.HTMLBody = "<html><head>"
 				ObjMail.HTMLBody = ObjMail.HTMLBody & " "_	
 			
@@ -128,7 +128,7 @@ TotalBillingDlr_ = 0
 					& " </head><body bgcolor='#ffffff'> "_              
 					& " <p><table cellspadding='1' cellspacing='0' width='80%' bgColor='white'>"_ 
 					& "    <tr> "_           
-					& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#999999' size='5'>zBilling System - No Invoice This Period</font></td></tr> "_ 
+					& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#999999' size='5'>eBilling System - No Invoice This Period</font></td></tr> "_ 
 					& "    <tr> "_       
 					& "        <td colspan='6'>&nbsp; </td></tr> "_    
 					& "    <tr> "_           
@@ -215,7 +215,7 @@ TotalBillingDlr_ = 0
 					& " </table></p>"_ 
 					& "</body></html>"
 			else
-				objMail.Subject = "Action Required: zBilling System – Monthly Billing Notification"
+				objMail.Subject = "Action Required: eBilling System – Monthly Billing Notification"
 '				objMail.Subject = "e-Billing System - Monthly Billing Reminder for period " & Period_
 				objMail.HTMLBody = "<html><head>"
 
@@ -227,7 +227,7 @@ TotalBillingDlr_ = 0
 					& " </head><body bgcolor='#ffffff'> "_              
 					& " <p><table cellspadding='1' cellspacing='0' width='80%' bgColor='white'>"_ 
 					& "    <tr> "_           
-					& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#999999' size='5'>zBilling System – Monthly Billing Notification</font></td></tr> "_
+					& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#999999' size='5'>eBilling System – Monthly Billing Notification</font></td></tr> "_
 					& "    <tr> "_       
 					& "        <td colspan='6'>&nbsp; </td></tr> "_       
 					& "    <tr> "_           
@@ -246,7 +246,7 @@ TotalBillingDlr_ = 0
 					& "    <tr> "_           
 					& "        <td colspan='6' class='FontContent'>Please follow the instructions below:</td></tr> "_
 					& "    <tr> "_           
-					& "        <td colspan='6' class='FontContent'>1) Click <a href='"& WebSiteAddress & "/MonthlyBilling.asp?CellPhone=" & MobilePhone_ & "&Month=" & MonthP_ & "&Year=" & YearP_ &"' target='_blank'>here </a> to access the zBilling application.</td></tr> "_
+					& "        <td colspan='6' class='FontContent'>1) Click <a href='"& WebSiteAddress & "/MonthlyBilling.asp?CellPhone=" & MobilePhone_ & "&Month=" & MonthP_ & "&Year=" & YearP_ &"' target='_blank'>here </a> to access the zBilling Application.</td></tr> "_
 					& "    <tr> "_           
 					& "        <td colspan='6' class='FontContent'>2) In the application, this cell phone is registered as a personal one. Click on the <i>View Submitted Bill</i> hyperlink to review your calls.</td></tr> "_
 					& "    <tr> "_           
@@ -262,7 +262,7 @@ TotalBillingDlr_ = 0
 					& "    <tr> "_           
 					& "        <td colspan='6' class='FontContent'><strong>Do NOT</strong> make a payment yet - Please follow the instructions below:</td></tr> "_
 					& "    <tr> "_           
-					& "        <td colspan='6' class='FontContent'>1) Click <a href='"& WebSiteAddress & "/MonthlyBilling.asp?CellPhone=" & MobilePhone_ & "&Month=" & MonthP_ & "&Year=" & YearP_ &"' target='_blank'>here </a> to access the zBilling application.</td></tr> "_
+					& "        <td colspan='6' class='FontContent'>1) Click <a href='"& WebSiteAddress & "/MonthlyBilling.asp?CellPhone=" & MobilePhone_ & "&Month=" & MonthP_ & "&Year=" & YearP_ &"' target='_blank'>here </a> to access the zBilling Application.</td></tr> "_
 					& "    <tr> "_           
 					& "        <td colspan='6' class='FontContent'>2) In the application, click on the <i>Tick your calls</i> hyperlink.</td></tr> "_
 					& "    <tr> "_           

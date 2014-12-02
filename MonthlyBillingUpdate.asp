@@ -72,7 +72,7 @@
 	objMail.To = send_to 
 	'objMail.CC = send_cc
 
-	objMail.Subject = "Action Required: zBilling System � Approval Request"
+	objMail.Subject = "Action Required: eBilling System � Approval Request"
 
 	objMail.HTMLBody = "<html><head>"
 	ObjMail.HTMLBody = ObjMail.HTMLBody & " "_
@@ -85,7 +85,7 @@
 					& " </head><body bgcolor='#ffffff'> "_              
 					& " <p><table cellspadding='1' cellspacing='0' width='80%' bgColor='white'>"_ 
 					& "    <tr> "_           
-					& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#999999' size='5'>zBilling System � Approval Request</font></td></tr> "_
+					& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#999999' size='5'>eBilling System � Approval Request</font></td></tr> "_
 					& "    <tr> "_       
 					& "        <td colspan='6'>&nbsp; </td></tr> "_       
 					& "    <tr> "_           

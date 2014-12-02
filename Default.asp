@@ -52,8 +52,8 @@ end if
 		<LI class="normal"><strong>Employee</strong>
 			<UL TYPE="">
 <!--
-				<li><A HREF="HomePhonzBilling.asp"><strong>Home Phone</strong></A></li>
-				<li><A HREF="OfficePhonzBilling.asp"><strong>Office Phone</strong></A></li>
+				<li><A HREF="HomePhoneBilling.asp"><strong>Home Phone</strong></A></li>
+				<li><A HREF="OfficePhoneBilling.asp"><strong>Office Phone</strong></A></li>
 -->
 				<li><A HREF="MonthlyBilling.asp"><strong>Billing</strong></A></li>
 				<li><A HREF="MonthlyBillingTracking.asp"><strong>Status</strong></A></li>

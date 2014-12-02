@@ -120,7 +120,7 @@ YearP_ = Request.form("YearList")
 			objMail.To = send_to 	
 '			if ProgressID_ ="7" and EmpID_ <> "2490L" then
 			if ProgressID_ ="7" then
-				objMail.Subject = "Info: zBilling System - No Invoice This Period"
+				objMail.Subject = "Info: eBilling System - No Invoice This Period"
 				objMail.HTMLBody = "<html><head>"
 				ObjMail.HTMLBody = ObjMail.HTMLBody & " "_	
 			
@@ -157,7 +157,7 @@ YearP_ = Request.form("YearList")
 		
 					& "</body></html>"
 			else
-				objMail.Subject = "Action Required: zBilling System – Monthly Billing Reminder"
+				objMail.Subject = "Action Required: eBilling System – Monthly Billing Reminder"
 '				objMail.Subject = "e-Billing System - Monthly Billing Reminder for period " & Period_
 				objMail.HTMLBody = "<html><head>"
 
@@ -173,7 +173,7 @@ YearP_ = Request.form("YearList")
 					& "    <tr> "_           
 					& "        <td colspan='6'><strong>Do NOT</strong> make a payment yet - Please follow the instructions below:</td></tr> "_
 					& "    <tr> "_           
-					& "        <td colspan='6'>1) Click <a href='http://zagrebws03:8080/zBilling/MonthlyBilling.asp?Month="& MonthP_ & "&Year=" & YearP_ &"' target='_blank'>here </a> to access the zBilling application.</td></tr> "_
+					& "        <td colspan='6'>1) Click <a href='http://zagrebws03:8080/eBilling/MonthlyBilling.asp?Month="& MonthP_ & "&Year=" & YearP_ &"' target='_blank'>here </a> to access the zBilling Application.</td></tr> "_
 					& "    <tr> "_           
 					& "        <td colspan='6'>2) In the application, click on the CellPhone hyper link.</td></tr> "_
 					& "    <tr> "_           
@@ -300,7 +300,7 @@ YearP_ = Request.form("YearList")
 	
 					& "    <tr> "_       
 					& "        <td colspan='6'> "_
-					& "        <p>You must take action. Click <a href='http://zagrebws03:8080/zBilling/MonthlyBilling.asp?Month="& MonthP_ & "&Year=" & YearP_ &"' target='_blank'>Here </a> to review your invoice.</p></td> "_  
+					& "        <p>You must take action. Click <a href='http://zagrebws03:8080/eBilling/MonthlyBilling.asp?Month="& MonthP_ & "&Year=" & YearP_ &"' target='_blank'>Here </a> to review your invoice.</p></td> "_  
 
 					& "    <tr> "_       
 					& "        <td colspan='6'>&nbsp; </td></tr> "_      

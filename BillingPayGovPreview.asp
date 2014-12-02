@@ -79,7 +79,7 @@ if EmpEmail_ <>"" Then
 	End If
 %>               
 	<center>
-	<IMG SRC='http://zagrebws03:8080/zBilling/images/embassytitle2.jpeg' HEIGHT='80' BORDER='0'><br>
+	<IMG SRC='http://zagrebws03:8080/eBilling/images/embassytitle2.jpeg' HEIGHT='80' BORDER='0'><br>
 	<table cellspadding='1' cellspacing='0' width='100%' bgColor='white'>
 		<tr><td colspan='6'>&nbsp;</td></tr>
 	<tr><td colspan='2' width='50%'>

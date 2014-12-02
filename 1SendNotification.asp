@@ -23,10 +23,10 @@ On Error Resume Next
 <script type="text/javascript">
 function checkall(obj)
 {
-	var c = document.frmCellPhonzBilling.elements.length
-	for (var x=0; x<frmCellPhonzBilling.elements.length; x++)
+	var c = document.frmCellPhoneBilling.elements.length
+	for (var x=0; x<frmCellPhoneBilling.elements.length; x++)
 	{
-		cbElement = frmCellPhonzBilling.elements[x]
+		cbElement = frmCellPhoneBilling.elements[x]
 		if (cbElement.type == "checkbox")
 		{
 			cbElement.checked= obj.checked?true:false
@@ -326,7 +326,7 @@ if ProgressStatus_ = "Bills Generated" Then
 
 %>
 		<div class="details_header">USAGE DETAIL</div>
-		<form method="post" action="1SendNotification.asp?Func=2" name="frmCellPhonzBilling">
+		<form method="post" action="1SendNotification.asp?Func=2" name="frmCellPhoneBilling">
 		<table id="myTable" class="tablesorter">
 		<thead>
 		<tr>
@@ -490,7 +490,7 @@ If Request("cbApproval") <> "" then
 
 
 			if ProgressID_ ="7" then
-				objMail.Subject = "Info: zBilling System - No Invoice This Period"
+				objMail.Subject = "Info: eBilling System - No Invoice This Period"
 				objMail.HTMLBody = "<html><head>"
 				ObjMail.HTMLBody = ObjMail.HTMLBody & " "_
 
@@ -499,7 +499,7 @@ If Request("cbApproval") <> "" then
 					& " </head><body bgcolor='#ffffff'> "_
 					& " <p><table cellspadding='1' cellspacing='0' width='80%' bgColor='white'>"_
 					& "    <tr> "_
-					& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#999999' size='5'>zBilling System - No Invoice This Period</font></td></tr> "_
+					& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#999999' size='5'>eBilling System - No Invoice This Period</font></td></tr> "_
 					& "    <tr> "_
 					& "        <td colspan='6'>&nbsp; </td></tr> "_
 					& "    <tr> "_
@@ -572,7 +572,7 @@ If Request("cbApproval") <> "" then
 
 			else
 
-				objMail.Subject = "Action Required: zBilling System – Monthly Billing Notification"
+				objMail.Subject = "Action Required: eBilling System – Monthly Billing Notification"
 '				objMail.Subject = "e-Billing System - Monthly Billing Reminder for period " & Period_
 				objMail.HTMLBody = "<html><head>"
 
@@ -584,7 +584,7 @@ If Request("cbApproval") <> "" then
 					& " </head><body bgcolor='#ffffff'> "_
 					& " <p><table cellspadding='1' cellspacing='0' width='80%' bgColor='white'>"_
 					& "    <tr> "_
-					& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#999999' size='5'>zBilling System – Monthly Billing Notification</font></td></tr> "_
+					& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#999999' size='5'>eBilling System – Monthly Billing Notification</font></td></tr> "_
 					& "    <tr> "_
 					& "        <td colspan='6'>&nbsp; </td></tr> "_
 					& "    <tr> "_
@@ -596,7 +596,7 @@ If Request("cbApproval") <> "" then
 					& "    <tr> "_
 					& "        <td colspan='6' class='FontContent'>Please follow the instructions below:</td></tr> "_
 					& "    <tr> "_
-					& "        <td colspan='6' class='FontContent'>1) Click <a href='"& WebSiteAddress & "/1MonthlyBilling.asp?CellPhone=" & MobilePhone_ & "&MonthP=" & MonthP_ & "&YearP=" & YearP_ &"' target='_blank'>here </a> to access the zBilling application.</td></tr> "_
+					& "        <td colspan='6' class='FontContent'>1) Click <a href='"& WebSiteAddress & "/1MonthlyBilling.asp?CellPhone=" & MobilePhone_ & "&MonthP=" & MonthP_ & "&YearP=" & YearP_ &"' target='_blank'>here </a> to access the zBilling Application.</td></tr> "_
 					& "    <tr> "_
 					& "        <td colspan='6' class='FontContent'>2) In the application, this cell phone is registered as a personal one.</td></tr> "_
 					& "    <tr> "_
@@ -612,7 +612,7 @@ If Request("cbApproval") <> "" then
 					& "    <tr> "_
 					& "        <td colspan='6' class='FontContent'><strong>Do NOT</strong> make a payment yet - Please follow the instructions below:</td></tr> "_
 					& "    <tr> "_
-					& "        <td colspan='6' class='FontContent'>1) Click <a href='"& WebSiteAddress & "/1MonthlyBilling.asp?CellPhone=" & MobilePhone_ & "&MonthP=" & MonthP_ & "&YearP=" & YearP_ &"' target='_blank'>here </a> to access the zBilling application.</td></tr> "_
+					& "        <td colspan='6' class='FontContent'>1) Click <a href='"& WebSiteAddress & "/1MonthlyBilling.asp?CellPhone=" & MobilePhone_ & "&MonthP=" & MonthP_ & "&YearP=" & YearP_ &"' target='_blank'>here </a> to access the zBilling Application.</td></tr> "_
 					& "    <tr> "_
 					& "        <td colspan='6' class='FontContent'>2) Uncheck any official calls.</td></tr> "_
 					& "    <tr> "_

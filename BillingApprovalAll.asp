@@ -102,7 +102,7 @@
 			objMail.To = send_to 
 			'objMail.CC = send_cc
 
-			objMail.Subject = "Info: zBilling System � Approval Notification"
+			objMail.Subject = "Info: eBilling System � Approval Notification"
 
 
 
@@ -129,7 +129,7 @@
 		& " </head><body bgcolor='#ffffff'> "_              
 		& " <p><table cellspadding='1' cellspacing='0' width='80%' bgColor='white'>"_
 		& "    <tr> "_           
-		& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#999999' size='5'>zBilling Approval Notification</font></td></tr> "_
+		& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#999999' size='5'>eBilling Approval Notification</font></td></tr> "_
 		& "    <tr> "_ 
 		& "        <td colspan='6'>&nbsp; </td></tr> " _
 		& "    <tr> "_           

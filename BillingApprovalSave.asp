@@ -130,11 +130,11 @@
 
 	if (Status_ = "A") Then
 		
-		objMail.Subject = "Info: zBilling System � Approval Notification"
+		objMail.Subject = "Info: eBilling System � Approval Notification"
 
   		ObjMail.HTMLBody = ObjMail.HTMLBody & " "_
 		& "    <tr> "_           
-		& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#999999' size='5'>zBilling Approval Notification</font></td></tr> "_
+		& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#999999' size='5'>eBilling Approval Notification</font></td></tr> "_
 		& "    <tr> "_ 
 		& "        <td colspan='6'>&nbsp; </td></tr> " _
 		& "    <tr> "_           
@@ -142,11 +142,11 @@
 
 	Elseif Status_ = "C" Then
 
-		objMail.Subject = "Info: zBilling System � Correction Notification"
+		objMail.Subject = "Info: eBilling System � Correction Notification"
 
   		ObjMail.HTMLBody = ObjMail.HTMLBody & " "_
 		& "    <tr> "_           
-		& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#990000' size='5'>zBilling Correction Notification</font></td></tr> "_
+		& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#990000' size='5'>eBilling Correction Notification</font></td></tr> "_
 		& "    <tr> "_ 
 		& "        <td colspan='6'>&nbsp; </td></tr> " _
 		& "    <tr> "_           

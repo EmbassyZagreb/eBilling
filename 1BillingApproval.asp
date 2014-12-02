@@ -23,10 +23,10 @@ On Error Resume Next
 <script type="text/javascript">
 function checkall(obj)
 {
-	var c = document.frmCellPhonzBilling.elements.length
-	for (var x=0; x<frmCellPhonzBilling.elements.length; x++)
+	var c = document.frmCellPhoneBilling.elements.length
+	for (var x=0; x<frmCellPhoneBilling.elements.length; x++)
 	{
-		cbElement = frmCellPhonzBilling.elements[x]
+		cbElement = frmCellPhoneBilling.elements[x]
 		if (cbElement.type == "checkbox")
 		{
 			cbElement.checked= obj.checked?true:false
@@ -548,7 +548,7 @@ if ProgressStatus_ <> "Not assigned for this month" Then
 
 
 		<div class="details_header">USAGE DETAIL</div>
-		<form method="post" action="1BillingApproval.asp?Func=2" name="frmCellPhonzBilling">
+		<form method="post" action="1BillingApproval.asp?Func=2" name="frmCellPhoneBilling">
 		<table id="myTable" class="tablesorter">
 		<thead>
 		<tr>
@@ -757,11 +757,11 @@ Case 3
 
 	if (Status_ = "A") Then
 
-		objMail.Subject = "Info: zBilling System – Approval Notification"
+		objMail.Subject = "Info: eBilling System – Approval Notification"
 
   		ObjMail.HTMLBody = ObjMail.HTMLBody & " "_
 		& "    <tr> "_
-		& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#999999' size='5'>zBilling Approval Notification</font></td></tr> "_
+		& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#999999' size='5'>eBilling Approval Notification</font></td></tr> "_
 		& "    <tr> "_
 		& "        <td colspan='6'>&nbsp; </td></tr> " _
 		& "    <tr> "_
@@ -769,11 +769,11 @@ Case 3
 
 	Elseif Status_ = "C" Then
 
-		objMail.Subject = "Info: zBilling System – Correction Notification"
+		objMail.Subject = "Info: eBilling System – Correction Notification"
 
   		ObjMail.HTMLBody = ObjMail.HTMLBody & " "_
 		& "    <tr> "_
-		& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#990000' size='5'>zBilling Correction Notification</font></td></tr> "_
+		& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#990000' size='5'>eBilling Correction Notification</font></td></tr> "_
 		& "    <tr> "_
 		& "        <td colspan='6'>&nbsp; </td></tr> " _
 		& "    <tr> "_

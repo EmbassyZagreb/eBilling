@@ -5,10 +5,10 @@
 <script type="text/javascript">
 function checkall(obj)
 {
-	var c = document.frmCellPhonzBilling.elements.length
-	for (var x=0; x<frmCellPhonzBilling.elements.length; x++)
+	var c = document.frmCellPhoneBilling.elements.length
+	for (var x=0; x<frmCellPhoneBilling.elements.length; x++)
 	{
-		cbElement = frmCellPhonzBilling.elements[x]
+		cbElement = frmCellPhoneBilling.elements[x]
 		if (cbElement.type == "checkbox")
 		{
 			cbElement.checked= obj.checked?true:false
@@ -312,7 +312,7 @@ end if
 		</tr>			
 		</table>
 		</form>
-		<form method="post" action="CellPhoneDetailSave.asp" name="frmCellPhonzBilling"> 
+		<form method="post" action="CellPhoneDetailSave.asp" name="frmCellPhoneBilling"> 
 		<table cellspadding="0" cellspacing="0" bordercolor="#EEEEEE" border="1" width="90%" bgColor="white">  
 		<tr bgcolor="#330099" align="center" cellpadding="0" cellspacing="0" >
 			<TD width="5px"><strong><label STYLE=color:#FFFFFF>No.</label></strong></TD>

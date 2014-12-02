@@ -122,7 +122,7 @@ TotalBillingDlr_ = 0
 			objMail.From = send_from
 			objMail.To = send_to 	
 
-			objMail.Subject = "Action Required: zBilling System – Monthly Billing Reminder"
+			objMail.Subject = "Action Required: eBilling System – Monthly Billing Reminder"
 			objMail.HTMLBody = "<html><head>"
 			ObjMail.HTMLBody = ObjMail.HTMLBody & " "_	
 			& " <title>e-Billing Application</title> "_              

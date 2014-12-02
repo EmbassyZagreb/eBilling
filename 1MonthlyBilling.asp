@@ -23,10 +23,10 @@ On Error Resume Next
 <script type="text/javascript">
 function checkall(obj)
 {
-	var c = document.frmCellPhonzBilling.elements.length
-	for (var x=0; x<frmCellPhonzBilling.elements.length; x++)
+	var c = document.frmCellPhoneBilling.elements.length
+	for (var x=0; x<frmCellPhoneBilling.elements.length; x++)
 	{
-		cbElement = frmCellPhonzBilling.elements[x]
+		cbElement = frmCellPhoneBilling.elements[x]
 		if (cbElement.type == "checkbox")
 		{
 			cbElement.checked= obj.checked?true:false
@@ -530,7 +530,7 @@ if ProgressStatus_ <> "Not assigned for this month" Then
 
 
 		<div class="details_header">USAGE DETAIL</div>
-		<form method="post" action="1MonthlyBilling.asp?Func=2" name="frmCellPhonzBilling">
+		<form method="post" action="1MonthlyBilling.asp?Func=2" name="frmCellPhoneBilling">
 		<table id="myTable" class="tablesorter">
 		<thead>
 		<tr>
@@ -713,7 +713,7 @@ Case 3
 	objMail.To = send_to
 	'objMail.CC = send_cc
 
-	objMail.Subject = "Action Required: zBilling System – Approval Request"
+	objMail.Subject = "Action Required: eBilling System – Approval Request"
 
 	objMail.HTMLBody = "<html><head>"
 	ObjMail.HTMLBody = ObjMail.HTMLBody & " "_
@@ -723,7 +723,7 @@ Case 3
 		& " </head><body bgcolor='#ffffff'> "_
 		& " <p><table cellspadding='1' cellspacing='0' width='80%' bgColor='white'>"_
 		& "    <tr> "_
-		& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#999999' size='5'>zBilling System – Approval Request</font></td></tr> "_
+		& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#999999' size='5'>eBilling System – Approval Request</font></td></tr> "_
 		& "    <tr> "_
 		& "        <td colspan='6'>&nbsp; </td></tr> "_
 		& "    <tr> "_

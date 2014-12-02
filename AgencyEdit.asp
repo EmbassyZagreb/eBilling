@@ -84,7 +84,7 @@ ID_ = request.querystring("ID")
   <tr>
 	<td colspan="3" align="Left" width="20%"><A HREF="Default.asp">Home</A></td>
 	<td align="Right" width="20%"><A HREF="AgencyList.asp">Back</A></td>
-  </tr> 
+  </tr>
   <tr>
   	<td COLSPAN="4"><HR style="LEFT: 10px; TOP: 59px" align=center></td>
    </tr>
@@ -98,21 +98,21 @@ set RS_Query = BillingCon.execute(strsql)
 'response.write RS_Query("RoleID") & "<br>"
 
 
-if (trim(RS_Query("RoleID")) = "Admin") or (trim(RS_Query("RoleID")) = "Voucher") or (trim(RS_Query("RoleID")) = "FMC") then    
+if (trim(RS_Query("RoleID")) = "Admin") or (trim(RS_Query("RoleID")) = "Voucher") or (trim(RS_Query("RoleID")) = "FMC") then
 %>
 	<table align="center">
 	<%
 	   dim rsAgency
-	   strsql = "Select * From AgencyFunding Where AgencyID =" & ID_ 
-	   set rsAgency= server.createobject("adodb.recordset")    
+	   strsql = "Select * From AgencyFunding Where AgencyID =" & ID_
+	   set rsAgency= server.createobject("adodb.recordset")
 	'response.write strsql & "<br>"
-	   set rsAgency= BillingCon.execute(strsql) 	  
+	   set rsAgency= BillingCon.execute(strsql)
 '	   Response.write rsAgency("Disabled")
 	%>
 	<tr>
 		<td align="right">Agency Code:</td>
 		<td align="left"><input name="txtAgencyCode" type="Input" size="8" value='<%=rsAgency("AgencyFundingCode")%>' ></td>
-	</tr>	
+	</tr>
 	<tr>
 		<td align="right">Agency Name :</td>
 		<td align="left"><input name="txtAgencyName" type="Input" size="60" value='<%=rsAgency("AgencyDesc")%>'></td>
@@ -152,7 +152,7 @@ if (trim(RS_Query("RoleID")) = "Admin") or (trim(RS_Query("RoleID")) = "Voucher"
 	<tr>
 		<td colspan=2>&nbsp;</td></tr>
 	</table>
-	
+
 
 <table border="0" bordercolor="#FFFFFF" cellpadding="2" cellspacing="0" width="80%"  class="FontText">
 	<tr>
@@ -161,7 +161,7 @@ if (trim(RS_Query("RoleID")) = "Admin") or (trim(RS_Query("RoleID")) = "Voucher"
 	<tr>
 		<td class="Hint" align="left">*To alter historical data 'Generate Monthly Billing' procedure must be executed. Procedure sets bill to 'Pending' status.</td>
 	</tr>
-</table>	
+</table>
 
 
 
@@ -179,28 +179,28 @@ DataRS.CursorLocation = 3
 DataRS.Open strsql,BillingCon
 'set DataRS=BillingCon.execute(strsql)
 
-dim intPageSize,PageIndex,TotalPages 
-dim RecordCount,RecordNumber,Count 
-intpageSize=10 
+dim intPageSize,PageIndex,TotalPages
+dim RecordCount,RecordNumber,Count
+intpageSize=10
 PageIndex=request("PageIndex")
 
-if PageIndex ="" then PageIndex=1 
+if PageIndex ="" then PageIndex=1
 
 if not DataRS.eof then
-	RecordCount = DataRS.RecordCount   
+	RecordCount = DataRS.RecordCount
 	'response.write RecordCount & "<br>"
-	RecordNumber=(intPageSize * PageIndex) - intPageSize 
+	RecordNumber=(intPageSize * PageIndex) - intPageSize
 	'response.write RecordNumber
-	DataRS.PageSize =intPageSize 
+	DataRS.PageSize =intPageSize
 	DataRS.AbsolutePage = PageIndex
-	TotalPages=DataRS.PageCount 
+	TotalPages=DataRS.PageCount
 	'response.write TotalPages & "<br>"
 End If
 'response.write strsql
 
-dim intPrev,intNext 	
-intPrev=PageIndex - 1 
-intNext=PageIndex +1 
+dim intPrev,intNext
+intPrev=PageIndex - 1
+intNext=PageIndex +1
 
 
 if not DataRS.eof Then
@@ -218,28 +218,28 @@ if not DataRS.eof Then
 
 
     </TR>
-<% 
-   dim no_  
+<%
+   dim no_
    no_ = 1 + ((PageIndex*intPageSize)-intPageSize)
-   Count=1 
+   Count=1
    do while not DataRS.eof   and Count<=intPageSize
-	   if bg="#D7E3F4" then bg="ffffff" else bg="#D7E3F4" 
+	   if bg="#D7E3F4" then bg="ffffff" else bg="#D7E3F4"
 %>
-      
+
 	   <TR bgcolor="<%=bg%>">
-<!--	    <TD align="right">&nbsp;<%= DataRS("MonthP")%>-<%= DataRS("YearP")%></font>&nbsp;</TD> -->		
-		<TD align="right">&nbsp;<a href="AgencyMembers.asp?AgencyID=<%=ID_%>&MonthP=<%= DataRS("MonthP")%>&YearP=<%= DataRS("YearP")%>&AgencyFundingCode=<%=DataRS("AgencyFundingCode")%>&AgencyFundingDesc=<%= DataRS("AgencyFundingDesc")%>&FiscalStripVAT=<%= DataRS("FiscalStripVAT")%>&FiscalStripNonVAT=<%= DataRS("FiscalStripNonVAT")%>" target="_blank"><%= DataRS("MonthP")%>-<%= DataRS("YearP")%></a></font>&nbsp;</TD>		
+<!--	    <TD align="right">&nbsp;<%= DataRS("MonthP")%>-<%= DataRS("YearP")%></font>&nbsp;</TD> -->
+		<TD align="right">&nbsp;<a href="AgencyMembers.asp?AgencyID=<%=ID_%>&MonthP=<%= DataRS("MonthP")%>&YearP=<%= DataRS("YearP")%>&AgencyFundingCode=<%=DataRS("AgencyFundingCode")%>&AgencyFundingDesc=<%= DataRS("AgencyFundingDesc")%>&FiscalStripVAT=<%= DataRS("FiscalStripVAT")%>&FiscalStripNonVAT=<%= DataRS("FiscalStripNonVAT")%>" target="_blank"><%= DataRS("MonthP")%>-<%= DataRS("YearP")%></a></font>&nbsp;</TD>
 	    <TD>&nbsp;<%=DataRS("AgencyFundingCode") %></TD>
 	    <TD>&nbsp;<%=DataRS("AgencyFundingDesc") %> </font></TD>
 		<TD>&nbsp;<%= DataRS("FiscalStripVAT") %></font></TD>
 		<TD>&nbsp;<%= DataRS("FiscalStripNonVAT") %></font></TD>
 	   </TR>
 
-<%   
+<%
 		Count=Count +1
 	   DataRS.movenext
-	   no_ = no_ + 1 
-   loop 
+	   no_ = no_ + 1
+   loop
 	PageNo=1
 %>
 </table>
@@ -247,14 +247,14 @@ if not DataRS.eof Then
 	<tr>
 		<td align="right">
 <%
-		Do while PageNo<=TotalPages 
+		Do while PageNo<=TotalPages
 			if trim(pageNo) = trim(PageIndex) Then
-%>		
+%>
 				<label class="ActivePage"><%=PageNo%></label>&nbsp;
 			<%Else%>
 				<a href="AgencyEdit.asp?PageIndex=<%=PageNo%>&ID=<%=ID_%>&State=E"><%=PageNo%></a>&nbsp;
-<%	
-			End If						
+<%
+			End If
 			PageNo=PageNo+1
 		Loop
 %>
@@ -262,9 +262,9 @@ if not DataRS.eof Then
 	</tr>
 </table>
 <%
-else 
+else
 %>
-	<table cellspadding="1" cellspacing="0" width="100%">  
+	<table cellspadding="1" cellspacing="0" width="100%">
 	<tr>
         	<td><br></TD>
 	</tr>
@@ -276,7 +276,7 @@ else
 	</tr>
 	<tr>
 		<td align="center"><a href="Default.asp"><img src="images/Back.gif" border="0" alt="Go..Back" WIDTH="83" HEIGHT="25"></a></td>
-	</tr>	
+	</tr>
 	</table>
 <% end if %>
 
@@ -287,8 +287,8 @@ else
 
 
 
-	
-	
+
+
 <%Else %>
 	<table>
 		<tr>
