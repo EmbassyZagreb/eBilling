@@ -1,27 +1,35 @@
-/****** Object:  View [dbo].[vwSupervisorReminderRpt]    Script Date: 08/01/2014 13:35:02 ******/
+/****** Object:  View [dbo].[vwSupervisorReminderRpt]    Script Date: 12/02/2014 15:00:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE VIEW [dbo].[vwSupervisorReminderRpt]
 AS
-SELECT     A.EmpID, C.EmpName, C.Agency, C.Office, C.LoginID, A.MonthP, A.YearP, A.HomePhonePrsBillRp, A.OfficePhonePrsBillRp, 
-                      A.PhoneNumber AS MobilePhone, A.CellPhonePrsBillRp, A.TotalShuttleBillRp, ISNULL(A.HomePhonePrsBillRp, 0) + ISNULL(A.OfficePhonePrsBillRp, 0) 
-                      + ISNULL(A.CellPhonePrsBillRp, 0) + ISNULL(A.TotalShuttleBillRp, 0) AS TotalBillingAmountPrsRp, 
-                      CASE WHEN A.ProgressId = 2 THEN ISNULL(DATEDIFF(dd, A.SendMailDate, GETDATE()), 0) ELSE ISNULL(DATEDIFF(dd, A.SendMailDate, 
-                      A.SupervisorApproveDate), 0) END AS Aging, A.SendMailDate, C.EmailAddress, C.AgencyFunding, A.SendMailStatusID, F.SendMailStatusDesc, 
-                      A.ProgressId, ISNULL(G.EmpName, '') AS Supervisor, ISNULL(G.EmailAddress, '') AS SupervisorEmail, A.CellPhoneBillRp
-FROM         dbo.MonthlyBilling AS A LEFT OUTER JOIN
-                      dbo.vwDirectReport AS C ON A.EmpID = C.EmpID LEFT OUTER JOIN
-                      dbo.SendMailStatus AS F ON A.SendMailStatusID = F.SendMailStatusID LEFT OUTER JOIN
-                      dbo.vwDirectReport AS G ON A.SupervisorEmail = G.EmailAddress AND G.Type = 'AMER'
+SELECT DISTINCT 
+                      A.EmpID, B.EmpName, B.Agency, B.Office, B.LoginID, A.MonthP, A.YearP, A.PhoneNumber AS MobilePhone, ROUND(ISNULL(A.CellPhonePrsBillRp, 0) 
+                      * 100, 2) / 100 AS CellPhonePrsBillRp, ((ROUND(ISNULL(A.HomePhonePrsBillRp, 0) * 100, 0) / 100 + ROUND(ISNULL(A.OfficePhonePrsBillRp, 0) * 100, 
+                      0) / 100) + ROUND(ISNULL(A.CellPhonePrsBillRp, 0) * 100, 0) / 100) + ROUND(ISNULL(A.TotalShuttleBillRp, 0) * 100, 0) 
+                      / 100 AS TotalBillingAmountPrsRp, CASE WHEN A.ProgressId = 2 THEN ISNULL(DATEDIFF(dd, A.SendMailDate, GETDATE()), 0) 
+                      ELSE ISNULL(DATEDIFF(dd, A.SendMailDate, A.SupervisorApproveDate), 0) END AS Aging, A.ProgressId, B.SupervisorId AS ReportTo, 
+                      ISNULL(E.EmpName, '') AS Supervisor, CASE WHEN len(isNull(A.SupervisorEmail, '')) < 5 THEN isNull(E.EmailAddress, '') 
+                      ELSE isNull(A.SupervisorEmail, '') END AS SupervisorEmail, CASE WHEN len(B.EmailAddress) < 5 THEN ISNULL(B.AlternateEmail, '') 
+                      ELSE B.EmailAddress END AS EmailAddress, A.SendMailStatusID, F.SendMailStatusDesc, ISNULL(CONVERT(Varchar(15), A.SendMailDate, 106), '') 
+                      AS SendMailDate, (ROUND(ISNULL(A.HomePhonePrsBillDlr, 0), 0) + ROUND(ISNULL(A.OfficePhonePrsBillDlr, 0), 0) 
+                      + ROUND(ISNULL(A.CellPhonePrsBillDlr, 0), 2)) + ROUND(ISNULL(A.TotalShuttleBillRp, 0) * 100, 0) / 100 AS TotalBillingAmountPrsDlr, 
+                      ISNULL(A.AgencyFundingDesc, '') AS AgencyFunding, ROUND(ISNULL(A.CellPhoneBillRp, 0) * 100, 2) / 100 AS CellPhoneBillRp
+FROM         dbo.MonthlyBilling AS A INNER JOIN
+                      dbo.vwPhoneCustomerList AS B ON A.EmpID = B.EmpID LEFT OUTER JOIN
+                      dbo.MsCellPhoneNumber AS D ON A.EmpID = D.EmpID AND D.BillFlag <> 'N' LEFT OUTER JOIN
+                      dbo.ProgressStatus AS C ON A.ProgressId = C.ProgressID LEFT OUTER JOIN
+                      dbo.vwPhoneCustomerList AS E ON B.SupervisorId = E.EmpID LEFT OUTER JOIN
+                      dbo.SendMailStatus AS F ON A.SendMailStatusID = F.SendMailStatusID
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPane1', @value=N'[0E232FF0-B466-11cf-A24F-00AA00A3EFFF, 1.00]
 Begin DesignProperties = 
    Begin PaneConfigurations = 
       Begin PaneConfiguration = 0
          NumPanes = 4
-         Configuration = "(H (1[40] 4[20] 2[20] 3) )"
+         Configuration = "(H (1[20] 4[54] 2[17] 3) )"
       End
       Begin PaneConfiguration = 1
          NumPanes = 3
@@ -95,9 +103,19 @@ Begin DesignProperties =
                Right = 233
             End
             DisplayFlags = 280
-            TopColumn = 11
+            TopColumn = 0
          End
-         Begin Table = "C"
+         Begin Table = "F"
+            Begin Extent = 
+               Top = 6
+               Left = 488
+               Bottom = 84
+               Right = 664
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "B"
             Begin Extent = 
                Top = 6
                Left = 271
@@ -107,22 +125,32 @@ Begin DesignProperties =
             DisplayFlags = 280
             TopColumn = 0
          End
-         Begin Table = "F"
+         Begin Table = "D"
             Begin Extent = 
-               Top = 114
-               Left = 38
-               Bottom = 192
-               Right = 214
+               Top = 6
+               Left = 702
+               Bottom = 114
+               Right = 866
             End
             DisplayFlags = 280
             TopColumn = 0
          End
-         Begin Table = "G"
+         Begin Table = "C"
             Begin Extent = 
                Top = 6
-               Left = 488
+               Left = 904
+               Bottom = 99
+               Right = 1055
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "E"
+            Begin Extent = 
+               Top = 6
+               Left = 1093
                Bottom = 114
-               Right = 667
+               Right = 1272
             End
             DisplayFlags = 280
             TopColumn = 0
@@ -137,10 +165,12 @@ Begin DesignProperties =
    End
    Begin CriteriaPane = 
       Begin ColumnWidths = 11
-         Column = 1440
-         Alias = 900
+         Column = 17700
+         Alias = 2325
          Table = 1170
-         Output = 720
+         ' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'vwSupervisorReminderRpt'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPane2', @value=N'Output = 720
          Append = 1400
          NewValue = 1170
          SortType = 1350
@@ -155,5 +185,5 @@ Begin DesignProperties =
 End
 ' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'vwSupervisorReminderRpt'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPaneCount', @value=1 , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'vwSupervisorReminderRpt'
+EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPaneCount', @value=2 , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'vwSupervisorReminderRpt'
 GO

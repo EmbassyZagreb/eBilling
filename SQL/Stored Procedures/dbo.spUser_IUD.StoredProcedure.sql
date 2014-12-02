@@ -1,7 +1,7 @@
-/****** Object:  StoredProcedure [dbo].[spUser_IUD]    Script Date: 08/01/2014 13:31:26 ******/
+/****** Object:  StoredProcedure [dbo].[spUser_IUD]    Script Date: 12/02/2014 15:00:24 ******/
 SET ANSI_NULLS ON
 GO
-SET QUOTED_IDENTIFIER ON
+SET QUOTED_IDENTIFIER OFF
 GO
 CREATE PROCEDURE [dbo].[spUser_IUD] 
 	(@Mode Varchar(1),

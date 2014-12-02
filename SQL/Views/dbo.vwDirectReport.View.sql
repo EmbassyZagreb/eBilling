@@ -1,8 +1,9 @@
-/****** Object:  View [dbo].[vwDirectReport]    Script Date: 08/01/2014 13:35:01 ******/
+/****** Object:  View [dbo].[vwDirectReport]    Script Date: 12/02/2014 15:00:27 ******/
 SET ANSI_NULLS ON
 GO
-SET QUOTED_IDENTIFIER ON
+SET QUOTED_IDENTIFIER OFF
 GO
+-- Update vwDirectReport
 CREATE VIEW [dbo].[vwDirectReport]
 AS
 SELECT DISTINCT 
@@ -10,7 +11,11 @@ SELECT DISTINCT
                       'GSO/Procur', 'GSO/SH-CUS', 'GSO/SHIP', 'GSO/TRAV', 'GSO/WH-SUP', 'HR', 'IM', 'IM/Mail', 'IM/Mail/FP', 'IM/Prog', 'IM/REC', 'IM/TEL/MAI', 
                       'IM/TEL/RAD', 'ISC', 'MGMT') THEN 'MGT' ELSE A.Office END AS SectionGroup, ISNULL(WorkingTitle, '') AS WorkingTitle, EmpType AS Type, 
                       SupervisorId AS ReportToID, ISNULL(SupervisorName, '') AS ReportToName, EmailAddress, LoginID, AlternateEmail, AgencyID, AgencyFundingCode, 
-                      AgencyFunding, Status, CASE WHEN A.[Status] = 'C' THEN 'Current' WHEN A.[Status] = 'D' THEN 'Departed' ELSE '' END AS StatusName, Remark
+                      AgencyFunding, Status, CASE WHEN A.[Status] = 'C' THEN 'Current' WHEN A.[Status] = 'D' THEN 'Departed' ELSE '' END AS StatusName, Remark, 
+                      CASE WHEN
+                          (SELECT     COUNT(EmpID)
+                            FROM          MonthlyBilling B
+                            WHERE      B.EmpID = A.EmpID) > 0 THEN 'Y' ELSE 'N' END AS ExistInMonthlyBilling
 FROM         dbo.vwPhoneCustomerList AS A
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPane1', @value=N'[0E232FF0-B466-11cf-A24F-00AA00A3EFFF, 1.00]
@@ -18,7 +23,7 @@ Begin DesignProperties =
    Begin PaneConfigurations = 
       Begin PaneConfiguration = 0
          NumPanes = 4
-         Configuration = "(H (1[34] 4[38] 2[21] 3) )"
+         Configuration = "(H (1[41] 4[33] 2[21] 3) )"
       End
       Begin PaneConfiguration = 1
          NumPanes = 3
@@ -92,7 +97,17 @@ Begin DesignProperties =
                Right = 189
             End
             DisplayFlags = 280
-            TopColumn = 0
+            TopColumn = 9
+         End
+         Begin Table = "B"
+            Begin Extent = 
+               Top = 6
+               Left = 227
+               Bottom = 194
+               Right = 378
+            End
+            DisplayFlags = 280
+            TopColumn = 7
          End
       End
    End
@@ -118,8 +133,8 @@ Begin DesignProperties =
    End
    Begin CriteriaPane = 
       Begin ColumnWidths = 11
-         Column = 3195
-         Alias = 1755
+         Column = 2280
+         Alias = 2205
          Table = 1170
          Output = 720
          Append = 1400

@@ -1,8 +1,9 @@
-/****** Object:  View [dbo].[vwUnknownCellphoneBill]    Script Date: 08/01/2014 13:35:02 ******/
+/****** Object:  View [dbo].[vwUnknownCellphoneBill]    Script Date: 12/02/2014 15:00:32 ******/
 SET ANSI_NULLS ON
 GO
-SET QUOTED_IDENTIFIER ON
+SET QUOTED_IDENTIFIER OFF
 GO
+-- Update vwUnknownCellphoneBill
 CREATE View [dbo].[vwUnknownCellphoneBill]
 As
 /*

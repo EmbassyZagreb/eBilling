@@ -1,9 +1,9 @@
-USE [dev-eBilling]
+USE [test-eBilling]
 GO
-/****** Object:  StoredProcedure [dbo].[spAgency_IUD]    Script Date: 08/01/2014 13:31:25 ******/
+/****** Object:  StoredProcedure [dbo].[spAgency_IUD]    Script Date: 12/02/2014 15:00:11 ******/
 SET ANSI_NULLS ON
 GO
-SET QUOTED_IDENTIFIER ON
+SET QUOTED_IDENTIFIER OFF
 GO
 CREATE PROCEDURE [dbo].[spAgency_IUD]
 	(@Mode varchar(1),

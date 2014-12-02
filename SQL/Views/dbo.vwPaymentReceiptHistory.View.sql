@@ -1,8 +1,9 @@
-/****** Object:  View [dbo].[vwPaymentReceiptHistory]    Script Date: 08/01/2014 13:35:02 ******/
+/****** Object:  View [dbo].[vwPaymentReceiptHistory]    Script Date: 12/02/2014 15:00:29 ******/
 SET ANSI_NULLS ON
 GO
-SET QUOTED_IDENTIFIER ON
+SET QUOTED_IDENTIFIER OFF
 GO
+-- Update vwPaymentReceiptHistory
 CREATE VIEW [dbo].[vwPaymentReceiptHistory]
 AS
 SELECT     EmpID, MonthP, YearP, PhoneNumber, ReceiptNo, 
@@ -78,20 +79,10 @@ Begin DesignProperties =
    End
    Begin DiagramPane = 
       Begin Origin = 
-         Top = -96
+         Top = 0
          Left = 0
       End
       Begin Tables = 
-         Begin Table = "PaymentReceipt"
-            Begin Extent = 
-               Top = 102
-               Left = 38
-               Bottom = 210
-               Right = 190
-            End
-            DisplayFlags = 280
-            TopColumn = 2
-         End
       End
    End
    Begin SQLPane = 

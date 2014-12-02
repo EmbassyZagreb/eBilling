@@ -1,24 +1,25 @@
-/****** Object:  View [dbo].[vwFundingDataReport]    Script Date: 08/01/2014 13:35:01 ******/
+/****** Object:  View [dbo].[vwFundingDataReport]    Script Date: 12/02/2014 15:00:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
+/* Update vwFundingDataReport*/
 CREATE VIEW [dbo].[vwFundingDataReport]
 AS
 SELECT     A.EmpID, A.MonthP, A.YearP, A.EmpName, A.Agency, ISNULL(A.Office, '') AS Office, A.WorkingTitle, A.MobilePhone, A.AgencyID, 
-                      ISNULL(A.AgencyFundingCode, '') AS AgencyFundingCode, ISNULL(A.AgencyFunding, '') AS AgencyFunding, ISNULL(A.FiscalStripVAT, '') 
-                      AS FiscalStripVAT, ISNULL(A.FiscalStripNonVAT, '') AS FiscalStripNonVAT, ISNULL(B.PPN, 0) AS VAT, ISNULL(B.TOTBILLAMOUNT, 0) - ISNULL(B.PPN, 0) 
-                      AS NonVAT, ISNULL(B.TOTBILLAMOUNT, 0) AS Total, ISNULL(B.TOTOUTAMOUNT, 0) AS TotalVip
+                      ISNULL(A.AgencyFundingCode, '') AS AgencyFundingCode, ISNULL(A.AgencyFundingDesc, '') AS AgencyFunding, ISNULL(A.FiscalStripVAT, '') 
+                      AS FiscalStripVAT, ISNULL(A.FiscalStripNonVAT, '') AS FiscalStripNonVAT, ISNULL(B.PPN, 0) AS VAT, ISNULL(B.TOTOUTAMOUNT, 0) - ISNULL(B.PPN, 0) 
+                      AS NonVAT, ISNULL(B.TOTOUTAMOUNT, 0) AS Total, ISNULL(B.TOTOUTAMOUNT, 0) AS TotalVip
 FROM         dbo.vwMonthlyBilling AS A LEFT OUTER JOIN
                       dbo.CellPhoneHd AS B ON A.MobilePhone = B.PHONENUMBER AND A.MonthP = B.MonthP AND A.YearP = B.YearP
-WHERE     (ISNULL(B.TOTBILLAMOUNT, 0) > 0)
+WHERE     (ISNULL(B.TOTOUTAMOUNT, 0) > 0)
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPane1', @value=N'[0E232FF0-B466-11cf-A24F-00AA00A3EFFF, 1.00]
 Begin DesignProperties = 
    Begin PaneConfigurations = 
       Begin PaneConfiguration = 0
          NumPanes = 4
-         Configuration = "(H (1[29] 4[45] 2[19] 3) )"
+         Configuration = "(H (1[31] 4[39] 2[11] 3) )"
       End
       Begin PaneConfiguration = 1
          NumPanes = 3
@@ -102,7 +103,7 @@ Begin DesignProperties =
                Right = 448
             End
             DisplayFlags = 280
-            TopColumn = 69
+            TopColumn = 0
          End
       End
    End
@@ -114,7 +115,7 @@ Begin DesignProperties =
    End
    Begin CriteriaPane = 
       Begin ColumnWidths = 11
-         Column = 3240
+         Column = 4590
          Alias = 900
          Table = 1170
          Output = 720

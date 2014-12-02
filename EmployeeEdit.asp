@@ -244,8 +244,8 @@ function validate_form()
 	  <td>Type :</td>
 	  <td>
 		  <select name="cmbType">
-			<option value="AMER" <%if Type_ ="AMER" Then %>Selected<%End If%>>AMER</option>
-			<option value="LES" <%if Type_ ="LES" Then %>Selected<%End If%>>LES</option>
+			<option value="AMER" <%if Type_ ="AMER" Then %>Selected<%End If%>>Supervisor</option>
+			<option value="LES" <%if Type_ ="LES" Then %>Selected<%End If%>>Regular</option>
 		  </select>&nbsp;&nbsp;* Only an American can be the supervisor
 	  </td>
 	</tr>

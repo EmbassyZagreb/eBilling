@@ -1,8 +1,9 @@
-/****** Object:  View [dbo].[vwProgressSummary]    Script Date: 08/01/2014 13:35:02 ******/
+/****** Object:  View [dbo].[vwProgressSummary]    Script Date: 12/02/2014 15:00:30 ******/
 SET ANSI_NULLS ON
 GO
-SET QUOTED_IDENTIFIER ON
+SET QUOTED_IDENTIFIER OFF
 GO
+-- Update vwProgressSummary
 CREATE View [dbo].[vwProgressSummary]
 As
 Select A.MonthP, A.YearP, ProgressID, ProgressDesc, COUNT(EmpID) As TotalRecord, SUM(TotalBillingRp) As TotalBill

@@ -1,8 +1,9 @@
-/****** Object:  View [dbo].[vwUserList]    Script Date: 08/01/2014 13:35:02 ******/
+/****** Object:  View [dbo].[vwUserList]    Script Date: 12/02/2014 15:00:32 ******/
 SET ANSI_NULLS ON
 GO
-SET QUOTED_IDENTIFIER ON
+SET QUOTED_IDENTIFIER OFF
 GO
+-- Update vwUserList
 CREATE View [dbo].[vwUserList]
 As
 Select A.LoginId, ISNULL(B.EmpName,'') As EmployeeName

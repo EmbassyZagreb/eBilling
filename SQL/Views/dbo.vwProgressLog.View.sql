@@ -1,8 +1,9 @@
-/****** Object:  View [dbo].[vwProgressLog]    Script Date: 08/01/2014 13:35:02 ******/
+/****** Object:  View [dbo].[vwProgressLog]    Script Date: 12/02/2014 15:00:30 ******/
 SET ANSI_NULLS ON
 GO
-SET QUOTED_IDENTIFIER ON
+SET QUOTED_IDENTIFIER OFF
 GO
+-- Update vwProgressLog
 CREATE VIEW [dbo].[vwProgressLog]
 AS
 SELECT     dbo.ProgressLog.MonthP, dbo.ProgressLog.YearP, dbo.ProgressLog.ProgressID, dbo.ProgressStatus.ProgressDesc AS Description, 

@@ -1,9 +1,10 @@
-/****** Object:  View [dbo].[vwCellphoneHd]    Script Date: 08/01/2014 13:35:01 ******/
+/****** Object:  View [dbo].[vwCellphoneHd]    Script Date: 12/02/2014 15:00:26 ******/
 SET ANSI_NULLS ON
 GO
-SET QUOTED_IDENTIFIER ON
+SET QUOTED_IDENTIFIER OFF
 GO
-Create VIEW [dbo].[vwCellphoneHd]
+-- Update vwCellphoneHd
+CREATE VIEW [dbo].[vwCellphoneHd]
 AS
 SELECT     ID AS CellphoneID, MonthP, YearP, PhoneNumber, ISNULL(CARFORBAL, 0) AS PreviousBalance
 	, ISNULL(NETPAY, 0) AS Payment, ISNULL(TOTADJUST, 0) AS Adjustment, ISNULL(OPENBAL, 0) AS BalanceDue

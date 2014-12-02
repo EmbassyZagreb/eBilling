@@ -20,6 +20,8 @@
    </TR>
   </TABLE>
 <% 
+BillingCon.CommandTimeout = 120
+
 
 if AlwaysExemptedCallType_ = "" or IsNull(AlwaysExemptedCallType_) Then AlwaysExemptedCallType_ = "t#is $tR!ng !$ uN&e|ivea&|e"
 if ExemptedIfOfficialCallType_ = "" or IsNull(ExemptedIfOfficialCallType_) Then ExemptedIfOfficialCallType_ = "t#is $tR!ng !$ uN&e|ivea&|e"
@@ -31,10 +33,10 @@ if ExemptedIfOfficialCallType_ = "" or IsNull(ExemptedIfOfficialCallType_) Then 
  
 user_ = request.servervariables("remote_user")
 user1_ = user_  'user1_ = right(user_,len(user_)-4)
-strsql = "select * from Users where loginId='" & user1_ & "'"
+strsql3 = "select * from Users where loginId='" & user1_ & "'"
 set RS_Query = server.createobject("adodb.recordset")
 'response.write strsql & "<br>"
-set RS_Query = BillingCon.execute(strsql)
+set RS_Query = BillingCon.execute(strsql3)
 
 if not RS_Query.eof then
 	UserRole_ = RS_Query("RoleID")
@@ -49,8 +51,8 @@ YearP = Request.Form("YearList")
 'EmpID = Request.Form("cmbEmp")
 MobilePhone = Request.Form("cmbMobilePhone")
  
-strsql = "select * from ExchangeRate where ExchangeMonth='" & MonthP & "' and ExchangeYear='" & YearP & "'"
-set RS_Query = BillingCon.execute(strsql)
+strsql2 = "select * from ExchangeRate where ExchangeMonth='" & MonthP & "' and ExchangeYear='" & YearP & "'"
+set RS_Query = BillingCon.execute(strsql2)
 If RS_Query.eof then
 
 '********************  added to avoid exchange rate info  ******************** 
@@ -67,15 +69,15 @@ If RS_Query.eof then
 	'response.write "<div class='Hint'>Please input exchange rate for period :<b> " & MonthP & " - " & YearP & "</b>, before generates monthly bill !!!</div>"
 'else
 end if
-	'strsql = "Exec spGenerateMonthlyBilling '" & MonthP & "','" & YearP & "','" & EmpID & "','%" & AlwaysExemptedCallType_ & "%','%" & ExemptedIfOfficialCallType_ & "%'"
+
 	strsql = "Exec spGenerateMonthlyBilling '" & MonthP & "','" & YearP & "','" & MobilePhone & "','%" & AlwaysExemptedCallType_ & "%','%" & ExemptedIfOfficialCallType_ & "%','" & user1_ & "'"
 	set RS_Query = BillingCon.execute(strsql)
 	response.write "<div class='Hint2'>Process generates monthly bill completed !!!</div>"
 
-	'strsql = "Select * from vwProgressSummary Where MonthP='" & MonthP & "' and YearP='" & YearP & "' order by ProgressDesc"
-	strsql = "Select * from vwProgressLog Where MonthP='" & MonthP & "' and YearP='" & YearP & "' order by Description"
+
+	strsql1 = "Select * from vwProgressLog Where MonthP='" & MonthP & "' and YearP='" & YearP & "' order by Description"
 	set SummaryRS = server.createobject("adodb.recordset")
-	set SummaryRS = BillingCon.execute(strsql)
+	set SummaryRS = BillingCon.execute(strsql1)
 '	response.write strsql 
 	if not SummaryRS.eof then
 %>
@@ -127,7 +129,10 @@ end if
 		<div align="center"><a href="GenerateMonthlyBillProcessExport.asp?MonthP=<%=MonthP%>&YearP=<%=YearP%>">Save Log</a></div>
 <%
 	end if
-'end if
+	'Close the connection with the database and free all database resources
+	Set RS_Query = Nothing
+	BillingCon.Close
+	Set BillingCon = Nothing
 %>
 </BODY>
 </html>
