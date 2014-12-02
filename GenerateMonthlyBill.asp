@@ -3,7 +3,7 @@
 <html>
 <head>
 <script language="JavaScript" src="calendar.js"></script>
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 <script language="javascript">
@@ -200,11 +200,13 @@ end if
 				set EmpRS = BillingCon.execute(strsql)
 '				response.write strStr 
 %>	
-				<Select name="cmbEmp">
+<!--			<Select name="cmbEmp">  -->
+				<Select name="cmbMobilePhone">
 					<Option value=''>--All--</Option>
 <%				Do While not EmpRS.eof 
 %>
-					<Option value='<%=EmpRS("EmpID")%>' <%if trim(EmpID_) = trim(EmpRS("EmpID")) then %>Selected<%End If%> ><%=EmpRS("EmpName")%> -<%=EmpRS("MobilePhone")%></Option>
+<!--				<Option value='<%=EmpRS("EmpID")%>' <%if trim(EmpID_) = trim(EmpRS("EmpID")) then %>Selected<%End If%> ><%=EmpRS("EmpName")%> -<%=EmpRS("MobilePhone")%></Option> -->
+					<Option value='<%=EmpRS("MobilePhone")%>' <%if trim(EmpID_) = trim(EmpRS("EmpID")) then %>Selected<%End If%> ><%=EmpRS("EmpName")%> -<%=EmpRS("MobilePhone")%></Option>
 					
 <%					EmpRS.MoveNext
 				Loop%>
@@ -238,7 +240,11 @@ end if
 <tr>
 	<td>Please <a href="http://zagrebws03.eur.state.sbu/WebPASS/eservices/MainPage.asp">Submit Request </a> or contact Zagreb ISC Helpdesk at ext.3333.</td>
 </tr>
-<%end if %>
+<%end if
+	'Close the connection with the database and free all database resources
+	BillingCon.Close
+	Set BillingCon = Nothing
+ %>
 </table>
 </form>
 </BODY>

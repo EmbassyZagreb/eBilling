@@ -2,7 +2,7 @@
 <HEAD>
 <!--#include file="connect.inc" -->
 <!--METADATA TYPE="typelib" UUID="CD000000-8B95-11D1-82DB-00C04FB1625D"  NAME="CDO for Windows 2000 Library" --> 
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
@@ -23,7 +23,8 @@
 		'response.write loopIndex & "<br>"
 		X = len(loopIndex)
 		'response.write X & "<br>"
-		EmpID_ = Left(loopIndex, X-6)
+		'EmpID_ = Left(loopIndex, X-6)
+		MobilePhone_ = Left(loopIndex, X-6)
 		'response.write EmpID_ & "<br>"
 		Period = right(loopIndex,6)
 		MonthP_ = left(Period,2)
@@ -34,7 +35,7 @@
 '		response.write strsql & "<Br>"  
 		'BillingCon.execute(strsql) 
 
-		strsql = "Select * from vwMonthlyBilling Where EmpID='" & EmpID_ & "' and MonthP='" & MonthP_ & "' and YearP='" & YearP_ & "'"
+		strsql = "Select * from vwMonthlyBilling Where MobilePhone='" & MobilePhone_ & "' and MonthP='" & MonthP_ & "' and YearP='" & YearP_ & "'"
 		'response.write strsql & "<br>"
 		set rsData = server.createobject("adodb.recordset") 
 		set rsData = BillingCon.execute(strsql) 
@@ -49,7 +50,7 @@
 			Position_ = rsData("WorkingTitle")
 			'OfficePhone_ = rsData("WorkPhone")
 			'HomePhone_ = rsData("HomePhone")
-			MobilePhone_ = rsData("MobilePhone")	
+			'MobilePhone_ = rsData("MobilePhone")	
 			EmpEmail_ = rsData("EmailAddress")
 			LoginID_ = rsData("LoginID")
 			FiscalDataVAT_ = rsData("FiscalStripVAT")
@@ -72,7 +73,7 @@
 		End if
 
 		'Update MonthlyBill
-		strsql = "Update MonthlyBilling Set ProgressId=" & ProgressId_ & ", ProgressIdDate=GetDate(), SupervisorRemark='" & Remark_ & "', SupervisorApproveDate='" & Date() & "' Where EmpID='" & EmpID_ & "' And MonthP='" & MonthP_ & "' And YearP='" & YearP_ &"'"
+		strsql = "Update MonthlyBilling Set ProgressId=" & ProgressId_ & ", ProgressIdDate=GetDate(), SupervisorRemark='" & Remark_ & "', SupervisorApproveDate='" & Date() & "' Where PhoneNumber='" & MobilePhone_ & "' And MonthP='" & MonthP_ & "' And YearP='" & YearP_ &"'"
 		BillingCon.execute(strsql)
 		'response.write strsql
 
@@ -101,7 +102,7 @@
 			objMail.To = send_to 
 			'objMail.CC = send_cc
 
-			objMail.Subject = "Info: eBilling System ďż˝ Approval Notification"
+			objMail.Subject = "Info: eBilling System – Approval Notification"
 
 
 

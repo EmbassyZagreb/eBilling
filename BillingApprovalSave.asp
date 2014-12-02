@@ -3,7 +3,7 @@
 <!--#include file="connect.inc" -->
 <!--METADATA TYPE="typelib" UUID="CD000000-8B95-11D1-82DB-00C04FB1625D"  NAME="CDO for Windows 2000 Library" --> 
 
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </HEAD>
@@ -31,6 +31,8 @@
    'response.write YearP_ & "<br>"
    EmpEmail_ = Request.Form("txtEmpEmail")
    'response.write EmpEmail_ & "<br>"
+
+   MobilePhone_ = replace(Request.Form("txtMobilePhone"),"'","''")
 
    EmpID_ = replace(Request.Form("txtEmpID"),"'","''")
   ' response.write EmpID_ & "<br>"
@@ -64,14 +66,14 @@
    end if
 
 	'3. SAVING TO Billing Header
-	strsql = "Update MonthlyBilling Set ProgressId=" & ProgressId_ & ", ProgressIdDate=GetDate(), SupervisorRemark='" & Remark_ & "', SupervisorApproveDate='" & Date() & "' Where EmpID='" & EmpID_ & "' And MonthP='" & MonthP_ & "' And YearP='" & YearP_ &"'"
+	strsql = "Update MonthlyBilling Set ProgressId=" & ProgressId_ & ", ProgressIdDate=GetDate(), SupervisorRemark='" & Remark_ & "', SupervisorApproveDate='" & Date() & "' Where PhoneNumber='" & MobilePhone_ & "' And MonthP='" & MonthP_ & "' And YearP='" & YearP_ &"'"
 '	strsql = "Update BillingHd Set Status='" & Status_ & "', SpvRemark='" & Remark_ & "', SpvApprovalDate='" & Date() & "' Where Extension='" & Extension_ & "' And MonthP='" & MonthP_ & "' And YearP='" & YearP_ & "'"
 	BillingCon.execute(strsql)
 	'response.write strsql
 %>
 
 <%
-	strsql = "Select * From vwMonthlyBilling Where EmpID='" & EmpID_ & "' and MonthP='" & MonthP_ & "' and YearP='" & YearP_ & "'"
+	strsql = "Select * From vwMonthlyBilling Where MobilePhone='" & MobilePhone_ & "' and MonthP='" & MonthP_ & "' and YearP='" & YearP_ & "'"
 	'response.write BillType_ & "<Br>"  
 	'response.write strsql & "<Br>"  
 	set rsData = server.createobject("adodb.recordset") 
@@ -85,7 +87,7 @@
 			Position_ = rsData("WorkingTitle")
 			'OfficePhone_ = rsData("WorkPhone")
 			'HomePhone_ = rsData("HomePhone")
-			MobilePhone_ = rsData("MobilePhone")
+			'MobilePhone_ = rsData("MobilePhone")
 			CellPhoneBillRp_ = rsData("CellPhoneBillRp")
 			CellPhoneBillDlr_ = rsData("CellPhoneBillDlr")
 			CellPhonePrsBillRp_ = rsData("CellPhonePrsBillRp")
@@ -128,7 +130,7 @@
 
 	if (Status_ = "A") Then
 		
-		objMail.Subject = "Info: eBilling System ďż˝ Approval Notification"
+		objMail.Subject = "Info: eBilling System – Approval Notification"
 
   		ObjMail.HTMLBody = ObjMail.HTMLBody & " "_
 		& "    <tr> "_           
@@ -140,7 +142,7 @@
 
 	Elseif Status_ = "C" Then
 
-		objMail.Subject = "Info: eBilling System ďż˝ Correction Notification"
+		objMail.Subject = "Info: eBilling System – Correction Notification"
 
   		ObjMail.HTMLBody = ObjMail.HTMLBody & " "_
 		& "    <tr> "_           

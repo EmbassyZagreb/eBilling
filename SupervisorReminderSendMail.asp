@@ -2,7 +2,7 @@
 <HEAD>
 <!--#include file="connect.inc" -->
 <!--METADATA TYPE="typelib" UUID="CD000000-8B95-11D1-82DB-00C04FB1625D"  NAME="CDO for Windows 2000 Library" --> 
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </HEAD>
@@ -87,7 +87,7 @@ TotalBillingDlr_ = 0
 		'response.write send_to
 		objMail.From = send_from
 		objMail.To = send_to 	
-		objMail.Subject = "Action Required: eBilling System ďż˝ Approval Request Repeat Notice"
+		objMail.Subject = "Action Required: eBilling System – Approval Request Repeat Notice"
 		objMail.HTMLBody = "<html><head>"
 		ObjMail.HTMLBody = ObjMail.HTMLBody & " "_	
 	
@@ -96,7 +96,7 @@ TotalBillingDlr_ = 0
 					& " </head><body bgcolor='#ffffff'> "_              
 					& " <p><table cellspadding='1' cellspacing='0' width='80%' bgColor='white'>"_ 
 					& "    <tr> "_           
-					& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#999999' size='5'>eBilling System ďż˝ Supervisor Reminder</font></td></tr> "_
+					& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#999999' size='5'>eBilling System – Supervisor Reminder</font></td></tr> "_
 					& "    <tr> "_       
 					& "        <td colspan='6'>&nbsp; </td></tr> "_       
 					& "    <tr> "_           

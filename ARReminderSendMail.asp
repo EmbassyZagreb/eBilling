@@ -2,7 +2,7 @@
 <HEAD>
 <!--#include file="connect.inc" -->
 <!--METADATA TYPE="typelib" UUID="CD000000-8B95-11D1-82DB-00C04FB1625D"  NAME="CDO for Windows 2000 Library" --> 
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </HEAD>
@@ -53,14 +53,14 @@ TotalBillingDlr_ = 0
 		'response.write loopIndex & "<br>"
 		X = len(loopIndex)
 		'response.write X & "<br>"
-		EmpID_ = Left(loopIndex, X-6)
+		MobilePhone_ = Left(loopIndex, X-6)
 		'response.write EmpID_ & "<br>"
 		Period = right(loopIndex,6)
 		MonthP_ = left(Period,2)
 		'response.write MonthP_ & "<br>"
 		YearP_ = Right(Period,4)
 		'response.write YearP_ & "<br>"
-		strsql = "Select * From vwMonthlyBilling Where EmpID='" & EmpID_ & "' And MonthP='" & MonthP_ & "' and YearP='" & YearP_ & "'"
+		strsql = "Select * From vwMonthlyBilling Where MobilePhone='" & MobilePhone_ & "' And MonthP='" & MonthP_ & "' and YearP='" & YearP_ & "'"
 '		response.write strsql & "<Br>"  
 		set rsData = server.createobject("adodb.recordset") 
 		set rsData = BillingCon.execute(strsql)
@@ -69,9 +69,9 @@ TotalBillingDlr_ = 0
 			EmpName_ = rsData("EmpName")
 			Office_ = rsData("Agency") & " - " & rsData("Office")
 			Position_ = rsData("WorkingTitle")
-			OfficePhone_ = rsData("WorkPhone")
-			HomePhone_ = rsData("HomePhone")
-			MobilePhone_ = rsData("MobilePhone")
+			'OfficePhone_ = rsData("WorkPhone")
+			'HomePhone_ = rsData("HomePhone")
+			'MobilePhone_ = rsData("MobilePhone")
 			ExchangeRate_ = rsData("ExchangeRate")
 			HomePhoneBillRp_ = rsData("HomePhoneBillRp")
 			HomePhoneBillDlr_ = rsData("HomePhoneBillDlr")
@@ -101,7 +101,7 @@ TotalBillingDlr_ = 0
 		'response.write send_to
 		objMail.From = send_from
 		objMail.To = send_to 	
-		objMail.Subject = "Action Required: eBilling System ďż˝ Monthly Billing Repeat Notice"
+		objMail.Subject = "Action Required: eBilling System – Monthly Billing Repeat Notice"
 		objMail.HTMLBody = "<html><head>"
 		ObjMail.HTMLBody = ObjMail.HTMLBody & " "_	
 	

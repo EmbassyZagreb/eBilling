@@ -163,7 +163,7 @@ end if
 
 
 %>
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 
@@ -294,7 +294,8 @@ If (UserRole_ = "Admin") or (UserRole_ = "Voucher") or (UserRole_ = "FMC") or (U
 			<td>:</td>
 			<td>
 <%
- 				strsql ="select EmpID, EmpName, MobilePhone from vwPhoneCustomerList Where MobilePhone <> '' order by EmpName"
+ 				'strsql ="select EmpID, EmpName, MobilePhone from vwPhoneCustomerList Where MobilePhone <> '' order by EmpName"
+ 				strsql ="select distinct EmpID, EmpName from vwPhoneCustomerList Where MobilePhone <> '' order by EmpName"				
 				set EmpRS = server.createobject("adodb.recordset")
 				set EmpRS = BillingCon.execute(strsql)
 '				response.write strStr 
@@ -303,7 +304,7 @@ If (UserRole_ = "Admin") or (UserRole_ = "Voucher") or (UserRole_ = "FMC") or (U
 					<Option value='X'>--All--</Option>
 <%				Do While not EmpRS.eof 
 %>
-					<Option value='<%=EmpRS("EmpID")%>' <%if trim(EmpID_) = trim(EmpRS("EmpID")) then %>Selected<%End If%> ><%=EmpRS("EmpName")%> - <%=EmpRS("MobilePhone")%></Option>
+					<Option value='<%=EmpRS("EmpID")%>' <%if trim(EmpID_) = trim(EmpRS("EmpID")) then %>Selected<%End If%> ><%=EmpRS("EmpName")%></Option>
 					
 <%					EmpRS.MoveNext
 				Loop%>
@@ -485,20 +486,12 @@ if not DataRS.eof Then
 			-
 <%		End If %>
 		&nbsp;</td>
-<!--		<td align="right">
-<%		If CDbl(DataRS("TotalShuttleBillRp")) > 0 Then %>
-			<a href="ShuttleBusBillDetail.asp?Username=<%=DataRS("LoginID") %>&MonthP=<%= DataRS("MonthP")%>&YearP=<%= DataRS("YearP")%>" target="_blank"><%= formatnumber(DataRS("TotalShuttleBillRp"),-1) %></a>
-<%		Else %>
-			-
-<%		End If %>
-		&nbsp;</td>
-	        <TD align="right"><%= formatnumber(DataRS("TotalBillingAmountPrsRp"),-1) %>&nbsp;</font></TD> -->
 	        <TD>&nbsp;<%=DataRS("Aging") %> </font></TD>
 	        <TD>&nbsp;<%=DataRS("EmailAddress") %> </font></TD>
 	        <TD>&nbsp;<%=DataRS("SendMailStatusDesc") %> </font></TD>
 		<td align="center">
 <%		If len(DataRS("EmailAddress"))>5 then %>
-			<Input type="Checkbox" name="cbApproval" Value='<%=DataRS("EmpID")%><%=DataRS("MonthP")%><%=DataRS("YearP")%>'>
+			<Input type="Checkbox" name="cbApproval" Value='<%=DataRS("MobilePhone")%><%=DataRS("MonthP")%><%=DataRS("YearP")%>'>
 <%		Else%>
 			&nbsp;
 <%		End If%>

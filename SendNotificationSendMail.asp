@@ -2,7 +2,7 @@
 <HEAD>
 <!--#include file="connect.inc" -->
 <!--METADATA TYPE="typelib" UUID="CD000000-8B95-11D1-82DB-00C04FB1625D"  NAME="CDO for Windows 2000 Library" --> 
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </HEAD>
@@ -52,7 +52,8 @@ TotalBillingDlr_ = 0
 		'response.write loopIndex & "<br>"
 		X = len(loopIndex)
 		'response.write X & "<br>"
-		EmpID_ = Left(loopIndex, X-7)
+		MobilePhone_ = Left(loopIndex, X-7)
+		'EmpID_ = Left(loopIndex, X-7)
 		'response.write EmpID_ & "<br>"
 		Period = mid(loopIndex,X-6,6)
 		MonthP_ = left(Period,2)
@@ -60,7 +61,7 @@ TotalBillingDlr_ = 0
 		YearP_ = Right(Period,4)
 		BillType_ = Right(loopIndex,1)
 		'response.write YearP_ & "<br>"
-		strsql = "Select * From vwMonthlyBilling Where EmpID='" & EmpID_ & "' And MonthP='" & MonthP_ & "' and YearP='" & YearP_ & "'"
+		strsql = "Select * From vwMonthlyBilling Where MobilePhone='" & MobilePhone_ & "' And MonthP='" & MonthP_ & "' and YearP='" & YearP_ & "'"
 		'response.write BillType_ & "<Br>"  
 		'response.write strsql & "<Br>"  
 		set rsData = server.createobject("adodb.recordset") 
@@ -72,7 +73,7 @@ TotalBillingDlr_ = 0
 			Position_ = rsData("WorkingTitle")
 			'OfficePhone_ = rsData("WorkPhone")
 			'HomePhone_ = rsData("HomePhone")
-			MobilePhone_ = rsData("MobilePhone")
+			'MobilePhone_ = rsData("MobilePhone")
 			ExchangeRate_ = rsData("ExchangeRate")
 			HomePhoneBillRp_ = rsData("HomePhoneBillRp")
 			HomePhoneBillDlr_ = rsData("HomePhoneBillDlr")
@@ -214,7 +215,7 @@ TotalBillingDlr_ = 0
 					& " </table></p>"_ 
 					& "</body></html>"
 			else
-				objMail.Subject = "Action Required: eBilling System – Monthly Billing Reminder"
+				objMail.Subject = "Action Required: eBilling System – Monthly Billing Notification"
 '				objMail.Subject = "e-Billing System - Monthly Billing Reminder for period " & Period_
 				objMail.HTMLBody = "<html><head>"
 
@@ -226,7 +227,7 @@ TotalBillingDlr_ = 0
 					& " </head><body bgcolor='#ffffff'> "_              
 					& " <p><table cellspadding='1' cellspacing='0' width='80%' bgColor='white'>"_ 
 					& "    <tr> "_           
-					& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#999999' size='5'>eBilling System – Monthly Billing Reminder</font></td></tr> "_
+					& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#999999' size='5'>eBilling System – Monthly Billing Notification</font></td></tr> "_
 					& "    <tr> "_       
 					& "        <td colspan='6'>&nbsp; </td></tr> "_       
 					& "    <tr> "_           
@@ -564,7 +565,7 @@ TotalBillingDlr_ = 0
 				objMail.Send
 
 '			strsql = "Execute spSendNotificationUpdate '" & EmpID_ & "','" & MonthP_ & "','" & YearP_ & "','" & AlternateEmailFlag_ & "'"
-			strsql = "Execute spSendNotificationUpdate '" & EmpID_ & "','" & MonthP_ & "','" & YearP_ & "'"
+			strsql = "Execute spSendNotificationUpdate '" & MobilePhone_ & "','" & MonthP_ & "','" & YearP_ & "'"
 			'response.write strsql & "<Br>"  
 			set rsData = server.createobject("adodb.recordset") 
 			set rsData = BillingCon.execute(strsql)					

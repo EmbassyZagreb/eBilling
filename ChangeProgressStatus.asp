@@ -15,13 +15,14 @@
 
 EmpID_ = trim(Request("EmpID"))
 'response.write "HomePhone_  :" & HomePhone_ & "<br>"
+MobilePhone_ = trim(Request("Cellphone"))
 MonthP_ = Request("MonthP")
 'response.write MonthP_ & "<br>"
 YearP_ = Request("YearP")
 'response.write YearP_ & "<br>"
 
 %> 
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </HEAD>
@@ -39,7 +40,8 @@ YearP_ = Request("YearP")
 
 <form method="post" action="ChangeProgressStatusSave.asp" name="frmStatus"> 
 <%  
-	 strsql = "Select * from vwMonthlyBilling Where EmpID='" & EmpID_ & "' And MonthP='" & MonthP_ & "' And YearP='" & YearP_ & "'"
+	 'strsql = "Select * from vwMonthlyBilling Where EmpID='" & EmpID_ & "' And MonthP='" & MonthP_ & "' And YearP='" & YearP_ & "'"
+	 strsql = "Select * from vwMonthlyBilling Where EmpID='" & EmpID_ & "' And MobilePhone='" & MobilePhone_ & "' And MonthP='" & MonthP_ & "' And YearP='" & YearP_ & "'"
 	'response.write strsql & "<br>"
 	set rsData = server.createobject("adodb.recordset") 
 	set rsData = BillingCon.execute(strsql) 
@@ -52,7 +54,7 @@ YearP_ = Request("YearP")
 		Position_ = rsData("WorkingTitle")
 		'OfficePhone_ = rsData("WorkPhone")
 		'HomePhone_ = rsData("HomePhone")
-		MobilePhone_ = rsData("MobilePhone")
+		'MobilePhone_ = rsData("MobilePhone")
 		HomePhonePrsBillRp_ = rsData("HomePhonePrsBillRp")
 		OfficePhonePrsBillRp_ = rsData("OfficePhonePrsBillRp")
 		CellPhonePrsBillRp_ = rsData("CellPhonePrsBillRp")
@@ -141,6 +143,7 @@ YearP_ = Request("YearP")
   <td></td>
   <td><input type="submit" name="btnSubmit" value="Update">
       <input type="hidden" name="txtEmpID" value='<%=EmpID_  %>'>
+	  <input type="hidden" name="txtCellphone" value='<%=MobilePhone_  %>'>
       <input type="hidden" name="txtMonthP" value='<%=MonthP_  %>'>
       <input type="hidden" name="txtYearP" value='<%=YearP_  %>'>
       &nbsp;<input type="button" value="Cancel" name="btnCancel" onClick="window.close()">

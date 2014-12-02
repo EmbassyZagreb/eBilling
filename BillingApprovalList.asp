@@ -84,7 +84,7 @@ if ProgressID ="" then
 	end if
 end if
 %> 
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </HEAD>
@@ -231,7 +231,7 @@ if not DataRS.eof Then
 	        <TD align="right"><%=no_ %>&nbsp;</font></TD>
 	        <TD>&nbsp;
 		<%if DataRS("ProgressID")=2 then %>
-			<A HREF="BillingApproval.asp?EmpID=<%= DataRS("EmpID")%>&Month=<%=DataRS("MonthP")%>&Year=<%=DataRS("YearP")%>&LoginID=<%=DataRS("LoginID")%>"><%=DataRS("EmpName") %></A>
+			<A HREF="BillingApproval.asp?EmpID=<%= DataRS("EmpID")%>&Month=<%=DataRS("MonthP")%>&Year=<%=DataRS("YearP")%>&MobilePhone=<%=DataRS("MobilePhone")%>"><%=DataRS("EmpName") %></A>
 		<%else%>
 			<%=DataRS("EmpName") %>
 		<%end if%>
@@ -243,7 +243,7 @@ if not DataRS.eof Then
 		<TD>&nbsp;<%= DataRS("ProgressDesc") %></font></TD>
 		<td align="center">
 			<%if DataRS("ProgressID")=2 then%>
-				<Input type="Checkbox" name="cbApproval" Value='<%=DataRS("EmpID")%><%=DataRS("MonthP")%><%=DataRS("YearP")%>'>
+				<Input type="Checkbox" name="cbApproval" Value='<%=DataRS("MobilePhone")%><%=DataRS("MonthP")%><%=DataRS("YearP")%>'>
 			<%else%>
 				&nbsp;
 			<%end if%>

@@ -1,7 +1,7 @@
 <%@ Language=VBScript%>
 <% ' VI 6.0 Scripting Object Model Enabled %>
-
-
+ 
+ 
 <html>
 <head>
 
@@ -15,7 +15,7 @@ function ValidateForm()
 	valid = true;
 	nRec = 0;
 	for (var x=0; x<frmData.elements.length; x++)
-	{
+	{	
 		cbElement = frmData.elements[x]
 		if ((cbElement.checked) && (cbElement.name=="cbPrint"))
 		{
@@ -24,7 +24,7 @@ function ValidateForm()
 	}
 	if (nRec == 0)
 	{
-		alert("Please select data that you want to print!!!");
+		alert("Please select data that you want to print !!!");
 		valid = false;
 	}
 	return valid;
@@ -71,30 +71,30 @@ sMonthP = request("sMonthP")
 
 if sMonthP = "" Then sMonthP = Request.Form("sMonthList")
 if sMonthP = "" then
-	sMonthP = curMonth_
+	sMonthP = curMonth_ 
 end if
 'response.write sMonthP
 
 sYearP = request("sYearP")
 if sYearP ="" Then sYearP = Request.Form("sYearList")
 if sYearP ="" then
-	sYearP = curYear_
+	sYearP = curYear_ 
 end if
 
 eMonthP = request("eMonthP")
 if eMonthP = "" Then eMonthP = Request.Form("eMonthList")
 if eMonthP = "" then
-	eMonthP = curMonth_
+	eMonthP = curMonth_ 
 end if
 
 eYearP = request("eYearP")
 if eYearP = "" Then eYearP = Request.Form("eYearList")
 if eYearP = "" then
-	eYearP = curYear_
+	eYearP = curYear_ 
 end if
 
 %>
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </HEAD>
@@ -112,7 +112,7 @@ end if
 
 <%
 
-dim rs
+dim rs 
 dim strsql
 %>
 <form method="post" name="frmSearch" Action="MonthlyBillList.asp">
@@ -124,7 +124,7 @@ dim strsql
 			<td height="25" colspan=6"><strong>&nbsp;<span class="style5">Criteria(s): </span></strong></td>
 		</tr>
 		<tr>
-			<td width="15%" align="right">&nbsp;Period&nbsp;</td>
+			<td width="15%" align="right">&nbsp;Period&nbsp;</td>				
 			<td>:</td>
 			<td colspan="3">
 				<Select name="sMonthList">
@@ -148,9 +148,9 @@ dim strsql
 				<Select name="sYearList">
 <% 				Do While Year_ <= Year(Date()) %>
 				<Option value='<%=Year_%>' <%if trim(Year_) = trim(sYearP) then %>Selected<%End If%> ><%=Year_%></Option>
-<%
+<% 
 			Year_ = Year_ + 1
-			Loop %>
+			Loop %>	
 				</Select>&nbsp;to&nbsp;
 				<Select name="eMonthList">
 					<Option value="01" <%if eMonthP ="01" then %>Selected<%End If%>>January</Option>
@@ -173,9 +173,9 @@ dim strsql
 				<Select name="eYearList">
 <% 				Do While Year_ <= Year(Date()) %>
 				<Option value='<%=Year_%>' <%if trim(Year_) = trim(eYearP) then %>Selected<%End If%> ><%=Year_%></Option>
-<%
+<% 
 			Year_ = Year_ + 1
-			Loop %>
+			Loop %>	
 				</Select>
 			</td>
 			<td>
@@ -184,13 +184,13 @@ dim strsql
 		</tr>
 		</table>
 	</td>
-</tr>
+</tr>	
 </table>
 </form>
 <%
 sPeriod = sYearP&sMonthP
 ePeriod = eYearP&eMonthP
-'response.write sPeriod & ePeriod
+'response.write sPeriod & ePeriod 
 'strsql = "Select * From vwMonthlyBilling Where ProgressID=5 and YearP+MonthP>='" & sPeriod & "' and YearP+MonthP<='" & ePeriod & "'"
 strsql = "Select * From vwMonthlyBilling Where YearP+MonthP>='" & sPeriod & "' and YearP+MonthP<='" & ePeriod & "' and LoginId='" & user1_ & "'"
 
@@ -201,28 +201,28 @@ DataRS.CursorLocation = 3
 DataRS.Open strsql,BillingCon
 'set DataRS=BillingCon.execute(strsql)
 
-dim intPageSize,PageIndex,TotalPages
-dim RecordCount,RecordNumber,Count
-intpageSize=50
+dim intPageSize,PageIndex,TotalPages 
+dim RecordCount,RecordNumber,Count 
+intpageSize=50 
 PageIndex=request("PageIndex")
 
-if PageIndex ="" then PageIndex=1
+if PageIndex ="" then PageIndex=1 
 
 if not DataRS.eof then
-	RecordCount = DataRS.RecordCount
+	RecordCount = DataRS.RecordCount   
 	'response.write RecordCount & "<br>"
-	RecordNumber=(intPageSize * PageIndex) - intPageSize
+	RecordNumber=(intPageSize * PageIndex) - intPageSize 
 	'response.write RecordNumber
-	DataRS.PageSize =intPageSize
+	DataRS.PageSize =intPageSize 
 	DataRS.AbsolutePage = PageIndex
-	TotalPages=DataRS.PageCount
+	TotalPages=DataRS.PageCount 
 	'response.write TotalPages & "<br>"
 End If
 'response.write strsql
 
-dim intPrev,intNext
-intPrev=PageIndex - 1
-intNext=PageIndex +1
+dim intPrev,intNext 	
+intPrev=PageIndex - 1 
+intNext=PageIndex +1 
 
 
 if not DataRS.eof Then
@@ -245,7 +245,7 @@ if not DataRS.eof Then
 	 <TD colspan="5"><strong><label STYLE=color:#FFFFFF>Billing Amount (Kn.)</label></strong></TD>
 <!--
          <TD rowspan="2"><strong><label STYLE=color:#FFFFFF>Paid Date</label></strong></TD>
-         <TD rowspan="2"><strong><label STYLE=color:#FFFFFF>Receipt No.</label></strong></TD>
+         <TD rowspan="2"><strong><label STYLE=color:#FFFFFF>Receipt No.</label></strong></TD>		
 -->
 <!--
 	 <TD rowspan="2" Width="3%">
@@ -261,14 +261,14 @@ if not DataRS.eof Then
          <TD width="8%"><strong><label STYLE=color:#FFFFFF>Total</label></strong></TD>
     </tr>
 
-<%
-   dim no_
+<% 
+   dim no_  
    no_ = 1 + ((PageIndex*intPageSize)-intPageSize)
-   Count=1
+   Count=1 
    do while not DataRS.eof   and Count<=intPageSize
-	   if bg="#D7E3F4" then bg="ffffff" else bg="#D7E3F4"
+	   if bg="#D7E3F4" then bg="ffffff" else bg="#D7E3F4" 
 %>
-
+      
 	   <TR bgcolor="<%=bg%>">
 	        <TD align="right"><%=no_ %>&nbsp;</font></TD>
 	        <TD>&nbsp;<%=DataRS("EmpName") %></TD>
@@ -314,11 +314,11 @@ if not DataRS.eof Then
 -->
 	   </TR>
 
-<%
+<%   
 		Count=Count +1
 	   DataRS.movenext
-	   no_ = no_ + 1
-   loop
+	   no_ = no_ + 1 
+   loop 
 	PageNo=1
 %>
 </table>
@@ -326,14 +326,14 @@ if not DataRS.eof Then
 	<tr>
 		<td align="right">
 <%
-		Do while PageNo<=TotalPages
+		Do while PageNo<=TotalPages 
 			if trim(pageNo) = trim(PageIndex) Then
-%>
+%>		
 				<label class="ActivePage"><%=PageNo%></label>&nbsp;
 			<%Else%>
 				<a href="ARPaymentReport.asp?PageIndex=<%=PageNo%>&sMonthP=<%=sMonthP%>&sYearP=<%=sYearP%>&eMonthP=<%=eMonthP%>&eYearP=<%=eYearP%>"><%=PageNo%></a>&nbsp;
-<%
-			End If
+<%	
+			End If						
 			PageNo=PageNo+1
 		Loop
 %>
@@ -342,9 +342,9 @@ if not DataRS.eof Then
 </table>
 </form>
 <%
-else
+else 
 %>
-	<table cellspadding="1" cellspacing="0" width="100%">
+	<table cellspadding="1" cellspacing="0" width="100%">  
 	<tr>
         	<td><br></TD>
 	</tr>
@@ -356,9 +356,11 @@ else
 	</tr>
 	<tr>
 		<td align="center"><a href="Default.asp"><img src="images/Back.gif" border="0" alt="Go..Back" WIDTH="83" HEIGHT="25"></a></td>
-	</tr>
+	</tr>	
 	</table>
 <% end if %>
-</body>
+</body> 
 
 </html>
+
+

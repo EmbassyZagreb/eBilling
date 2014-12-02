@@ -1,0 +1,1 @@
+UPDATE MsEmployee SET LoginID = 'EUR\' + LoginID WHERE LoginID<>''

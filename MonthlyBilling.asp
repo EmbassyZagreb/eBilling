@@ -24,7 +24,7 @@ function validate_form()
 
 	if (document.frmMonthlyBilling.cmbSupervisor.value == "" )
 	{
-		msg = "Please fill in your supervisor mail!!!\n"
+		msg = "Please fill in your supervisor mail !!!\n"		
 		valid = false;
 	}
 
@@ -35,7 +35,7 @@ function validate_form()
 	return valid;
 }
 </script>
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 
@@ -52,20 +52,20 @@ function validate_form()
   	<TD COLSPAN="4"><HR style="LEFT: 10px; TOP: 59px" align=center></TD>
    </TR>
   </TABLE>
-<%
- dim user_
- dim user1_
- dim rst
+<% 
+ dim user_ 
+ dim user1_  
+ dim rst 
  dim strsql
-
-user_ = request.servervariables("remote_user")
-user1_ = right(user_,len(user_)-10)
+ 
+user_ = request.servervariables("remote_user") 
+user1_ = user_  'user1_ = right(user_,len(user_)-4)
 'user1_ = "pranataw"
 'response.write user1_ & "<br>"
 
 strsql = "Select Max(YearP+MonthP) As Period From vwMonthlyBilling Where LoginID='" & user1_ & "'"
 'response.write strsql & "<br>"
-set rsPeriod = server.createobject("adodb.recordset")
+set rsPeriod = server.createobject("adodb.recordset") 
 set rsPeriod = BillingCon.execute(strsql)
 if not rsPeriod.eof Then
 	Period_ = rsPeriod("Period")
@@ -89,7 +89,7 @@ MonthP = Request("MonthP")
 if MonthP ="" then
 	MonthP = Request.Form("MonthList")
 	if MonthP ="" then
-		MonthP = curMonth_
+		MonthP = curMonth_ 
 	end if
 end if
 
@@ -97,7 +97,7 @@ YearP = Request("YearP")
 if YearP ="" then
 	YearP = Request.Form("YearList")
 	if YearP ="" then
-		YearP = curYear_
+		YearP = curYear_ 
 	end if
 end if
 
@@ -109,7 +109,7 @@ end if
 
 				strsql = "Select Distinct MobilePhone From vwMonthlyBilling Where LoginID='" & user1_ & "'"
 				'response.write strsql & "<br>"
-				set rsNumber = server.createobject("adodb.recordset")
+				set rsNumber = server.createobject("adodb.recordset") 
 				set rsNumber = BillingCon.execute(strsql)
 				if not rsNumber.eof then
 					MobilePhoneNumberFirst_ = rsNumber("MobilePhone")
@@ -121,7 +121,7 @@ If MobilePhoneNumberP = "" Then MobilePhoneNumberP = MobilePhoneNumberFirst_
 
 
 
-%>
+%> 
 <table cellspadding="1" cellspacing="0" width="65%" border="1" align="center">
 <tr align="Center">
 	<td colspan="2" align="center">
@@ -131,7 +131,7 @@ If MobilePhoneNumberP = "" Then MobilePhoneNumberP = MobilePhoneNumberFirst_
 			<td height="25" colspan="5"><strong>&nbsp;<span class="style5">Search &amp; Sort By </span></strong></td>
 		</tr>
 		<tr>
-			<td>&nbsp;Period :</td>
+			<td>&nbsp;Period :</td>				
 			<td>
 				<Select name="MonthList">
 					<Option value="01" <%if MonthP ="01" then %>Selected<%End If%> >January</Option>
@@ -154,32 +154,32 @@ If MobilePhoneNumberP = "" Then MobilePhoneNumberP = MobilePhoneNumberFirst_
 
 				<Select name="YearList">
 <% 				Do While Year_ <= Year(Date()) %>
-				<Option value='<%=Year_%>' <%if trim(Year_) = trim(YearP) then %>Selected<%End If%> ><%=Year_%></Option>
-<%
+				<Option value='<%=Year_%>' <%if trim(Year_) = trim(YearP) then %>Selected<%End If%> ><%=Year_%></Option>		
+<% 
 					Year_ = Year_ + 1
-				Loop %>
-				</Select>
+				Loop %>	
+				</Select>										
 			</td>
 
-			<td align="Right">Mobile Phone :</td>
+			<td align="Right">Mobile Phone :</td>				
 
 
 			<td>
 			<%	if not rsNumber.eof then  %>
-				<select name="NumberList">
+				<select name="NumberList">					
 			<%
 				do while not rsNumber.eof
-					MobilePhoneNumber_ = rsNumber("MobilePhone")
+					MobilePhoneNumber_ = rsNumber("MobilePhone")							    
 			%>
 					<OPTION value='<%=MobilePhoneNumber_%>'  <%if trim(MobilePhoneNumberP) = trim(MobilePhoneNumber_) then %>Selected<%End If%> >  <%= MobilePhoneNumber_  %></Option>
 			<%
 					rsNumber.MoveNext
-				Loop%>
+				Loop%>				
 				</select>&nbsp;
 			<% Else %>
 				Number not assigned to you for this month
 			<% End If %>
-
+			
 			</td>
 
 
@@ -188,14 +188,14 @@ If MobilePhoneNumberP = "" Then MobilePhoneNumberP = MobilePhoneNumberFirst_
 				<input type="Button" name="btnBack" value="Back" onClick="javascript:history.go(-1);">
 				<input type="submit" name="Submit" value="Search">
 			</td>
-		</tr>
+		</tr>			
 		</table>
 		</form>
 	</td>
-</tr>
+</tr>	
 </table>
-<form method="post" action="MonthlyBillingUpdate.asp" name="frmMonthlyBilling" onSubmit="return validate_form()">
-<table cellspadding="1" cellspacing="0" width="65%" bgColor="white">
+<form method="post" action="MonthlyBillingUpdate.asp" name="frmMonthlyBilling" onSubmit="return validate_form()"> 
+<table cellspadding="1" cellspacing="0" width="65%" bgColor="white">  
 <%
 HomePhoneBillRp_ = 0
 HomePhoneBillDlr_ = 0
@@ -219,8 +219,8 @@ TotalBillingDlr_ = 0
 'strsql = "Exec spGetMonthlyBill '" & user1_ & "','" & MonthP & "','" & YearP & "'"
 strsql = "Select * from vwMonthlyBilling Where LoginID='" & user1_ & "' And MonthP='" & MonthP & "' And YearP='" & YearP & "' And MobilePhone='" & MobilePhoneNumberP & "'"
 'response.write strsql & "<br>"
-set rsData = server.createobject("adodb.recordset")
-set rsData = BillingCon.execute(strsql)
+set rsData = server.createobject("adodb.recordset") 
+set rsData = BillingCon.execute(strsql) 
 Period_ = MonthP & " - " & YearP
 'response.write Period_  & "<br>"
 if not rsData.eof then
@@ -259,7 +259,7 @@ if not rsData.eof then
 	TotalBillingPrsAmount_ = rsData("TotalBillingAmountPrsRp")
 	TotalBillingAmountPrsDlr_ = rsData("TotalBillingAmountPrsDlr")
 '	response.write "TotalBilling: " & TotalBillingPrsAmount_ & "<br>"
-'	response.write SupervisorEmail_
+'	response.write SupervisorEmail_ 
 %>
 
 <!-- <tr>
@@ -267,7 +267,7 @@ if not rsData.eof then
 </tr> -->
 <tr>
           <td colspan="6" align="Left"><u><b>Personal Info :<b></u></TD>
-</tr>
+</tr>  
 <!-- <tr>
 	<td width="20%">Employee Name</td>
 	<td width="1%">:</td>
@@ -278,7 +278,7 @@ if not rsData.eof then
 </tr> -->
 <tr>
 	<td colspan="6" align="Left">
-	<table cellspadding="1" border="2" bordercolor="black" cellspacing="3" width="100%" bgColor="#999999" border="0">
+	<table cellspadding="1" border="2" bordercolor="black" cellspacing="3" width="100%" bgColor="#999999" border="0">  
 
 		<tr BGCOLOR="#999999">
 			<td colspan="3" style="border: none;"><FONT color=#FFFFFF><b>Employee Name : <%=EmpName_%></b></font></td>
@@ -332,7 +332,7 @@ if not rsData.eof then
 </tr>
 <tr>
 	<td align="Left" colspan="6">
-	<table cellspadding="1" border="1" bordercolor="black" cellspacing="0" width="100%" bgColor="white" border="0">
+	<table cellspadding="1" border="1" bordercolor="black" cellspacing="0" width="100%" bgColor="white" border="0">  
 	<tr align="center" height=26>
 		<td width=20%><b>Action</b></td>
 		<td width=20%><b>Billing Period</b></td>
@@ -345,7 +345,7 @@ if not rsData.eof then
 		<td><a href="OfficePhoneDetail.asp?Extension=<%=OfficePhone_ %>&MonthP=<%=MonthP%>&YearP=<%=YearP%>" target="_blank">Office Phone</a></td>
 		<td width="20%" class="FontContent" align="right"><%=formatnumber(OfficePhoneBillRp_,-1) %>&nbsp;</td>
 		<td width="20%" class="FontContent" align="right"><%=formatnumber(OfficePhonePrsBillRp_ ,-1) %>&nbsp;</td>
-		<td width="20%" class="FontContent" align="right"><%=formatnumber(OfficePhonePrsBillDlr_,-1) %>&nbsp;</td>
+		<td width="20%" class="FontContent" align="right"><%=formatnumber(OfficePhonePrsBillDlr_,-1) %>&nbsp;</td>		
 	</tr>
 <%else%>
 	<tr>
@@ -423,12 +423,12 @@ if not rsData.eof then
 		<td width="240px" class="FontContent" align="right"><b><u><%=formatnumber(TotalBillingPrsAmount_ , -1) %></u></b>&nbsp;</td>
 		<td width="250px" class="FontContent" align="right"><b><u><%=formatnumber(TotalBillingAmountPrsDlr_ ,-1) %></u></b>&nbsp;</td>
 	</tr>
-	</table>
+	</table>	
 	</td>
 </tr> -->
 <tr>
 	<td colspan="6">
-		<table cellspadding="1" cellspacing="0" bgColor="white" width="100%">
+		<table cellspadding="1" cellspacing="0" bgColor="white" width="100%">  
 		<tr>
 			<td width="12%"><b>Supervisor</b></td>
 			<td width="1%">:</td>
@@ -438,19 +438,20 @@ if not rsData.eof then
 			<%
 				'strsql = "Select EmailAddress, LastName, FirstName, Office, WorkingTitle From vwPhoneCustomerList Where Type='Amer' and EmailAddress<>'' Order by LastName"
 				'strsql = "Select EmailAddress, EmpName, Office, WorkingTitle From vwPhoneCustomerList Where len(EmailAddress)>5 and EmpType<>'Dummy' Order by EmpName"
-				strsql = "Select EmailAddress, EmpName, Office, WorkingTitle From vwPhoneCustomerList Where len(EmailAddress)>5 and EmpType = 'AMER' Order by EmpName"
+				'strsql = "Select EmailAddress, EmpName, Office, WorkingTitle From vwPhoneCustomerList Where len(EmailAddress)>5 and EmpType = 'AMER' Order by EmpName"
+				strsql = "Select EmailAddress, EmpName, Office, WorkingTitle From vwDirectReport Where len(EmailAddress)>5 and Type = 'AMER' Order by EmpName"
 				'response.write strsql & "<br>"
-				set rsSPV = server.createobject("adodb.recordset")
-				set rsSPV = BillingCon.execute(strsql)
+				set rsSPV = server.createobject("adodb.recordset") 
+				set rsSPV = BillingCon.execute(strsql)				
 				do while not rsSPV.eof
-					Ename_ = rsSPV("EmpName") & "(" & rsSPV("Office") & "-" & rsSPV("WorkingTitle") & ")"
+					Ename_ = rsSPV("EmpName") & "(" & rsSPV("Office") & "-" & rsSPV("WorkingTitle") & ")"							    
 			%>
 					<OPTION value=<%=rsSPV("EmailAddress")%> <%if trim(SupervisorEmail_) = trim(rsSPV("EmailAddress")) then %> Selected<%End If%>  >  <%= EName_  %>
 			<%
 					rsSPV.MoveNext
-				Loop%>
+				Loop%>				
 				</select>
-			</td>
+			</td>			
 		</tr>
 		<tr>
 			<td valign="top"><b>Note</b></td>
@@ -484,7 +485,7 @@ if not rsData.eof then
 </tr>
 <%		if (ProgressID_ = 1) or (ProgressID_ = 3) then%>
 <tr>
-	<td colspan="6" align="center">
+	<td colspan="6" align="center">	
 <!--
 		<input type="submit" name="btnSubmit" Value="Save" />&nbsp;&nbsp;
 		<input type="submit" name="btnSubmit" Value="Save & Submit to Supervisor" />
@@ -508,7 +509,7 @@ if not rsData.eof then
 
 Else%>
 <tr>
-	<td colspan="6" align="center">there is not data.</td>
+	<td colspan="6" align="center">there is not data.</td>	
 </tr>
 <% end if %>
 <tr>
@@ -522,7 +523,7 @@ strsql = "Select * From vwMonthlyBilling Where LoginID ='" & user1_ & "' and (Pr
 set AwaitingRS = BillingCon.execute(strsql)
 
 %>
-<table cellspadding="1" cellspacing="0" width="65%" bgColor="white">
+<table cellspadding="1" cellspacing="0" width="65%" bgColor="white">  
 <tr>
 	<td align="Left"><u><b>Accumulated Debt :</b></u></TD>
 </tr>
@@ -534,7 +535,7 @@ if not AwaitingRS.eof Then
 </tr>
 <tr>
 	<td align="Left">
-	<table cellspadding="1" border="1" bordercolor="black" cellspacing="0" width="100%" bgColor="white" border="0">
+	<table cellspadding="1" border="1" bordercolor="black" cellspacing="0" width="100%" bgColor="white" border="0">  
 	<tr align="center" height=26>
 		<td width=20%><b>Action</b></td>
 		<td width=20%><b>Billing Period</b></td>
@@ -543,12 +544,12 @@ if not AwaitingRS.eof Then
 		<td width=20%><b>Personal Amount Due (Kn.)</b></td>
 	</tr>
 
-<%
+<% 
    PrevEmpName_ =""
    TotalBill_ = 0
    TotalPrs_ = 0
    do while not AwaitingRS.eof
-	   if bg="#dddddd" then bg="ffffff" else bg="#dddddd"
+	   if bg="#dddddd" then bg="ffffff" else bg="#dddddd" 
 	    if PrevEmpName_ <> AwaitingRS("EmpName") Then
 		SubTotalBill_ = 0
 		SubTotalPrs_ = 0
@@ -557,11 +558,11 @@ if not AwaitingRS.eof Then
 			<td colspan="2" style="border: none;"><FONT color=#FFFFFF><b>&nbsp;Employee Name : <%=AwaitingRS("EmpName") %></b></font></td>
 			<td colspan="3" style="border: none;" align="right"><FONT color=#FFFFFF><b>Phone Number : <%=AwaitingRS("MobilePhone") %>&nbsp;</b></font></td>
 
-		</tr>
+		</tr>		
 <%
 	    end if
 %>
-
+      
 	   <TR bgcolor="<%=bg%>">
 	        <TD>&nbsp;<a href="CellPhoneDetail.asp?CellPhone=<%=AwaitingRS("MobilePhone") %>&MonthP=<%= AwaitingRS("MonthP")%>&YearP=<%= AwaitingRS("YearP")%>" target="_blank">View Submitted Bill</a></TD>
 	        <TD align="right">&nbsp;<%= AwaitingRS("MonthP")%>-<%= AwaitingRS("YearP")%></font>&nbsp;</TD>
@@ -570,46 +571,46 @@ if not AwaitingRS.eof Then
 		<TD align="right">&nbsp;<%= formatnumber(AwaitingRS("TotalBillingAmountPrsRp"),-1) %>&nbsp;</font></TD>
 	   </TR>
 
-<%
+<%   
 		SubTotalBill_ = cdbl(SubTotalBill_) + cdbl(AwaitingRS("TotalBillingRp"))
 		SubTotalPrs_ = cdbl(SubTotalPrs_) + cdbl(AwaitingRS("TotalBillingAmountPrsRp"))
 		TotalBill_ = cdbl(TotalBill_) + cdbl(AwaitingRS("TotalBillingRp"))
 		TotalPrs_ = cdbl(TotalPrs_) + cdbl(AwaitingRS("TotalBillingAmountPrsRp"))
 		PrevEmpName_ = AwaitingRS("EmpName")
 	   AwaitingRS.movenext
-		if AwaitingRS.eof Then
+		if AwaitingRS.eof Then 
 %>
 		<tr>
-			<td colspan="3"><b>&nbsp;SubTotal</b></td>
-			<td align="right"><b>&nbsp;<%=formatnumber(SubTotalBill_,-1) %>&nbsp;</font></b></td>
-			<td align="right"><b>&nbsp;<%=formatnumber(SubTotalPrs_,-1) %>&nbsp;</font></b></td>
+			<td colspan="3"><b>&nbsp;SubTotal</b></td>			
+			<td align="right"><b>&nbsp;<%=formatnumber(SubTotalBill_,-1) %>&nbsp;</font></b></td>			
+			<td align="right"><b>&nbsp;<%=formatnumber(SubTotalPrs_,-1) %>&nbsp;</font></b></td>			
 		</tr>
 <%
 
-		elseif (PrevEmpName_ <> AwaitingRS("EmpName")) Then
+		elseif (PrevEmpName_ <> AwaitingRS("EmpName")) Then 
 
 %>
 		<tr>
-			<td colspan="3"><b>&nbsp;SubTotal</b></td>
-			<td align="right"><b>&nbsp;<%=formatnumber(SubTotalBill_,-1) %>&nbsp;</font></b></td>
-			<td align="right"><b>&nbsp;<%=formatnumber(SubTotalPrs_,-1) %>&nbsp;</font></b></td>
+			<td colspan="3"><b>&nbsp;SubTotal</b></td>			
+			<td align="right"><b>&nbsp;<%=formatnumber(SubTotalBill_,-1) %>&nbsp;</font></b></td>			
+			<td align="right"><b>&nbsp;<%=formatnumber(SubTotalPrs_,-1) %>&nbsp;</font></b></td>			
 		</tr>
-<%
+<%	
 		end if
-   loop
+   loop 
 %>
 
 		<tr  BGCOLOR="#999999" height=26>
-			<td colspan="3"><FONT color=#FFFFFF><b>&nbsp;Total</b></font></td>
-			<td align="right"><FONT color=#FFFFFF><b>&nbsp;<%=formatnumber(TotalBill_,-1) %>&nbsp;</font></b></td>
-			<td align="right"><FONT color=#FFFFFF><b>&nbsp;<%=formatnumber(TotalPrs_,-1) %>&nbsp;</font></b></td>
+			<td colspan="3"><FONT color=#FFFFFF><b>&nbsp;Total</b></font></td>			
+			<td align="right"><FONT color=#FFFFFF><b>&nbsp;<%=formatnumber(TotalBill_,-1) %>&nbsp;</font></b></td>			
+			<td align="right"><FONT color=#FFFFFF><b>&nbsp;<%=formatnumber(TotalPrs_,-1) %>&nbsp;</font></b></td>			
 		</tr>
 
 <%
 	        strsql = " select CashierMinimumAmount from PaymentDueDate"
-       		set rst1 = server.createobject("adodb.recordset")
+       		set rst1 = server.createobject("adodb.recordset") 
         	set rst1 = BillingCon.execute(strsql)
-	       	if not rst1.eof then
+	       	if not rst1.eof then 
 		   CashierMinimumAmount_ = rst1("CashierMinimumAmount")
         	end if
 		if cdbl(TotalPrs_) > cdbl(CashierMinimumAmount_) Then
@@ -621,14 +622,14 @@ if not AwaitingRS.eof Then
 			<tr BGCOLOR="#999999" height=26>
 				<td colspan="5" align="center"><FONT color=#FFFFFF><b>Your total accumulated debt is less than <%=formatnumber(CashierMinimumAmount_,-1) %> Kuna. No payment is necessary at this point.</font></b></td>
 			</tr>
-<% 		end if %>
+<% 		end if %>			
 	</table>
 	</td>
 </tr>
 <% else %>
 <tr>
 	<td align="Left">
-	<table cellspadding="1" border="1" bordercolor="black" cellspacing="0" width="100%" bgColor="white" border="0">
+	<table cellspadding="1" border="1" bordercolor="black" cellspacing="0" width="100%" bgColor="white" border="0">  
 	<tr align="center" BGCOLOR="#999999" height=26>
 		<td><FONT color=#FFFFFF><b>There is no accumulated debt for your cell phone(s).</b></font></td>
 	</tr>

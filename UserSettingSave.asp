@@ -20,7 +20,7 @@ EmpType_ = Request.form("txtEmpType")
 ReportTo_ = Request.form("cmbReportTo")
 
 %>
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 
 <meta http-equiv="refresh" content="1;url=Default.asp">
 

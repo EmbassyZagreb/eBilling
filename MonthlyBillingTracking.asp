@@ -73,7 +73,7 @@ if Status = "" then
 end if
 
 %> 
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </HEAD>
@@ -190,15 +190,15 @@ ePeriod = eYearP&eMonthP
 
 If MonthP="XX" then
 	if Status ="X" then
-		strsql = "Select * From vwMonthlyBilling Where LoginID ='" & user1_& "'"
+		strsql = "Select * From vwMonthlyBilling Where LoginID ='" & user1_& "' Order by MobilePhone"
 	else
-		strsql = "Select * From vwMonthlyBilling Where LoginID ='" & user1_ & "' and Status='" & Status & "'"
+		strsql = "Select * From vwMonthlyBilling Where LoginID ='" & user1_ & "' and Status='" & Status & "' Order by MobilePhone"
 	end if
 Else
 	if Status ="X" then
-		strsql = "Select * From vwMonthlyBilling Where LoginID ='" & user1_ & "' and YearP+MonthP>='" & sPeriod & "' and YearP+MonthP<='" & ePeriod & "'"
+		strsql = "Select * From vwMonthlyBilling Where LoginID ='" & user1_ & "' and YearP+MonthP>='" & sPeriod & "' and YearP+MonthP<='" & ePeriod & "' Order by MobilePhone"
 	else
-		strsql = "Select * From vwMonthlyBilling Where LoginID='" & user1_ & "' and YearP+MonthP>='" & sPeriod & "' and YearP+MonthP<='" & ePeriod & "' and Status='" & Status & "'"
+		strsql = "Select * From vwMonthlyBilling Where LoginID='" & user1_ & "' and YearP+MonthP>='" & sPeriod & "' and YearP+MonthP<='" & ePeriod & "' and Status='" & Status & "' Order by MobilePhone" 
 	end if
 End If
 'response.write strsql & "<br>"
@@ -218,10 +218,12 @@ if not DataRS.eof Then
 	</tr>
 
 <% 
-   PrevEmpName_ =""
+   'PrevEmpName_ =""
+   PrevMobilePhone_ =""
    do while not DataRS.eof
 	   if bg="#dddddd" then bg="ffffff" else bg="#dddddd" 
-	    if PrevEmpName_ <> DataRS("EmpName") Then
+	    'if PrevEmpName_ <> DataRS("EmpName") Then
+		if PrevMobilePhone_ <> DataRS("MobilePhone") Then
 		SubTotalBill_ = 0
 		SubTotalPrs_ = 0
 %>
@@ -243,7 +245,8 @@ if not DataRS.eof Then
 	   </TR>
 
 <%   
-		PrevEmpName_ = DataRS("EmpName")
+		'PrevEmpName_ = DataRS("EmpName")
+		PrevMobilePhone_ = DataRS("MobilePhone")
 	   DataRS.movenext
    loop 
 %>

@@ -5,7 +5,7 @@
 <!-- #include file = "config.asp" -->
 
 <%
-'On Error Resume Next
+On Error Resume Next
 
 
 '------------------------------------------------
@@ -82,7 +82,7 @@ Else
 		
 '		response.write strFolder
 
-'		if bolUpload = true then
+		if bolUpload = true then
 '			File.SaveToDisk strFolder ' Save the file			
 '			strMessage =  "File Uploaded: " & File.FileName
 '			strMessage =  "Upload completed !"
@@ -94,7 +94,7 @@ Else
 
 			'strMessage = strMessage & "Size: " & File.FileSize & " bytes<br>"
 			'strMessage = strMessage & "Type: " & File.ContentType & "<br><br>"			
-'		end if
+		end if
 
 		FileExcel =  strFolder + "\"+File.FileName
 		'response.write FileExcel

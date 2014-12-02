@@ -94,7 +94,7 @@ function validate_form()
  State_ = request("State")
 
 %> 
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
@@ -244,8 +244,8 @@ function validate_form()
 	  <td>Type :</td>
 	  <td>
 		  <select name="cmbType">
-			<option value="AMER" <%if Type_ ="AMER" Then %>Selected<%End If%>>AMER</option>
-			<option value="LES" <%if Type_ ="LES" Then %>Selected<%End If%>>LES</option>
+			<option value="AMER" <%if Type_ ="AMER" Then %>Selected<%End If%>>Supervisor</option>
+			<option value="LES" <%if Type_ ="LES" Then %>Selected<%End If%>>Regular</option>
 		  </select>&nbsp;&nbsp;* Only an American can be the supervisor
 	  </td>
 	</tr>

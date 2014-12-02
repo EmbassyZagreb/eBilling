@@ -36,7 +36,7 @@ CallType_ = Request("CallType")
 SortBy_ = Request("SortBy")	
 Order_ = Request("Order")	
 %>
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </HEAD>

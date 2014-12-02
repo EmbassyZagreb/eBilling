@@ -23,7 +23,7 @@ function validate_form()
 	return valid;
 }
 </script>
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </HEAD>
@@ -42,13 +42,14 @@ function validate_form()
 EmpID = request("EmpID") 
 MonthP = request("Month")
 YearP = request("Year")
+MobilePhone_ = request("MobilePhone")
 
 %>  
 <form method="post" name="frmBillingApproval" action="BillingApprovalSave.asp" onsubmit="return validate_form();">	
 <table cellspadding="1" cellspacing="0" width="65%" bgColor="white">  
 <%
 'strsql = "Exec spGetMonthlyBill '" & user1_ & "','" & MonthP & "','" & YearP & "'"
-strsql = "Select * From vwMonthlyBilling Where EmpID='" & EmpID & "' and MonthP='" & MonthP & "' and YearP='" & YearP & "'"
+strsql = "Select * From vwMonthlyBilling Where MobilePhone='" & MobilePhone_ & "' and MonthP='" & MonthP & "' and YearP='" & YearP & "'"
 'response.write strsql & "<br>"
 set rsData = server.createobject("adodb.recordset") 
 set rsData = BillingCon.execute(strsql) 
@@ -60,7 +61,7 @@ if not rsData.eof then
 	Position_ = rsData("WorkingTitle")
 	'OfficePhone_ = rsData("WorkPhone")
 	'HomePhone_ = rsData("HomePhone")
-	MobilePhone_ = rsData("MobilePhone")
+	'MobilePhone_ = rsData("MobilePhone")
 	EmpEmail_ = rsData("EmailAddress")	
 	ExchangeRate_ = rsData("ExchangeRate")
 	Note_ =  rsData("Notes")
@@ -181,7 +182,7 @@ if not rsData.eof then
 			<input type="hidden" name="txtMonthP" value='<%=MonthP%>' />
 			<input type="hidden" name="txtYearP" value='<%=YearP%>' />
 			<input type="hidden" name="txtEmpEmail" value='<%=EmpEmail_ %>' />
-
+			<input type="hidden" name="txtMobilePhone" value='<%=MobilePhone_ %>' />
 			<input type="hidden" name="txtEmpID" value='<%=EmpID %>' />
 			<input type="hidden" name="txtEmpName" value='<%=EmpName_%>' />
 			<input type="hidden" name="txtPeriod" value='<%=Period_%>' />

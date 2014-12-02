@@ -7,7 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"> 
 
 <head>
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
@@ -34,6 +34,8 @@
 <%	
 	EmpID_ = Request.Form("txtEmpID")
 '	response.write CellPhone_ & "<br>"
+	Mobilephone_ = Request.Form("txtCellphone")
+'	response.write MonthP_ & "<br>"
 	MonthP_ = Request.Form("txtMonthP")
 '	response.write MonthP_ & "<br>"
 	YearP_ = Request.Form("txtYearP")
@@ -42,7 +44,7 @@
 '	response.write YearP_ & "<br>"
 
 	'Save Detail
-	strsql = "Update MonthlyBilling Set ProgressId=" & Status_ & " Where EmpID='" & EmpID_ & "' And MonthP='" & MonthP_ & "' And YearP='" & YearP_ & "'"
+	strsql = "Update MonthlyBilling Set ProgressId=" & Status_ & " Where EmpID='" & EmpID_ & "' And Phonenumber='" & Mobilephone_ & "' And MonthP='" & MonthP_ & "' And YearP='" & YearP_ & "'"
 	'response.write strsql & "<Br>"  
 	BillingCon.execute(strsql) 
 

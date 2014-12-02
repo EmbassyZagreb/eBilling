@@ -3,7 +3,7 @@
 <!--#include file="connect.inc" -->
 <!--METADATA TYPE="typelib" UUID="CD000000-8B95-11D1-82DB-00C04FB1625D"  NAME="CDO for Windows 2000 Library" --> 
 
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </HEAD>
@@ -25,6 +25,7 @@
    'response.write MonthP_ & "<br>"
    YearP_ = Request.Form("txtYearP")
    'response.write YearP_ & "<br>"
+   MobilePhone_ = Request.Form("txtCellPhone")   
    ReceiptNo_ = Request.Form("txtReceiptNo")
 '   response.write ReceiptNo_ & "<br>"
 '   CurrencyType_ = Request.Form("cmbCurrencyType")
@@ -75,7 +76,8 @@ srPageIndex_ = Request.Form("txtsrPageIndex")
 </tr>
 <%
 	'3. SAVING TO Billing Header
-	strsql = "spPaymentReceipt_IUD 'I',0,'" & EmpID_ & "','" & MonthP_ & "','" & YearP_ & "','" & ReceiptNo_ & "','" & CurrencyType_ & "'," & PaidAmountDlr_ & "," & PaidAmountRp_ & ",'" & PaidDate_ & "','" & CashierRemark_ & "','" & PaymentType_ & "'"
+	'strsql = "spPaymentReceipt_IUD 'I',0,'" & EmpID_ & "','" & MonthP_ & "','" & YearP_ & "','" & ReceiptNo_ & "','" & CurrencyType_ & "'," & PaidAmountDlr_ & "," & PaidAmountRp_ & ",'" & PaidDate_ & "','" & CashierRemark_ & "','" & PaymentType_ & "'"
+	strsql = "spPaymentReceipt_IUD 'I',0,'" & EmpID_ & "','" & MonthP_ & "','" & YearP_ & "','" & MobilePhone_ & "','" & ReceiptNo_ & "','" & CurrencyType_ & "'," & PaidAmountDlr_ & "," & PaidAmountRp_ & ",'" & PaidDate_ & "','" & CashierRemark_ & "','" & PaymentType_ & "'"
 	'response.write strsql
 	BillingCon.execute(strsql)
 

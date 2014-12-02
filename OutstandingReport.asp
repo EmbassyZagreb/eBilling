@@ -95,7 +95,7 @@ if Status = "" then
 end if
 
 %>
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </HEAD>
@@ -182,7 +182,7 @@ If (UserRole_ = "Admin") or (UserRole_ = "Voucher") or (UserRole_ = "FMC") or (U
 			<td>:</td>
 			<td>
 <%
- 				strsql ="select EmpID, EmpName from vwPhoneCustomerList order by EmpName"
+ 				strsql ="select distinct EmpID, EmpName from vwPhoneCustomerList order by EmpName"
 				set EmpRS = server.createobject("adodb.recordset")
 				set EmpRS = BillingCon.execute(strsql)
 '				response.write strStr 

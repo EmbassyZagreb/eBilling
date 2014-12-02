@@ -7,7 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"> 
 
 <head>
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 
 
 
@@ -46,11 +46,13 @@
 
 
 	'Save Header
-	strsql = "Update MonthlyBilling Set SupervisorEmail='" & SpvEmail_ & "', Notes='" & Notes_ & "' Where EmpID='" & EmpID_ & "' And MonthP='" & MonthP_ & "' And YearP='" & YearP_ &"'"
+	strsql = "Update MonthlyBilling Set SupervisorEmail='" & SpvEmail_ & "', Notes='" & Notes_ & "' Where EmpID='" & EmpID_ & "' And PhoneNumber='" & MobilePhone_ & "' And MonthP='" & MonthP_ & "' And YearP='" & YearP_ &"'"
+	'strsql = "Update MonthlyBilling Set SupervisorEmail='" & SpvEmail_ & "', Notes='" & Notes_ & "' Where EmpID='" & EmpID_ & "' And MonthP='" & MonthP_ & "' And YearP='" & YearP_ &"'"
 	'response.write strsql & "<Br>"  
 	BillingCon.execute(strsql)
 
-	strsql = "Update MonthlyBilling Set ProgressId=2, ProgressIdDate=GetDate() Where EmpID='" & EmpID_ & "' And MonthP='" & MonthP_ & "' And YearP='" & YearP_ &"'"
+	strsql = "Update MonthlyBilling Set ProgressId=2, ProgressIdDate=GetDate() Where EmpID='" & EmpID_ & "' And PhoneNumber='" & MobilePhone_ & "' And MonthP='" & MonthP_ & "' And YearP='" & YearP_ &"'"
+	'strsql = "Update MonthlyBilling Set ProgressId=2, ProgressIdDate=GetDate() Where EmpID='" & EmpID_ & "' And MonthP='" & MonthP_ & "' And YearP='" & YearP_ &"'"
 	'response.write strsql & "<Br>"  
 	BillingCon.execute(strsql) 
 
@@ -70,7 +72,7 @@
 	objMail.To = send_to 
 	'objMail.CC = send_cc
 
-	objMail.Subject = "Action Required: eBilling System ï¿½ Approval Request"
+	objMail.Subject = "Action Required: eBilling System – Approval Request"
 
 	objMail.HTMLBody = "<html><head>"
 	ObjMail.HTMLBody = ObjMail.HTMLBody & " "_
@@ -83,7 +85,7 @@
 					& " </head><body bgcolor='#ffffff'> "_              
 					& " <p><table cellspadding='1' cellspacing='0' width='80%' bgColor='white'>"_ 
 					& "    <tr> "_           
-					& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#999999' size='5'>eBilling System ï¿½ Approval Request</font></td></tr> "_
+					& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#999999' size='5'>eBilling System – Approval Request</font></td></tr> "_
 					& "    <tr> "_       
 					& "        <td colspan='6'>&nbsp; </td></tr> "_       
 					& "    <tr> "_           

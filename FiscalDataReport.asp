@@ -98,7 +98,7 @@ if Section_ = "" then
 	Section_ = "X"
 end if
 %>
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </HEAD>
@@ -272,9 +272,14 @@ if not DataRS.eof Then
 %>
 <table width="90%">
 <tr>
+	<td align="left"><a href="bills/racun_3.197_<%=sPeriod%>.pdf" target="blank"</a>Bill from VIP for <%=sMonthP%>-<%=sYearP%> [PDF]</TD></tr>
+</table>
+<table width="90%">
+<tr>
 	<td align="right"><input type="button" name="btnExport" value="Export to Excel" onClick="javascript:document.location.href('FiscalDataReportPrint.asp?sMonthP=<%=sMonthP%>&sYearP=<%=sYearP%>&eMonthP=<%=eMonthP%>&eYearP=<%=eYearP%>&Agency=<%=Agency_%>&Section=<%=Section_%>');"/></td>
 </tr>
 </table>
+
 <table border="1" bordercolor="#EEEEEE" cellpadding="2" cellspacing="0" width="90%"  class="FontText">
     <TR BGCOLOR="#330099" align="center">
          <TD width="3%" align="right"><strong><label STYLE=color:#FFFFFF>No.</label></strong></TD>

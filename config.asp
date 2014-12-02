@@ -2,9 +2,9 @@
 	<%	
 	'-----------------------------------------------
 	'name of folder (note there is no / at end)
-	strFolder = "D:\WebSites\dev-eBilling\Files"
+	strFolder = "E:\Portal2\eBilling\Files"
 	'name of folder in http format (note there is no / at end)
-	httpRef = "http://192.168.2.8:8080/dev-eBilling/" 
+	httpRef = "http://zagrebws03:8080/eBilling" 
 	'the max size of file which can be uploaded, 0 will give unlimited file size
 	lngFileSize = 0
 	'the files to be excluded (must be in format ".aaa;.bbb")

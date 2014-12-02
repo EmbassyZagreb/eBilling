@@ -54,7 +54,7 @@ function checkall(obj)
 }
 
 </script>
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
@@ -365,7 +365,7 @@ set RS_Query = BillingCon.execute(strsql)
         <TD><FONT color=#330099><A HREF="EmployeeEdit.asp?EmpID=<%= rs("EmpID")%>&Type=<%= rs("Type")%>&State=E"> <%= rs("EmpName") %></A></font>   </TD>
         <TD>&nbsp;<%= rs("PostName") %></font>   </TD>
         <TD>&nbsp;<%= rs("Office") %></font>   </TD>
-        <TD>&nbsp;<%= rs("Type") %></font>   </TD>
+        <TD>&nbsp;<%if rs("Type") ="AMER" then %>Supervisor<%Else%>Regular<%End If%></font>   </TD>
         <TD>&nbsp;<%= rs("EmailAddress") %></font>   </TD>
         <TD>&nbsp;<%= rs("ReportToName") %></font>   </TD>
         <TD>&nbsp;<%= rs("AgencyFunding") %></font>   </TD>
