@@ -1,10 +1,9 @@
-USE [dev-eBilling]
-GO
-/****** Object:  View [dbo].[vwARPaymentRpt]    Script Date: 08/01/2014 13:35:01 ******/
+/****** Object:  View [dbo].[vwARPaymentRpt]    Script Date: 12/02/2014 15:00:26 ******/
 SET ANSI_NULLS ON
 GO
-SET QUOTED_IDENTIFIER ON
+SET QUOTED_IDENTIFIER OFF
 GO
+-- Update vwARPaymentRpt
 CREATE VIEW [dbo].[vwARPaymentRpt]
 AS
 SELECT     A.PaymentNo, C.Agency, C.LoginID, A.EmpID, C.EmpName, C.Office, A.MonthP, A.YearP, B.HomePhonePrsBillRp, B.OfficePhonePrsBillRp, 
@@ -13,7 +12,7 @@ SELECT     A.PaymentNo, C.Agency, C.LoginID, A.EmpID, C.EmpName, C.Office, A.Mon
                       CASE WHEN A.Currency = 'Kn' THEN ISNULL(A.PaidAmountRp, 0) WHEN A.Currency = 'Dlr' THEN ISNULL(A.PaidAmountDlr, 0) 
                       ELSE 0 END AS PaidAmount, CONVERT(varchar(20), A.PaidDate, 106) AS PaidDate, A.CashierRemark, A.PaymentType, 
                       CASE WHEN A.PaymentType = 'P' THEN 'Partial Payment' WHEN A.PaymentType = 'F' THEN 'Full Payment' ELSE '' END AS PaymentTypeName, 
-                      ISNULL(DATEDIFF(dd, B.SendMailDate, A.PaidDate), 0) AS Aging, B.SendMailDate, C.AgencyFunding
+                      ISNULL(DATEDIFF(dd, B.SendMailDate, A.PaidDate), 0) AS Aging, B.SendMailDate, B.AgencyFundingDesc
 FROM         dbo.PaymentReceipt AS A INNER JOIN
                       dbo.MonthlyBilling AS B ON A.EmpID = B.EmpID AND A.PhoneNumber = B.PhoneNumber AND A.MonthP = B.MonthP AND 
                       A.YearP = B.YearP LEFT OUTER JOIN
@@ -24,7 +23,7 @@ Begin DesignProperties =
    Begin PaneConfigurations = 
       Begin PaneConfiguration = 0
          NumPanes = 4
-         Configuration = "(H (1[28] 4[33] 2[20] 3) )"
+         Configuration = "(H (1[40] 4[20] 2[20] 3) )"
       End
       Begin PaneConfiguration = 1
          NumPanes = 3
@@ -112,10 +111,10 @@ Begin DesignProperties =
          End
          Begin Table = "C"
             Begin Extent = 
-               Top = 6
-               Left = 461
-               Bottom = 114
-               Right = 640
+               Top = 114
+               Left = 38
+               Bottom = 222
+               Right = 217
             End
             DisplayFlags = 280
             TopColumn = 0

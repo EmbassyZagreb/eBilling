@@ -1,7 +1,7 @@
-/****** Object:  StoredProcedure [dbo].[spLineNoUsageReport]    Script Date: 08/01/2014 13:31:26 ******/
+/****** Object:  StoredProcedure [dbo].[spLineNoUsageReport]    Script Date: 12/02/2014 15:00:18 ******/
 SET ANSI_NULLS ON
 GO
-SET QUOTED_IDENTIFIER ON
+SET QUOTED_IDENTIFIER OFF
 GO
 CREATE Procedure [dbo].[spLineNoUsageReport] 
 	@StartDate varchar(10)=Null

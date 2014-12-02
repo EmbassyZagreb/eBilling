@@ -1,14 +1,15 @@
-/****** Object:  StoredProcedure [dbo].[spGenerateMonthlyBilling]    Script Date: 08/01/2014 13:31:25 ******/
+/****** Object:  StoredProcedure [dbo].[spGenerateMonthlyBilling]    Script Date: 12/02/2014 15:00:15 ******/
 SET ANSI_NULLS ON
 GO
-SET QUOTED_IDENTIFIER ON
+SET QUOTED_IDENTIFIER OFF
 GO
 CREATE Procedure [dbo].[spGenerateMonthlyBilling]
 	@Month varchar(2)=Null
 	,@Year varchar(4)=Null
 	,@MobilePhone Varchar(30)=''
 	,@AlwaysExemptedCallType Varchar(255)
-	,@ExemptedIfOfficialCallType Varchar(255) 
+	,@ExemptedIfOfficialCallType Varchar(255)
+	,@UserName varchar(50)=Null 
 As
 
 /*Update Cellphone Master List*/
@@ -61,7 +62,8 @@ Where MonthP=@Month And YearP=@Year And (PhoneNumber=@MobilePhone or @MobilePhon
 
 Insert MonthlyBilling(EmpID, MonthP, YearP, PhoneNumber, BillFlag, ExchangeRate
 	, CellPhoneBillRp, CellPhoneBillDlr, CellPhonePrsBillRp, CellPhonePrsBillDlr
-	, TotalBillingRp, TotalBillingDlr, ProgressId, ProgressIdDate)
+	, TotalBillingRp, TotalBillingDlr, ProgressId, ProgressIdDate
+	, AgencyID, AgencyFundingCode, AgencyFundingDesc, FiscalStripVAT, FiscalStripNonVAT, AgencyDisabled)
 SELECT DISTINCT   
                       D.EmpID AS EmpID, @Month AS MonthP, @Year AS YearP, D.MobilePhone AS PhoneNumber, A.BillFlag, @ExchangeRate AS ExchangeRate
 						, isNull(B.TOTBILLAMOUNT,0) AS CellPhoneBillRp
@@ -71,12 +73,13 @@ SELECT DISTINCT
 						, ISNULL(B.TOTBILLAMOUNT, 0) AS TotalBillingRp
 						, ISNULL(ROUND(ISNULL(ISNULL(B.TOTBILLAMOUNT, 0) / @ExchangeRate, 0), 2), 0) AS TotalBillingDlr
 						, 1 , GETDATE()
+						, D.AgencyID, D.AgencyFundingCode, D.AgencyFunding As AgencyFundingDesc, D.FiscalStripVAT, D.FiscalStripNonVAT, D.AgencyDisabled
 FROM         dbo.vwCellPhoneNumberList AS A INNER JOIN
 					   dbo.CellPhoneHd AS B ON B.PhoneNumber = A.PhoneNumber AND B.MonthP = @Month AND B.YearP = @Year LEFT OUTER JOIN
                        dbo.CellPhoneDt AS C ON C.PhoneNumber = A.PhoneNumber AND C.MonthP = @Month AND C.YearP = @Year LEFT OUTER JOIN
 					   vwPhoneCustomerList AS D ON D.MobilePhone = A.PhoneNumber
 WHERE     ((ISNULL(B.TOTBILLAMOUNT, 0) >= 0) AND (A.Phonenumber = @MobilePhone OR @MobilePhone = '') And (A.BillFlag <> 'N')) 
-GROUP BY  D.EmpID, D.MobilePhone, C.MonthP, C.YearP,  A.BillFlag,ISNULL(B.TOTBILLAMOUNT, 0), ROUND(ISNULL(ISNULL(B.TOTBILLAMOUNT, 0) / @ExchangeRate, 0), 2) 
+GROUP BY  D.EmpID, D.MobilePhone, C.MonthP, C.YearP,  A.BillFlag, D.AgencyID, D.AgencyFundingCode, D.AgencyFunding, D.FiscalStripVAT, D.FiscalStripNonVAT, D.AgencyDisabled,ISNULL(B.TOTBILLAMOUNT, 0), ROUND(ISNULL(ISNULL(B.TOTBILLAMOUNT, 0) / @ExchangeRate, 0), 2) 
 
 
 --Update CellPhone Call duration in second
@@ -103,7 +106,7 @@ And MonthP=@Month and YearP=@Year And (Phonenumber = @MobilePhone OR @MobilePhon
 
 --Generate Reconciliation Report
 
-	Exec spGenerateReconRpt @Month, @Year
+	Exec spGenerateReconRpt @Month, @Year, @UserName
 	
 	Exec spGenerateProgressLog @Month, @Year
 GO

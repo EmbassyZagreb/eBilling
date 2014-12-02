@@ -26,7 +26,7 @@ ul#menu ul {
 
 ul#menu a {
   display: block;
-  text-decoration: none;	
+  text-decoration: none;
 }
 
 ul#menu li {
@@ -35,7 +35,7 @@ ul#menu li {
 
 ul#menu li a {
   background: #333;
-  color: #fff;	
+  color: #fff;
   padding: 0.5em;
 }
 

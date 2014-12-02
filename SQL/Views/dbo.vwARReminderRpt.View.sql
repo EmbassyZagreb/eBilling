@@ -1,14 +1,20 @@
-/****** Object:  View [dbo].[vwARReminderRpt]    Script Date: 08/01/2014 13:35:01 ******/
+/****** Object:  View [dbo].[vwARReminderRpt]    Script Date: 12/02/2014 15:00:26 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
+/* Update vwARReminderRpt*/
 CREATE VIEW [dbo].[vwARReminderRpt]
 AS
 SELECT     A.EmpID, C.EmpName, C.Agency, C.Office, C.LoginID, A.MonthP, A.YearP, A.HomePhonePrsBillRp, A.OfficePhonePrsBillRp, 
                       A.PhoneNumber AS Mobilephone, A.CellPhonePrsBillRp, A.TotalShuttleBillRp, ISNULL(A.HomePhonePrsBillRp, 0) + ISNULL(A.OfficePhonePrsBillRp, 0) 
                       + ISNULL(A.CellPhonePrsBillRp, 0) + ISNULL(A.TotalShuttleBillRp, 0) AS TotalBillingAmountPrsRp, ISNULL(DATEDIFF(dd, A.SendMailDate, GETDATE()), 
-                      0) AS Aging, A.SendMailDate, C.EmailAddress, C.AgencyFunding, A.SendMailStatusID, F.SendMailStatusDesc, A.ProgressId, A.CellPhoneBillRp
+                      0) AS Aging, A.SendMailDate, C.EmailAddress, C.AgencyFunding, A.SendMailStatusID, F.SendMailStatusDesc, A.ProgressId, A.CellPhoneBillRp, 
+                      ISNULL
+                          ((SELECT     SUM(CellPhonePrsBillRp) AS Expr1
+                              FROM         dbo.MonthlyBilling
+                              WHERE     (ProgressId = 4 OR
+                                                    ProgressId = 5) AND (EmpID = A.EmpID)), 0) AS AccumulatedDebt
 FROM         dbo.MonthlyBilling AS A LEFT OUTER JOIN
                       dbo.vwDirectReport AS C ON A.EmpID = C.EmpID LEFT OUTER JOIN
                       dbo.SendMailStatus AS F ON A.SendMailStatusID = F.SendMailStatusID
@@ -92,17 +98,7 @@ Begin DesignProperties =
                Right = 233
             End
             DisplayFlags = 280
-            TopColumn = 12
-         End
-         Begin Table = "F"
-            Begin Extent = 
-               Top = 114
-               Left = 38
-               Bottom = 192
-               Right = 214
-            End
-            DisplayFlags = 280
-            TopColumn = 0
+            TopColumn = 11
          End
          Begin Table = "C"
             Begin Extent = 
@@ -110,6 +106,16 @@ Begin DesignProperties =
                Left = 271
                Bottom = 114
                Right = 450
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "F"
+            Begin Extent = 
+               Top = 114
+               Left = 38
+               Bottom = 192
+               Right = 214
             End
             DisplayFlags = 280
             TopColumn = 0
@@ -124,7 +130,7 @@ Begin DesignProperties =
    End
    Begin CriteriaPane = 
       Begin ColumnWidths = 11
-         Column = 5040
+         Column = 1440
          Alias = 900
          Table = 1170
          Output = 720

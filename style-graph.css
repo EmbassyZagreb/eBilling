@@ -34,7 +34,7 @@ border:1px solid #ddd;
 	outline-style: solid;
 	outline-color: #ffffff;
 	    outline-width: 1px;
-		
+
 	/*background-image: url("images/table_header.jpg"); */
 }
 .barcell {
@@ -66,7 +66,7 @@ border:1px solid #ddd;
 .chart3_barcell_top:hover {
 	background-color: #BBBBBB;
 	text-decoration: none;
-}	
+}
 .chart3_barcell_bottom {
     font-size: 8px;
 	text-align: center;

@@ -1,9 +1,9 @@
-/****** Object:  UserDefinedFunction [dbo].[GetTotDuration]    Script Date: 08/01/2014 13:34:10 ******/
+/****** Object:  UserDefinedFunction [dbo].[GetTotDuration]    Script Date: 12/02/2014 15:00:25 ******/
 SET ANSI_NULLS ON
 GO
-SET QUOTED_IDENTIFIER ON
+SET QUOTED_IDENTIFIER OFF
 GO
-CREATE Function [dbo].[GetTotDuration]
+CREATE  Function [dbo].[GetTotDuration]
 (
 	@Time varchar(20)
 )Returns Int

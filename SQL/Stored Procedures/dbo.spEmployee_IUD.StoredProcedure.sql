@@ -1,7 +1,7 @@
-/****** Object:  StoredProcedure [dbo].[spEmployee_IUD]    Script Date: 08/01/2014 13:31:25 ******/
+/****** Object:  StoredProcedure [dbo].[spEmployee_IUD]    Script Date: 12/02/2014 15:00:14 ******/
 SET ANSI_NULLS ON
 GO
-SET QUOTED_IDENTIFIER ON
+SET QUOTED_IDENTIFIER OFF
 GO
 CREATE PROCEDURE [dbo].[spEmployee_IUD] 
 	(@Mode Varchar(1),
@@ -50,6 +50,11 @@ End
 Else If @Mode='D'
 Begin
 	Update MsEmployee Set Status='D' 
+	Where EmpID = @EmpID
+End
+Else If @Mode='X'
+Begin
+	Delete MsEmployee
 	Where EmpID = @EmpID
 End
 GO

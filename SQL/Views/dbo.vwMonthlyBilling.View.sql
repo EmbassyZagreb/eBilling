@@ -1,8 +1,9 @@
-/****** Object:  View [dbo].[vwMonthlyBilling]    Script Date: 08/01/2014 13:35:02 ******/
+/****** Object:  View [dbo].[vwMonthlyBilling]    Script Date: 12/02/2014 15:00:28 ******/
 SET ANSI_NULLS ON
 GO
-SET QUOTED_IDENTIFIER ON
+SET QUOTED_IDENTIFIER OFF
 GO
+-- Update vwMonthlyBilling
 CREATE VIEW [dbo].[vwMonthlyBilling]
 AS
 SELECT DISTINCT 
@@ -31,9 +32,9 @@ SELECT DISTINCT
                       CASE WHEN len(B.EmailAddress) < 5 AND ISNULL(B.AlternateEmail, '') <> '' THEN 'Y' ELSE 'N' END AS AlternateEmailFlag, 
                       CASE WHEN isNull(B.EmpType, '') = 'Dummy' THEN 'Y' ELSE 'N' END AS DummyFlag, CASE WHEN B.Office IN ('CLO', 'FMO/Bud', 'FMO/VOU', 'GSO', 
                       'GSO/Motor', 'GSO/Procur', 'GSO/SH-CUS', 'GSO/SHIP', 'GSO/TRAV', 'GSO/WH-SUP', 'HR', 'IM', 'IM/Mail', 'IM/Mail/FP', 'IM/Prog', 'IM/REC', 'IM/TEL/MAI', 
-                      'IM/TEL/RAD', 'ISC', 'MGMT') THEN 'MGT' WHEN B.Office IN ('FMO', 'FMO/Cash') THEN 'FMO' ELSE B.Office END AS SectionGroup, B.AgencyID, 
-                      ISNULL(B.AgencyFundingCode, '') AS AgencyFundingCode, ISNULL(B.AgencyFunding, '') AS AgencyFunding, B.FiscalStripNonVAT, 
-                      ISNULL(B.FiscalStripVAT, '') AS FiscalStripVAT, ISNULL(E.EmpName, '') AS ApprovalSupervisor, 
+                      'IM/TEL/RAD', 'ISC', 'MGMT') THEN 'MGT' WHEN B.Office IN ('FMO', 'FMO/Cash') THEN 'FMO' ELSE B.Office END AS SectionGroup, A.AgencyID, 
+                      ISNULL(A.AgencyFundingCode, '') AS AgencyFundingCode, ISNULL(A.AgencyFundingDesc, '') AS AgencyFundingDesc, A.FiscalStripNonVAT, 
+                      ISNULL(A.FiscalStripVAT, '') AS FiscalStripVAT, A.AgencyDisabled, ISNULL(E.EmpName, '') AS ApprovalSupervisor, 
                       CASE WHEN B.EmpType = 'Dummy' THEN 'Non open account/ have more than one phone number' ELSE '' END AS Note
 FROM         dbo.MonthlyBilling AS A INNER JOIN
                       dbo.vwPhoneCustomerList AS B ON A.EmpID = B.EmpID LEFT OUTER JOIN
@@ -47,7 +48,7 @@ Begin DesignProperties =
    Begin PaneConfigurations = 
       Begin PaneConfiguration = 0
          NumPanes = 4
-         Configuration = "(H (1[41] 4[20] 2[39] 3) )"
+         Configuration = "(H (1[41] 4[32] 2[20] 3) )"
       End
       Begin PaneConfiguration = 1
          NumPanes = 3
@@ -115,50 +116,50 @@ Begin DesignProperties =
       Begin Tables = 
          Begin Table = "A"
             Begin Extent = 
-               Top = 17
-               Left = 35
-               Bottom = 125
-               Right = 230
+               Top = 210
+               Left = 428
+               Bottom = 318
+               Right = 623
             End
             DisplayFlags = 280
-            TopColumn = 0
+            TopColumn = 3
          End
          Begin Table = "B"
             Begin Extent = 
-               Top = 20
-               Left = 648
-               Bottom = 128
-               Right = 827
+               Top = 6
+               Left = 271
+               Bottom = 114
+               Right = 450
             End
             DisplayFlags = 280
             TopColumn = 0
          End
          Begin Table = "D"
             Begin Extent = 
-               Top = 135
-               Left = 385
-               Bottom = 243
-               Right = 549
+               Top = 114
+               Left = 38
+               Bottom = 222
+               Right = 202
             End
             DisplayFlags = 280
-            TopColumn = 1
+            TopColumn = 4
          End
          Begin Table = "C"
             Begin Extent = 
-               Top = 194
-               Left = 686
-               Bottom = 287
-               Right = 837
+               Top = 46
+               Left = 671
+               Bottom = 139
+               Right = 822
             End
             DisplayFlags = 280
             TopColumn = 0
          End
          Begin Table = "E"
             Begin Extent = 
-               Top = 259
-               Left = 376
-               Bottom = 367
-               Right = 555
+               Top = 258
+               Left = 208
+               Bottom = 366
+               Right = 387
             End
             DisplayFlags = 280
             TopColumn = 0
@@ -185,9 +186,9 @@ Begin DesignProperties =
          Width = 1500
          Width = 1500
          Width = 1500
-         Width ' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'vwMonthlyBilling'
+         Width =' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'vwMonthlyBilling'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPane2', @value=N'= 1500
+EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPane2', @value=N' 1500
          Width = 1500
          Width = 1500
          Width = 1500
@@ -250,8 +251,8 @@ EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPane2', @value=N'= 1500
    End
    Begin CriteriaPane = 
       Begin ColumnWidths = 11
-         Column = 5550
-         Alias = 1755
+         Column = 8430
+         Alias = 2010
          Table = 1170
          Output = 720
          Append = 1400

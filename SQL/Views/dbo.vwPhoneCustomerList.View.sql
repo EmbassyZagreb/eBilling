@@ -1,8 +1,9 @@
-/****** Object:  View [dbo].[vwPhoneCustomerList]    Script Date: 08/01/2014 13:35:02 ******/
+/****** Object:  View [dbo].[vwPhoneCustomerList]    Script Date: 12/02/2014 15:00:29 ******/
 SET ANSI_NULLS ON
 GO
-SET QUOTED_IDENTIFIER ON
+SET QUOTED_IDENTIFIER OFF
 GO
+-- Update vwPhoneCustomerList
 CREATE VIEW [dbo].[vwPhoneCustomerList]
 AS
 SELECT     A.EmpID, ISNULL(A.EmpName, '') AS EmpName, ISNULL(A.Post, '') AS Post, ISNULL(A.EmpType, '') AS EmpType, ISNULL(A.Agency, '') AS Agency, 
@@ -13,7 +14,7 @@ SELECT     A.EmpID, ISNULL(A.EmpName, '') AS EmpName, ISNULL(A.Post, '') AS Post
                       AS AlternateEmail, ISNULL(A.SupervisorId, '') AS SupervisorId, ISNULL(C.EmpName, '') AS SupervisorName, ISNULL(A.LoginID, '') AS LoginID, 
                       ISNULL(A.Remark, '') AS Remark, ISNULL(A.Status, '') AS Status, ISNULL(A.AgencyID, 0) AS AgencyID, ISNULL(B.AgencyFundingCode, '') 
                       AS AgencyFundingCode, ISNULL(B.AgencyDesc, '') AS AgencyFunding, ISNULL(B.FiscalStripVAT, '') AS FiscalStripVAT, ISNULL(B.FiscalStripNonVAT, '') 
-                      AS FiscalStripNonVAT
+                      AS FiscalStripNonVAT, B.Disabled AS AgencyDisabled
 FROM         dbo.MsEmployee AS A LEFT OUTER JOIN
                       dbo.AgencyFunding AS B ON A.AgencyID = B.AgencyID LEFT OUTER JOIN
                       dbo.MsEmployee AS C ON A.SupervisorId = C.EmpID LEFT OUTER JOIN
@@ -24,7 +25,7 @@ Begin DesignProperties =
    Begin PaneConfigurations = 
       Begin PaneConfiguration = 0
          NumPanes = 4
-         Configuration = "(H (1[35] 4[3] 2[35] 3) )"
+         Configuration = "(H (1[7] 4[5] 2[17] 3) )"
       End
       Begin PaneConfiguration = 1
          NumPanes = 3
@@ -86,50 +87,10 @@ Begin DesignProperties =
    End
    Begin DiagramPane = 
       Begin Origin = 
-         Top = -288
+         Top = 0
          Left = 0
       End
       Begin Tables = 
-         Begin Table = "A"
-            Begin Extent = 
-               Top = 294
-               Left = 38
-               Bottom = 402
-               Right = 189
-            End
-            DisplayFlags = 280
-            TopColumn = 0
-         End
-         Begin Table = "B"
-            Begin Extent = 
-               Top = 294
-               Left = 227
-               Bottom = 402
-               Right = 406
-            End
-            DisplayFlags = 280
-            TopColumn = 0
-         End
-         Begin Table = "C"
-            Begin Extent = 
-               Top = 294
-               Left = 444
-               Bottom = 402
-               Right = 595
-            End
-            DisplayFlags = 280
-            TopColumn = 0
-         End
-         Begin Table = "D"
-            Begin Extent = 
-               Top = 294
-               Left = 633
-               Bottom = 402
-               Right = 797
-            End
-            DisplayFlags = 280
-            TopColumn = 0
-         End
       End
    End
    Begin SQLPane = 
@@ -165,9 +126,7 @@ Begin DesignProperties =
          Table = 1170
          Output = 720
          Append = 1400
-         N' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'vwPhoneCustomerList'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPane2', @value=N'ewValue = 1170
+         NewValue = 1170
          SortType = 1350
          SortOrder = 1410
          GroupBy = 1350
@@ -180,5 +139,5 @@ EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPane2', @value=N'ewValue = 117
 End
 ' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'vwPhoneCustomerList'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPaneCount', @value=2 , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'vwPhoneCustomerList'
+EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPaneCount', @value=1 , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'vwPhoneCustomerList'
 GO
