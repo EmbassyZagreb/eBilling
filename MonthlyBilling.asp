@@ -35,7 +35,7 @@ function validate_form()
 	return valid;
 }
 </script>
-<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 
@@ -266,7 +266,7 @@ if not rsData.eof then
 	<td colspan="6" align="center"><u>Billing Period (Month - Year) : <a class="FontContent"><%=Period_%></a></u></td>
 </tr> -->
 <tr>
-          <td colspan="6" align="Left"><u><b>Personal Info :<b></u></TD>
+          <td colspan="6" align="Left"><u><strong>Personal Info :<strong></u></TD>
 </tr>  
 <!-- <tr>
 	<td width="20%">Employee Name</td>
@@ -281,14 +281,14 @@ if not rsData.eof then
 	<table cellspadding="1" border="2" bordercolor="black" cellspacing="3" width="100%" bgColor="#999999" border="0">  
 
 		<tr BGCOLOR="#999999">
-			<td colspan="3" style="border: none;"><FONT color=#FFFFFF><b>Employee Name : <%=EmpName_%></b></font></td>
-			<td colspan="3" style="border: none;" align="right"><FONT color=#FFFFFF><b>Phone Number : <%=MobilePhone_ %>&nbsp;</b></font></td>
+			<td colspan="3" style="border: none;"><FONT color=#FFFFFF><strong>Employee Name : <%=EmpName_%></strong></font></td>
+			<td colspan="3" style="border: none;" align="right"><FONT color=#FFFFFF><strong>Phone Number : <%=MobilePhone_ %>&nbsp;</strong></font></td>
 		</tr>
 		<tr BGCOLOR="#999999">
-			<td colspan="6" style="border: none;"><FONT color=#FFFFFF><b>Position : <%=Position_%></b></font></td>
+			<td colspan="6" style="border: none;"><FONT color=#FFFFFF><strong>Position : <%=Position_%></strong></font></td>
 		</tr>
 		<tr BGCOLOR="#999999">
-			<td colspan="6" style="border: none;"><FONT color=#FFFFFF><b>Agency / Office : <%=Office_%></b></font></td>
+			<td colspan="6" style="border: none;"><FONT color=#FFFFFF><strong>Agency / Office : <%=Office_%></strong></font></td>
 		</tr>
 	</table>
 	</td>
@@ -325,7 +325,7 @@ if not rsData.eof then
 </tr> -->
 
 <tr>
-	<td align="Left" colspan="5"><u><b>Billing detail :<b></u></TD>
+	<td align="Left" colspan="5"><u><strong>Billing detail :<strong></u></TD>
 </tr>
 <tr>
 	<td colspan="6">*Click on the bill for more detail</td>
@@ -334,11 +334,11 @@ if not rsData.eof then
 	<td align="Left" colspan="6">
 	<table cellspadding="1" border="1" bordercolor="black" cellspacing="0" width="100%" bgColor="white" border="0">  
 	<tr align="center" height=26>
-		<td width=20%><b>Action</b></td>
-		<td width=20%><b>Billing Period</b></td>
-		<td width=20%><b>Status</b></td>
-		<td width=20%><b>Total Bill Amount (Kn.)</b></td>
-		<td width=20%><b>Personal Amount Due (Kn.)</b></td>
+		<td width=20%><strong>Action</strong></td>
+		<td width=20%><strong>Billing Period</strong></td>
+		<td width=20%><strong>Status</strong></td>
+		<td width=20%><strong>Total Bill Amount (Kn.)</strong></td>
+		<td width=20%><strong>Personal Amount Due (Kn.)</strong></td>
 	</tr>
 <!-- <%if cdbl(OfficePhoneBillRp_) > 0 Then %>
 	<tr>
@@ -418,10 +418,10 @@ if not rsData.eof then
 	<td colspan="6">
 	<table cellspadding="1" cellspacing="0" width="100%" bgColor="white" border="0">
 	<tr>
-		<td width="200px" align="center"><b>Total</b></td>
-		<td width="190px" class="FontContent" align="right"><b><u><%=formatnumber(TotalBillingRp_ , -1) %></u></b>&nbsp;</td>
-		<td width="240px" class="FontContent" align="right"><b><u><%=formatnumber(TotalBillingPrsAmount_ , -1) %></u></b>&nbsp;</td>
-		<td width="250px" class="FontContent" align="right"><b><u><%=formatnumber(TotalBillingAmountPrsDlr_ ,-1) %></u></b>&nbsp;</td>
+		<td width="200px" align="center"><strong>Total</strong></td>
+		<td width="190px" class="FontContent" align="right"><strong><u><%=formatnumber(TotalBillingRp_ , -1) %></u></strong>&nbsp;</td>
+		<td width="240px" class="FontContent" align="right"><strong><u><%=formatnumber(TotalBillingPrsAmount_ , -1) %></u></strong>&nbsp;</td>
+		<td width="250px" class="FontContent" align="right"><strong><u><%=formatnumber(TotalBillingAmountPrsDlr_ ,-1) %></u></strong>&nbsp;</td>
 	</tr>
 	</table>	
 	</td>
@@ -430,7 +430,7 @@ if not rsData.eof then
 	<td colspan="6">
 		<table cellspadding="1" cellspacing="0" bgColor="white" width="100%">  
 		<tr>
-			<td width="12%"><b>Supervisor</b></td>
+			<td width="12%"><strong>Supervisor</strong></td>
 			<td width="1%">:</td>
 			<td>
 				<select name="cmbSupervisor" <% If ((ProgressID_ <> 1) and (ProgressID_ <> 3)) then %>Disabled<%End If%> >
@@ -454,7 +454,7 @@ if not rsData.eof then
 			</td>			
 		</tr>
 		<tr>
-			<td valign="top"><b>Note</b></td>
+			<td valign="top"><strong>Note</strong></td>
 			<td valign="top" width="1%">:</td>
 			<td>
 				<TextArea name="txtNotes" Rows="5" Cols="70" Wrap <% if (ProgressID_  <> 1) and (ProgressID_ <> 3) then%>ReadOnly<%End If%> ><%=Notes_%></textarea>
@@ -462,7 +462,7 @@ if not rsData.eof then
 		</tr>
 <%		if (ProgressID_ <> 1)then%>
 		<tr>
-			<td colspan="3"><b>Remarks/Correction(s) :</b></td>
+			<td colspan="3"><strong>Remarks/Correction(s) :</strong></td>
 		</tr>
 		<tr>
 			<td valign="top">&nbsp;</td>
@@ -525,7 +525,7 @@ set AwaitingRS = BillingCon.execute(strsql)
 %>
 <table cellspadding="1" cellspacing="0" width="65%" bgColor="white">  
 <tr>
-	<td align="Left"><u><b>Accumulated Debt :</b></u></TD>
+	<td align="Left"><u><strong>Accumulated Debt :</strong></u></TD>
 </tr>
 <%
 if not AwaitingRS.eof Then
@@ -537,11 +537,11 @@ if not AwaitingRS.eof Then
 	<td align="Left">
 	<table cellspadding="1" border="1" bordercolor="black" cellspacing="0" width="100%" bgColor="white" border="0">  
 	<tr align="center" height=26>
-		<td width=20%><b>Action</b></td>
-		<td width=20%><b>Billing Period</b></td>
-		<td width=20%><b>Status</b></td>
-		<td width=20%><b>Total Bill Amount (Kn.)</b></td>
-		<td width=20%><b>Personal Amount Due (Kn.)</b></td>
+		<td width=20%><strong>Action</strong></td>
+		<td width=20%><strong>Billing Period</strong></td>
+		<td width=20%><strong>Status</strong></td>
+		<td width=20%><strong>Total Bill Amount (Kn.)</strong></td>
+		<td width=20%><strong>Personal Amount Due (Kn.)</strong></td>
 	</tr>
 
 <% 
@@ -555,8 +555,8 @@ if not AwaitingRS.eof Then
 		SubTotalPrs_ = 0
 %>
 		<tr BGCOLOR="#999999" height=26>
-			<td colspan="2" style="border: none;"><FONT color=#FFFFFF><b>&nbsp;Employee Name : <%=AwaitingRS("EmpName") %></b></font></td>
-			<td colspan="3" style="border: none;" align="right"><FONT color=#FFFFFF><b>Phone Number : <%=AwaitingRS("MobilePhone") %>&nbsp;</b></font></td>
+			<td colspan="2" style="border: none;"><FONT color=#FFFFFF><strong>&nbsp;Employee Name : <%=AwaitingRS("EmpName") %></strong></font></td>
+			<td colspan="3" style="border: none;" align="right"><FONT color=#FFFFFF><strong>Phone Number : <%=AwaitingRS("MobilePhone") %>&nbsp;</strong></font></td>
 
 		</tr>		
 <%
@@ -581,9 +581,9 @@ if not AwaitingRS.eof Then
 		if AwaitingRS.eof Then 
 %>
 		<tr>
-			<td colspan="3"><b>&nbsp;SubTotal</b></td>			
-			<td align="right"><b>&nbsp;<%=formatnumber(SubTotalBill_,-1) %>&nbsp;</font></b></td>			
-			<td align="right"><b>&nbsp;<%=formatnumber(SubTotalPrs_,-1) %>&nbsp;</font></b></td>			
+			<td colspan="3"><strong>&nbsp;SubTotal</strong></td>			
+			<td align="right"><strong>&nbsp;<%=formatnumber(SubTotalBill_,-1) %>&nbsp;</font></strong></td>			
+			<td align="right"><strong>&nbsp;<%=formatnumber(SubTotalPrs_,-1) %>&nbsp;</font></strong></td>			
 		</tr>
 <%
 
@@ -591,9 +591,9 @@ if not AwaitingRS.eof Then
 
 %>
 		<tr>
-			<td colspan="3"><b>&nbsp;SubTotal</b></td>			
-			<td align="right"><b>&nbsp;<%=formatnumber(SubTotalBill_,-1) %>&nbsp;</font></b></td>			
-			<td align="right"><b>&nbsp;<%=formatnumber(SubTotalPrs_,-1) %>&nbsp;</font></b></td>			
+			<td colspan="3"><strong>&nbsp;SubTotal</strong></td>			
+			<td align="right"><strong>&nbsp;<%=formatnumber(SubTotalBill_,-1) %>&nbsp;</font></strong></td>			
+			<td align="right"><strong>&nbsp;<%=formatnumber(SubTotalPrs_,-1) %>&nbsp;</font></strong></td>			
 		</tr>
 <%	
 		end if
@@ -601,9 +601,9 @@ if not AwaitingRS.eof Then
 %>
 
 		<tr  BGCOLOR="#999999" height=26>
-			<td colspan="3"><FONT color=#FFFFFF><b>&nbsp;Total</b></font></td>			
-			<td align="right"><FONT color=#FFFFFF><b>&nbsp;<%=formatnumber(TotalBill_,-1) %>&nbsp;</font></b></td>			
-			<td align="right"><FONT color=#FFFFFF><b>&nbsp;<%=formatnumber(TotalPrs_,-1) %>&nbsp;</font></b></td>			
+			<td colspan="3"><FONT color=#FFFFFF><strong>&nbsp;Total</strong></font></td>			
+			<td align="right"><FONT color=#FFFFFF><strong>&nbsp;<%=formatnumber(TotalBill_,-1) %>&nbsp;</font></strong></td>			
+			<td align="right"><FONT color=#FFFFFF><strong>&nbsp;<%=formatnumber(TotalPrs_,-1) %>&nbsp;</font></strong></td>			
 		</tr>
 
 <%
@@ -616,11 +616,11 @@ if not AwaitingRS.eof Then
 		if cdbl(TotalPrs_) > cdbl(CashierMinimumAmount_) Then
 %>
 			<tr BGCOLOR="#990000" height=36>
-				<td  colspan="5" align="center"><FONT color=#FFFFFF><b>Your total accumulated debt is greater than <%=formatnumber(CashierMinimumAmount_,-1) %> Kuna. Please make the payment at cashier office.<br><%=CashierInfo%></font></b></td>
+				<td  colspan="5" align="center"><FONT color=#FFFFFF><strong>Your total accumulated debt is greater than <%=formatnumber(CashierMinimumAmount_,-1) %> Kuna. Please make the payment at cashier office.<br><%=CashierInfo%></font></strong></td>
 			</tr>
 <% 		else %>
 			<tr BGCOLOR="#999999" height=26>
-				<td colspan="5" align="center"><FONT color=#FFFFFF><b>Your total accumulated debt is less than <%=formatnumber(CashierMinimumAmount_,-1) %> Kuna. No payment is necessary at this point.</font></b></td>
+				<td colspan="5" align="center"><FONT color=#FFFFFF><strong>Your total accumulated debt is less than <%=formatnumber(CashierMinimumAmount_,-1) %> Kuna. No payment is necessary at this point.</font></strong></td>
 			</tr>
 <% 		end if %>			
 	</table>
@@ -631,7 +631,7 @@ if not AwaitingRS.eof Then
 	<td align="Left">
 	<table cellspadding="1" border="1" bordercolor="black" cellspacing="0" width="100%" bgColor="white" border="0">  
 	<tr align="center" BGCOLOR="#999999" height=26>
-		<td><FONT color=#FFFFFF><b>There is no accumulated debt for your cell phone(s).</b></font></td>
+		<td><FONT color=#FFFFFF><strong>There is no accumulated debt for your cell phone(s).</strong></font></td>
 	</tr>
 
 <% end if %>

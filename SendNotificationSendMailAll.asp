@@ -2,7 +2,7 @@
 <HEAD>
 <!--#include file="connect.inc" -->
 <!--METADATA TYPE="typelib" UUID="CD000000-8B95-11D1-82DB-00C04FB1625D"  NAME="CDO for Windows 2000 Library" --> 
-<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </HEAD>
@@ -120,7 +120,7 @@ YearP_ = Request.form("YearList")
 			objMail.To = send_to 	
 '			if ProgressID_ ="7" and EmpID_ <> "2490L" then
 			if ProgressID_ ="7" then
-				objMail.Subject = "Info: eBilling System - No Invoice This Period"
+				objMail.Subject = "Info: zBilling System - No Invoice This Period"
 				objMail.HTMLBody = "<html><head>"
 				ObjMail.HTMLBody = ObjMail.HTMLBody & " "_	
 			
@@ -137,7 +137,7 @@ YearP_ = Request.form("YearList")
 					& "    <tr> "_           
 					& "        <td colspan='6'>&nbsp;</td></tr> "_
 					& "    <tr> "_           
-					& "        <td colspan='6' align='Left'><b><u>Billing Data:</u></b></td></tr> "_
+					& "        <td colspan='6' align='Left'><strong><u>Billing Data:</u></strong></td></tr> "_
 					& "    <tr> "_           
 					& "        <td>Employee Name </td><td width='1%'>:</td><td class='FontContent' colspan='4'>" & EmpName_ & "</td></tr> "_
 					& "    <tr> "_           
@@ -147,7 +147,7 @@ YearP_ = Request.form("YearList")
 					& "    <tr> "_ 
 					& "        <td>Period </td><td width='1%'>:</td><td class='FontContent' colspan='4'>" & Period_ & "</td></tr> "_
 					& "    <tr> "_ 
-					& "        <td>Total Usage </td><td width='1%'>:</td><td class='FontContent' colspan='4'>Kn. " & formatnumber(TotalBillingAmountPrsRp_,2) & " <b>(no payment necessary)</b></td></tr> "_
+					& "        <td>Total Usage </td><td width='1%'>:</td><td class='FontContent' colspan='4'>Kn. " & formatnumber(TotalBillingAmountPrsRp_,2) & " <strong>(no payment necessary)</strong></td></tr> "_
 					& "    <tr> "_ 
 					& "        <td>Total Billing Amount </td><td width='1%'>:</td><td class='FontContent' colspan='4'>Kn. " & formatnumber(TotalBillingRp_,2) & "</td></tr> "_
 					& "    <tr> "_       
@@ -157,7 +157,7 @@ YearP_ = Request.form("YearList")
 		
 					& "</body></html>"
 			else
-				objMail.Subject = "Action Required: eBilling System – Monthly Billing Reminder"
+				objMail.Subject = "Action Required: zBilling System – Monthly Billing Reminder"
 '				objMail.Subject = "e-Billing System - Monthly Billing Reminder for period " & Period_
 				objMail.HTMLBody = "<html><head>"
 
@@ -171,9 +171,9 @@ YearP_ = Request.form("YearList")
 					& "    <tr> "_           
 					& "        <td colspan='6'>Your invoice has been processed for this billing period and action is required.</td></tr> "_
 					& "    <tr> "_           
-					& "        <td colspan='6'><b>Do NOT</b> make a payment yet - Please follow the instructions below:</td></tr> "_
+					& "        <td colspan='6'><strong>Do NOT</strong> make a payment yet - Please follow the instructions below:</td></tr> "_
 					& "    <tr> "_           
-					& "        <td colspan='6'>1) Click <a href='http://zagrebws03:8080/eBilling/MonthlyBilling.asp?Month="& MonthP_ & "&Year=" & YearP_ &"' target='_blank'>here </a> to access the ebilling application.</td></tr> "_
+					& "        <td colspan='6'>1) Click <a href='http://zagrebws03:8080/zBilling/MonthlyBilling.asp?Month="& MonthP_ & "&Year=" & YearP_ &"' target='_blank'>here </a> to access the zBilling application.</td></tr> "_
 					& "    <tr> "_           
 					& "        <td colspan='6'>2) In the application, click on the CellPhone hyper link.</td></tr> "_
 					& "    <tr> "_           
@@ -183,13 +183,13 @@ YearP_ = Request.form("YearList")
 					& "    <tr> "_           
 					& "        <td colspan='6'>5) Submit your invoice to your supervisor for approval.</td></tr> "_
 					& "    <tr> "_           
-					& "        <td colspan='6'>6) Make payment if necessary - only <b>AFTER</b> your supervisor has approved.  You will receive a confirmation email informing you if you need to make a payment.</td></tr> "_
+					& "        <td colspan='6'>6) Make payment if necessary - only <strong>AFTER</strong> your supervisor has approved.  You will receive a confirmation email informing you if you need to make a payment.</td></tr> "_
 					& "    <tr> "_           
 					& "        <td colspan='6' align='center'>&nbsp;</td></tr> "_
 					& "    <tr> "_           
 					& "        <td colspan='6' align='center'><u>Billing Period (Month - Year) : <a class='FontContent'>" & Period_ & "</a></u></td></tr> "_
 					& "    <tr> "_           
-					& "        <td colspan='6' align='Left'><u><b>Personal Info<b></u></td></tr> "_
+					& "        <td colspan='6' align='Left'><u><strong>Personal Info<strong></u></td></tr> "_
 					& "    <tr> "_           
 					& "        <td width='20%'>Employee Name</td><td width='1%'>:</td><td class='FontContent'>" & EmpName_ & "</td><td>Agency / Office</td><td width='1%'>:</td><td class='FontContent'>" & Office_ & "</td></tr> "_
 					& "    <tr> "_           
@@ -201,11 +201,11 @@ YearP_ = Request.form("YearList")
 					& "    <tr> "_ 
 					& "        <td colspan='6'><hr></td></tr> "_
 					& "    <tr> "_ 
-					& "        <td align='Left' colspan='6'><u><b>Billing Detail:<b></u></td></tr> "_
+					& "        <td align='Left' colspan='6'><u><strong>Billing Detail:<strong></u></td></tr> "_
 					& "    <tr> "_ 
-					& "        <td align='Left' colspan='6'><table cellspadding='1' border='1' bordercolor='black' cellspacing='0' width='100%' bgColor='white'><tr align='center'><td rowspan='2'><b>Type</b></td><td rowspan='2'><b>Billing (Kn.)</b></td><td colspan='2'><b>Personal Usage</b></td></tr>"_
+					& "        <td align='Left' colspan='6'><table cellspadding='1' border='1' bordercolor='black' cellspacing='0' width='100%' bgColor='white'><tr align='center'><td rowspan='2'><strong>Type</strong></td><td rowspan='2'><strong>Billing (Kn.)</strong></td><td colspan='2'><strong>Personal Usage</strong></td></tr>"_
 					& "    <tr> "_ 
-					& "        <td align='center'><b>In Kuna (Kn.)</b></td><td align='center'><b>In US Dollar ($)</b></td></tr> "
+					& "        <td align='center'><strong>In Kuna (Kn.)</strong></td><td align='center'><strong>In US Dollar ($)</strong></td></tr> "
 					if (cdbl(OfficePhoneBillRp_) > 0) And ((BillType_ ="X") or (BillType_ ="O")) Then 
 						ObjMail.HTMLBody = ObjMail.HTMLBody & " "_	
 						& "<tr>"_ 
@@ -279,9 +279,9 @@ YearP_ = Request.form("YearList")
 					ObjMail.HTMLBody = ObjMail.HTMLBody & " "_	
 						& " <tr>"_
 							& " <td align='center'>Total</td>"_
-							& " <td class='FontContent' align='right'><b><u>" & formatnumber(TotalBillingRp_ , 2) & "</u></b>&nbsp;</td>"_
-							& " <td class='FontContent' align='right'><b><u>" & formatnumber(TotalBillingAmountPrsRp_ , 2) & "</u></b>&nbsp;</td>"_
-							& " <td class='FontContent' align='right'><b><u>" & formatnumber(TotalBillingAmountPrsDlr_ ,2) & "</u></b>&nbsp;</td>"_
+							& " <td class='FontContent' align='right'><strong><u>" & formatnumber(TotalBillingRp_ , 2) & "</u></strong>&nbsp;</td>"_
+							& " <td class='FontContent' align='right'><strong><u>" & formatnumber(TotalBillingAmountPrsRp_ , 2) & "</u></strong>&nbsp;</td>"_
+							& " <td class='FontContent' align='right'><strong><u>" & formatnumber(TotalBillingAmountPrsDlr_ ,2) & "</u></strong>&nbsp;</td>"_
 						& " </tr>"
 					end if
 	
@@ -291,7 +291,7 @@ YearP_ = Request.form("YearList")
 			'		if (BillType_ ="X") Then
 		'			ObjMail.HTMLBody = ObjMail.HTMLBody & " "_	
 		'			& "    <tr> "_ 
-		'			& "        <td colspan='6'><table cellspadding='1' cellspacing='0' width='100%' bgColor='white' border='0'><tr><td align='center' width='40%'><b>Total</b></td><td width='20%' class='FontContent' align='right'>&nbsp;</td><td width='20%' class='FontContent' align='right'><b><u>" & formatnumber(TotalBillingRp_ , 2) & "</u></b>&nbsp;</td><td width='20%' class='FontContent' align='right'><b><u>" & formatnumber(TotalBillingDlr_ ,2) & "</u></b>&nbsp;</td></tr></table></td></tr> "
+		'			& "        <td colspan='6'><table cellspadding='1' cellspacing='0' width='100%' bgColor='white' border='0'><tr><td align='center' width='40%'><strong>Total</strong></td><td width='20%' class='FontContent' align='right'>&nbsp;</td><td width='20%' class='FontContent' align='right'><strong><u>" & formatnumber(TotalBillingRp_ , 2) & "</u></strong>&nbsp;</td><td width='20%' class='FontContent' align='right'><strong><u>" & formatnumber(TotalBillingDlr_ ,2) & "</u></strong>&nbsp;</td></tr></table></td></tr> "
 		'			end if
 
 					ObjMail.HTMLBody = ObjMail.HTMLBody & " "_	
@@ -300,7 +300,7 @@ YearP_ = Request.form("YearList")
 	
 					& "    <tr> "_       
 					& "        <td colspan='6'> "_
-					& "        <p>You must take action. Click <a href='http://zagrebws03:8080/eBilling/MonthlyBilling.asp?Month="& MonthP_ & "&Year=" & YearP_ &"' target='_blank'>Here </a> to review your invoice.</p></td> "_  
+					& "        <p>You must take action. Click <a href='http://zagrebws03:8080/zBilling/MonthlyBilling.asp?Month="& MonthP_ & "&Year=" & YearP_ &"' target='_blank'>Here </a> to review your invoice.</p></td> "_  
 
 					& "    <tr> "_       
 					& "        <td colspan='6'>&nbsp; </td></tr> "_      
@@ -330,7 +330,7 @@ YearP_ = Request.form("YearList")
 					objFile.Writeline "<form>"
 					objFile.Writeline "   <table cellpadding='0' cellspacing='0' border='0' width='100%'>"
 					objFile.Writeline "      <tr>"
-					objFile.Writeline "		<td><b>Personal Usage Detail for Period <b>" & MonthP_ & " - " & YearP_ & "</b> :</b></td>"
+					objFile.Writeline "		<td><strong>Personal Usage Detail for Period <strong>" & MonthP_ & " - " & YearP_ & "</strong> :</strong></td>"
 					objFile.Writeline "      </tr>"
 					objFile.Writeline "     <tr>"
 					objFile.Writeline "		<td>&nbsp;</td>"
@@ -375,8 +375,8 @@ YearP_ = Request.form("YearList")
 								No_ = No_ + 1
 								loop
 					objFile.Writeline "     		<tr>"
-					objFile.Writeline "     			<td align='center' colspan='5'><b>Total (Kn.) </b>&nbsp;</td>"
-					objFile.Writeline "				<td align='right'><b><u>" & formatnumber(CellPhonePrsBillRp_ ,2) & "</u></b>&nbsp;</td>"
+					objFile.Writeline "     			<td align='center' colspan='5'><strong>Total (Kn.) </strong>&nbsp;</td>"
+					objFile.Writeline "				<td align='right'><strong><u>" & formatnumber(CellPhonePrsBillRp_ ,2) & "</u></strong>&nbsp;</td>"
 					objFile.Writeline "			</tr>"
 					objFile.Writeline "			</table>"
 					objFile.Writeline "		</td>"
@@ -440,13 +440,13 @@ YearP_ = Request.form("YearList")
 					& "        <td colspan='6'>2) Work with the users of the phone to determine if any of the calls are personal.</td> "_
 					& "    </tr> "_ 				
 					& "    <tr> "_
-					& "        <td colspan='6'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a.If personal calls amount to <b>less than or equal to 30 Kuna</b>, reply to this email and write “No Payment”.</td> "_
+					& "        <td colspan='6'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a.If personal calls amount to <strong>less than or equal to 30 Kuna</strong>, reply to this email and write “No Payment”.</td> "_
 					& "    </tr> "_ 				
 					& "    <tr> "_
 					& "        <td colspan='6'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in the email content.</td> "_
 					& "    </tr> "_ 				
 					& "    <tr> "_
-					& "        <td colspan='6'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b.If the personal calls amount to <b>more than 30 Kuna ,</b>, print this email, write in the personal call amount</td> "_ 
+					& "        <td colspan='6'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b.If the personal calls amount to <strong>more than 30 Kuna ,</strong>, print this email, write in the personal call amount</td> "_ 
 					& "    </tr> "_ 
 					& "    <tr> "_
 					& "        <td colspan='6'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;at the bottom, sign at the bottom, and instruct the employee to make payment with the cashier.</td> "_ 
@@ -456,7 +456,7 @@ YearP_ = Request.form("YearList")
 					& "    <tr> "_           
 					& "        <td colspan='6' align='center'><u>Billing Period (Month - Year) : <a class='FontContent'>" & Period_ & "</a></u></td></tr> "_
 					& "    <tr> "_           
-					& "        <td colspan='6' align='Left'><u><b>Personal Info<b></u></td></tr> "_
+					& "        <td colspan='6' align='Left'><u><strong>Personal Info<strong></u></td></tr> "_
 					& "    <tr> "_           
 					& "        <td width='20%'>Employee Name</td><td width='1%'>:</td><td class='FontContent'>" & EmpName_ & "</td><td>Agency / Office</td><td width='1%'>:</td><td class='FontContent'>" & Office_ & "</td></tr> "_
 					& "    <tr> "_           
@@ -468,39 +468,39 @@ YearP_ = Request.form("YearList")
 					& "    <tr> "_ 
 					& "        <td colspan='6'><hr></td></tr> "_
 					& "    <tr> "_ 
-					& "        <td align='Left' colspan='6'><u><b>Billing Detail :<b></u></td></tr> "_
+					& "        <td align='Left' colspan='6'><u><strong>Billing Detail :<strong></u></td></tr> "_
 					& "    <tr> "_ 
 					& "        <td align='Left' colspan='6'> "_
 					& "		<table cellspadding='0' border='1' bordercolor='black' cellspacing='0' width='100%' bgColor='white'> "_
 					& "		<tr><td colspan='4' align='center' class='SubTitle'>USAGE SUMMARY</td></tr> "_
-					& "		<tr><td>&nbsp;<b>Previous Balance</b> / <i>Tagihan Sebelumnya</i><div align='center'>Kn.&nbsp;&nbsp;"& formatnumber(PreviousBalance_,2) &" </div></td>" _
-					& "		    <td>&nbsp;<b>Payment</b> / <i>Pembayaran</i><div align='center'>Kn.&nbsp;&nbsp;" & formatnumber(Payment_,2) &"</div></td>"_
-					& "		    <td>&nbsp;<b>Adjustment</b> / <i>Koreksi</i><div align='center'>Kn.&nbsp;&nbsp;" & formatnumber(Adjustment_,2) &"</div></td>"_
-					& "		    <td>&nbsp;<b>Balance Due</b> / <i>Sisa Tagihan</i><div align='center'>Kn.&nbsp;&nbsp;" & formatnumber(BalanceDue_,2) &"</div></td>"_
+					& "		<tr><td>&nbsp;<strong>Previous Balance</strong> / <i>Tagihan Sebelumnya</i><div align='center'>Kn.&nbsp;&nbsp;"& formatnumber(PreviousBalance_,2) &" </div></td>" _
+					& "		    <td>&nbsp;<strong>Payment</strong> / <i>Pembayaran</i><div align='center'>Kn.&nbsp;&nbsp;" & formatnumber(Payment_,2) &"</div></td>"_
+					& "		    <td>&nbsp;<strong>Adjustment</strong> / <i>Koreksi</i><div align='center'>Kn.&nbsp;&nbsp;" & formatnumber(Adjustment_,2) &"</div></td>"_
+					& "		    <td>&nbsp;<strong>Balance Due</strong> / <i>Sisa Tagihan</i><div align='center'>Kn.&nbsp;&nbsp;" & formatnumber(BalanceDue_,2) &"</div></td>"_
 					& "		</tr>"_
-					& "		<tr><td colspan='4'>&nbsp;<u><b>Usage Charges</b> / <i>Biaya Percakapan:<i/></u></td></tr>"_
+					& "		<tr><td colspan='4'>&nbsp;<u><strong>Usage Charges</strong> / <i>Biaya Percakapan:<i/></u></td></tr>"_
 					& "		<tr><td colspan='4'><table cellspadding='0' cellspacing='0' bordercolor='black' width='100%' bgColor='white'>"_
-					& "		    <tr><td width='70%'>&nbsp;<b>Subscription Fee</b> / <i>Abonemen<i/></td><td width='3%'>&nbsp;Kn.</td><td align='right'>" & formatnumber(SubscriptionFee_,2) & "&nbsp;&nbsp;&nbsp;</td></tr>"_
-					& "		    <tr><td>&nbsp;<b>Local</b> / <i>Lokal<i/></td><td>&nbsp;Kn.</td><td align='right'>"& formatnumber(LocalCall_,2) & "&nbsp;&nbsp;&nbsp;</td></tr>"_
-					& "		    <tr><td>&nbsp;<b>Interlocal</b> / <i>SLJJ<i/></td><td>&nbsp;Kn.</td><td align='right'>"& formatnumber(Interlocal_,2) & "&nbsp;&nbsp;&nbsp;</td></tr>"_
-					& "		    <tr><td>&nbsp;<b>IDD</b> / <i>SLI<i/></td><td>&nbsp;Kn.</td><td align='right'>"& formatnumber(IDD_,2) &"&nbsp;&nbsp;&nbsp;</td></tr>"_
-					& "		    <tr><td>&nbsp;<b>SMS</b> / <i>SMS<i/></td><td>&nbsp;Kn.</td><td align='right'>"& formatnumber(SMS_,2) &"&nbsp;&nbsp;&nbsp;</td></tr>"_
-					& "		    <tr><td>&nbsp;<b>International Roaming Surcharge</b> / <i>Surcharge Jelajah Internasional<i/></td><td>&nbsp;Kn.</td><td align='right'>"& formatnumber(IRS_,2) & "&nbsp;&nbsp;&nbsp;</td></tr>"_
-					& "		    <tr><td>&nbsp;<b>International Roaming Leg</b> / <i>Roaming Leg Jelajah Internasional<i/></td><td>&nbsp;Kn.</td><td align='right'>"& formatnumber(IRL_,2) & "&nbsp;&nbsp;&nbsp;</td></tr></table></td></tr>"_
-					& "		    <tr><td colspan='4'>&nbsp;<u><b>Value Added Services</b> / <i>Layanan Tambahan:<i/></u></td></tr>"_
+					& "		    <tr><td width='70%'>&nbsp;<strong>Subscription Fee</strong> / <i>Abonemen<i/></td><td width='3%'>&nbsp;Kn.</td><td align='right'>" & formatnumber(SubscriptionFee_,2) & "&nbsp;&nbsp;&nbsp;</td></tr>"_
+					& "		    <tr><td>&nbsp;<strong>Local</strong> / <i>Lokal<i/></td><td>&nbsp;Kn.</td><td align='right'>"& formatnumber(LocalCall_,2) & "&nbsp;&nbsp;&nbsp;</td></tr>"_
+					& "		    <tr><td>&nbsp;<strong>Interlocal</strong> / <i>SLJJ<i/></td><td>&nbsp;Kn.</td><td align='right'>"& formatnumber(Interlocal_,2) & "&nbsp;&nbsp;&nbsp;</td></tr>"_
+					& "		    <tr><td>&nbsp;<strong>IDD</strong> / <i>SLI<i/></td><td>&nbsp;Kn.</td><td align='right'>"& formatnumber(IDD_,2) &"&nbsp;&nbsp;&nbsp;</td></tr>"_
+					& "		    <tr><td>&nbsp;<strong>SMS</strong> / <i>SMS<i/></td><td>&nbsp;Kn.</td><td align='right'>"& formatnumber(SMS_,2) &"&nbsp;&nbsp;&nbsp;</td></tr>"_
+					& "		    <tr><td>&nbsp;<strong>International Roaming Surcharge</strong> / <i>Surcharge Jelajah Internasional<i/></td><td>&nbsp;Kn.</td><td align='right'>"& formatnumber(IRS_,2) & "&nbsp;&nbsp;&nbsp;</td></tr>"_
+					& "		    <tr><td>&nbsp;<strong>International Roaming Leg</strong> / <i>Roaming Leg Jelajah Internasional<i/></td><td>&nbsp;Kn.</td><td align='right'>"& formatnumber(IRL_,2) & "&nbsp;&nbsp;&nbsp;</td></tr></table></td></tr>"_
+					& "		    <tr><td colspan='4'>&nbsp;<u><strong>Value Added Services</strong> / <i>Layanan Tambahan:<i/></u></td></tr>"_
 					& "		    <tr><td colspan='4'><table cellspadding='0' cellspacing='0' bordercolor='black' width='100%' bgColor='white'>"_
-					& "		    <tr><td width='70%'>&nbsp;<b>Prepaid Recharge</b> / <i>Isi Ulang Prabayar<i/></td><td width='3%'>&nbsp;Kn.</td><td align='right'>"& formatnumber(Prepaid_,2) & "&nbsp;&nbsp;&nbsp;</td></tr>"_
-					& "		    <tr><td>&nbsp;<b>Fax Response and Interactive Data</b> / <i>FARIDA<i/></td><td>&nbsp;Kn.</td><td align='right'>"& formatnumber(FARIDA_,2) & "&nbsp;&nbsp;&nbsp;</td></tr>"_
-					& "		    <tr><td>&nbsp;<b>Mobile Banking</b> / <i>Mobile Banking<i/></td><td>&nbsp;Kn.</td><td align='right'>"& formatnumber(MobileBanking_,2) & "&nbsp;&nbsp;&nbsp;</td></tr>"_
-					& "		    <tr><td>&nbsp;<b>Detailed Call Record Print</b> / <i>Print Rincian Percakapan<i/></td><td>&nbsp;Kn.</td><td align='right'>"& formatnumber(DetailedCallRecord_,2) & "&nbsp;&nbsp;&nbsp;</td></tr>"_
-					& "		    <tr><td>&nbsp;<b>3G, HSDPA, GPRS, MMS, Wifi, Premium Content</b> / <i>3G, HSDPA, GPRS, MMS, Wifi, Konten Premium<i/></td><td>&nbsp;Kn.</td><td align='right'>"& formatnumber(GPRS_,2) &"&nbsp;&nbsp;&nbsp;</td></tr>"_
-					& "		    <tr><td>&nbsp;<b>Ventus / Blackberry, iPhone, Bridge Dataroam, Data Roam</b> / <i>Ventus / Blackberry, iPhone, Bridge Dataroam, Data Roam<i/></td><td>&nbsp;Kn.</td><td align='right'>"& formatnumber(IPHONE_,2) &"&nbsp;&nbsp;&nbsp;</td></tr></table></td></tr>"_
+					& "		    <tr><td width='70%'>&nbsp;<strong>Prepaid Recharge</strong> / <i>Isi Ulang Prabayar<i/></td><td width='3%'>&nbsp;Kn.</td><td align='right'>"& formatnumber(Prepaid_,2) & "&nbsp;&nbsp;&nbsp;</td></tr>"_
+					& "		    <tr><td>&nbsp;<strong>Fax Response and Interactive Data</strong> / <i>FARIDA<i/></td><td>&nbsp;Kn.</td><td align='right'>"& formatnumber(FARIDA_,2) & "&nbsp;&nbsp;&nbsp;</td></tr>"_
+					& "		    <tr><td>&nbsp;<strong>Mobile Banking</strong> / <i>Mobile Banking<i/></td><td>&nbsp;Kn.</td><td align='right'>"& formatnumber(MobileBanking_,2) & "&nbsp;&nbsp;&nbsp;</td></tr>"_
+					& "		    <tr><td>&nbsp;<strong>Detailed Call Record Print</strong> / <i>Print Rincian Percakapan<i/></td><td>&nbsp;Kn.</td><td align='right'>"& formatnumber(DetailedCallRecord_,2) & "&nbsp;&nbsp;&nbsp;</td></tr>"_
+					& "		    <tr><td>&nbsp;<strong>3G, HSDPA, GPRS, MMS, Wifi, Premium Content</strong> / <i>3G, HSDPA, GPRS, MMS, Wifi, Konten Premium<i/></td><td>&nbsp;Kn.</td><td align='right'>"& formatnumber(GPRS_,2) &"&nbsp;&nbsp;&nbsp;</td></tr>"_
+					& "		    <tr><td>&nbsp;<strong>Ventus / Blackberry, iPhone, Bridge Dataroam, Data Roam</strong> / <i>Ventus / Blackberry, iPhone, Bridge Dataroam, Data Roam<i/></td><td>&nbsp;Kn.</td><td align='right'>"& formatnumber(IPHONE_,2) &"&nbsp;&nbsp;&nbsp;</td></tr></table></td></tr>"_
 					& "		    <tr><td colspan='4'><table cellspadding='0' cellspacing='0' bordercolor='black' width='100%' bgColor='white'>"_
-					& "		    <tr><td width='70%'>&nbsp;<b>Variance To Minimum Usage Guarantee</b> / <i>Selisih Penggunaan Minimum<i/></td><td width='3%'>&nbsp;Kn.</td><td align='right'>"& formatnumber(MinUsage_,2) &"&nbsp;&nbsp;&nbsp;</td></tr>"_
-					& "		    <tr><td>&nbsp;<b>Sub Total</b> / <i>Sub Total<i/></td><td>&nbsp;Kn.</td><td align='right'>"& formatnumber(SubTotal_,2) &"&nbsp;&nbsp;&nbsp;</td></tr>"_
-					& "		    <tr><td>&nbsp;<b>VAT 10%</b> / <i>PPN 10%<i/></td><td>&nbsp;Kn.</td><td align='right'>"& formatnumber(PPN_,2) &"&nbsp;&nbsp;&nbsp;</td></tr>"_
-					& "		    <tr><td>&nbsp;<b>Stamp Duty Fee</b> / <i>Biaya Materai pembayaran bulan lalu)<i/></td><td>&nbsp;Kn.</td><td align='right'>"& formatnumber(StampFee_,2)&"&nbsp;&nbsp;&nbsp;</td></tr>"_
-					& "		    <tr><td>&nbsp;<b>Current Balance</b> / <i>Total Tagihan Bulan Ini<i/></td><td>&nbsp;Kn.</td><td align='right'><u><b>"& formatnumber(CurrentBalance_,2)&"</b></u>&nbsp;&nbsp;&nbsp;</td></tr></table></td></tr>"
+					& "		    <tr><td width='70%'>&nbsp;<strong>Variance To Minimum Usage Guarantee</strong> / <i>Selisih Penggunaan Minimum<i/></td><td width='3%'>&nbsp;Kn.</td><td align='right'>"& formatnumber(MinUsage_,2) &"&nbsp;&nbsp;&nbsp;</td></tr>"_
+					& "		    <tr><td>&nbsp;<strong>Sub Total</strong> / <i>Sub Total<i/></td><td>&nbsp;Kn.</td><td align='right'>"& formatnumber(SubTotal_,2) &"&nbsp;&nbsp;&nbsp;</td></tr>"_
+					& "		    <tr><td>&nbsp;<strong>VAT 10%</strong> / <i>PPN 10%<i/></td><td>&nbsp;Kn.</td><td align='right'>"& formatnumber(PPN_,2) &"&nbsp;&nbsp;&nbsp;</td></tr>"_
+					& "		    <tr><td>&nbsp;<strong>Stamp Duty Fee</strong> / <i>Biaya Materai pembayaran bulan lalu)<i/></td><td>&nbsp;Kn.</td><td align='right'>"& formatnumber(StampFee_,2)&"&nbsp;&nbsp;&nbsp;</td></tr>"_
+					& "		    <tr><td>&nbsp;<strong>Current Balance</strong> / <i>Total Tagihan Bulan Ini<i/></td><td>&nbsp;Kn.</td><td align='right'><u><strong>"& formatnumber(CurrentBalance_,2)&"</strong></u>&nbsp;&nbsp;&nbsp;</td></tr></table></td></tr>"
 
 
 					ObjMail.HTMLBody = ObjMail.HTMLBody & " "_	

@@ -2,8 +2,8 @@
     '**************************************
     ' Name: Form Based File Upload Using Pur
     '     e ASP
-    ' Description:<b>This code will allow yo
-    '     u to do form based file uploads</b>. It 
+    ' Description:<strong>This code will allow yo
+    '     u to do form based file uploads</strong>. It 
     '     supports multiple files and uses only pu
     '     re ASP. It will parse form data, browse 
     '     server folders for a save location, and 

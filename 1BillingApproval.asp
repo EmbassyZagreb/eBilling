@@ -23,10 +23,10 @@ On Error Resume Next
 <script type="text/javascript">
 function checkall(obj)
 {
-	var c = document.frmCellPhoneBilling.elements.length
-	for (var x=0; x<frmCellPhoneBilling.elements.length; x++)
+	var c = document.frmCellPhonzBilling.elements.length
+	for (var x=0; x<frmCellPhonzBilling.elements.length; x++)
 	{
-		cbElement = frmCellPhoneBilling.elements[x]
+		cbElement = frmCellPhonzBilling.elements[x]
 		if (cbElement.type == "checkbox")
 		{
 			cbElement.checked= obj.checked?true:false
@@ -453,20 +453,20 @@ if ProgressStatus_ <> "Not assigned for this month" Then
 
 		<table class="details">
 		<tr class="details_title">
-			<td  colspan="3">Monthly Fees</b> / <i>Mjesecne pretplate:</i></td>
+			<td  colspan="3">Monthly Fees</strong> / <i>Mjesecne pretplate:</i></td>
 		</tr>
 		<tr>
-			<td width="90%"><b>Subscription Monthly Fee</b> / <i>Mjesecna naknada za pretplatnicki broj<i/></td>
+			<td width="90%"><strong>Subscription Monthly Fee</strong> / <i>Mjesecna naknada za pretplatnicki broj<i/></td>
 			<td width="3%">&nbsp;Kn.</td>
 			<td width="7%" align="right"><%=formatnumber(SubscriptionFee_,-1) %>&nbsp;&nbsp;&nbsp;</td>
 		</tr>
 		<tr>
-			<td>&nbsp;<b>Data Monthly Fee</b> / <i>Mjesecna naknada za mobilni prijenos podataka<i/></td>
+			<td>&nbsp;<strong>Data Monthly Fee</strong> / <i>Mjesecna naknada za mobilni prijenos podataka<i/></td>
 			<td>&nbsp;Kn.</td>
 			<td align="right"><%=formatnumber(FARIDA_,-1) %>&nbsp;&nbsp;&nbsp;</td>
 		</tr>
 		<tr>
-			<td>&nbsp;<b>Other Charges</b> / <i>Ostale usluge<i/></td>
+			<td>&nbsp;<strong>Other Charges</strong> / <i>Ostale usluge<i/></td>
 			<td>&nbsp;Kn.</td>
 			<td align="right"><%=formatnumber(DetailedCallRecord_,-1) %>&nbsp;&nbsp;&nbsp;</td>
 		</tr>
@@ -474,81 +474,81 @@ if ProgressStatus_ <> "Not assigned for this month" Then
 			<td class="details_title" colspan="3">Usage Charges / <i>Pozivi i prijenos podataka</i></td>
 		</tr>
 		<tr>
-			<td>&nbsp;<b>VPN Network Calls</b> / <i>Pozivi unutar VPN mreže<i/></td>
+			<td>&nbsp;<strong>VPN Network Calls</strong> / <i>Pozivi unutar VPN mreže<i/></td>
 			<td>&nbsp;Kn.</td>
 			<td align="right"><%=formatnumber(LocalCall_,-1) %>&nbsp;&nbsp;&nbsp;</td>
 		</tr>
 		<tr>
-			<td>&nbsp;<b>Calls to VIP Network</b> / <i>Pozivi prema VIP mobilnoj mreži<i/></td>
+			<td>&nbsp;<strong>Calls to VIP Network</strong> / <i>Pozivi prema VIP mobilnoj mreži<i/></td>
 			<td>&nbsp;Kn.</td>
 			<td align="right"><%=formatnumber(BalanceDue_,-1) %>&nbsp;&nbsp;&nbsp;</td>
 		</tr>
 		<tr>
-			<td>&nbsp;<b>Calls to Landlines in Croatia</b> / <i>Pozivi prema fiksnim mrežama u Hrvatskoj<i/></td>
+			<td>&nbsp;<strong>Calls to Landlines in Croatia</strong> / <i>Pozivi prema fiksnim mrežama u Hrvatskoj<i/></td>
 			<td>&nbsp;Kn.</td>
 			<td align="right"><%=formatnumber(Interlocal_,-1) %>&nbsp;&nbsp;&nbsp;</td>
 		</tr>
 		<tr>
-			<td>&nbsp;<b>Calls to Other Mobile Networks</b> / <i>Pozivi prema ostalim mobilnim mrežama<i/></td>
+			<td>&nbsp;<strong>Calls to Other Mobile Networks</strong> / <i>Pozivi prema ostalim mobilnim mrežama<i/></td>
 			<td>&nbsp;Kn.</td>
 			<td align="right"><%=formatnumber(IDD_,-1) %>&nbsp;&nbsp;&nbsp;</td>
 		</tr>
 		<tr>
-			<td>&nbsp;<b>SMS</b> / <i>SMS poruke<i/></td>
+			<td>&nbsp;<strong>SMS</strong> / <i>SMS poruke<i/></td>
 			<td>&nbsp;Kn.</td>
 			<td align="right"><%=formatnumber(SMS_,-1) %>&nbsp;&nbsp;&nbsp;</td>
 		</tr>
 		<tr>
-			<td>&nbsp;<b>MMS</b> / <i>MMS Poruke<i/></td>
+			<td>&nbsp;<strong>MMS</strong> / <i>MMS Poruke<i/></td>
 			<td>&nbsp;Kn.</td>
 			<td align="right"><%=formatnumber(GPRS_,-1) %>&nbsp;&nbsp;&nbsp;</td>
 		</tr>
 		<tr>
-			<td>&nbsp;<b>International Calls from Croatia</b> / <i>Medunarodni pozivi iz Hrvatske<i/></td>
+			<td>&nbsp;<strong>International Calls from Croatia</strong> / <i>Medunarodni pozivi iz Hrvatske<i/></td>
 			<td>&nbsp;Kn.</td>
 			<td align="right"><%=formatnumber(IRL_,-1) %>&nbsp;&nbsp;&nbsp;</td>
 		</tr>
 		<tr>
-			<td>&nbsp;<b>Incoming Calls in Roaming</b> / <i>Dolazni pozivi u roamingu<i/></td>
+			<td>&nbsp;<strong>Incoming Calls in Roaming</strong> / <i>Dolazni pozivi u roamingu<i/></td>
 			<td>&nbsp;Kn.</td>
 			<td align="right"><%=formatnumber(PreviousBalance_,-1) %>&nbsp;&nbsp;&nbsp;</td>
 		</tr>
 		<tr>
-			<td>&nbsp;<b>Outgoing Calls in Roaming</b> / <i>Odlazni pozivi u roamingu<i/></td>
+			<td>&nbsp;<strong>Outgoing Calls in Roaming</strong> / <i>Odlazni pozivi u roamingu<i/></td>
 			<td>&nbsp;Kn.</td>
 			<td align="right"><%=formatnumber(Adjustment_,-1) %>&nbsp;&nbsp;&nbsp;</td>
 		</tr>
 		<tr>
-			<td>&nbsp;<b>GPRS/EDGE/UMTS Data Transfer</b> / <i>GPRS/EDGE/UMTS prijenos podataka<i/></td>
+			<td>&nbsp;<strong>GPRS/EDGE/UMTS Data Transfer</strong> / <i>GPRS/EDGE/UMTS prijenos podataka<i/></td>
 			<td>&nbsp;Kn.</td>
 			<td align="right"><%=formatnumber(IPHONE_,-1) %>&nbsp;&nbsp;&nbsp;</td>
 		</tr>
 		<tr>
-			<td class="details_title">&nbsp;<b>Neto Total</b> / <i>Neto Total<i/></td>
+			<td class="details_title">&nbsp;<strong>Neto Total</strong> / <i>Neto Total<i/></td>
 			<td class="details_title">&nbsp;Kn.</td>
 			<td class="details_title" align="right"><%=formatnumber(Payment_,-1) %>&nbsp;&nbsp;&nbsp;</td>
 		</tr>
 		<tr>
-			<td>&nbsp;<b>VAT</b> / <i>PDV<i/></td>
+			<td>&nbsp;<strong>VAT</strong> / <i>PDV<i/></td>
 			<td>&nbsp;Kn.</td>
 			<td align="right"><%=formatnumber(PPN_,-1) %>&nbsp;&nbsp;&nbsp;</td>
 		</tr>
 		<tr>
-			<td>&nbsp;<b>Services Exempted from VAT</b> / <i>Usluge na koje se ne obracunava PDV<i/></td>
+			<td>&nbsp;<strong>Services Exempted from VAT</strong> / <i>Usluge na koje se ne obracunava PDV<i/></td>
 			<td>&nbsp;Kn.</td>
 			<td align="right"><%=formatnumber(StampFee_,-1) %>&nbsp;&nbsp;&nbsp;</td>
 		</tr>
 		<tr class="details_title">
-			<td>&nbsp;<b>Grand Total</b> / <i>Bruto Total<i/></td>
+			<td>&nbsp;<strong>Grand Total</strong> / <i>Bruto Total<i/></td>
 			<td>&nbsp;Kn.</td>
-			<td align="right"><u><b><%=formatnumber(CurrentBalance_,-1) %></b></u>&nbsp;&nbsp;&nbsp;</td>
+			<td align="right"><u><strong><%=formatnumber(CurrentBalance_,-1) %></strong></u>&nbsp;&nbsp;&nbsp;</td>
 		</tr>
 		</table>
 
 
 
 		<div class="details_header">USAGE DETAIL</div>
-		<form method="post" action="1BillingApproval.asp?Func=2" name="frmCellPhoneBilling">
+		<form method="post" action="1BillingApproval.asp?Func=2" name="frmCellPhonzBilling">
 		<table id="myTable" class="tablesorter">
 		<thead>
 		<tr>
@@ -757,27 +757,27 @@ Case 3
 
 	if (Status_ = "A") Then
 
-		objMail.Subject = "Info: eBilling System – Approval Notification"
+		objMail.Subject = "Info: zBilling System – Approval Notification"
 
   		ObjMail.HTMLBody = ObjMail.HTMLBody & " "_
 		& "    <tr> "_
-		& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#999999' size='5'>eBilling Approval Notification</font></td></tr> "_
+		& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#999999' size='5'>zBilling Approval Notification</font></td></tr> "_
 		& "    <tr> "_
 		& "        <td colspan='6'>&nbsp; </td></tr> " _
 		& "    <tr> "_
-		& "        <td colspan='6' align='Left' class='FontContent'>Your billing <b>has been APPROVED</b> by your supervisor.</td></tr> "
+		& "        <td colspan='6' align='Left' class='FontContent'>Your billing <strong>has been APPROVED</strong> by your supervisor.</td></tr> "
 
 	Elseif Status_ = "C" Then
 
-		objMail.Subject = "Info: eBilling System – Correction Notification"
+		objMail.Subject = "Info: zBilling System – Correction Notification"
 
   		ObjMail.HTMLBody = ObjMail.HTMLBody & " "_
 		& "    <tr> "_
-		& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#990000' size='5'>eBilling Correction Notification</font></td></tr> "_
+		& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#990000' size='5'>zBilling Correction Notification</font></td></tr> "_
 		& "    <tr> "_
 		& "        <td colspan='6'>&nbsp; </td></tr> " _
 		& "    <tr> "_
-		& "        <td colspan='6' align='Left' class='FontContent'>Your billing <b>has been returned to you for CORRECTIONS</b> by your supervisor. Please make the necessary changes and re-submit it.</td></tr> "_
+		& "        <td colspan='6' align='Left' class='FontContent'>Your billing <strong>has been returned to you for CORRECTIONS</strong> by your supervisor. Please make the necessary changes and re-submit it.</td></tr> "_
 		& "    <tr> "_
 		& "        <td colspan='6' align='Left' class='FontContent'>Approver's Remarks/Corrections: <i>" & Remark_  & ".</i></td></tr> "
 
@@ -787,19 +787,19 @@ Case 3
 		& "    <tr> "_
 		& "        <td colspan='6' align='Left' class='FontContent'><br></td></tr> "_
 		& "    <tr> "_
-		& "        <td colspan='6' align='Left' class='FontContent'>&nbsp;<u><b>Personal Info:<b></u></td></tr> "_
+		& "        <td colspan='6' align='Left' class='FontContent'>&nbsp;<u><strong>Personal Info:<strong></u></td></tr> "_
 		& "    <tr> "_
 		& "    <td colspan='6' align='Left'> "_
 		& "    	<table cellspadding='1' border='2' bordercolor='black' cellspacing='3' width='100%' bgColor='#999999' border='0'>   "_
 		& "    		<tr BGCOLOR='#999999'> "_
-		& "    			<td colspan='3' style='border: none;' class='FontContent'><FONT color=#FFFFFF><b>Employee Name : " & EmpName_ & "</b></font></td> "_
-		& "    			<td colspan='3' style='border: none;' align='right' class='FontContent'><FONT color=#FFFFFF><b>Phone Number : " & MobilePhone_ & "&nbsp;</b></font></td> "_
+		& "    			<td colspan='3' style='border: none;' class='FontContent'><FONT color=#FFFFFF><strong>Employee Name : " & EmpName_ & "</strong></font></td> "_
+		& "    			<td colspan='3' style='border: none;' align='right' class='FontContent'><FONT color=#FFFFFF><strong>Phone Number : " & MobilePhone_ & "&nbsp;</strong></font></td> "_
 		& "    		</tr> "_
 		& "    		<tr BGCOLOR='#999999'> "_
-		& "    			<td colspan='6' style='border: none;' class='FontContent'><FONT color=#FFFFFF><b>Office : " & Office_ & "</b></font></td> "_
+		& "    			<td colspan='6' style='border: none;' class='FontContent'><FONT color=#FFFFFF><strong>Office : " & Office_ & "</strong></font></td> "_
 		& "    		</tr> "_
 		& "    		<tr BGCOLOR='#999999'> "_
-		& "    			<td colspan='6' style='border: none;' class='FontContent'><FONT color=#FFFFFF><b>Funding Agency : " & Funded_ & "</b></font></td> "_
+		& "    			<td colspan='6' style='border: none;' class='FontContent'><FONT color=#FFFFFF><strong>Funding Agency : " & Funded_ & "</strong></font></td> "_
 		& "    		</tr> "_
 		& "    	</table></td></tr> "
 
@@ -807,21 +807,21 @@ Case 3
 
 		ObjMail.HTMLBody = ObjMail.HTMLBody & " "_
 		& "    <tr> "_
-		& "        <td align='Right' colspan='6'><font face='Verdana, Arial, Helvetica' color='#999999' size='4'><b>Billing Summary&nbsp;<b></font></td></tr> "
+		& "        <td align='Right' colspan='6'><font face='Verdana, Arial, Helvetica' color='#999999' size='4'><strong>Billing Summary&nbsp;<strong></font></td></tr> "
 
 	End If
 
 		ObjMail.HTMLBody = ObjMail.HTMLBody & " "_
 		& "    <tr> "_
-		& "        <td align='Left' colspan='6' class='FontContent'>&nbsp;<u><b>Billing Detail:<b></u></td></tr> "_
+		& "        <td align='Left' colspan='6' class='FontContent'>&nbsp;<u><strong>Billing Detail:<strong></u></td></tr> "_
 		& "    <tr> "_
 		& "    <td align='Left' colspan='6'> "_
 		& "    <table cellspadding='1' border='1' bordercolor='black' cellspacing='0' width='100%' bgColor='white'> "_
 		& "    	<tr align='center' height=26> "_
-		& "    		<td width='25%' class='FontContent'><b>Action</b></td> "_
-		& "    		<td width='25%' class='FontContent'><b>Billing Period</b></td> "_
-		& "    		<td width='25%' class='FontContent'><b>Total Bill (Kn.)</b></td> "_
-		& "    		<td width='25%' class='FontContent'><b>Personal Amount Due (Kn.)</b></td> "_
+		& "    		<td width='25%' class='FontContent'><strong>Action</strong></td> "_
+		& "    		<td width='25%' class='FontContent'><strong>Billing Period</strong></td> "_
+		& "    		<td width='25%' class='FontContent'><strong>Total Bill (Kn.)</strong></td> "_
+		& "    		<td width='25%' class='FontContent'><strong>Personal Amount Due (Kn.)</strong></td> "_
 		& "    	</tr> "_
 		& "    	<tr height=26> "_
 		& "    	<td class='FontContent'>&nbsp;<a href='" & WebSiteAddress & "/1MonthlyBilling.asp?CellPhone=" & MobilePhone_ & "&MonthP=" & MonthP_ & "&YearP=" & YearP_ & "' target='_blank'>Review Your Bill</a></td> "
@@ -867,7 +867,7 @@ Case 3
 
     		ObjMail.HTMLBody = ObjMail.HTMLBody & " "_
 		& "    <tr> "_
-		& "        <td class='FontContent' colspan='6'>&nbsp;<u><b>Fund Cite Details (For Cashier):</b></u></td> "_
+		& "        <td class='FontContent' colspan='6'>&nbsp;<u><strong>Fund Cite Details (For Cashier):</strong></u></td> "_
 		& "    <tr> "_
 		& "        <td class='FontContent' colspan='6'>&nbsp; Kn " & formatnumber(TotalBillingPrsAmount_,-1) & " " & FiscalStripNonVAT_ & "</td></tr> "_
 		& "    <tr> "_

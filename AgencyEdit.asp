@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <!--#include file="connect.inc" -->
-<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <style type="text/css">
 <!--
@@ -156,7 +156,7 @@ if (trim(RS_Query("RoleID")) = "Admin") or (trim(RS_Query("RoleID")) = "Voucher"
 
 <table border="0" bordercolor="#FFFFFF" cellpadding="2" cellspacing="0" width="80%"  class="FontText">
 	<tr>
-		<td><u><b>Historical assignment of Funding Agency: <%=rsAgency("AgencyDesc")%><b></u></td>
+		<td><u><strong>Historical assignment of Funding Agency: <%=rsAgency("AgencyDesc")%><strong></u></td>
 	</tr>
 	<tr>
 		<td class="Hint" align="left">*To alter historical data 'Generate Monthly Billing' procedure must be executed. Procedure sets bill to 'Pending' status.</td>

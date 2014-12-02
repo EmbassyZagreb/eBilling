@@ -3,7 +3,7 @@
 <html>
 <head>
 <script language="JavaScript" src="calendar.js"></script>
-<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
@@ -66,7 +66,7 @@ If RS_Query.eof then
         BillingCon.execute strsql
 '*****************************************************************************
 
-	'response.write "<div class='Hint'>Please input exchange rate for period :<b> " & MonthP & " - " & YearP & "</b>, before generates monthly bill !!!</div>"
+	'response.write "<div class='Hint'>Please input exchange rate for period :<strong> " & MonthP & " - " & YearP & "</strong>, before generates monthly bill !!!</div>"
 'else
 end if
 

@@ -84,7 +84,7 @@ if ProgressID ="" then
 	end if
 end if
 %> 
-<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </HEAD>
@@ -264,7 +264,7 @@ else
         	<td><br></TD>
 	</tr>
 	<tr>
-		<td align="center"><b>There are no requests that require your approval</b></td>
+		<td align="center"><strong>There are no requests that require your approval</strong></td>
 	</tr>
 	<tr>
         	<td><br></TD>

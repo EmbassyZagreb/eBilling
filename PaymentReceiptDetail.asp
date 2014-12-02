@@ -8,7 +8,7 @@
 
 
 
-<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </HEAD>
@@ -136,7 +136,7 @@ set rsPayment = BillingCon.execute(strsql)
 <table cellspadding="1" cellspacing="0" width="65%"> 
 
 <tr>
-          <td colspan="6" align="Left"><u><b>Personal Info :<b></u></TD>
+          <td colspan="6" align="Left"><u><strong>Personal Info :<strong></u></TD>
 </tr>  
 <!-- <tr>
 	<td width="20%">Employee Name</td>
@@ -151,17 +151,17 @@ set rsPayment = BillingCon.execute(strsql)
 	<table cellspadding="1" border="2" bordercolor="black" cellspacing="3" width="100%" bgColor="#999999" border="0">  
 
 		<tr BGCOLOR="#999999">
-			<td colspan="3" style="border: none;"><FONT color=#FFFFFF><b>Employee Name : <%=EmpName_%></b></font></td>
-			<td colspan="3" style="border: none;" align="right"><FONT color=#FFFFFF><b>Phone Number : <%=MobilePhone_ %>&nbsp;</b></font></td>
+			<td colspan="3" style="border: none;"><FONT color=#FFFFFF><strong>Employee Name : <%=EmpName_%></strong></font></td>
+			<td colspan="3" style="border: none;" align="right"><FONT color=#FFFFFF><strong>Phone Number : <%=MobilePhone_ %>&nbsp;</strong></font></td>
 		</tr>
 		<tr BGCOLOR="#999999">
-			<td colspan="6" style="border: none;"><FONT color=#FFFFFF><b>Position : <%=Position_%></b></font></td>
+			<td colspan="6" style="border: none;"><FONT color=#FFFFFF><strong>Position : <%=Position_%></strong></font></td>
 		</tr>
 		<tr BGCOLOR="#999999">
-			<td colspan="6" style="border: none;"><FONT color=#FFFFFF><b>Agency / Office : <%=Office_%></b></font></td>
+			<td colspan="6" style="border: none;"><FONT color=#FFFFFF><strong>Agency / Office : <%=Office_%></strong></font></td>
 		</tr>
 		<tr BGCOLOR="#999999">
-			<td colspan="6" style="border: none;"><FONT color=#FFFFFF><b>Fiscal Strip : <%=FiscalStripNonVAT_%></b></font></td>
+			<td colspan="6" style="border: none;"><FONT color=#FFFFFF><strong>Fiscal Strip : <%=FiscalStripNonVAT_%></strong></font></td>
 		</tr>
 	</table>
 	</td>
@@ -198,7 +198,7 @@ set rsPayment = BillingCon.execute(strsql)
 </tr> -->
 
 <tr>
-	<td align="Left" colspan="5"><u><b>Billing detail :<b></u></TD>
+	<td align="Left" colspan="5"><u><strong>Billing detail :<strong></u></TD>
 </tr>
 <tr>
 	<td colspan="6">*Click on the bill for more detail</td>
@@ -207,11 +207,11 @@ set rsPayment = BillingCon.execute(strsql)
 	<td align="Left" colspan="6">
 	<table cellspadding="1" border="1" bordercolor="black" cellspacing="0" width="100%" bgColor="white" border="0">  
 	<tr align="center" height=26>
-		<td width=20%><b>Action</b></td>
-		<td width=20%><b>Billing Period</b></td>
-		<td width=20%><b>Status</b></td>
-		<td width=20%><b>Billing (Kn.)</b></td>
-		<td width=20%><b>Should be paid (Kn.)</b></td>
+		<td width=20%><strong>Action</strong></td>
+		<td width=20%><strong>Billing Period</strong></td>
+		<td width=20%><strong>Status</strong></td>
+		<td width=20%><strong>Billing (Kn.)</strong></td>
+		<td width=20%><strong>Should be paid (Kn.)</strong></td>
 	</tr>
 <!-- <%if cdbl(OfficePhoneBillRp_) > 0 Then %>
 	<tr>
@@ -287,7 +287,7 @@ set rsPayment = BillingCon.execute(strsql)
 	<td colspan="6" align="center">&nbsp;</td>	
 </tr>
 <tr>
-	<td align="Left" colspan="6"><u><b>Payment History:<b></u></TD>
+	<td align="Left" colspan="6"><u><strong>Payment History:<strong></u></TD>
 </tr>
 <tr>
 	<td align="Left" colspan="6">
@@ -332,8 +332,8 @@ set rsPayment = BillingCon.execute(strsql)
 	loop
 %>	
 	<tr BGCOLOR="#999999" align="center" cellpadding="0" cellspacing="0" height=26>
-		<td align="left" colspan="5"><FONT color=#FFFFFF><b>&nbsp;Total</b></font></td>
-		<td width="20%" align="right"><FONT color=#FFFFFF><b><%=formatnumber(TotalAmount_  ,-1)%></b></font>&nbsp;</td>
+		<td align="left" colspan="5"><FONT color=#FFFFFF><strong>&nbsp;Total</strong></font></td>
+		<td width="20%" align="right"><FONT color=#FFFFFF><strong><%=formatnumber(TotalAmount_  ,-1)%></strong></font>&nbsp;</td>
 	</tr>
 	</table>
 	</td>

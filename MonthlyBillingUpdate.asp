@@ -7,7 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"> 
 
 <head>
-<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
 
 
 
@@ -72,7 +72,7 @@
 	objMail.To = send_to 
 	'objMail.CC = send_cc
 
-	objMail.Subject = "Action Required: eBilling System – Approval Request"
+	objMail.Subject = "Action Required: zBilling System ï¿½ Approval Request"
 
 	objMail.HTMLBody = "<html><head>"
 	ObjMail.HTMLBody = ObjMail.HTMLBody & " "_
@@ -85,7 +85,7 @@
 					& " </head><body bgcolor='#ffffff'> "_              
 					& " <p><table cellspadding='1' cellspacing='0' width='80%' bgColor='white'>"_ 
 					& "    <tr> "_           
-					& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#999999' size='5'>eBilling System – Approval Request</font></td></tr> "_
+					& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#999999' size='5'>zBilling System ï¿½ Approval Request</font></td></tr> "_
 					& "    <tr> "_       
 					& "        <td colspan='6'>&nbsp; </td></tr> "_       
 					& "    <tr> "_           
@@ -94,32 +94,32 @@
 					& "        <td colspan='6'>&nbsp; </td></tr> "_   
 
 		& "    <tr> "_           
-		& "        <td colspan='6' align='Left' class='FontContent'>&nbsp;<u><b>Personal Info:<b></u></td></tr> "_
+		& "        <td colspan='6' align='Left' class='FontContent'>&nbsp;<u><strong>Personal Info:<strong></u></td></tr> "_
 		& "    <tr> "_ 
 		& "    <td colspan='6' align='Left'> "_
 		& "    	<table cellspadding='1' border='2' bordercolor='black' cellspacing='3' width='100%' bgColor='#999999' border='0'>   "_
 		& "    		<tr BGCOLOR='#999999'> "_
-		& "    			<td colspan='3' style='border: none;' class='FontContent'><FONT color=#FFFFFF><b>Employee Name : " & EmpName_ & "</b></font></td> "_
-		& "    			<td colspan='3' style='border: none;' align='right' class='FontContent'><FONT color=#FFFFFF><b>Phone Number : " & MobilePhone_ & "&nbsp;</b></font></td> "_
+		& "    			<td colspan='3' style='border: none;' class='FontContent'><FONT color=#FFFFFF><strong>Employee Name : " & EmpName_ & "</strong></font></td> "_
+		& "    			<td colspan='3' style='border: none;' align='right' class='FontContent'><FONT color=#FFFFFF><strong>Phone Number : " & MobilePhone_ & "&nbsp;</strong></font></td> "_
 		& "    		</tr> "_
 		& "    		<tr BGCOLOR='#999999'> "_
-		& "    			<td colspan='6' style='border: none;' class='FontContent'><FONT color=#FFFFFF><b>Position : " & Position_ & "</b></font></td> "_
+		& "    			<td colspan='6' style='border: none;' class='FontContent'><FONT color=#FFFFFF><strong>Position : " & Position_ & "</strong></font></td> "_
 		& "    		</tr> "_
 		& "    		<tr BGCOLOR='#999999'> "_
-		& "    			<td colspan='6' style='border: none;' class='FontContent'><FONT color=#FFFFFF><b>Agency / Office : " & Office_ & "</b></font></td> "_
+		& "    			<td colspan='6' style='border: none;' class='FontContent'><FONT color=#FFFFFF><strong>Agency / Office : " & Office_ & "</strong></font></td> "_
 		& "    		</tr> "_
 		& "    	</table></td></tr> " _
 		& "    <tr> "_ 
-		& "        <td align='Left' colspan='6' class='FontContent'>&nbsp;<u><b>Billing Detail:<b></u></td></tr> "_
+		& "        <td align='Left' colspan='6' class='FontContent'>&nbsp;<u><strong>Billing Detail:<strong></u></td></tr> "_
 		& "    <tr> "_
 		& "    <td align='Left' colspan='6'> "_
 		& "    <table cellspadding='1' border='1' bordercolor='black' cellspacing='0' width='100%' bgColor='white'> "_  
 		& "    	<tr align='center' height=26> "_
-		& "    		<td width='20%' class='FontContent'><b>Action</b></td> "_
-		& "    		<td width='20%' class='FontContent'><b>Billing Period</b></td> "_
-		& "    		<td width='20%' class='FontContent'><b>Status</b></td> "_
-		& "    		<td width='20%' class='FontContent'><b>Billing (Kn.)</b></td> "_
-		& "    		<td width='20%' class='FontContent'><b>Personal Amount (Kn.)</b></td> "_
+		& "    		<td width='20%' class='FontContent'><strong>Action</strong></td> "_
+		& "    		<td width='20%' class='FontContent'><strong>Billing Period</strong></td> "_
+		& "    		<td width='20%' class='FontContent'><strong>Status</strong></td> "_
+		& "    		<td width='20%' class='FontContent'><strong>Billing (Kn.)</strong></td> "_
+		& "    		<td width='20%' class='FontContent'><strong>Personal Amount (Kn.)</strong></td> "_
 		& "    	</tr> "
 
 		if cdbl(TotalCost_ ) > 0 Then
@@ -150,7 +150,7 @@
 
 		& "    	</table></td></tr> " _
 		& "    <tr> "_           
-		& "        <td colspan='6' align='Left' class='FontContent'>&nbsp;<u><b>Employee's Note:<b></u></td></tr> "_
+		& "        <td colspan='6' align='Left' class='FontContent'>&nbsp;<u><strong>Employee's Note:<strong></u></td></tr> "_
 		& "    <tr> "_ 
 		& "        <td colspan='6' align='Left' class='FontContent'>" & Notes_ & "</td></tr> "_
       

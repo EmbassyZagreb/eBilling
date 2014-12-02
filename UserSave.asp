@@ -23,7 +23,7 @@ UserRole_ =  trim(request.form("userRole"))
 'response.write UserRole_ & "<br>"
 
 %>
-<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
 
 <meta http-equiv="refresh" content="1;url=UserList.asp">
 

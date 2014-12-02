@@ -33,7 +33,7 @@ function validate_form()
 	return valid;
 }
 </script>
-<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </HEAD>
@@ -91,7 +91,7 @@ end if
 %>
 <table cellspadding="1" cellspacing="0" width="100%">  
 <tr>
-          <td align="Left"><u><b>Personal Info<b></u></TD>
+          <td align="Left"><u><strong>Personal Info<strong></u></TD>
 </tr>  
 <tr>
 	<td width="12%">Employee Name</td>
@@ -123,7 +123,7 @@ end if
 	<td colspan="6"><hr></td>
 </tr>
 <tr>
-	<td align="Left" colspan="6"><u><b>Payment Info<b></u></TD>
+	<td align="Left" colspan="6"><u><strong>Payment Info<strong></u></TD>
 </tr>
 <tr>
 	<td>Total Cost</td>

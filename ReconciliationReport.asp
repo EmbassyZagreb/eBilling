@@ -76,7 +76,7 @@ if eYearP = "" then
 end if
 
 %>
-<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </HEAD>
@@ -198,7 +198,7 @@ ePeriod = eYearP&eMonthP
 		<td>&nbsp;</td>
 	</tr>
 	<tr>
-		<td><u><b>Reconciliation report done by <%=LastMohican1_%> on <%=LastMohican2_%> when last Generate Monthly Billing procedure was executed:<b></u></td>
+		<td><u><strong>Reconciliation report done by <%=LastMohican1_%> on <%=LastMohican2_%> when last Generate Monthly Billing procedure was executed:<strong></u></td>
 	</tr>
 	<tr>
 		<td class="Hint" align="left">*Report shows mismatch numbers comparing to VIP's bill, ungenerated bills, or users without Login ID. Idealy it should be blank.</td>

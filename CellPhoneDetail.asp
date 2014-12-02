@@ -5,10 +5,10 @@
 <script type="text/javascript">
 function checkall(obj)
 {
-	var c = document.frmCellPhoneBilling.elements.length
-	for (var x=0; x<frmCellPhoneBilling.elements.length; x++)
+	var c = document.frmCellPhonzBilling.elements.length
+	for (var x=0; x<frmCellPhonzBilling.elements.length; x++)
 	{
-		cbElement = frmCellPhoneBilling.elements[x]
+		cbElement = frmCellPhonzBilling.elements[x]
 		if (cbElement.type == "checkbox")
 		{
 			cbElement.checked= obj.checked?true:false
@@ -46,7 +46,7 @@ if (Order_ ="") then
 end if
 %> 
 
-<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </HEAD>
@@ -95,10 +95,10 @@ end if
 <table cellspadding="1" cellspacing="0" width="80%" bgColor="white" align="center">  
 <%if not rsCellPhone.eof then%>
   <tr>
-	<td colspan="6" align="center"><u><b>Billing period (Month - Year) :</b> <a class="FontContent"><%=MonthP_ %> - <%=YearP_ %> </a></u></td>
+	<td colspan="6" align="center"><u><strong>Billing period (Month - Year) :</strong> <a class="FontContent"><%=MonthP_ %> - <%=YearP_ %> </a></u></td>
   </tr>
   <tr>
-          <td colspan="6" align="Left"><u><b>Personal Info<b></u></TD>
+          <td colspan="6" align="Left"><u><strong>Personal Info<strong></u></TD>
   </tr>  
   <tr>
 	<td width="20%">Employee Name</td>
@@ -163,23 +163,23 @@ end if
 			</td>
 		</tr>
 		<tr>
-			<td colspan="4">&nbsp;<u><b>Monthly Fees</b> / <i>Mjesecne pretplate:<i/></u></td>
+			<td colspan="4">&nbsp;<u><strong>Monthly Fees</strong> / <i>Mjesecne pretplate:<i/></u></td>
 		</tr>
 		<tr>
 			<td colspan="4">
 			<table cellspadding="0" cellspacing="0" bordercolor="black" width="100%" bgColor="white">  
 			<tr>
-				<td width="70%">&nbsp;<b>Subscription Monthly Fee</b> / <i>Mjesecna naknada za pretplatnicki broj<i/></td>
+				<td width="70%">&nbsp;<strong>Subscription Monthly Fee</strong> / <i>Mjesecna naknada za pretplatnicki broj<i/></td>
 				<td width="3%">&nbsp;Kn.</td>
 				<td align="right"><%=formatnumber(SubscriptionFee_,-1) %>&nbsp;&nbsp;&nbsp;</td>
 			</tr>
 			<tr>
-				<td>&nbsp;<b>Data Monthly Fee</b> / <i>Mjesecna naknada za mobilni prijenos podataka<i/></td>
+				<td>&nbsp;<strong>Data Monthly Fee</strong> / <i>Mjesecna naknada za mobilni prijenos podataka<i/></td>
 				<td>&nbsp;Kn.</td>
 				<td align="right"><%=formatnumber(FARIDA_,-1) %>&nbsp;&nbsp;&nbsp;</td>
 			</tr>
 			<tr>
-				<td>&nbsp;<b>Other Charges</b> / <i>Ostale usluge<i/></td>
+				<td>&nbsp;<strong>Other Charges</strong> / <i>Ostale usluge<i/></td>
 				<td>&nbsp;Kn.</td>
 				<td align="right"><%=formatnumber(DetailedCallRecord_,-1) %>&nbsp;&nbsp;&nbsp;</td>
 			</tr>
@@ -187,58 +187,58 @@ end if
 			</td>
 		</tr>
 		<tr>
-			<td colspan="4">&nbsp;<u><b>Usage Charges</b> / <i>Pozivi i prijenos podataka:<i/></u></td>
+			<td colspan="4">&nbsp;<u><strong>Usage Charges</strong> / <i>Pozivi i prijenos podataka:<i/></u></td>
 		</tr>
 		<tr>
 			<td colspan="4">
 			<table cellspadding="0" cellspacing="0" bordercolor="black" width="100%" bgColor="white">  
 			<tr>
-				<td>&nbsp;<b>VPN Network Calls</b> / <i>Pozivi unutar VPN mreže<i/></td>
+				<td>&nbsp;<strong>VPN Network Calls</strong> / <i>Pozivi unutar VPN mreďż˝e<i/></td>
 				<td>&nbsp;Kn.</td>
 				<td align="right"><%=formatnumber(LocalCall_,-1) %>&nbsp;&nbsp;&nbsp;</td>
 			</tr>
 			<tr>
-				<td>&nbsp;<b>Calls to VIP Network</b> / <i>Pozivi prema VIP mobilnoj mreži<i/></td>
+				<td>&nbsp;<strong>Calls to VIP Network</strong> / <i>Pozivi prema VIP mobilnoj mreďż˝i<i/></td>
 				<td>&nbsp;Kn.</td>
 				<td align="right"><%=formatnumber(BalanceDue_,-1) %>&nbsp;&nbsp;&nbsp;</td>
 			</tr>
 			<tr>
-				<td>&nbsp;<b>Calls to Landlines in Croatia</b> / <i>Pozivi prema fiksnim mrežama u Hrvatskoj<i/></td>
+				<td>&nbsp;<strong>Calls to Landlines in Croatia</strong> / <i>Pozivi prema fiksnim mreďż˝ama u Hrvatskoj<i/></td>
 				<td>&nbsp;Kn.</td>
 				<td align="right"><%=formatnumber(Interlocal_,-1) %>&nbsp;&nbsp;&nbsp;</td>
 			</tr>
 			<tr>
-				<td>&nbsp;<b>Calls to Other Mobile Networks</b> / <i>Pozivi prema ostalim mobilnim mrežama<i/></td>
+				<td>&nbsp;<strong>Calls to Other Mobile Networks</strong> / <i>Pozivi prema ostalim mobilnim mreďż˝ama<i/></td>
 				<td>&nbsp;Kn.</td>
 				<td align="right"><%=formatnumber(IDD_,-1) %>&nbsp;&nbsp;&nbsp;</td>
 			</tr>
 			<tr>
-				<td>&nbsp;<b>SMS</b> / <i>SMS poruke<i/></td>
+				<td>&nbsp;<strong>SMS</strong> / <i>SMS poruke<i/></td>
 				<td>&nbsp;Kn.</td>
 				<td align="right"><%=formatnumber(SMS_,-1) %>&nbsp;&nbsp;&nbsp;</td>
 			</tr>
 			<tr>
-				<td>&nbsp;<b>MMS</b> / <i>MMS Poruke<i/></td>
+				<td>&nbsp;<strong>MMS</strong> / <i>MMS Poruke<i/></td>
 				<td>&nbsp;Kn.</td>
 				<td align="right"><%=formatnumber(GPRS_,-1) %>&nbsp;&nbsp;&nbsp;</td>
 			</tr>
 			<tr>
-				<td>&nbsp;<b>International Calls from Croatia</b> / <i>Medunarodni pozivi iz Hrvatske<i/></td>
+				<td>&nbsp;<strong>International Calls from Croatia</strong> / <i>Medunarodni pozivi iz Hrvatske<i/></td>
 				<td>&nbsp;Kn.</td>
 				<td align="right"><%=formatnumber(IRL_,-1) %>&nbsp;&nbsp;&nbsp;</td>
 			</tr>
 			<tr>
-				<td width="70%">&nbsp;<b>Incoming Calls in Roaming</b> / <i>Dolazni pozivi u roamingu<i/></td>
+				<td width="70%">&nbsp;<strong>Incoming Calls in Roaming</strong> / <i>Dolazni pozivi u roamingu<i/></td>
 				<td width="3%">&nbsp;Kn.</td>
 				<td align="right"><%=formatnumber(PreviousBalance_,-1) %>&nbsp;&nbsp;&nbsp;</td>
 			</tr>
 			<tr>
-				<td>&nbsp;<b>Outgoing Calls in Roaming</b> / <i>Odlazni pozivi u roamingu<i/></td>
+				<td>&nbsp;<strong>Outgoing Calls in Roaming</strong> / <i>Odlazni pozivi u roamingu<i/></td>
 				<td>&nbsp;Kn.</td>
 				<td align="right"><%=formatnumber(Adjustment_,-1) %>&nbsp;&nbsp;&nbsp;</td>
 			</tr>
 			<tr>
-				<td>&nbsp;<b>GPRS/EDGE/UMTS Data Transfer</b> / <i>GPRS/EDGE/UMTS prijenos podataka<i/></td>
+				<td>&nbsp;<strong>GPRS/EDGE/UMTS Data Transfer</strong> / <i>GPRS/EDGE/UMTS prijenos podataka<i/></td>
 				<td>&nbsp;Kn.</td>
 				<td align="right"><%=formatnumber(IPHONE_,-1) %>&nbsp;&nbsp;&nbsp;</td>
 			</tr>
@@ -249,24 +249,24 @@ end if
 			<td colspan="4">
 			<table cellspadding="0" cellspacing="0" bordercolor="black" width="100%" bgColor="white">  
 			<tr>
-				<td>&nbsp;<b>Neto Total</b> / <i>Neto Total<i/></td>
+				<td>&nbsp;<strong>Neto Total</strong> / <i>Neto Total<i/></td>
 				<td>&nbsp;Kn.</td>
 				<td align="right"><%=formatnumber(Payment_,-1) %>&nbsp;&nbsp;&nbsp;</td>
 			</tr>
 			<tr>
-				<td>&nbsp;<b>VAT</b> / <i>PDV<i/></td>
+				<td>&nbsp;<strong>VAT</strong> / <i>PDV<i/></td>
 				<td>&nbsp;Kn.</td>
 				<td align="right"><%=formatnumber(PPN_,-1) %>&nbsp;&nbsp;&nbsp;</td>
 			</tr>
 			<tr>
-				<td>&nbsp;<b>Services Exempted from VAT</b> / <i>Usluge na koje se ne obracunava PDV<i/></td>
+				<td>&nbsp;<strong>Services Exempted from VAT</strong> / <i>Usluge na koje se ne obracunava PDV<i/></td>
 				<td>&nbsp;Kn.</td>
 				<td align="right"><%=formatnumber(StampFee_,-1) %>&nbsp;&nbsp;&nbsp;</td>
 			</tr>
 			<tr>
-				<td>&nbsp;<b>Grand Total</b> / <i>Bruto Total<i/></td>
+				<td>&nbsp;<strong>Grand Total</strong> / <i>Bruto Total<i/></td>
 				<td>&nbsp;Kn.</td>
-				<td align="right"><u><b><%=formatnumber(CurrentBalance_,-1) %></b></u>&nbsp;&nbsp;&nbsp;</td>
+				<td align="right"><u><strong><%=formatnumber(CurrentBalance_,-1) %></strong></u>&nbsp;&nbsp;&nbsp;</td>
 			</tr>
 			</table>
 			</td>
@@ -276,9 +276,9 @@ end if
 			<td colspan="4">
 			<table cellspadding="0" cellspacing="0" bordercolor="black" width="100%" bgColor="white">  
 			<tr>
-				<td width="70%">&nbsp;<b>Amount Due To be Paid</b> / <i>Jumlah yang harus dibayarkan<i/></td>
+				<td width="70%">&nbsp;<strong>Amount Due To be Paid</strong> / <i>Jumlah yang harus dibayarkan<i/></td>
 				<td width="3%">&nbsp;Kn.</td>
-				<td align="right"><u><b><%=formatnumber(Total_,-1) %></b></u>&nbsp;&nbsp;&nbsp;</td>
+				<td align="right"><u><strong><%=formatnumber(Total_,-1) %></strong></u>&nbsp;&nbsp;&nbsp;</td>
 			</tr>
 			</table>
 			</td>
@@ -295,7 +295,7 @@ end if
 			<td colspan="3" align="center" class="SubTitle">Usage Detail:</td>
 		</tr>
 		<tr>				
-			<td align="right"><b>Sort By</b>&nbsp;</td>
+			<td align="right"><strong>Sort By</strong>&nbsp;</td>
 			<td>:</td>
 			<td>
 				<Select name="SortList">
@@ -312,7 +312,7 @@ end if
 		</tr>			
 		</table>
 		</form>
-		<form method="post" action="CellPhoneDetailSave.asp" name="frmCellPhoneBilling"> 
+		<form method="post" action="CellPhoneDetailSave.asp" name="frmCellPhonzBilling"> 
 		<table cellspadding="0" cellspacing="0" bordercolor="#EEEEEE" border="1" width="90%" bgColor="white">  
 		<tr bgcolor="#330099" align="center" cellpadding="0" cellspacing="0" >
 			<TD width="5px"><strong><label STYLE=color:#FFFFFF>No.</label></strong></TD>
@@ -382,9 +382,9 @@ end if
 		</table>
 		<table cellspadding="0" cellspacing="0" bordercolor="black" width="90%" bgColor="white">  
 		<tr>
-			<td align="right" colspan="3"><b>Sub Total (Kn.) </b>&nbsp;</td>
-			<td width="15%" class="FontContent" align="right"><b><%=formatnumber(TotalCellPhoneBillRp_ ,-1)%></b>&nbsp;</td>
-			<td width="10%" class="FontContent" align="right"><b><u><%=formatnumber(TotalCellPhonePrsBillRp_ ,-1)%></u></b>&nbsp;</td>
+			<td align="right" colspan="3"><strong>Sub Total (Kn.) </strong>&nbsp;</td>
+			<td width="15%" class="FontContent" align="right"><strong><%=formatnumber(TotalCellPhoneBillRp_ ,-1)%></strong>&nbsp;</td>
+			<td width="10%" class="FontContent" align="right"><strong><u><%=formatnumber(TotalCellPhonePrsBillRp_ ,-1)%></u></strong>&nbsp;</td>
 		</tr>
   		<tr>
 			<td colspan="5" align="center">&nbsp;</td>

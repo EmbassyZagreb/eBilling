@@ -137,7 +137,7 @@ End If
 	end if
 
 %>
-<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </HEAD>
@@ -404,7 +404,7 @@ if not DataRS.eof Then
 		<td colspan="6" align="center"><u>Billing Period (Month - Year) : <a class="FontContent"><%=Period_%></a></u></td>
 	</tr> -->
 	<tr>
-        	  <td align="Left"><u><b>Personal Info<b></u></TD>
+        	  <td align="Left"><u><strong>Personal Info<strong></u></TD>
 	</tr>
 
 <tr>
@@ -412,20 +412,20 @@ if not DataRS.eof Then
 	<table cellspadding="1" border="2" bordercolor="black" cellspacing="3" width="100%" bgColor="#999999" border="0">  
 
 		<tr BGCOLOR="#999999">
-			<td colspan="3" style="border: none;"><FONT color=#FFFFFF><b>Employee Name : <%=EmpName_%></b></font></td>
-			<td colspan="3" style="border: none;" align="right"><FONT color=#FFFFFF><b>Phone Number : <%=MobilePhone_ %>&nbsp;</b></font></td>
+			<td colspan="3" style="border: none;"><FONT color=#FFFFFF><strong>Employee Name : <%=EmpName_%></strong></font></td>
+			<td colspan="3" style="border: none;" align="right"><FONT color=#FFFFFF><strong>Phone Number : <%=MobilePhone_ %>&nbsp;</strong></font></td>
 		</tr>
 		<tr BGCOLOR="#999999">
-			<td colspan="6" style="border: none;"><FONT color=#FFFFFF><b>Position : <%=Position_%></b></font></td>
+			<td colspan="6" style="border: none;"><FONT color=#FFFFFF><strong>Position : <%=Position_%></strong></font></td>
 		</tr>
 		<tr BGCOLOR="#999999">
-			<td colspan="6" style="border: none;"><FONT color=#FFFFFF><b>Agency / Office : <%=Office_%></b></font></td>
+			<td colspan="6" style="border: none;"><FONT color=#FFFFFF><strong>Agency / Office : <%=Office_%></strong></font></td>
 		</tr>
 	</table>
 	</td>
 </tr>
 	<tr>
-		<td align="Left" colspan="6"><u><b>Billing Summary :<b></u></TD>
+		<td align="Left" colspan="6"><u><strong>Billing Summary :<strong></u></TD>
 	</tr>
 
 
@@ -436,11 +436,11 @@ if not DataRS.eof Then
 	<td align="Left" colspan="6">
 	<table cellspadding="1" border="1" bordercolor="black" cellspacing="0" width="100%" bgColor="white" border="0">  
 	<tr align="center" height=26>
-		<td width=20%><b>Action</b></td>
-		<td width=20%><b>Billing Period</b></td>
-		<td width=20%><b>Status</b></td>
-		<td width=20%><b>Billing (Kn.)</b></td>
-		<td width=20%><b>Personal Used (Kn.)</b></td>
+		<td width=20%><strong>Action</strong></td>
+		<td width=20%><strong>Billing Period</strong></td>
+		<td width=20%><strong>Status</strong></td>
+		<td width=20%><strong>Billing (Kn.)</strong></td>
+		<td width=20%><strong>Personal Used (Kn.)</strong></td>
 	</tr>
 
 
@@ -481,7 +481,7 @@ if not DataRS.eof Then
 
 
 	<tr>
-		<td align="Left" colspan="5"><u><b>Billing detail :<b></u></TD>
+		<td align="Left" colspan="5"><u><strong>Billing detail :<strong></u></TD>
 	</tr>	
 	
 
@@ -495,7 +495,7 @@ if not rsCellPhone.eof then
 	<td colspan="6">
 		<table cellspadding="1" cellspacing="1" width="100%" align="center">
 		<tr>
-			<td align="Left" colspan="5"><u><b>Cell Phone detail :<b></u></TD>
+			<td align="Left" colspan="5"><u><strong>Cell Phone detail :<strong></u></TD>
 		</tr>
 		<tr align="center" cellpadding="0" cellspacing="0" >
 			<TD width="3%"><strong>No.</strong></TD>
@@ -525,9 +525,9 @@ if not rsCellPhone.eof then
 		%>
 		</tr>
 		<tr>
-			<td align="right" colspan="4"><b>Sub Total (Kn.) </b>&nbsp;</td>
-			<td width="10%" class="FontContent" align="right"><b><%=formatnumber(CellPhoneBillRp_ ,-1)%></b>&nbsp;</td>
-			<td width="10%" class="FontContent" align="right"><b><u><%=formatnumber(CellPhonePrsBillRp_ ,-1)%></u></b>&nbsp;</td>
+			<td align="right" colspan="4"><strong>Sub Total (Kn.) </strong>&nbsp;</td>
+			<td width="10%" class="FontContent" align="right"><strong><%=formatnumber(CellPhoneBillRp_ ,-1)%></strong>&nbsp;</td>
+			<td width="10%" class="FontContent" align="right"><strong><u><%=formatnumber(CellPhonePrsBillRp_ ,-1)%></u></strong>&nbsp;</td>
 		</tr>
 		</table>
 	</td>

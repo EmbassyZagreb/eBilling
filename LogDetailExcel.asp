@@ -36,7 +36,7 @@ YearP_ = Request("YearP")
 ProgressID_ = Request("ProgressID")
 
 %>
-<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </HEAD>
@@ -105,9 +105,9 @@ if not DataRS.eof Then
 	if DataRS.eof then
 %>
 	<TR bgcolor="<%=bg%>">
-	        <TD align="center" colspan="5"><b>Total</b></TD>
-<!--	        <TD align="right"><b><%=formatnumber(TotRecordNo_,-1) %></b></TD> -->
-	        <TD align="right"><b><%=formatnumber(TotBillingAmount_,-1) %></b></TD>
+	        <TD align="center" colspan="5"><strong>Total</strong></TD>
+<!--	        <TD align="right"><strong><%=formatnumber(TotRecordNo_,-1) %></strong></TD> -->
+	        <TD align="right"><strong><%=formatnumber(TotBillingAmount_,-1) %></strong></TD>
 	   </TR>
 <%	
 	end if   
