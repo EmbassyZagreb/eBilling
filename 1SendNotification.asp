@@ -683,9 +683,11 @@ If Request("cbApproval") <> "" then
 
 					& "    </table></td><tr> "_
 					& "        <td colspan='6'>&nbsp; </td></tr> "_
-								& "    <tr> "_
-								& "        <td height=26 align='center' colspan='6' class='FontContent'>NOTE: This e-mail was automatically generated.</td> "_
-								& "    </tr> "_
+					& "    <tr> "_
+					& "        <td height=26 align='center' colspan='6' class='FontContent'>NOTE: This e-mail was automatically generated.</td> "_
+					& "    </tr> "_
+					& "    <tr><td colspan='6' class='FontContent'><a href='"& WebSiteAddress & "/1MonthlyBilling.asp?CellPhone=" & MobilePhone_ & "&MonthP=" & MonthP_ & "&YearP=" & YearP_ &"' target='_blank'><h1>Try our new User Interface!</h1></a></td></tr> "_
+					& "    <tr> "_
 					& "        <td colspan='6'>&nbsp; </td></tr> "_
 					& " </table></p>"_
 					& "</body></html>"
