@@ -509,7 +509,7 @@ if not rsData.eof then
 
 Else%>
 <tr>
-	<td colspan="6" align="center">there is not data.</td>
+	<td colspan="6" align="center">No Data.  Please make selection from left menu for detailed billing data..</td>
 </tr>
 <% end if %>
 <tr>
