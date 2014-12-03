@@ -42,9 +42,9 @@
             	<li id="active"><a href="1MonthlyBilling.asp">Home</a></li>
                 <li><a href="1BillingApproval.asp">Approve</a></li>
 				<li><a href="#">Cashier</a></li>
-                <li><a href="#">Manage</a></li>
-				<li><a href="#">Alerts</a></li>
-				<li><a href="1MonthlyBillingAll.asp">Reports</a></li>
+                <li><a href="Default.asp">Manage</a></li>
+				<li><a href="Default.asp">Alerts</a></li>
+				<li><a href="Default.asp">Reports</a></li>
 			</ul>
  		</div>
 		</td>
@@ -55,8 +55,8 @@
 		<td widht=130px>
 		<div id="navigation-right">
 			<ul>
-   	            <li><a href="#">Admin</a></li>
-				<li><a href="#">Help</a></li>
+   	            <li><a href="Default.asp">Admin</a></li>
+				<li><a href="mailto:zagrebisc@state.gov">Help</a></li>
 			</ul>
 		</div>
 		</td>
