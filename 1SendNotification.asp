@@ -490,16 +490,16 @@ If Request("cbApproval") <> "" then
 
 
 			if ProgressID_ ="7" then
-				objMail.Subject = "Info: eBilling System - No Invoice This Period"
+				objMail.Subject = "Info: zBilling System - No Invoice This Period"
 				objMail.HTMLBody = "<html><head>"
 				ObjMail.HTMLBody = ObjMail.HTMLBody & " "_
 
-					& " <title>e-Billing Application</title> "_
+					& " <title>z-Billing Application</title> "_
 					& " <meta name='Microsoft Border' content='none, default'><style type='text/css'><!--.FontContent {font-family: verdana;font-size: 11px;color: black;}--></style> "_
 					& " </head><body bgcolor='#ffffff'> "_
 					& " <p><table cellspadding='1' cellspacing='0' width='80%' bgColor='white'>"_
 					& "    <tr> "_
-					& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#999999' size='5'>eBilling System - No Invoice This Period</font></td></tr> "_
+					& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#999999' size='7'>zBilling System - No Invoice This Period</font></td></tr> "_
 					& "    <tr> "_
 					& "        <td colspan='6'>&nbsp; </td></tr> "_
 					& "    <tr> "_
@@ -540,7 +540,7 @@ If Request("cbApproval") <> "" then
 
 					ObjMail.HTMLBody = ObjMail.HTMLBody & " "_
 					& "    	<tr height=26> "_
-					& "    	<td class='FontContent'>&nbsp;<a href='" & WebSiteAddress & "/1MonthlyBilling.asp?CellPhone=" & MobilePhone_ & "&MonthP=" & MonthP_ & "&YearP=" & YearP_ & "' target='_blank'>View Your Bill</a></td> "_
+					& "    	<td class='FontContent'>&nbsp;<a href='" & WebSiteAddress & "/MonthlyBilling.asp?CellPhone=" & MobilePhone_ & "&MonthP=" & MonthP_ & "&YearP=" & YearP_ & "' target='_blank'>View Your Bill</a></td> "_
 					& "    	<TD align='right' class='FontContent'>&nbsp;" & MonthP_ & "-" & YearP_ & "</font>&nbsp;</TD> "_
 					& "    	<TD align='right' class='FontContent'>" & ProgressDesc_ & "&nbsp;</font></TD> "_
 					& "    	<td align='right' class='FontContent'>" & formatnumber(CellPhoneBillRp_  ,-1) & "&nbsp;</td> "_
@@ -568,23 +568,25 @@ If Request("cbApproval") <> "" then
 					& "        <td height=26 align='center' colspan='6' class='FontContent'>NOTE: This e-mail was automatically generated.</td> "_
 					& "    </tr> "_
 					& " </table></p>"_
+					& "    <H1>Try our new user interface!</h1> "_
+					& " <a href='"& WebSiteAddress & "/1MonthlyBilling.asp?CellPhone=" & MobilePhone_ & "&MonthP=" & MonthP_ & "&YearP=" & YearP_ &"' target='_blank'>User Dashboard</a> "_
 					& "</body></html>"
 
 			else
 
-				objMail.Subject = "Action Required: eBilling System – Monthly Billing Notification"
+				objMail.Subject = "Action Required: zBilling System – Bill Notification"
 '				objMail.Subject = "e-Billing System - Monthly Billing Reminder for period " & Period_
 				objMail.HTMLBody = "<html><head>"
 
 				if AlternateEmailFlag_ ="N" and DummyFlag_="N" Then
 					ObjMail.HTMLBody = ObjMail.HTMLBody & " "_
 
-					& " <title>e-Billing Application</title> "_
-					& " <meta name='Microsoft Border' content='none, default'><style type='text/css'><!--.FontContent {font-family: verdana;font-size: 11px;color: black;}--></style> "_
+					& " <title>z-Billing Application</title> "_
+					& " <meta name='Microsoft Border' content='none, default'><style type='text/css'><!--.FontContent {font-family: verdana;font-size: 14px;color: black;}--></style> "_
 					& " </head><body bgcolor='#ffffff'> "_
 					& " <p><table cellspadding='1' cellspacing='0' width='80%' bgColor='white'>"_
 					& "    <tr> "_
-					& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#999999' size='5'>eBilling System – Monthly Billing Notification</font></td></tr> "_
+					& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#999999' size='8'>zBilling System – Monthly Bill</font></td></tr> "_
 					& "    <tr> "_
 					& "        <td colspan='6'>&nbsp; </td></tr> "_
 					& "    <tr> "_
@@ -596,7 +598,7 @@ If Request("cbApproval") <> "" then
 					& "    <tr> "_
 					& "        <td colspan='6' class='FontContent'>Please follow the instructions below:</td></tr> "_
 					& "    <tr> "_
-					& "        <td colspan='6' class='FontContent'>1) Click <a href='"& WebSiteAddress & "/1MonthlyBilling.asp?CellPhone=" & MobilePhone_ & "&MonthP=" & MonthP_ & "&YearP=" & YearP_ &"' target='_blank'>here </a> to access the zBilling Application.</td></tr> "_
+					& "        <td colspan='6' class='FontContent'>1) Click <a href='"& WebSiteAddress & "/MonthlyBilling.asp?CellPhone=" & MobilePhone_ & "&MonthP=" & MonthP_ & "&YearP=" & YearP_ &"' target='_blank'>here </a> to access the zBilling Application.</td></tr> "_
 					& "    <tr> "_
 					& "        <td colspan='6' class='FontContent'>2) In the application, this cell phone is registered as a personal one.</td></tr> "_
 					& "    <tr> "_
@@ -612,7 +614,7 @@ If Request("cbApproval") <> "" then
 					& "    <tr> "_
 					& "        <td colspan='6' class='FontContent'><strong>Do NOT</strong> make a payment yet - Please follow the instructions below:</td></tr> "_
 					& "    <tr> "_
-					& "        <td colspan='6' class='FontContent'>1) Click <a href='"& WebSiteAddress & "/1MonthlyBilling.asp?CellPhone=" & MobilePhone_ & "&MonthP=" & MonthP_ & "&YearP=" & YearP_ &"' target='_blank'>here </a> to access the zBilling Application.</td></tr> "_
+					& "        <td colspan='6' class='FontContent'>1) Click <a href='"& WebSiteAddress & "/MonthlyBilling.asp?CellPhone=" & MobilePhone_ & "&MonthP=" & MonthP_ & "&YearP=" & YearP_ &"' target='_blank'>here </a> to access the zBilling Application.</td></tr> "_
 					& "    <tr> "_
 					& "        <td colspan='6' class='FontContent'>2) Uncheck any official calls.</td></tr> "_
 					& "    <tr> "_
@@ -657,7 +659,7 @@ If Request("cbApproval") <> "" then
 
 					ObjMail.HTMLBody = ObjMail.HTMLBody & " "_
 					& "    	<tr height=26> "_
-					& "    	<td class='FontContent'>&nbsp;<a href='" & WebSiteAddress & "/1MonthlyBilling.asp?CellPhone=" & MobilePhone_ & "&MonthP=" & MonthP_ & "&YearP=" & YearP_ & "' target='_blank'>Review your invoice</a></td> "_
+					& "    	<td class='FontContent'>&nbsp;<a href='" & WebSiteAddress & "/MonthlyBilling.asp?CellPhone=" & MobilePhone_ & "&MonthP=" & MonthP_ & "&YearP=" & YearP_ & "' target='_blank'>Review your invoice</a></td> "_
 						& "    	<TD align='right' class='FontContent'>&nbsp;" & MonthP_ & "-" & YearP_ & "</font>&nbsp;</TD> "_
 						& "    	<TD align='right' class='FontContent'>" & ProgressDesc_ & "&nbsp;</font></TD> "_
 					& "    	<td align='right' class='FontContent'>" & formatnumber(CellPhoneBillRp_  ,-1) & "&nbsp;</td> "_
@@ -799,7 +801,7 @@ If Request("cbApproval") <> "" then
 					end if
 					'response.write Total_
 					ObjMail.HTMLBody = ObjMail.HTMLBody & " "_
-					& " <title>e-Billing Application</title> "_
+					& " <title>z-Billing Application</title> "_
 					& " <meta name='Microsoft Border' content='none, default'><style type='text/css'><!--.FontContent {font-size: 12px;color: blue;}--></style> "_
 					& " </head><body bgcolor='#ffffff'> "_
 					& " <p><table cellspadding='1' cellspacing='0' width='80%' bgColor='white'>"_
