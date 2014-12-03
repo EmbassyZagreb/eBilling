@@ -431,7 +431,7 @@ if ProgressStatus_ <> "Not assigned for this month" Then
 				Total_= rsCellPhone("Total")
 			end if
 		%>
-		<div class="details_header">USAGE SUMMARY</div>
+		<div class="details_header">BILL SUMMARY</div>
 
 		<table class="details">
 		<tr class="details_title">
@@ -619,7 +619,7 @@ end if
 	<td align="center">&nbsp;</td>
 </tr>
 <tr>
-	<td align="center">there is not data.</td>
+	<td align="center">No Data.  Please select a phone from the left menu.</td>
 </tr>
 </table>
 <%end if
@@ -718,7 +718,7 @@ Case 3
 	objMail.HTMLBody = "<html><head>"
 	ObjMail.HTMLBody = ObjMail.HTMLBody & " "_
 
-& " <title>e-Billing Application</title> "_
+& " <title>z-Billing Application</title> "_
 		& " <meta name='Microsoft Border' content='none, default'><style type='text/css'><!--.FontContent {font-family: verdana;font-size: 11px;color: black;}--></style> "_
 		& " </head><body bgcolor='#ffffff'> "_
 		& " <p><table cellspadding='1' cellspacing='0' width='80%' bgColor='white'>"_
@@ -763,7 +763,7 @@ Case 3
 
 		ObjMail.HTMLBody = ObjMail.HTMLBody & " "_
 		& "    	<tr height=26> "_
-		& "    	<td class='FontContent'>&nbsp;<a href='" & WebSiteAddress & "/1BillingApproval.asp?Cellphone=" & MobilePhone_ & "&LoginID=" & user_ & "&MonthP=" & MonthP_ & "&YearP=" & YearP_ & "&Nav=1' target='_blank'>Review and approve</a></td> "_
+		& "    	<td class='FontContent'>&nbsp;<a href='" & WebSiteAddress & "/BillingApproval.asp?Cellphone=" & MobilePhone_ & "&LoginID=" & user_ & "&MonthP=" & MonthP_ & "&YearP=" & YearP_ & "&Nav=1' target='_blank'>Review and approve</a></td> "_
 		& "    	<TD align='right' class='FontContent'>&nbsp;" & MonthP_ & "-" & YearP_ & "</font>&nbsp;</TD> "_
 		& "    	<TD align='right' class='FontContent'>Waiting Approval from Supervisor&nbsp;</font></TD> "_
 		& "    	<td align='right' class='FontContent'>" & formatnumber(TotalCost_  ,-1) & "&nbsp;</td> "_
@@ -792,6 +792,8 @@ Case 3
 		& "        <td colspan='6' align='Left' class='FontContent'>" & Notes_ & "</td></tr> "_
 		& "        <td colspan='6'>&nbsp; </td></tr> "_
 		& "    <tr> "_
+		& "    	<td class='FontContent'><h1><a href='" & WebSiteAddress & "/1BillingApproval.asp?Cellphone=" & MobilePhone_ & "&LoginID=" & user_ & "&MonthP=" & MonthP_ & "&YearP=" & YearP_ & "&Nav=1' target='_blank'>Review and approve</a></h1></td> "_
+		& "		 </tr> "_
 		& "        <td height=26 align='center' colspan='6' class='FontContent'>NOTE: This e-mail was automatically generated.</td> "_
 		& "    </tr> "_
 		& "        <td colspan='6'>&nbsp; </td></tr> "_

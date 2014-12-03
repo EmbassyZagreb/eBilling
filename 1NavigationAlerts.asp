@@ -7,8 +7,8 @@
 
 
 						<li class="current"><a href="CPSendNotification.asp">Send Notifications</a></li>
-						<li><a href="#">Send Reminders</a></li>
-						<li><a href="#">Remind Supervisors</a></li>
+						<li><a href="Default.asp">Send Reminders</a></li>
+						<li><a href="Default.asp">Remind Supervisors</a></li>
 					</ul>
 				</li>
 				<li>
