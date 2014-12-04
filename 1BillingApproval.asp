@@ -824,7 +824,7 @@ Case 3
 		& "    		<td width='25%' class='FontContent'><strong>Personal Amount Due (Kn.)</strong></td> "_
 		& "    	</tr> "_
 		& "    	<tr height=26> "_
-		& "    	<td class='FontContent'>&nbsp;<a href='" & WebSiteAddress & "/1MonthlyBilling.asp?CellPhone=" & MobilePhone_ & "&MonthP=" & MonthP_ & "&YearP=" & YearP_ & "' target='_blank'>Review Your Bill</a></td> "
+		& "    	<td class='FontContent'>&nbsp;<a href='" & WebSiteAddress & "/MonthlyBilling.asp?CellPhone=" & MobilePhone_ & "&MonthP=" & MonthP_ & "&YearP=" & YearP_ & "' target='_blank'>Review Your Bill</a></td> "
 
 		if cdbl(TotalCost_ ) > 0 Then
 
@@ -884,6 +884,8 @@ Case 3
 		& "        <td height=26 align='center' colspan='6' class='FontContent'>NOTE: This e-mail was automatically generated. Please do not respond to this e-mail address.</td> "_
 		& "    </tr> "_
 		& " </table></p>"_
+
+		& " 	<h1><a href='" & WebSiteAddress & "/1MonthlyBilling.asp?CellPhone=" & MobilePhone_ & "&MonthP=" & MonthP_ & "&YearP=" & YearP_ & "' target='_blank'>Try our new user interface!</a></h1>"_
 		& "</body></html>"
 
 	objMail.Send
