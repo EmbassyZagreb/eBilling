@@ -792,7 +792,7 @@ Case 3
 		& "        <td colspan='6' align='Left' class='FontContent'>" & Notes_ & "</td></tr> "_
 		& "        <td colspan='6'>&nbsp; </td></tr> "_
 		& "    <tr> "_
-		& "    	<td class='FontContent'><h1><a href='" & WebSiteAddress & "/1BillingApproval.asp?Cellphone=" & MobilePhone_ & "&LoginID=" & user_ & "&MonthP=" & MonthP_ & "&YearP=" & YearP_ & "&Nav=1' target='_blank'>Review and approve</a></h1></td> "_
+		& "    	<td class='FontContent'><h1><a href='" & WebSiteAddress & "/1BillingApproval.asp?Cellphone=" & MobilePhone_ & "&LoginID=" & user_ & "&MonthP=" & MonthP_ & "&YearP=" & YearP_ & "&Nav=1' target='_blank'>Try our new user interface!</a></h1></td> "_
 		& "		 </tr> "_
 		& "        <td height=26 align='center' colspan='6' class='FontContent'>NOTE: This e-mail was automatically generated.</td> "_
 		& "    </tr> "_
