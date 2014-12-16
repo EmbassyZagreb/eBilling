@@ -2,29 +2,18 @@
 <div id="extra">
 			<ul id="menu">
 				<li>
-					<a href="#">Cell Phone Numbers</a>
+					<a href="#">Permissions</a>
 					<ul>
 
 
-						<%
-						If rsempty Then
-						%>
-						<li class="current"><a href="#">No number</a></li>
-						<%
-						Else
-							For i = 0 To UBound(arrNumberList,2)
-						%>
-							<li <%if arrNumberList(0,i)=MobilePhone_ then %>class="current"<%End If%>><a href="MonthlyBilling.asp?CellPhone=<%=arrNumberList(0,i)%>"><%=arrNumberList(0,i)%></a></li>
-						<%
-							Next
-						End If
-						%>
+						<li class="current"><a href="#">Power Users</a></li>
+						<li><a href="#">Roles Setup</a></li>
 					</ul>
 				</li>
 				<li>
-					<a href="#">Residential Phones</a>
+					<a href="#">Maintenance Mode</a>
 					<ul>
-						<li><a href="#">Not available yet</a></li>
+						<li><a href="#">Turn system off <Input type="Checkbox" Id="cbPersonal" name="cbPersonal" Value='387300' Checked></a></li>
 					</ul>
 				</li>
 			</ul>
@@ -39,11 +28,11 @@
 		<td colspan=2  style="background: url(images/top-navigation-slice.jpg) repeat left top;">
 			<div id="navigation-left">
 			<ul>
-            	<li id="active"><a href="MonthlyBilling.asp">Home</a></li>
+            	<li><a href="MonthlyBilling.asp">Home</a></li>
                 <li><a href="1BillingApproval.asp">Approve</a></li>
 				<li><a href="#">Cashier</a></li>
                 <li><a href="#">Manage</a></li>
-				<li><a href="#">Alerts</a></li>
+				<li><a href="1SendNotification.asp">Alerts</a></li>
 				<li><a href="1MonthlyBillingAll.asp">Reports</a></li>
 			</ul>
  		</div>
@@ -55,7 +44,7 @@
 		<td widht=130px>
 		<div id="navigation-right">
 			<ul>
-   	            <li><a href="#">Admin</a></li>
+   	            <li id="active"><a href="#">Admin</a></li>
 				<li><a href="#">Help</a></li>
 			</ul>
 		</div>

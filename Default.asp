@@ -79,6 +79,7 @@ end if
 <!--				<LI>&nbsp;<A HREF="LineUsagesReport.asp"><strong>Line Usages Report</strong></A> -->
 <!--				<LI>&nbsp;<A HREF="NoLineUsagesReport.asp"><strong>No Line Usages Report</strong></A> -->
           <LI class="highlightlistitem"><A HREF="GenerateMonthlyBill.asp"><strong>Generate Monthly Billing (use sparingly)</strong></A></li>
+          <LI class="normal"><A HREF="ImportMain.asp"><strong>Import New Bill</strong></A></li>
           <LI class="normal"><strong>Admins:</strong></li>
           <LI><A HREF="UserList.asp"><strong>Manage Power Users</strong></A></li>
       </ul>

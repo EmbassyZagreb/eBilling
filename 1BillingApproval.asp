@@ -302,13 +302,10 @@ End If
 						<div class="selector_info"><%if cdbl(CellPhoneBillRp_ ) > 0 Then %><%=formatnumber(CellPhonePrsBillRp_  ,-1) %>&nbsp;Kn<%else%>- &nbsp;<%end if%></div>
 						<div class="selector_title">Accumulated Debt for this number</div>
 						<div class="selector_info"><%if cdbl(MaxAccumulatedDebt_ ) > 0 Then %><%=formatnumber(MaxAccumulatedDebt_  ,-1) %>&nbsp;Kn<%else%>- &nbsp;<%end if%></div>
-
 						<%
-
 							Response.Write "<table border=""0"" cellspacing=""0"" cellpadding=""0""  id=""chart3_table"">"
 							Response.Write "<tr><td colspan=""" & (8)  & """ class=""selector_title"">Total Bill / Personal Amount Due</td><td colspan=""" & (4)  & """ class=""selector_graph_top""><img src=""" & IMAGES_PATH & "asc.gif" & """>" & eYearP & "<img src=""" & IMAGES_PATH & "desc.gif" & """></td></tr>"
 							Response.Write "<tr>"
-
 							j = 0
 							For i = 0 To (NrOfMonths - 1)
 								m = Month(DateAdd("m", i, CDate(sMonthP& "/01/" &sYearP)))
@@ -334,7 +331,6 @@ End If
 									j = j + 1
 								End If
 								If m < 10 Then m = "0" & CStr(m) Else m = CStr(m)
-
 								Response.Write "<td valign=""top"" class=""barcell"">"
 								If iTotal <> "" Then
 									Response.Write "<a href=""1BillingApproval.asp?CellPhone=" & MobilePhone_ & "&MonthP=" & m & "&YearP=" & y & "&LoginID=" & LoginID_ & "&EmpID=" & EmpID_ & "&Nav=" & Nav_ & """ style=""display:block; text-decoration: none;"">"
@@ -358,25 +354,18 @@ End If
 												"<br />" & iAccumulatedDebt & "<br><img src=""" & TransparentPix & """ width=""0"" height=""" & _
 													GraphHeight - iHeightAccumulatedDebt & """ alt="""" title=""Accumulated Debt"" /></div></a></td>"
 							Next
-
 							Response.Write "</tr>"
 							Response.Write "<tr><td colspan=""" & NrOfMonths & """ class=""selector_graph_bottom"" align=""right"">Accumulated Debt</td></tr>"
 							Response.Write "</table>"
 							%>
-
 							<div class="selector_title">Employee's Note</div>
 							<TextArea name="txtNotes" Rows="4" style="width:290px" Wrap <% if (ProgressID_  <> 1) and (ProgressID_ <> 3) then%>ReadOnly<%End If%> ><%=Notes_%></textarea>
 							<div class="selector_title">Your Remarks / Corrections</div>
 							<TextArea name="txtRemark" Rows="4" style="width:290px" Wrap maxlength="500"><%=SpvRemark_ %></textarea>
-
 							<div class="selector_title">Your decision</div>
-
-
-
 							<%if ProgressID_ = 2 and Nav_=1 then%>
 									<input type="radio" name="SupervisorSign" value="A" checked>Approve</input>&nbsp;&nbsp;
 									<input type="radio" name="SupervisorSign" value="C" >Need Correction</input><br>
-
 									<input type="submit" value="Submit">
 									&nbsp;<input type="button" value="Cancel" onClick="javascript:location.href='1BillingApproval.asp'">
 									<input type="hidden" name="txtMobilePhone" value='<%=MobilePhone_%>' />
@@ -621,7 +610,7 @@ end if
 		<%
 		if ((ProgressID_< 4 and no_ >1) or (ProgressID_ = 4 and AlternateEmailFlag_="Y")) then%>
 				<input type="submit" name="btnSubmit" Value="Update Change(s)" />&nbsp;&nbsp;
-				<input type="button" value="Cancel" onClick="javascript:location.href='1MonthlyBilling.asp?CellPhone=<%=MobilePhone_%>&MonthP=<%=MonthP%>&YearP=<%=YearP%>'">
+				<input type="button" value="Cancel" onClick="javascript:location.href='MonthlyBilling.asp?CellPhone=<%=MobilePhone_%>&MonthP=<%=MonthP%>&YearP=<%=YearP%>'">
 
 				<input type="hidden" name="txtMobilePhone" value='<%=MobilePhone_ %>' />
 				<input type="hidden" name="txtMonthP" value='<%=MonthP%>' />
@@ -884,8 +873,6 @@ Case 3
 		& "        <td height=26 align='center' colspan='6' class='FontContent'>NOTE: This e-mail was automatically generated. Please do not respond to this e-mail address.</td> "_
 		& "    </tr> "_
 		& " </table></p>"_
-
-		& " 	<h1><a href='" & WebSiteAddress & "/1MonthlyBilling.asp?CellPhone=" & MobilePhone_ & "&MonthP=" & MonthP_ & "&YearP=" & YearP_ & "' target='_blank'>Try our new user interface!</a></h1>"_
 		& "</body></html>"
 
 	objMail.Send

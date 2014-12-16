@@ -51,33 +51,6 @@ function validate_form()
 	}
 	return valid;
 }
-function show(ele) {
-         var srcElement = document.getElementById(ele);
-         if(srcElement != null) {
-	   if(srcElement.style.display == "block") {
-     		  srcElement.style.display= 'none';
-   	    }
-            else {
-                   srcElement.style.display='block';
-            }
-            return false;
-       }
-  }
-
-EnableSubmit = function(val)
-{
-    var sbmt = document.getElementById("Accept");
-
-    if (val.checked == true)
-    {
-        sbmt.disabled = true;
-    }
-    else
-    if (val.checked == false)
-    {
-        sbmt.disabled = true;
-    }
-}
 </script>
 	<script type="text/javascript">
 	$(function() {
@@ -396,7 +369,8 @@ End If
 							<TextArea name="txtRemark" Rows="4" style="width:290px" Wrap <% if (ProgressID_  <> 1) or (ProgressID_ <> 3) then%>ReadOnly<%End If%>><%=SpvRemark_ %></textarea>
 
 					<%		if (ProgressID_ = 1) or (ProgressID_ = 3) then%>
-								<input type="submit" id="Accept" name="btnSubmit" Value="Submit to Supervisor" <%if isempty(request.querystring ("updated"))=true then response.write " disabled/><div><tr><td colspan=' & NrOfMonths & ' align='left'>Update change(s) to enable button!</td></tr></div><tr>" :end if%>								<input type="hidden" name="txtMobilePhone" value='<%=MobilePhone_%>' />
+								<input type="submit" name="btnSubmit" Value="Submit to Supervisor" />
+								<input type="hidden" name="txtMobilePhone" value='<%=MobilePhone_%>' />
 								<input type="hidden" name="txtMonthP" value='<%=MonthP%>' />
 								<input type="hidden" name="txtYearP" value='<%=YearP%>' />
 								<input type="hidden" name="txtEmpID" value='<%=EmpID_ %>' />
@@ -457,7 +431,9 @@ if ProgressStatus_ <> "Not assigned for this month" Then
 				Total_= rsCellPhone("Total")
 			end if
 		%>
-		<div class="details_header"><a href="#" onclick="show('Summary')">BILL SUMMARY</a></div>		<DIV ID="Summary" style="display:none">		<table class="details">
+		<div class="details_header">BILL SUMMARY</div>
+
+		<table class="details">
 		<tr class="details_title">
 			<td  colspan="3">Monthly Fees</strong> / <i>Mjesecne pretplate:</i></td>
 		</tr>
@@ -553,7 +529,7 @@ if ProgressStatus_ <> "Not assigned for this month" Then
 
 
 
-</div>		<div class="details_header">USAGE DETAIL</div>
+		<div class="details_header">USAGE DETAIL</div>
 		<form method="post" action="MonthlyBilling.asp?Func=2" name="frmCellPhoneBilling">
 		<table id="myTable" class="tablesorter">
 		<thead>
@@ -565,7 +541,7 @@ if ProgressStatus_ <> "Not assigned for this month" Then
 			<th>Amount (Kn.)</th>
 			<th>Check if<br>personal
 <%			if (ProgressID_ = 1) or (ProgressID_ = 3) then %>
-				<input type="checkbox" name="cbAll" value="true" onclick="checkall(this);EnableSubmit(this);" />
+				<input type="checkbox" name="cbAll" value="true" onclick="checkall(this)" />
 <%			end if %>
 			</th>
 		</tr>
@@ -603,9 +579,9 @@ end if
 <%			if (((cdbl(ProgressID_) < 4 or cdbl(ProgressID_) = 8) and (InStr(1,rsCellPhone("CallType"),ExemptedIfOfficialCallType_,1) = 0 and InStr(1,rsCellPhone("CallType"),AlwaysExemptedCallType_,1) = 0))) then %>
 		 	       <td align="center">
 				<%if rsCellPhone("isPersonal") = "Y" then%>
-					<Input type="Checkbox" Id="cbPersonal" name="cbPersonal" onclick="EnableSubmit(this);" Value='<%=rsCellPhone("CallRecordID")%>' Checked>
+					<Input type="Checkbox" Id="cbPersonal" name="cbPersonal" Value='<%=rsCellPhone("CallRecordID")%>' Checked>
 				<%else%>
-					<Input type="Checkbox" Id="cbPersonal" name="cbPersonal" onclick="EnableSubmit(this);" Value='<%=rsCellPhone("CallRecordID")%>' >
+					<Input type="Checkbox" Id="cbPersonal" name="cbPersonal" Value='<%=rsCellPhone("CallRecordID")%>' >
 				<%end if%>
 				</td>
 <%			else%>
@@ -659,7 +635,7 @@ Set BillingCon = Nothing
 
 	</div>
 
-<!--#include file="1NavigationHome.asp" -->
+<!--#include file="1NavigationAdmin.asp" -->
 
 
 <%
@@ -690,7 +666,7 @@ Case 2
 BillingCon.Close
 Set BillingCon = Nothing
 
-Response.AddHeader "REFRESH","0;URL=MonthlyBilling.asp?CellPhone=" & MobilePhone_ & "&MonthP=" & MonthP_ & "&YearP=" & YearP_ & "&updated"
+Response.AddHeader "REFRESH","0;URL=MonthlyBilling.asp?CellPhone=" & MobilePhone_ & "&MonthP=" & MonthP_ & "&YearP=" & YearP_ & ""
 
 
 Case 3
@@ -718,7 +694,6 @@ Case 3
 	BillingCon.execute(strsql)
 
 	strsql = "Update MonthlyBilling Set ProgressId=2, ProgressIdDate=GetDate() Where EmpID='" & EmpID_ & "' And PhoneNumber='" & MobilePhone_ & "' And MonthP='" & MonthP_ & "' And YearP='" & YearP_ &"'"
-	response.write strsql
 	BillingCon.execute(strsql)
 
 	Dim send_from, send_to, send_cc, send_bcc
@@ -831,8 +806,8 @@ Case 3
 	BillingCon.Close
 	Set BillingCon = Nothing
 
-'	Response.AddHeader "REFRESH","0;URL=MonthlyBilling.asp?CellPhone=" & MobilePhone_ & "&MonthP=" & MonthP_ & "&YearP=" & YearP_ & ""
-'
+	Response.AddHeader "REFRESH","0;URL=MonthlyBilling.asp?CellPhone=" & MobilePhone_ & "&MonthP=" & MonthP_ & "&YearP=" & YearP_ & ""
+
 End Select
 %>
 </BODY>

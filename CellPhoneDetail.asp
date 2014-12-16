@@ -421,7 +421,7 @@ end if
 	<td align="center">&nbsp;</td>	
 </tr>
 <tr>
-	<td align="center">No Data.  Please make selection from left menu for detailed billing data..</td>	
+	<td align="center">there is not data.</td>	
 </tr>
 </table>
 <%end if%>

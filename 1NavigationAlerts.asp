@@ -29,10 +29,10 @@
 		<td colspan=2  style="background: url(images/top-navigation-slice.jpg) repeat left top;">
 			<div id="navigation-left">
 			<ul>
-            	<li><a href="1MonthlyBilling.asp">Home</a></li>
+            	<li><a href="MonthlyBilling.asp">Home</a></li>
                 <li><a href="1BillingApproval.asp">Approve</a></li>
 				<li><a href="#">Cashier</a></li>
-                <li><a href="Defaut.asp">Manage</a></li>
+                <li><a href="#">Manage</a></li>
 				<li id="active"><a href="1SendNotification.asp">Alerts</a></li>
 				<li><a href="1MonthlyBillingAll.asp">Reports</a></li>
 			</ul>
@@ -45,8 +45,8 @@
 		<td widht=130px>
 		<div id="navigation-right">
 			<ul>
-   	            <li><a href="Default.asp">Admin</a></li>
-				<li><a href="mailto:zagrebisc@state.gov">Help</a></li>
+   	            <li><a href="#">Admin</a></li>
+				<li><a href="#">Help</a></li>
 			</ul>
 		</div>
 		</td>

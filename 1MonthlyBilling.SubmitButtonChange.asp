@@ -274,7 +274,7 @@ End If
 
 	<div id="navigation">
 
-						<form method="post" action="1MonthlyBilling.asp?Func=3" name="frmMonthlyBilling"">
+						<form method="post" action="MonthlyBilling.asp?Func=3" name="frmMonthlyBilling"">
 						<div class="selector_header">Name : <%=EmpName_%><br>Phone Number : <%=MobilePhone_ %>&nbsp;<br>Funded : <%=AgencyFundingDesc_%></div>
 						<div class="selector_title">Billing Period</div>
 						<div class="selector_info"><%if cdbl(CellPhoneBillRp_ ) > 0 Then %><%= MonthName(Cint(MonthP))%>&nbsp;<%= YearP%><%else%>- &nbsp;<%end if%></div>
@@ -321,7 +321,7 @@ End If
 
 								Response.Write "<td valign=""top"" class=""barcell"">"
 								If iTotal <> "" Then
-									Response.Write "<a href=""1MonthlyBilling.asp?CellPhone=" & MobilePhone_ & "&MonthP=" & m & "&YearP=" & y & """ style=""display:block; text-decoration: none;"">"
+									Response.Write "<a href=""MonthlyBilling.asp?CellPhone=" & MobilePhone_ & "&MonthP=" & m & "&YearP=" & y & """ style=""display:block; text-decoration: none;"">"
 								Else
 									Response.Write "<a href=""#"" style=""display:block; text-decoration: none;"">"
 								End If
@@ -369,8 +369,7 @@ End If
 							<TextArea name="txtRemark" Rows="4" style="width:290px" Wrap <% if (ProgressID_  <> 1) or (ProgressID_ <> 3) then%>ReadOnly<%End If%>><%=SpvRemark_ %></textarea>
 
 					<%		if (ProgressID_ = 1) or (ProgressID_ = 3) then%>
-								<input type="submit" name="btnSubmit" Value="Submit to Supervisor" />
-								<input type="hidden" name="txtMobilePhone" value='<%=MobilePhone_%>' />
+								<input type="submit" name="btnSubmit" Value="Submit to Supervisor" <%if isempty(request.querystring ("updated"))=true then response.write " disabled/><div class='selector_title'>Update change(s) to enable Submit button!</div>" :end if%>								<input type="hidden" name="txtMobilePhone" value='<%=MobilePhone_%>' />
 								<input type="hidden" name="txtMonthP" value='<%=MonthP%>' />
 								<input type="hidden" name="txtYearP" value='<%=YearP%>' />
 								<input type="hidden" name="txtEmpID" value='<%=EmpID_ %>' />
@@ -530,7 +529,7 @@ if ProgressStatus_ <> "Not assigned for this month" Then
 
 
 		<div class="details_header">USAGE DETAIL</div>
-		<form method="post" action="1MonthlyBilling.asp?Func=2" name="frmCellPhoneBilling">
+		<form method="post" action="MonthlyBilling.asp?Func=2" name="frmCellPhoneBilling">
 		<table id="myTable" class="tablesorter">
 		<thead>
 		<tr>
@@ -604,7 +603,7 @@ end if
 		<%
 		if ((ProgressID_< 4 and no_ >1) or (ProgressID_ = 4 and AlternateEmailFlag_="Y")) then%>
 				<input type="submit" name="btnSubmit" Value="Update Change(s)" />&nbsp;&nbsp;
-				<input type="button" value="Cancel" onClick="javascript:location.href='1MonthlyBilling.asp?CellPhone=<%=MobilePhone_%>&MonthP=<%=MonthP%>&YearP=<%=YearP%>'">
+				<input type="button" value="Cancel" onClick="javascript:location.href='MonthlyBilling.asp?CellPhone=<%=MobilePhone_%>&MonthP=<%=MonthP%>&YearP=<%=YearP%>'">
 
 				<input type="hidden" name="txtMobilePhone" value='<%=MobilePhone_ %>' />
 				<input type="hidden" name="txtMonthP" value='<%=MonthP%>' />
@@ -666,7 +665,7 @@ Case 2
 BillingCon.Close
 Set BillingCon = Nothing
 
-Response.AddHeader "REFRESH","0;URL=1MonthlyBilling.asp?CellPhone=" & MobilePhone_ & "&MonthP=" & MonthP_ & "&YearP=" & YearP_ & ""
+Response.AddHeader "REFRESH","0;URL=MonthlyBilling.asp?CellPhone=" & MobilePhone_ & "&MonthP=" & MonthP_ & "&YearP=" & YearP_ & "&updated"
 
 
 Case 3
@@ -791,9 +790,6 @@ Case 3
 		& "    <tr> "_
 		& "        <td colspan='6' align='Left' class='FontContent'>" & Notes_ & "</td></tr> "_
 		& "        <td colspan='6'>&nbsp; </td></tr> "_
-		& "    <tr> "_
-		& "    	<td class='FontContent'><h1><a href='" & WebSiteAddress & "/1BillingApproval.asp?Cellphone=" & MobilePhone_ & "&LoginID=" & user_ & "&MonthP=" & MonthP_ & "&YearP=" & YearP_ & "&Nav=1' target='_blank'>Try our new user interface!</a></h1></td> "_
-		& "		 </tr> "_
 		& "        <td height=26 align='center' colspan='6' class='FontContent'>NOTE: This e-mail was automatically generated.</td> "_
 		& "    </tr> "_
 		& "        <td colspan='6'>&nbsp; </td></tr> "_
@@ -809,7 +805,7 @@ Case 3
 	BillingCon.Close
 	Set BillingCon = Nothing
 
-	Response.AddHeader "REFRESH","0;URL=1MonthlyBilling.asp?CellPhone=" & MobilePhone_ & "&MonthP=" & MonthP_ & "&YearP=" & YearP_ & ""
+	Response.AddHeader "REFRESH","0;URL=MonthlyBilling.asp?CellPhone=" & MobilePhone_ & "&MonthP=" & MonthP_ & "&YearP=" & YearP_ & ""
 
 End Select
 %>
