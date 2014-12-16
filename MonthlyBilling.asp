@@ -718,6 +718,7 @@ Case 3
 	BillingCon.execute(strsql)
 
 	strsql = "Update MonthlyBilling Set ProgressId=2, ProgressIdDate=GetDate() Where EmpID='" & EmpID_ & "' And PhoneNumber='" & MobilePhone_ & "' And MonthP='" & MonthP_ & "' And YearP='" & YearP_ &"'"
+	response.write strsql
 	BillingCon.execute(strsql)
 
 	Dim send_from, send_to, send_cc, send_bcc
@@ -830,8 +831,8 @@ Case 3
 	BillingCon.Close
 	Set BillingCon = Nothing
 
-	Response.AddHeader "REFRESH","0;URL=MonthlyBilling.asp?CellPhone=" & MobilePhone_ & "&MonthP=" & MonthP_ & "&YearP=" & YearP_ & ""
-
+'	Response.AddHeader "REFRESH","0;URL=MonthlyBilling.asp?CellPhone=" & MobilePhone_ & "&MonthP=" & MonthP_ & "&YearP=" & YearP_ & ""
+'
 End Select
 %>
 </BODY>
