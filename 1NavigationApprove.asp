@@ -59,7 +59,7 @@
 		<td colspan=2  style="background: url(images/top-navigation-slice.jpg) repeat left top;">
 			<div id="navigation-left">
 			<ul>
-            	<li><a href="1MonthlyBilling.asp">Home</a></li>
+            	<li><a href="MonthlyBilling.asp">Home</a></li>
                 <li id="active"><a href="1BillingApproval.asp">Approve</a></li>
 				<li><a href="Default.asp">Cashier</a></li>
                 <li><a href="Default.asp">Manage</a></li>
