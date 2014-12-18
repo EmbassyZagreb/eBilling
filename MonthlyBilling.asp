@@ -10,7 +10,7 @@ On Error Resume Next
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-	<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+	<TITLE>U.S. Embassy Zagreb - zBilling rocks!Application</TITLE>
 	<script src="jquery-latest.js" type="text/javascript"></script>
 	<script src="jquery.tablesorter.js" type="text/javascript"></script>
 	<script src="menu.js" type="text/javascript"></script>
