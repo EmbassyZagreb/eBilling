@@ -113,7 +113,7 @@ Case 1
 
 
 Const IMAGES_PATH = "images/"
-Const NrOfMonths = 12  'Number of months on the graph
+Const NrOfMonths = 12  'Number of months on the graph is set to 12.
 Const GraphHeight = 100	'Height of the graph
 Const BarWidth = 20
 
