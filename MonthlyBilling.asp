@@ -396,7 +396,8 @@ End If
 							<TextArea name="txtRemark" Rows="4" style="width:290px" Wrap <% if (ProgressID_  <> 1) or (ProgressID_ <> 3) then%>ReadOnly<%End If%>><%=SpvRemark_ %></textarea>
 
 					<%		if (ProgressID_ = 1) or (ProgressID_ = 3) then%>
-								<input type="submit" id="Accept" name="btnSubmit" Value="Submit to Supervisor" <%if isempty(request.querystring ("updated"))=true then response.write " disabled/><div><tr><td colspan=' & NrOfMonths & ' align='left'>Update change(s) to enable button!</td></tr></div><tr>" :end if%>								<input type="hidden" name="txtMobilePhone" value='<%=MobilePhone_%>' />
+								<input type="submit" id="Accept" name="btnSubmit" Value="Submit to Supervisor" <%if isempty(request.querystring ("updated"))=true then response.write " disabled/><div><tr><td colspan=' & NrOfMonths & ' align='left'>Update change(s) to enable button!</td></tr></div><tr>" :end if%>
+								<input type="hidden" name="txtMobilePhone" value='<%=MobilePhone_%>' />
 								<input type="hidden" name="txtMonthP" value='<%=MonthP%>' />
 								<input type="hidden" name="txtYearP" value='<%=YearP%>' />
 								<input type="hidden" name="txtEmpID" value='<%=EmpID_ %>' />
