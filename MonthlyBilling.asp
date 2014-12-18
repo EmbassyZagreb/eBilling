@@ -3,7 +3,7 @@
 'Option Explicit
 On Error Resume Next
 %>
-
+'test comment
 <!--#include file="connect.inc" -->
 
 
