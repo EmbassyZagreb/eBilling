@@ -3,7 +3,7 @@
 <html>
 <head>
 
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </HEAD>
@@ -65,7 +65,7 @@ if not rsData.eof then
 	<td colspan="6" align="center"><u>Billing Period (Month - Year) : <a class="FontContent"><%=Period_%></a></u></td>
 </tr>
 <tr>
-          <td align="Left"><u><strong>Personal Info<strong></u></TD>
+          <td align="Left"><u><b>Personal Info<b></u></TD>
 </tr>  
 <tr>
 	<td width="20%">Employee Name</td>
@@ -113,7 +113,7 @@ if not rsData.eof then
 </tr>
 
 <tr>
-	<td align="Left" colspan="5"><u><strong>Billing detail :<strong></u></TD>
+	<td align="Left" colspan="5"><u><b>Billing detail :<b></u></TD>
 </tr>
 <tr>
 	<td colspan="6">*Click on each billing type for more detail</td>
@@ -122,13 +122,13 @@ if not rsData.eof then
 	<td align="Left" colspan="6">
 	<table cellspadding="1" border="1" bordercolor="black" cellspacing="0" width="100%" bgColor="white" border="0">  
 	<tr align="center">
-		<td rowspan="2"><strong>Type</strong></td>
-		<td rowspan="2"><strong>Billing (Kn.)</strong></td>
-		<td colspan="2"><strong>Should be paid</strong></td>
+		<td rowspan="2"><b>Type</b></td>
+		<td rowspan="2"><b>Billing (Kn.)</b></td>
+		<td colspan="2"><b>Should be paid</b></td>
 	</tr>
 	<tr>
-		<td align="center"><strong>In Kuna (Kn.)</strong></td>
-		<td align="center"><strong>In US Dollar ($)</strong></td>
+		<td align="center"><b>In Kuna (Kn.)</b></td>
+		<td align="center"><b>In US Dollar ($)</b></td>
 	</tr>
 	<tr>
 		<td><a href="OfficePhoneDetail.asp?Extension=<%=OfficePhone_ %>&MonthP=<%=MonthP%>&YearP=<%=YearP%>" target="_blank">Office Phone</a></td>
@@ -161,10 +161,10 @@ if not rsData.eof then
 	<td colspan="6">
 	<table cellspadding="1" cellspacing="0" width="100%" bgColor="white" border="0">
 	<tr>
-		<td align="center"><strong>Total</strong></td>
-		<td width="20%" class="FontContent" align="right"><!-- <strong><u><%=formatnumber(TotalBilling_ , -1) %></u></strong> -->&nbsp;</td>
-		<td width="20%" class="FontContent" align="right"><strong><u><%=formatnumber(TotalBillingRp_ , -1) %></u></strong>&nbsp;</td>
-		<td width="20%" class="FontContent" align="right"><strong><u><%=formatnumber(TotalBillingDlr_ ,-1) %></u></strong>&nbsp;</td>
+		<td align="center"><b>Total</b></td>
+		<td width="20%" class="FontContent" align="right"><!-- <b><u><%=formatnumber(TotalBilling_ , -1) %></u></b> -->&nbsp;</td>
+		<td width="20%" class="FontContent" align="right"><b><u><%=formatnumber(TotalBillingRp_ , -1) %></u></b>&nbsp;</td>
+		<td width="20%" class="FontContent" align="right"><b><u><%=formatnumber(TotalBillingDlr_ ,-1) %></u></b>&nbsp;</td>
 	</tr>
 	</table>	
 	</td>

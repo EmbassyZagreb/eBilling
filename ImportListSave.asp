@@ -21,17 +21,19 @@ function validateForm() {
 }
 </script>
 </HEAD>
-
 <!--#include file="Header.inc" -->
+<BODY>
   <TR>
   	<TD COLSPAN="4" ALIGN="center" Class="title">Import New Bill</TD>
    </TR>
+   <tr>
+        <td colspan="4" align="left"><FONT color=#330099 size=2><A HREF="Default.asp">Main Menu</A></font></TD>
+</tr>
   <TR>
   	<TD COLSPAN="4"><HR style="LEFT: 10px; TOP: 59px" align=center></TD>
    </TR>
   </TABLE>
 
-<BODY>
 <div>
 <table class="tblMain">	
 
@@ -56,7 +58,7 @@ FileFullPath=objFolder & "\" & FilePath
 
 %>
 <form method="POST" name="Form1" id="Upload" action="ImportListUpload.asp"> 
-<input type="Hidden" value="<%=FileFullPath%>" name="file1">
+<input type="hidden" value="<%=FileFullPath%>" name="file1">
 <%
     strFileYear = Mid(Mid(FilePath, InStrRev(FilePath, "_") + 1), 1, 4) 
     strFileMonth = Mid(Mid(FilePath, InStrRev(FilePath, "_") + 1), 5, 2)

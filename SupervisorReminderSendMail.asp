@@ -2,7 +2,7 @@
 <HEAD>
 <!--#include file="connect.inc" -->
 <!--METADATA TYPE="typelib" UUID="CD000000-8B95-11D1-82DB-00C04FB1625D"  NAME="CDO for Windows 2000 Library" --> 
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </HEAD>
@@ -53,25 +53,26 @@ TotalBillingDlr_ = 0
 		'response.write loopIndex & "<br>"
 		X = len(loopIndex)
 		'response.write X & "<br>"
-		EmpID_ = Left(loopIndex, X-6)
+		MobilePhone_ = Left(loopIndex, X-6)
 		'response.write EmpID_ & "<br>"
 		Period = right(loopIndex,6)
 		MonthP_ = left(Period,2)
 		'response.write MonthP_ & "<br>"
 		YearP_ = Right(Period,4)
 		'response.write YearP_ & "<br>"
-		strsql = "Select * From vwMonthlyBilling Where EmpID='" & EmpID_ & "' And MonthP='" & MonthP_ & "' and YearP='" & YearP_ & "'"
+		strsql = "Select * From vwMonthlyBilling Where MobilePhone='" & MobilePhone_ & "' And MonthP='" & MonthP_ & "' and YearP='" & YearP_ & "'"
 '		response.write strsql & "<Br>"  
 		set rsData = server.createobject("adodb.recordset") 
 		set rsData = BillingCon.execute(strsql)
 		Period_ = MonthP_ & " - " & YearP_
 		if not rsData.eof then
+			EmpID_ = rsData("EmpID")
 			EmpName_ = rsData("EmpName")
 			Office_ = rsData("Agency") & " - " & rsData("Office")
 			Position_ = rsData("WorkingTitle")
-			OfficePhone_ = rsData("WorkPhone")
-			HomePhone_ = rsData("HomePhone")
-			MobilePhone_ = rsData("MobilePhone")
+			'OfficePhone_ = rsData("WorkPhone")
+			'HomePhone_ = rsData("HomePhone")
+			'MobilePhone_ = rsData("MobilePhone")
 			TotalBillingPrsAmount_ = rsData("TotalBillingAmountPrsRp")
 			TotalCost_ = rsData("TotalBillingRp")
 			SPVEmail_ = rsData("SupervisorEmail")
@@ -87,7 +88,7 @@ TotalBillingDlr_ = 0
 		'response.write send_to
 		objMail.From = send_from
 		objMail.To = send_to 	
-		objMail.Subject = "Action Required: eBilling System ďż˝ Approval Request Repeat Notice"
+		objMail.Subject = "Action Required: eBilling System – Approval Request Repeat Notice"
 		objMail.HTMLBody = "<html><head>"
 		ObjMail.HTMLBody = ObjMail.HTMLBody & " "_	
 	
@@ -96,7 +97,7 @@ TotalBillingDlr_ = 0
 					& " </head><body bgcolor='#ffffff'> "_              
 					& " <p><table cellspadding='1' cellspacing='0' width='80%' bgColor='white'>"_ 
 					& "    <tr> "_           
-					& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#999999' size='5'>eBilling System ďż˝ Supervisor Reminder</font></td></tr> "_
+					& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#999999' size='5'>eBilling System – Supervisor Reminder</font></td></tr> "_
 					& "    <tr> "_       
 					& "        <td colspan='6'>&nbsp; </td></tr> "_       
 					& "    <tr> "_           
@@ -105,39 +106,39 @@ TotalBillingDlr_ = 0
 					& "        <td colspan='6'>&nbsp; </td></tr> "_   
 
 		& "    <tr> "_           
-		& "        <td colspan='6' align='Left' class='FontContent'><u><strong>&nbsp;Personal Info:<strong></u></td></tr> "_
+		& "        <td colspan='6' align='Left' class='FontContent'><u><b>&nbsp;Personal Info:<b></u></td></tr> "_
 		& "    <tr> "_ 
 		& "    <td colspan='6' align='Left'> "_
 		& "    	<table cellspadding='1' border='2' bordercolor='black' cellspacing='3' width='100%' bgColor='#999999' border='0'>   "_
 		& "    		<tr BGCOLOR='#999999'> "_
-		& "    			<td colspan='3' style='border: none;' class='FontContent'><FONT color=#FFFFFF><strong>Employee Name : " & EmpName_ & "</strong></font></td> "_
-		& "    			<td colspan='3' style='border: none;' align='right' class='FontContent'><FONT color=#FFFFFF><strong>Phone Number : " & MobilePhone_ & "&nbsp;</strong></font></td> "_
+		& "    			<td colspan='3' style='border: none;' class='FontContent'><FONT color=#FFFFFF><b>Employee Name : " & EmpName_ & "</b></font></td> "_
+		& "    			<td colspan='3' style='border: none;' align='right' class='FontContent'><FONT color=#FFFFFF><b>Phone Number : " & MobilePhone_ & "&nbsp;</b></font></td> "_
 		& "    		</tr> "_
 		& "    		<tr BGCOLOR='#999999'> "_
-		& "    			<td colspan='6' style='border: none;' class='FontContent'><FONT color=#FFFFFF><strong>Position : " & Position_ & "</strong></font></td> "_
+		& "    			<td colspan='6' style='border: none;' class='FontContent'><FONT color=#FFFFFF><b>Position : " & Position_ & "</b></font></td> "_
 		& "    		</tr> "_
 		& "    		<tr BGCOLOR='#999999'> "_
-		& "    			<td colspan='6' style='border: none;' class='FontContent'><FONT color=#FFFFFF><strong>Agency / Office : " & Office_ & "</strong></font></td> "_
+		& "    			<td colspan='6' style='border: none;' class='FontContent'><FONT color=#FFFFFF><b>Agency / Office : " & Office_ & "</b></font></td> "_
 		& "    		</tr> "_
 		& "    	</table></td></tr> " _
 		& "    <tr> "_ 
-		& "        <td align='Left' colspan='6' class='FontContent'><u><strong>&nbsp;Billing Detail:<strong></u></td></tr> "_
+		& "        <td align='Left' colspan='6' class='FontContent'><u><b>&nbsp;Billing Detail:<b></u></td></tr> "_
 		& "    <tr> "_
 		& "    <td align='Left' colspan='6'> "_
 		& "    <table cellspadding='1' border='1' bordercolor='black' cellspacing='0' width='100%' bgColor='white'> "_  
 		& "    	<tr align='center' height=26> "_
-		& "    		<td width='20%' class='FontContent'><strong>Action</strong></td> "_
-		& "    		<td width='20%' class='FontContent'><strong>Billing Period</strong></td> "_
-		& "    		<td width='20%' class='FontContent'><strong>Status</strong></td> "_
-		& "    		<td width='20%' class='FontContent'><strong>Billing (Kn.)</strong></td> "_
-		& "    		<td width='20%' class='FontContent'><strong>Personal Amount (Kn.)</strong></td> "_
+		& "    		<td width='20%' class='FontContent'><b>Action</b></td> "_
+		& "    		<td width='20%' class='FontContent'><b>Billing Period</b></td> "_
+		& "    		<td width='20%' class='FontContent'><b>Status</b></td> "_
+		& "    		<td width='20%' class='FontContent'><b>Billing (Kn.)</b></td> "_
+		& "    		<td width='20%' class='FontContent'><b>Personal Amount (Kn.)</b></td> "_
 		& "    	</tr> "
 
 		if cdbl(CellPhoneBillRp_ ) > 0 Then
 
 		ObjMail.HTMLBody = ObjMail.HTMLBody & " "_
 		& "    	<tr height=26> "_
-		& "    	<td class='FontContent'>&nbsp;<a href='" & WebSiteAddress & "/BillingApproval.asp?EmpID=" & EmpID_ & "&Month=" & MonthP_ & "&Year=" & YearP_ & "' target='_blank'>Review and approve</a></td> "_
+		& "    	<td class='FontContent'>&nbsp;<a href='" & WebSiteAddress & "/BillingApproval.asp?EmpID=" & EmpID_ & "&Month=" & MonthP_ & "&Year=" & YearP_ & "&MobilePhone=" & MobilePhone_ &"' target='_blank'>Review and approve</a></td> "_
 	        & "    	<TD align='right' class='FontContent'>&nbsp;" & MonthP_ & "-" & YearP_ & "</font>&nbsp;</TD> "_
 	        & "    	<TD align='right' class='FontContent'>" & ProgressDesc_ & "&nbsp;</font></TD> "_
 		& "    	<td align='right' class='FontContent'>" & formatnumber(CellPhoneBillRp_  ,-1) & "&nbsp;</td> "_

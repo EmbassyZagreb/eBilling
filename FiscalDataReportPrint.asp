@@ -43,7 +43,7 @@ Agency_ = request("Agency")
 
 Section_ = request("Section")
 %>
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </HEAD>
@@ -87,10 +87,10 @@ if not DataRS.eof Then
          <TD class="style5"><strong>Employee Name</strong></TD>
          <TD class="style5" width="10%"><strong>Billing Period</strong></TD>
          <TD class="style5"><strong>Section</strong></TD>
-         <TD class="style5"><strong>VAT</strong></TD>
          <TD class="style5"><strong>Non-VAT</strong></TD>
+         <TD class="style5"><strong>VAT</strong></TD>
          <TD class="style5"><strong>Total</strong></TD>
-	 <TD class="style5" BGCOLOR="#333333"><strong>Accounting</strong></TD>
+<!-- 	 <TD class="style5" BGCOLOR="#333333"><strong>Accounting</strong></TD>  -->
     </TR>
 
 <% 
@@ -108,7 +108,7 @@ if not DataRS.eof Then
    TotalVip_ = 0
    do while not DataRS.eof
 	   if bg="#D7E3F4" then bg="ffffff" else bg="#D7E3F4" 
-	    if PrevAgency_ <> DataRS("AgencyFundingCode") Then
+	    if PrevAgency_ <> DataRS("AgencyFunding") Then
 		SubTotalVal_ = 0
 		SubTotalNonVal_ = 0
 		SubTotal_ = 0
@@ -116,7 +116,7 @@ if not DataRS.eof Then
 		no_ = 1
 %>
 		<tr>
-			<td colspan="10" BGCOLOR="#999999" class="style5"><strong><%=DataRS("AgencyFunding") %></strong></td>
+			<td colspan="9" BGCOLOR="#999999" class="style5"><b><%=DataRS("AgencyFunding") %></b></td>
 		</tr>		
 <%
 	    end if
@@ -129,12 +129,12 @@ if not DataRS.eof Then
 	        <TD>&nbsp;<%=DataRS("EmpName") %></TD>
 	        <TD align="right">&nbsp;<%= DataRS("MonthP")%>-<%= DataRS("YearP")%></font>&nbsp;</TD>
 	        <TD>&nbsp;<%=DataRS("Office") %> </font></TD>
-	        <TD align="right"><%= formatnumber(DataRS("VAT"),-1) %></font></TD>
-		<TD align="right"><%= formatnumber(DataRS("NonVAT"),-1) %></font></TD>
-		<TD align="right"><%= formatnumber(DataRS("Total"),-1) %></font></TD>
-		<TD align="right" BGCOLOR="#999999" class="style5">
+			<TD align="right" class="Excel"><%= formatnumber(DataRS("NonVAT"),-1) %></font></TD>
+	        <TD align="right" class="Excel"><%= formatnumber(DataRS("VAT"),-1) %></font></TD>
+	<!--	<TD align="right"><%= formatnumber(DataRS("Total"),-1) %></font></TD>   -->
+		<TD align="right" BGCOLOR="#999999" class="ExcelWhite">
 <%		If CDbl(DataRS("TotalVip")) > 0 Then %>
-			<%= formatnumber(DataRS("TotalVip"),-1) %>
+			<%= formatnumber(DataRS("TotalVip"),2) %>
 <%		Else %>
 			-
 <%		End If %>
@@ -152,91 +152,94 @@ if not DataRS.eof Then
 		Total_ = cdbl(Total_) + cdbl(DataRS("Total"))
 		TotalVip_ = cdbl(TotalVip_) + cdbl(DataRS("TotalVip"))
 
-		PrevAgency_ = DataRS("AgencyFundingCode")
+		PrevAgency_ = DataRS("AgencyFunding")
 		PrevAgencyName_ = DataRS("AgencyFunding")
 		FiscalStripVAT_ = DataRS("FiscalStripVAT")
 		FiscalStripNonVAT_ = DataRS("FiscalStripNonVAT")
 		Count=Count +1
 	   DataRS.movenext
-'		if (PrevAgency_ <> DataRS("AgencyFundingCode")) or DataRS.eof Then 
+'		if (PrevAgency_ <> DataRS("AgencyFunding")) or DataRS.eof Then 
 		if DataRS.eof Then 
 %>
 		<tr>
-			<td colspan="6"><strong><%=PrevAgencyName_ %> SubTotal</strong></td>			
-			<td align="right"><strong><%=formatnumber(cdbl(SubTotalVal_),-1) %></font></strong></td>			
-			<td align="right"><strong><%=formatnumber(cdbl(SubTotalNonVal_),-1) %></font></strong></td>			
-			<td align="right"><strong><%=formatnumber(cdbl(SubTotal_),-1) %></font></strong></td>
-			<td align="right" BGCOLOR="#666666" class="style5"><strong><%=formatnumber(cdbl(SubTotalVip_),-1) %></strong></td>
+			<td colspan="6"><b><%=PrevAgencyName_ %> SubTotal</b></td>			
+			<td align="right" class="Excel"><b><%=formatnumber(cdbl(SubTotalNonVal_),-1) %></font></b></td>	
+			<td align="right" class="Excel"><b><%=formatnumber(cdbl(SubTotalVal_),-1) %></font></b></td>					
+		<!--	<td align="right"><b><%=formatnumber(cdbl(SubTotal_),-1) %></font></b></td>   -->
+			<td align="right" BGCOLOR="#666666"  class="ExcelWhite"><b><%=formatnumber(cdbl(SubTotalVip_),-1) %></b></td>
 		</tr>
 		<tr><td colspan="9"><br></td></tr>
 <%
-			if FiscalStripVAT_ <> FiscalStripNonVAT_ then
+			'if FiscalStripVAT_ <> FiscalStripNonVAT_ then
 %>
 				<tr>
-					<td colspan="8"><%=FiscalStripVAT_ %></td>
-					<td align="right"><%=formatnumber(cdbl(SubTotalVal_),-1) %></font></td>
-					<td>&nbsp;</td>
+					<td align="right" colspan="8"><%=FiscalStripNonVAT_ %></td>
+					<td align="right" class="Excel"><%=formatnumber(cdbl(SubTotalNonVal_),-1) %></font></td>
+				<!--	<td>&nbsp;</td>   -->
 				</tr>	
 				<tr>
-					<td colspan="8"><%=FiscalStripNonVAT_ %></td>
-					<td align="right"><%=formatnumber(cdbl(SubTotalNonVal_),-1) %></font></td>
-					<td>&nbsp;</td>
+					<td align="right" colspan="8"><%=FiscalStripVAT_ %></td>
+					<td align="right" class="Excel"><%=formatnumber(cdbl(SubTotalVal_),-1) %></font></td>
+				<!--	<td>&nbsp;</td>   -->
 				</tr>	
+
 <%
-			else
+			'else
 %>
-				<tr>
+			<!--	<tr>
 					<td colspan="8">&nbsp;<%=FiscalStripVAT_ %></td>
 					<td align="right"><%=formatnumber(cdbl(SubTotal_),-1) %></font></td>
 					<td>&nbsp;</td>
-				</tr>	
+				</tr>		-->
 <%
-			end if
-		elseif (PrevAgency_ <> DataRS("AgencyFundingCode"))Then 
+			'end if
+		elseif (PrevAgency_ <> DataRS("AgencyFunding"))Then 
 %>
 		<tr>
-			<td colspan="6"><strong><%=PrevAgencyName_ %> SubTotal</strong></td>			
-			<td align="right"><strong><%=formatnumber(cdbl(SubTotalVal_),-1) %></font></strong></td>			
-			<td align="right"><strong><%=formatnumber(cdbl(SubTotalNonVal_),-1) %></font></strong></td>			
-			<td align="right"><strong><%=formatnumber(cdbl(SubTotal_),-1) %></font></strong></td>
-			<td align="right" BGCOLOR="#666666" class="style5"><strong><%=formatnumber(cdbl(SubTotalVip_),-1) %></strong></td>
+			<td colspan="6"><b><%=PrevAgencyName_ %> SubTotal</b></td>			
+			<td align="right" class="Excel"><b><%=formatnumber(cdbl(SubTotalNonVal_),-1) %></font></b></td>	
+			<td align="right" class="Excel"><b><%=formatnumber(cdbl(SubTotalVal_),-1) %></font></b></td>					
+		<!--	<td align="right"><b><%=formatnumber(cdbl(SubTotal_),-1) %></font></b></td>   -->
+			<td align="right" BGCOLOR="#666666"  class="ExcelWhite"><b><%=formatnumber(cdbl(SubTotalVip_),-1) %></b></td>
 		</tr>
 		<tr><td colspan="9"><br></td></tr>
 <%
-			if FiscalStripVAT_ <> FiscalStripNonVAT_ then
+			'if FiscalStripVAT_ <> FiscalStripNonVAT_ then
 %>
 				<tr>
-					<td colspan="8">&nbsp;<%=FiscalStripVAT_ %></td>
-					<td align="right"><strong><%=formatnumber(cdbl(SubTotalVal_),-1) %></font></strong></td>
-					<td>&nbsp;</td>
-				</tr>	
+					<td align="right" colspan="8">&nbsp;<%=FiscalStripNonVAT_ %></td>
+					<td align="right" class="Excel"><b><%=formatnumber(cdbl(SubTotalNonVal_),-1) %></font></b></td>
+				<!--	<td>&nbsp;</td>   -->
+				</tr>
 				<tr>
-					<td colspan="8">&nbsp;<%=FiscalStripNonVAT_ %></td>
-					<td align="right"><strong><%=formatnumber(cdbl(SubTotalNonVal_),-1) %></font></strong></td>
-					<td>&nbsp;</td>
+					<td align="right" colspan="8">&nbsp;<%=FiscalStripVAT_ %></td>
+					<td align="right" class="Excel"><b><%=formatnumber(cdbl(SubTotalVal_),-1) %></font></b></td>
+				<!--	<td>&nbsp;</td>   -->
 				</tr>	
+
+		<tr><td colspan="9"><br></td></tr>	
 <%
-			else
+			'else
 %>
-				<tr>
+			<!--	<tr>
 					<td colspan="8">&nbsp;<%=FiscalStripVAT_ %></td>
-					<td align="right"><strong><%=formatnumber(cdbl(SubTotal_),-1) %></font></strong></td>
+					<td align="right"><b><%=formatnumber(cdbl(SubTotal_),-1) %></font></b></td>
 					<td>&nbsp;</td>
-				</tr>	
+				</tr>	-->
 <%
-			end if
+			'end if
 		end if
 	   no_ = no_ + 1 
    loop 
 	PageNo=1
 %>
-
+		<tr><td colspan="9"><br></td></tr>
 		<tr  BGCOLOR="#999999" height=26>
-			<td colspan="6"><FONT color=#FFFFFF><strong>&nbsp;Total</strong></font></td>			
-			<td align="right"><FONT color=#FFFFFF><strong><%=formatnumber(cdbl(TotalVal_),-1) %></font></strong></td>			
-			<td align="right"><FONT color=#FFFFFF><strong><%=formatnumber(cdbl(TotalNonVal_),-1) %></font></strong></td>
-			<td align="right"><FONT color=#FFFFFF><strong><%=formatnumber(cdbl(Total_),-1) %></font></strong></td>
-			<td align="right" BGCOLOR="#333333"><FONT color=#FFFFFF><strong><%=formatnumber(cdbl(TotalVip_),-1) %></font></strong></td>			
+			<td colspan="6"><FONT color=#FFFFFF><b>&nbsp;Total</b></font></td>	
+			<td align="right" class="Excel"><FONT color=#FFFFFF><b><%=formatnumber(cdbl(TotalNonVal_),-1) %></font></b></td>			
+			<td align="right" class="Excel"><FONT color=#FFFFFF><b><%=formatnumber(cdbl(TotalVal_),-1) %></font></b></td>			
+		<!--	<td align="right"><FONT color=#FFFFFF><b><%=formatnumber(cdbl(Total_),-1) %></font></b></td>   -->
+			<td align="right" class="Excel" BGCOLOR="#333333"><FONT color=#FFFFFF><b><%=formatnumber(cdbl(TotalVip_),-1) %></font></b></td>			
 		</tr>
 </table>
 <%

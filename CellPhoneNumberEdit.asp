@@ -77,7 +77,7 @@ window.onload = function()
 
 %> 
 
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </HEAD>
@@ -252,7 +252,7 @@ window.onload = function()
 
 <table border="0" bordercolor="#FFFFFF" cellpadding="2" cellspacing="0" width="65%"  class="FontText">
 	<tr>
-		<td><u><strong>Historical assignment of number <%= PhoneNumber_ %>:<strong></u></td>
+		<td><u><b>Historical assignment of number <%= PhoneNumber_ %>:<b></u></td>
 	</tr>
 	<tr>
 		<td class="Hint" align="left">*To alter historical data 'Generate Monthly Billing' procedure must be executed. Procedure sets bill to <%if BillFlag_ ="P" then %>'Awaiting Payment'<%Else%>'Pending'<%End If%> status.</td>

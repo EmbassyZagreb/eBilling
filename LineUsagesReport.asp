@@ -13,7 +13,7 @@
 'if (session("Month") = "") or (session("Year") = "") then
 '	strsql = "Select MonthP, YearP From Period"
 '	'response.write strsql & "<br>"
-'	set rsData = server.createobject("adodb.recordset")
+'	set rsData = server.createobject("adodb.recordset") 
 '	set rsData = BillingCon.execute(strsql)
 '	if not rsData.eof then
 '		session("Month") = rsData("MonthP")
@@ -32,7 +32,7 @@ if StartDate_ ="" then
 end if
 
 EndDate_ = Request.Form("txtEndDate")
-'response.write "EndDate :" & EndDate_
+'response.write "EndDate :" & EndDate_ 
 if EndDate_ ="" then
 	if Request("EndDate")<>"" then
 		EndDate_ = Request("EndDate")
@@ -44,7 +44,7 @@ end if
 Post_ = Request.Form("PostList")
 if Post_ ="" then
 	If Request("Post")<> "" Then
-		Post_ = Request("Post")
+		Post_ = Request("Post")	
 	Else
 		Post_ = "A"
 	End If
@@ -78,7 +78,7 @@ if EmpId_ ="" then
 end if
 
 PhoneType_ = Request.Form("PhoneTypeList")
-'response.write "PhoneType_  :" & PhoneType_
+'response.write "PhoneType_  :" & PhoneType_ 
 if PhoneType_ ="" then
 	If Request("PhoneType")<> "" Then
 		PhoneType_ = Request("PhoneType")
@@ -91,7 +91,7 @@ SortBy_ = Request.Form("SortList")
 
 if (SortBy_ ="") then
 	if Request("SortBy")<>"" then
-		SortBy_ = Request("SortBy")
+		SortBy_ = Request("SortBy")	
 	Else
 		SortBy_ = "EmpName"
 	end if
@@ -101,13 +101,13 @@ end if
 Order_ = Request.Form("OrderList")
 if (Order_ ="") then
 	if Request("Order")<>"" then
-		Order_ = Request("Order")
+		Order_ = Request("Order")	
 	Else
 		Order_ = "Asc"
 	end if
 end if
 %>
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </HEAD>
@@ -122,14 +122,14 @@ end if
   	<TD COLSPAN="4"><HR style="LEFT: 10px; TOP: 59px" align=center></TD>
    </TR>
   </TABLE>
-<table align="center" cellspadding="1" cellspacing="0" width="100%">
+<table align="center" cellspadding="1" cellspacing="0" width="100%">  
 <tr>
 	<td colspan="2" align="center">Billing Period : <Label style="color:blue"><%= StartDate_ %> - <%= EndDate_ %></lable></td>
 </tr>
 </table>
 <%
 
-dim rs
+dim rs 
 dim strsql
 dim tombol
 dim hlm
@@ -138,9 +138,9 @@ dim hlm
 <%
 Dim user_ , user1_
 
-dim intPageSize,PageIndex,TotalPages
-dim RecordCount,RecordNumber,Count
-intpageSize=50
+dim intPageSize,PageIndex,TotalPages 
+dim RecordCount,RecordNumber,Count 
+intpageSize=50 
 PageIndex=request("PageIndex")
 
 user_ = request.servervariables("remote_user")
@@ -164,15 +164,15 @@ If (UserRole_ <> "") Then
 	DataRS.CursorLocation = 3
 	DataRS.open strsql,BillingCon
 
-	if ((PageIndex ="") or (request.form("btnSearch")="Search")) then PageIndex=1
+	if ((PageIndex ="") or (request.form("btnSearch")="Search")) then PageIndex=1 
 	if not DataRS.eof then
-		RecordCount = DataRS.RecordCount
+		RecordCount = DataRS.RecordCount   
 		'response.write RecordCount & "<br>"
-		RecordNumber=(intPageSize * PageIndex) - intPageSize
+		RecordNumber=(intPageSize * PageIndex) - intPageSize 
 		'response.write RecordNumber
-		DataRS.PageSize =intPageSize
+		DataRS.PageSize =intPageSize 
 		DataRS.AbsolutePage = PageIndex
-		TotalPages=DataRS.PageCount
+		TotalPages=DataRS.PageCount 
 		'response.write TotalPages & "<br>"
 	End If
 
@@ -186,14 +186,14 @@ If (UserRole_ <> "") Then
 				<td height="25" colspan="7"><strong>&nbsp;<span class="style5">Search &amp; Sort By </span></strong></td>
 			</tr>
 			<tr>
-				<td>&nbsp;Period&nbsp;</td>
+				<td>&nbsp;Period&nbsp;</td>				
 				<td>:</td>
 				<td colspan="4">
 					<input name="txtStartDate" type="Input" size="10" value='<%=StartDate_ %>' maxlength="10">
 					<a href="javascript:cal0.popup();"><img src="images/calendar.gif" width="34" height="18" border="0" alt="Calendar"></a>
 					&nbsp;To&nbsp;
 					<input name="txtEndDate" type="Input" size="10" value='<%=EndDate_ %>' maxlength="10">
-					<a href="javascript:cal1.popup();"><img src="images/calendar.gif" width="34" height="18" border="0" alt="Calendar"></a>
+					<a href="javascript:cal1.popup();"><img src="images/calendar.gif" width="34" height="18" border="0" alt="Calendar"></a>											
 
 				</td>
 			</tr>
@@ -206,7 +206,7 @@ If (UserRole_ <> "") Then
 					<Option value="ZAGREB" <%if Post_ ="ZAGREB" then %>Selected<%End If%> >ZAGREB</Option>
 					<Option value="PODGORICA" <%if Post_ ="PODGORICA" then %>Selected<%End If%> >PODGORICA</Option>
 				</Select>
-				</td>
+				</td>  					
 				<td width="15%">&nbsp;Agency&nbsp;</td>
 				<td>:</td>
 		        	<td>
@@ -215,11 +215,11 @@ If (UserRole_ <> "") Then
 					set AgencyRS = server.createobject("adodb.recordset")
 					set AgencyRS = BillingCon.execute(strsql)
 				%>
-					<select name="AgencyList">
+					<select name="AgencyList"> 
 						<Option value="A">-- All --</option>
 				<%	do while not AgencyRS.eof %>
 						<OPTION value=<%=AgencyRS("Agency")%> <% if trim(Agency_) = trim(AgencyRS("Agency")) then%> Selected <%end if%> /><%=AgencyRS("Agency")%>
-				<%		AgencyRS.movenext
+				<%		AgencyRS.movenext	
 					loop%>
 					</Select>
 				</td>
@@ -237,10 +237,10 @@ If (UserRole_ <> "") Then
 						<Option value="A">-- All --</option>
 				<%	do while not OfficeRS.eof %>
 						<OPTION value=<%=OfficeRS("Office")%> <% if trim(Office_) = trim(OfficeRS("Office")) then%> Selected <%end if%> /><%=OfficeRS("Office")%>
-				<%		OfficeRS.movenext
+				<%		OfficeRS.movenext	
 					loop%>
 				</Select>
-				</td>
+				</td>  	
 				<td width="15%">&nbsp;Employee&nbsp;</td>
 				<td>:</td>
 		        	<td>
@@ -249,11 +249,11 @@ If (UserRole_ <> "") Then
 					set EmpRS = server.createobject("adodb.recordset")
 					set EmpRS = BillingCon.execute(strsql)
 				%>
-					<select name="EmpList">
+					<select name="EmpList"> 
 						<Option value="A">-- All --</option>
 				<%	do while not EmpRS.eof %>
 						<OPTION value=<%=EmpRS("EmpID")%> <% if trim(EmpID_) = trim(EmpRS("EmpID")) then%> Selected <%end if%> /><%=EmpRS("EmpName")%>
-				<%		EmpRS.movenext
+				<%		EmpRS.movenext	
 					loop%>
 					</Select>
 				</td>
@@ -282,7 +282,7 @@ If (UserRole_ <> "") Then
 						<Option value="Desc" <%if Order_ ="Desc" then %>Selected<%End If%> >Desc</Option>
 					</Select>
 
-				</td>
+				</td>	
 			</tr>
 			<tr>
 		               <td height="30" colspan="6" align="center">
@@ -292,15 +292,15 @@ If (UserRole_ <> "") Then
 			</table>
 			</form>
 		</td>
-	</tr>
+	</tr>	
 	</table>
 	<form method="post" name="frmLineUsagesList" action="LineUsagesPrint.asp?StartDate=<%=StartDate_ %>&EndDate=<%=EndDate_%>&Post=<%=Post_%>&Agency=<%=Agency_%>&Office=<%=Office_%>&EmpId=<%=EmpId_%>&PhoneType=<%=PhoneType_%>&SortBy=<%=SortBy_%>&Order=<%=Order_%>">
-	<table align="center" cellpadding="1" cellspacing="0" width="90%" bordercolor="black"  class="FontText">
+	<table align="center" cellpadding="1" cellspacing="0" width="90%" bordercolor="black"  class="FontText"> 
 	<tr>
 		<td align="right"><input type="submit" value="Export to Excel" /></td>
 	</tr>
 	</table>
-	<table align="center" cellpadding="1" cellspacing="0" width="90%" border="1" bordercolor="black"  class="FontText">
+	<table align="center" cellpadding="1" cellspacing="0" width="90%" border="1" bordercolor="black"  class="FontText"> 
 	<TR BGCOLOR="#000099" align="center" cellpadding="0" cellspacing="0" >
 		<TD width="4%"><strong><label STYLE=color:#FFFFFF>No.</label></strong></TD>
 		<TD><strong><label STYLE=color:#FFFFFF>Employee Name</label></strong></TD>
@@ -308,23 +308,23 @@ If (UserRole_ <> "") Then
 	       	<TD width="15%"><strong><label STYLE=color:#FFFFFF>Phone Type</label></strong></TD>
 		<TD width="10%"><strong><label STYLE=color:#FFFFFF>Duration (Second)</label></strong></TD>
 		<TD width="10%"><strong><label STYLE=color:#FFFFFF>Cost</label></strong></TD>
-	</TR>
-	<%
-		dim no_
-	'	no_ = 1
+	</TR>    
+	<% 
+		dim no_  
+	'	no_ = 1 
 		no_ = 1 + ((PageIndex*intPageSize)-intPageSize)
 		do while not DataRS.eof and Count<intPageSize
-	   	if bg="#D7E3F4" then bg="ffffff" else bg="#D7E3F4"
+	   	if bg="#D7E3F4" then bg="ffffff" else bg="#D7E3F4" 
 	%>
 	   	<TR bgcolor="<%=bg%>">
 			<td align="right"><%=No_%>&nbsp;</td>
-	        	<td><FONT color=#330099 size=2>&nbsp;<%=DataRS("EmpName")%></font></td>
-	        	<td><FONT color=#330099 size=2>&nbsp;<%=DataRS("Post")%></font></td>
-	        	<td><FONT color=#330099 size=2>&nbsp;<%=DataRS("PhoneType")%></font></td>
-	        	<td><FONT color=#330099 size=2>&nbsp;<%=DataRS("CallDurationSecond")%></font></td>
-	        	<td align="right"><FONT color=#330099 size=2><%=formatnumber(DataRS("Cost"),-1)%>&nbsp;</font></td>
+	        	<td><FONT color=#330099 size=2>&nbsp;<%=DataRS("EmpName")%></font></td> 
+	        	<td><FONT color=#330099 size=2>&nbsp;<%=DataRS("Post")%></font></td> 
+	        	<td><FONT color=#330099 size=2>&nbsp;<%=DataRS("PhoneType")%></font></td> 
+	        	<td><FONT color=#330099 size=2>&nbsp;<%=DataRS("CallDurationSecond")%></font></td> 
+	        	<td align="right"><FONT color=#330099 size=2><%=formatnumber(DataRS("Cost"),-1)%>&nbsp;</font></td> 
 	  	 </TR>
-	<%
+	<%   
 			Count=Count +1
 	 		DataRS.movenext
 	   		no_ = no_ + 1
@@ -335,14 +335,14 @@ If (UserRole_ <> "") Then
 		<tr>
 			<td align="right">
 	<%
-			Do while PageNo<=TotalPages
+			Do while PageNo<=TotalPages 
 				if trim(pageNo) = trim(PageIndex) Then
-	%>
+	%>		
 					<label class="ActivePage"><%=PageNo%></label>&nbsp;
 				<%Else%>
 					<a href="LineUsagesReport.asp?PageIndex=<%=PageNo%>&StartDate=<%=StartDate_ %>&EndDate=<%=EndDate_%>&Post=<%=Post_%>&Agency=<%=Agency_%>&Office=<%=Office_%>&EmpId=<%=EmpId_%>&PhoneType=<%=PhoneType_%>&SortBy=<%=SortBy_%>&Order=<%=Order_%>"><%=PageNo%></a>&nbsp;
-	<%
-				End If
+	<%	
+				End If						
 				PageNo=PageNo+1
 			Loop
 	%>
@@ -370,7 +370,7 @@ If (UserRole_ <> "") Then
 		</tr>
 	</table>
 <% end if %>
-</body>
+</body> 
 </html>
 
 

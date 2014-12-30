@@ -3,7 +3,7 @@
 <html>
 <head>
 <script language="JavaScript" src="calendar.js"></script>
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 <script language="javascript">
@@ -195,7 +195,8 @@ end if
 			<td>:</td>
 			<td>
 <%
- 				strsql ="select EmpID, EmpName, MobilePhone from vwPhoneCustomerList Where MobilePhone <> '' order by EmpName"
+ 				'strsql ="select EmpID, EmpName, MobilePhone from vwPhoneCustomerList Where MobilePhone <> '' order by EmpName"
+ 				strsql ="select EmpID, EmpName, PhoneNumber from vwCellPhoneNumberList Where Discontinued = 'N' order by EmpName"
 				set EmpRS = server.createobject("adodb.recordset")
 				set EmpRS = BillingCon.execute(strsql)
 '				response.write strStr 
@@ -205,8 +206,8 @@ end if
 					<Option value=''>--All--</Option>
 <%				Do While not EmpRS.eof 
 %>
-<!--				<Option value='<%=EmpRS("EmpID")%>' <%if trim(EmpID_) = trim(EmpRS("EmpID")) then %>Selected<%End If%> ><%=EmpRS("EmpName")%> -<%=EmpRS("MobilePhone")%></Option> -->
-					<Option value='<%=EmpRS("MobilePhone")%>' <%if trim(EmpID_) = trim(EmpRS("EmpID")) then %>Selected<%End If%> ><%=EmpRS("EmpName")%> -<%=EmpRS("MobilePhone")%></Option>
+
+					<Option value='<%=EmpRS("PhoneNumber")%>' <%if trim(EmpID_) = trim(EmpRS("EmpID")) then %>Selected<%End If%> ><%=EmpRS("EmpName")%> -<%=EmpRS("PhoneNumber")%></Option>
 					
 <%					EmpRS.MoveNext
 				Loop%>
@@ -240,11 +241,7 @@ end if
 <tr>
 	<td>Please <a href="http://zagrebws03.eur.state.sbu/WebPASS/eservices/MainPage.asp">Submit Request </a> or contact Zagreb ISC Helpdesk at ext.3333.</td>
 </tr>
-<%end if
-	'Close the connection with the database and free all database resources
-	BillingCon.Close
-	Set BillingCon = Nothing
- %>
+<%end if %>
 </table>
 </form>
 </BODY>

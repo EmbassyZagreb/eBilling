@@ -9,8 +9,17 @@
 
 </HEAD>
 
-
-
+<BODY>
+<body>	<TR>
+		<TD COLSPAN="4" ALIGN="center" Class="title">Import New Bill</TD>
+	</TR>
+	<tr>
+        <td colspan="4" align="left"><FONT color=#330099 size=2><A HREF="Default.asp">Main Menu</A></font></TD>
+	</tr>
+	<TR>
+  	<TD COLSPAN="4"><HR style="LEFT: 10px; TOP: 59px" align=center></TD>
+  </TR>
+</TABLE>
 <%
 Dim objExec
 
@@ -26,7 +35,6 @@ Set objExec = BillingCon.Execute("DELETE From ListTEMP;")
 Set objExec = BillingCon.Execute("Drop Table ImportTEMP")
 
 %>
-<BODY>
 <div>
 <center>
 <table>	

@@ -36,7 +36,7 @@ FiscalStripVAT_ = Request("FiscalStripVAT")
 FiscalStripNonVAT_ = Request("FiscalStripNonVAT") 
 
 %>
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </HEAD>
@@ -116,9 +116,9 @@ if not DataRS.eof Then
 	if DataRS.eof then
 %>
 	<TR bgcolor="<%=bg%>">
-	        <TD align="center" colspan="5"><strong>Total</strong></font></TD>
-<!--	        <TD align="right"><strong><%=formatnumber(TotRecordNo_,-1) %></strong>&nbsp;</font></TD> -->
-	        <TD align="right"><strong><%=formatnumber(TotBillingAmount_,-1) %>&nbsp;</strong></font></TD>
+	        <TD align="center" colspan="5"><b>Total</b></font></TD>
+<!--	        <TD align="right"><b><%=formatnumber(TotRecordNo_,-1) %></b>&nbsp;</font></TD> -->
+	        <TD align="right"><b><%=formatnumber(TotBillingAmount_,-1) %>&nbsp;</b></font></TD>
 	   </TR>
 <%	
 	end if   

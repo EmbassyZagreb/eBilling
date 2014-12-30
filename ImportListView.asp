@@ -9,26 +9,45 @@
 	<script src="jquery-latest.js" type="text/javascript"></script>
 	<script src="jquery.tablesorter.js" type="text/javascript"></script>
 	<script src="jquery.tablesorter.pager.js" type="text/javascript"></script>
-
-	<link rel="stylesheet" type="text/css" href="style-tablesorter.css" />
+	<link href="style.css" rel="stylesheet" type="text/css">
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250" />
 	<script type="text/javascript">
 	$(function() {
 		$("#myTable").tablesorter({headers: { 0:{sorter: false}}, widgets: ['zebra']});
 	});
 	</script>
-</HEAD>
 
+</HEAD>
+<%
+dim user_ 
+ dim user1_  
+ dim rst 
+ dim strsql
+ 
+user_ = request.servervariables("remote_user")
+user1_ = user_  'user1_ = right(user_,len(user_)-4)
+strsql = "select * from Users where loginId='" & user1_ & "'"
+set RS_Query = server.createobject("adodb.recordset")
+'response.write strsql & "<br>"
+set RS_Query = BillingCon.execute(strsql)
+
+if not RS_Query.eof then
+	UserRole_ = RS_Query("RoleID")
+end if
+%>
 <!--#include file="Header.inc" -->
-  <TR>
-  	<TD COLSPAN="4" ALIGN="center" Class="title">Import New Bill</TD>
-   </TR>
+<body>	<TR>
+		<TD COLSPAN="4" ALIGN="center" Class="title">Import New Bill</TD>
+	</TR>
+	<tr>
+        <td colspan="4" align="left"><FONT color=#330099 size=2><A HREF="Default.asp">Main Menu</A></font></TD>
+	</tr>
   <TR>
   	<TD COLSPAN="4"><HR style="LEFT: 10px; TOP: 59px" align=center></TD>
-   </TR>
-  </TABLE>
+  </TR>
+</TABLE>
+  <%if (UserRole_= "Admin") then %>
 
-<body>
 <Center>
 <%
 
@@ -36,7 +55,6 @@ Dim objFSO
 Dim Conn, objExec
 dim rs, rs2, updateSQL
 dim bg, sort
-
 
 response.write "</table>"
 Set Rs = Server.CreateObject("ADODB.Recordset")
@@ -47,13 +65,8 @@ if rs.recordcount=0 then
 
 else
 %>
+<button type="submit" onclick="window.location='ImportSpec.asp';return false;">Continue to import specification file</button>
 
-
-<table border="0" cellpadding="1" cellspacing="1" class="tablesorter"> 
-<tr><td>
-<a href="ImportSpec.asp">Continue to import specification file</a>
-</td></tr>
-</table>
 
 <table border="1" bordercolor="#EEEEEE" cellpadding="1" cellspacing="1" class="tablesorter" id="myTable" class="tablesorter"> 
  <thead>
@@ -154,6 +167,10 @@ rs.close()
  Billingcon.close()
 set rs = nothing
 
+else
 %>
+<br><br>
+<!--#include file="NoAccess.asp" -->
+<%end if %>
 </body>
 </html>

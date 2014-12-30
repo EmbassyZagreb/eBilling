@@ -152,10 +152,12 @@ if (SortBy_ ="") then
 	end if
 end if
 
+
 Order_ = Request.Form("OrderList")
+'response.write "Order " & Order_
 if (Order_ ="") then
 	if Request("Order")<>"" then
-		Order_ = Request("OrderList")	
+		Order_ = Request("Order")	
 	Else
 		Order_ = "Asc"
 	end if
@@ -163,7 +165,7 @@ end if
 
 
 %>
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 
@@ -185,8 +187,9 @@ dim rs
 dim strsql
 If (UserRole_ = "Admin") or (UserRole_ = "Voucher") or (UserRole_ = "FMC") or (UserRole_ = "Cashier")  Then
 %>
-<form method="post" name="frmSearch" Action="ARReminder.asp">
+
 <table cellspadding="1" cellspacing="0" width="70%" border="1" align="center">
+<form method="post" name="frmSearch" Action="ARReminder.asp">
 <tr align="Center">
 	<td colspan="2" align="center">
 		<table  width="100%">
@@ -345,6 +348,7 @@ If (UserRole_ = "Admin") or (UserRole_ = "Voucher") or (UserRole_ = "FMC") or (U
 			<td>:</td>
 			<td>
 				<Select name="SortList">
+					<Option value="AccumulatedDebt" <%if SortBy_ ="AccumulatedDebt" then %>Selected<%End If%> >Accumulated Debt</Option>
 					<Option value="Aging" <%if SortBy_ ="Aging" then %>Selected<%End If%> >Aging</Option>
 					<Option value="EmpName" <%if SortBy_ ="EmpName" then %>Selected<%End If%> >Employee Name</Option>
 					<Option value="Office" <%if SortBy_ ="Office" then %>Selected<%End If%> >Section</Option>
@@ -366,9 +370,19 @@ If (UserRole_ = "Admin") or (UserRole_ = "Voucher") or (UserRole_ = "FMC") or (U
 		</table>
 	</td>
 </tr>	
-</table>
+
 </form>
+</table>
 <%
+
+strsql = "select CashierMinimumAmount from PaymentDueDate"
+set rst1 = server.createobject("adodb.recordset") 
+set rst1 = BillingCon.execute(strsql)
+if not rst1.eof then 
+	CashierMinimumAmount_ = rst1("CashierMinimumAmount")
+end if
+
+
 sPeriod = sYearP&sMonthP
 ePeriod = eYearP&eMonthP
 'response.write sPeriod & ePeriod 
@@ -426,6 +440,12 @@ intNext=PageIndex +1
 if not DataRS.eof Then
 
 %>
+		<table width="70%">
+			<tr>
+				<td class="style2" align="left">*Employees with accumulated debt greater than <%=CashierMinimumAmount_%> kuna are marked red.</td>
+			</tr>
+		</table>
+
 <form method="post" name="frmARReminder" Action="ARReminderSendMail.asp" onSubmit="return ValidateForm();">
 <table width="100%">
 <tr>
@@ -438,10 +458,11 @@ if not DataRS.eof Then
          <TD width="3%" align="right"><strong><label STYLE=color:#FFFFFF>No.</label></strong></TD>
          <TD width="15%"><strong><label STYLE=color:#FFFFFF>Employee Name</label></strong></TD>
          <TD width="5%"><strong><label STYLE=color:#FFFFFF>Number</label></strong></TD>
-         <TD width="8%"><strong><label STYLE=color:#FFFFFF>Billing Period</label></strong></TD>
+         <TD width="8%"><strong><label STYLE=color:#FFFFFF>Billing<br>Period</label></strong></TD>
          <TD width="8%"><strong><label STYLE=color:#FFFFFF>Section</label></strong></TD>
-	 <TD width="8%"><strong><label STYLE=color:#FFFFFF>Billing Amount (Kn.)</label></strong></TD>
-	 <TD width="8%"><strong><label STYLE=color:#FFFFFF>Personal Amount (Kn.)</label></strong></TD>
+	 <TD width="8%"><strong><label STYLE=color:#FFFFFF>Billing<br>Amount (Kn.)</label></strong></TD>
+	 <TD width="8%"><strong><label STYLE=color:#FFFFFF>Personal<br>Amount (Kn.)</label></strong></TD>
+         <TD width="8%"><strong><label STYLE=color:#FFFFFF>Accumulated<br>Debt (Kn.)</label></strong></TD>
          <TD width="8%"><strong><label STYLE=color:#FFFFFF>A/R Aging</label></strong></TD>
          <TD width="8%"><strong><label STYLE=color:#FFFFFF>Email</label></strong></TD>
          <TD width="8%"><strong><label STYLE=color:#FFFFFF>Notification</label></strong></TD>
@@ -484,6 +505,13 @@ if not DataRS.eof Then
 			<a href="CellPhoneDetail.asp?CellPhone=<%=DataRS("MobilePhone")%>&MonthP=<%= DataRS("MonthP")%>&YearP=<%= DataRS("YearP")%>" target="_blank"><%= formatnumber(DataRS("CellPhonePrsBillRp"),-1) %></a>
 <%		Else %>
 			-
+<%		End If %>
+		&nbsp;</td>
+<td align="right">
+<%		If cdbl(DataRS("AccumulatedDebt")) > cdbl(CashierMinimumAmount_) Then %>
+			<label class="style2"><%= formatnumber(DataRS("AccumulatedDebt"),-1) %></label>
+<%		Else %>
+			<%= formatnumber(DataRS("AccumulatedDebt"),-1) %>
 <%		End If %>
 		&nbsp;</td>
 	        <TD>&nbsp;<%=DataRS("Aging") %> </font></TD>

@@ -50,9 +50,9 @@ Status = request("Status")
 
 SortBy_ = Request("SortBy")
 
-Order_ = Request("OrderList")
+Order_ = Request("Order")
 %>
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </HEAD>
@@ -62,11 +62,21 @@ Order_ = Request("OrderList")
 dim rs 
 dim strsql
 If (UserRole_ = "Admin") or (UserRole_ = "Voucher") or (UserRole_ = "FMC") or (UserRole_ = "Cashier")  Then
+
+strsql = "select CashierMinimumAmount from PaymentDueDate"
+set rst1 = server.createobject("adodb.recordset") 
+set rst1 = BillingCon.execute(strsql)
+if not rst1.eof then 
+	CashierMinimumAmount_ = rst1("CashierMinimumAmount")
+end if
+
+
 sPeriod = sYearP&sMonthP
 ePeriod = eYearP&eMonthP
 'response.write sPeriod & ePeriod 
 'strsql = "Select * From vwMonthlyBilling Where ProgressID=5 and YearP+MonthP>='" & sPeriod & "' and YearP+MonthP<='" & ePeriod & "'"
-strsql = "Select * From vwMonthlyBilling Where YearP+MonthP>='" & sPeriod & "' and YearP+MonthP<='" & ePeriod & "' and MobilePhone <> ''"
+'strsql = "Select * From vwMonthlyBilling Where YearP+MonthP>='" & sPeriod & "' and YearP+MonthP<='" & ePeriod & "' and MobilePhone <> ''"
+strsql = "Select * From vwARReminderRpt Where YearP+MonthP>='" & sPeriod & "' and YearP+MonthP<='" & ePeriod & "' and MobilePhone <> ''"
 strFilter=""
 If Agency_ <> "X" then
 	strFilter=strFilter & " and Agency='" & Agency_ & "'"
@@ -108,17 +118,11 @@ if not DataRS.eof Then
          <TD width="8%" class="style5">Section</TD>
 	 <TD width="8%" class="style5">Billing Amount (Kn.)</TD>
 	 <TD width="8%" class="style5">Personal Amount (Kn.)</TD>
+         <TD width="8%" class="style5">Accumulated Debt (Kn.)</TD>
          <TD width="8%" class="style5">A/R Aging</TD>
          <TD width="8%" class="style5">Email</TD>
          <TD width="8%" class="style5">Notification</TD>
     </TR>
-<!--    <tr BGCOLOR="#330099" align="center">
-         <TD width="10%" class="style5">Home Phone</TD> 
-         <TD width="10%" class="style5">Office Phone</TD>
-         <TD width="10%" class="style5">Mobile Phone</TD>
-        <TD width="10%" class="style5">Shuttle Bus</TD>
-         <TD width="8%" class="style5">Total</TD>
-    </tr> -->
 
 <% 
    dim no_  
@@ -134,21 +138,6 @@ if not DataRS.eof Then
 		<TD>&nbsp;<%=DataRS("MobilePhone") %></TD>
 	        <TD align="right"><%= DataRS("MonthP")%>-<%= DataRS("YearP")%></font></TD>
 	        <TD><%=DataRS("Office") %> </font></TD>
-<!--	        <TD align="right"><%= formatnumber(DataRS("HomePhoneBillRp"),-1) %></font></TD> -->
-<!--		<td align="right">
-<%		If CDbl(DataRS("HomePhonePrsBillRp")) > 0 Then %>
-			<%= formatnumber(DataRS("HomePhonePrsBillRp"),-1) %>
-<%		Else %>
-			-
-<%		End If %>
-		</td>   
-		<td align="right">
-<%		If CDbl(DataRS("OfficePhonePrsBillRp")) > 0 Then %>
-			<%= formatnumber(DataRS("OfficePhonePrsBillRp"),-1) %>
-<%		Else %>
-			-
-<%		End If %>
-		</td> -->
 		<td align="right">
 <%		If CDbl(DataRS("CellPhoneBillRp")) > 0 Then %>
 			<%= formatnumber(DataRS("CellPhoneBillRp"),-1) %>
@@ -163,14 +152,12 @@ if not DataRS.eof Then
 			0
 <%		End If %>
 		</td>
-<!--		<td align="right">
-<%		If CDbl(DataRS("TotalShuttleBillRp")) > 0 Then %>
-			<%= formatnumber(DataRS("TotalShuttleBillRp"),-1) %>
+		
+<%		If cdbl(DataRS("AccumulatedDebt")) > cdbl(CashierMinimumAmount_) Then %>
+			<td align="right" class="style2"><%= formatnumber(DataRS("AccumulatedDebt"),-1) %></td>
 <%		Else %>
-			-
+			<td align="right"><%= formatnumber(DataRS("AccumulatedDebt"),-1) %></td>
 <%		End If %>
-		</td>
-	        <TD align="right"><%= formatnumber(DataRS("TotalBillingRp"),-1) %></font></TD> -->
 		<td align="right">-</td>
 	        <TD><%=DataRS("EmailAddress") %> </font></TD>
 				<TD><%=DataRS("SendMailStatusDesc") %></TD>

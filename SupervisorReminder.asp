@@ -160,7 +160,7 @@ if (Order_ ="") then
 end if
 
 %>
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 
@@ -490,7 +490,7 @@ if not DataRS.eof Then
 	        <TD>&nbsp;<%=DataRS("SupervisorEmail") %> </font></TD>
 		<td align="center">
 <%		If len(DataRS("SupervisorEmail"))>5 then %>
-			<Input type="Checkbox" name="cbApproval" Value='<%=DataRS("EmpID")%><%=DataRS("MonthP")%><%=DataRS("YearP")%>'>
+			<Input type="Checkbox" name="cbApproval" Value='<%=DataRS("MobilePhone")%><%=DataRS("MonthP")%><%=DataRS("YearP")%>'>
 <%		Else%>
 			&nbsp;
 <%		End If%>

@@ -2,7 +2,7 @@
 <HEAD>
 <!--#include file="connect.inc" -->
 <!--METADATA TYPE="typelib" UUID="CD000000-8B95-11D1-82DB-00C04FB1625D"  NAME="CDO for Windows 2000 Library" --> 
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
@@ -102,7 +102,7 @@
 			objMail.To = send_to 
 			'objMail.CC = send_cc
 
-			objMail.Subject = "Info: eBilling System ďż˝ Approval Notification"
+			objMail.Subject = "Info: eBilling System – Approval Notification"
 
 
 
@@ -133,38 +133,38 @@
 		& "    <tr> "_ 
 		& "        <td colspan='6'>&nbsp; </td></tr> " _
 		& "    <tr> "_           
-		& "        <td colspan='6' align='Left' class='FontContent'>Your billing <strong>has been APPROVED</strong> by your supervisor.</td></tr> "_
+		& "        <td colspan='6' align='Left' class='FontContent'>Your billing <b>has been APPROVED</b> by your supervisor.</td></tr> "_
 		& "    <tr> "_       
 		& "        <td colspan='6' align='Left' class='FontContent'><br></td></tr> "_    
 		& "    <tr> "_           
-		& "        <td colspan='6' align='Left' class='FontContent'>&nbsp;<u><strong>Personal Info:<strong></u></td></tr> "_
+		& "        <td colspan='6' align='Left' class='FontContent'>&nbsp;<u><b>Personal Info:<b></u></td></tr> "_
 		& "    <tr> "_ 
 		& "    <td colspan='6' align='Left'> "_
 		& "    	<table cellspadding='1' border='2' bordercolor='black' cellspacing='3' width='100%' bgColor='#999999' border='0'>   "_
 		& "    		<tr BGCOLOR='#999999'> "_
-		& "    			<td colspan='3' style='border: none;' class='FontContent'><FONT color=#FFFFFF><strong>Employee Name : " & EmpName_ & "</strong></font></td> "_
-		& "    			<td colspan='3' style='border: none;' align='right' class='FontContent'><FONT color=#FFFFFF><strong>Phone Number : " & MobilePhone_ & "&nbsp;</strong></font></td> "_
+		& "    			<td colspan='3' style='border: none;' class='FontContent'><FONT color=#FFFFFF><b>Employee Name : " & EmpName_ & "</b></font></td> "_
+		& "    			<td colspan='3' style='border: none;' align='right' class='FontContent'><FONT color=#FFFFFF><b>Phone Number : " & MobilePhone_ & "&nbsp;</b></font></td> "_
 		& "    		</tr> "_
 		& "    		<tr BGCOLOR='#999999'> "_
-		& "    			<td colspan='6' style='border: none;' class='FontContent'><FONT color=#FFFFFF><strong>Position : " & Position_ & "</strong></font></td> "_
+		& "    			<td colspan='6' style='border: none;' class='FontContent'><FONT color=#FFFFFF><b>Position : " & Position_ & "</b></font></td> "_
 		& "    		</tr> "_
 		& "    		<tr BGCOLOR='#999999'> "_
-		& "    			<td colspan='6' style='border: none;' class='FontContent'><FONT color=#FFFFFF><strong>Agency / Office : " & Office_ & "</strong></font></td> "_
+		& "    			<td colspan='6' style='border: none;' class='FontContent'><FONT color=#FFFFFF><b>Agency / Office : " & Office_ & "</b></font></td> "_
 		& "    		</tr> "_
 		& "    	</table></td></tr> "_
 		& "    <tr> "_ 
-		& "        <td align='Right' colspan='6'><font face='Verdana, Arial, Helvetica' color='#999999' size='4'><strong>Billing Summary&nbsp;<strong></font></td></tr> "_
+		& "        <td align='Right' colspan='6'><font face='Verdana, Arial, Helvetica' color='#999999' size='4'><b>Billing Summary&nbsp;<b></font></td></tr> "_
 		& "    <tr> "_ 
-		& "        <td align='Left' colspan='6' class='FontContent'>&nbsp;<u><strong>Billing Detail:<strong></u></td></tr> "_
+		& "        <td align='Left' colspan='6' class='FontContent'>&nbsp;<u><b>Billing Detail:<b></u></td></tr> "_
 		& "    <tr> "_
 		& "    <td align='Left' colspan='6'> "_
 		& "    <table cellspadding='1' border='1' bordercolor='black' cellspacing='0' width='100%' bgColor='white'> "_  
 		& "    	<tr align='center' height=26> "_
-		& "    		<td width='25%' class='FontContent'><strong>Action</strong></td> "_
-		& "    		<td width='25%' class='FontContent'><strong>Billing Period</strong></td> "_
-		& "    	<!--	<td width='20%' class='FontContent'><strong>Status</strong></td> --> "_
-		& "    		<td width='25%' class='FontContent'><strong>Total Bill</strong></td> "_
-		& "    		<td width='25%' class='FontContent'><strong>Personal Amount Due</strong></td> "_
+		& "    		<td width='25%' class='FontContent'><b>Action</b></td> "_
+		& "    		<td width='25%' class='FontContent'><b>Billing Period</b></td> "_
+		& "    	<!--	<td width='20%' class='FontContent'><b>Status</b></td> --> "_
+		& "    		<td width='25%' class='FontContent'><b>Total Bill</b></td> "_
+		& "    		<td width='25%' class='FontContent'><b>Personal Amount Due</b></td> "_
 		& "    	</tr> "
 
 		if cdbl(CellPhoneBillRp_ ) > 0 Then
@@ -231,7 +231,7 @@
 
     		ObjMail.HTMLBody = ObjMail.HTMLBody & " "_
 		& "    <tr> "_       
-		& "        <td class='FontContent' colspan='6'>&nbsp;<u><strong>Fund Cite Details (For Cashier):</strong></u></td> "_
+		& "        <td class='FontContent' colspan='6'>&nbsp;<u><b>Fund Cite Details (For Cashier):</b></u></td> "_
 		& "    <tr> "_       
 		& "        <td class='FontContent' colspan='6'>&nbsp; Kn " & formatnumber(CellPhonePrsBillRp_,-1) & " " & FiscalDataNonVAT_ & "</td></tr> "_
 		& "    <tr> "_       
@@ -252,7 +252,7 @@
 		ObjMail.HTMLBody = ObjMail.HTMLBody & " "_
 		& "  <table cellspadding='1' cellspacing='0' width='100%' bgColor='white'>  "_  
 		& "    <tr> "_ 
-		& "        <td align='Left' class='FontContent'><u><strong>Accumulated Debt:</strong></u></TD> "_ 
+		& "        <td align='Left' class='FontContent'><u><b>Accumulated Debt:</b></u></TD> "_ 
 		& "    </tr> " 
 
 if not AwaitingRS.eof Then
@@ -265,11 +265,11 @@ if not AwaitingRS.eof Then
 		& "    	<td align='Left'> "_ 
 		& "    	<table cellspadding='1' border='1' bordercolor='black' cellspacing='0' width='100%' bgColor='white'>  "_  
 		& "    	<tr align='center' height=26> "_ 
-		& "    		<td width='25%' class='FontContent'><strong>Action</strong></td> "_ 
-		& "    		<td width='25%' class='FontContent'><strong>Billing Period</strong></td> "_ 
-		& "    	<!--	<td width='20%' class='FontContent'><strong>Status</strong></td> --> "_ 
-		& "    		<td width='25%' class='FontContent'><strong>Total Bill</strong></td> "_ 
-		& "    		<td width='25%' class='FontContent'><strong>Personal Amount Due</strong></td> "_ 
+		& "    		<td width='25%' class='FontContent'><b>Action</b></td> "_ 
+		& "    		<td width='25%' class='FontContent'><b>Billing Period</b></td> "_ 
+		& "    	<!--	<td width='20%' class='FontContent'><b>Status</b></td> --> "_ 
+		& "    		<td width='25%' class='FontContent'><b>Total Bill</b></td> "_ 
+		& "    		<td width='25%' class='FontContent'><b>Personal Amount Due</b></td> "_ 
 		& "    	</tr> " 
 
    PrevEmpName_ =""
@@ -292,8 +292,8 @@ if not AwaitingRS.eof Then
 
 		ObjMail.HTMLBody = ObjMail.HTMLBody & " "_
 		& "    <tr BGCOLOR='#999999' height=26> "_ 
-		& "    <td colspan='2' style='border: none;' class='FontContent'><FONT color=#FFFFFF><strong>&nbsp;Employee Name : " & AwaitingEmpName_ & "</strong></font></td> "_ 
-		& "    	<td colspan='2' style='border: none;' align='right' class='FontContent'><FONT color=#FFFFFF><strong>Phone Number : " & AwaitingMobilePhone_ & "&nbsp;</strong></font></td> "_ 
+		& "    <td colspan='2' style='border: none;' class='FontContent'><FONT color=#FFFFFF><b>&nbsp;Employee Name : " & AwaitingEmpName_ & "</b></font></td> "_ 
+		& "    	<td colspan='2' style='border: none;' align='right' class='FontContent'><FONT color=#FFFFFF><b>Phone Number : " & AwaitingMobilePhone_ & "&nbsp;</b></font></td> "_ 
 		& "    	</tr>	 " 	
 
 	    end if
@@ -317,18 +317,18 @@ if not AwaitingRS.eof Then
 
 		ObjMail.HTMLBody = ObjMail.HTMLBody & " "_
 		& "    <tr> "_ 
-		& "    	<td colspan='2' class='FontContent'><strong>&nbsp;SubTotal</strong></td> "_ 			
-		& "    	<td align='right' class='FontContent'><strong>&nbsp;" & formatnumber(SubTotalBill_,-1) & "&nbsp;</font></strong></td> "_ 			
-		& "    	<td align='right' class='FontContent'><strong>&nbsp;" & formatnumber(SubTotalPrs_,-1) & "&nbsp;</font></strong></td> "_ 			
+		& "    	<td colspan='2' class='FontContent'><b>&nbsp;SubTotal</b></td> "_ 			
+		& "    	<td align='right' class='FontContent'><b>&nbsp;" & formatnumber(SubTotalBill_,-1) & "&nbsp;</font></b></td> "_ 			
+		& "    	<td align='right' class='FontContent'><b>&nbsp;" & formatnumber(SubTotalPrs_,-1) & "&nbsp;</font></b></td> "_ 			
 		& "    </tr> " 
 
 		elseif (PrevEmpName_ <> AwaitingRS("EmpName")) Then 
 
 		ObjMail.HTMLBody = ObjMail.HTMLBody & " "_
 		& "    <tr> "_ 
-		& "    	<td colspan='2' class='FontContent'><strong>&nbsp;SubTotal</strong></td> "_ 			
-		& "    	<td align='right' class='FontContent'><strong>&nbsp;" & formatnumber(SubTotalBill_,-1) & "&nbsp;</font></strong></td> "_ 			
-		& "    	<td align='right' class='FontContent'><strong>&nbsp;" & formatnumber(SubTotalPrs_,-1) & "&nbsp;</font></strong></td> "_ 			
+		& "    	<td colspan='2' class='FontContent'><b>&nbsp;SubTotal</b></td> "_ 			
+		& "    	<td align='right' class='FontContent'><b>&nbsp;" & formatnumber(SubTotalBill_,-1) & "&nbsp;</font></b></td> "_ 			
+		& "    	<td align='right' class='FontContent'><b>&nbsp;" & formatnumber(SubTotalPrs_,-1) & "&nbsp;</font></b></td> "_ 			
 		& "    </tr> " 
 	
 		end if
@@ -336,9 +336,9 @@ if not AwaitingRS.eof Then
 
 		ObjMail.HTMLBody = ObjMail.HTMLBody & " "_
 		& "    <tr  BGCOLOR='#999999' height=26> "_
-		& "    	<td colspan='2' class='FontContent'><FONT color=#FFFFFF><strong>&nbsp;Total</strong></font></td> "_			
-		& "    	<td align='right' class='FontContent'><FONT color=#FFFFFF><strong>&nbsp;" & formatnumber(TotalBill_,-1) & "&nbsp;</font></strong></td>	 "_		
-		& "    	<td align='right' class='FontContent'><FONT color=#FFFFFF><strong>&nbsp;" & formatnumber(TotalPrs_,-1) & "&nbsp;</font></strong></td> "_			
+		& "    	<td colspan='2' class='FontContent'><FONT color=#FFFFFF><b>&nbsp;Total</b></font></td> "_			
+		& "    	<td align='right' class='FontContent'><FONT color=#FFFFFF><b>&nbsp;" & formatnumber(TotalBill_,-1) & "&nbsp;</font></b></td>	 "_		
+		& "    	<td align='right' class='FontContent'><FONT color=#FFFFFF><b>&nbsp;" & formatnumber(TotalPrs_,-1) & "&nbsp;</font></b></td> "_			
 		& "    </tr> "
 
 
@@ -352,12 +352,12 @@ if not AwaitingRS.eof Then
 
 		ObjMail.HTMLBody = ObjMail.HTMLBody & " "_
 		& "    	<tr BGCOLOR='#990000' height=36> "_
-		& "    		<td  colspan='4' align='center' class='FontContent'><FONT color=#FFFFFF><strong>Your total accumulated debt is greater than " & formatnumber(CashierMinimumAmount_,-1) & " Kuna. Please make the payment at cashier office.<br>" & CashierInfo & "</font></strong></td> "_
+		& "    		<td  colspan='4' align='center' class='FontContent'><FONT color=#FFFFFF><b>Your total accumulated debt is greater than " & formatnumber(CashierMinimumAmount_,-1) & " Kuna. Please make the payment at cashier office.<br>" & CashierInfo & "</font></b></td> "_
 		& "    	</tr> "
 		else
 		ObjMail.HTMLBody = ObjMail.HTMLBody & " "_
 		& "    	<tr BGCOLOR='#999999' height=26> "_
-		& "    		<td colspan='4' align='center' class='FontContent'><FONT color=#FFFFFF><strong>Your total accumulated debt is less than " & formatnumber(CashierMinimumAmount_,-1) & " Kuna. No payment is necessary at this point.</font></strong></td> "_
+		& "    		<td colspan='4' align='center' class='FontContent'><FONT color=#FFFFFF><b>Your total accumulated debt is less than " & formatnumber(CashierMinimumAmount_,-1) & " Kuna. No payment is necessary at this point.</font></b></td> "_
 		& "    	</tr> "
 		end if
 
@@ -373,7 +373,7 @@ ObjMail.HTMLBody = ObjMail.HTMLBody & " "_
 & "    		<td align='Left'> "_
 & "    		<table cellspadding='1' border='1' bordercolor='black' cellspacing='0' width='100%' bgColor='white' border='0'>   "_
 & "    		<tr align='center' BGCOLOR='#999999' height=26> "_
-& "    			<td class='FontContent'><FONT color=#FFFFFF><strong>There is no accumulated debt for your cell phone(s).</strong></font></td> "_
+& "    			<td class='FontContent'><FONT color=#FFFFFF><b>There is no accumulated debt for your cell phone(s).</b></font></td> "_
 & "    		</tr> "
 
 end if

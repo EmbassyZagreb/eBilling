@@ -1,23 +1,25 @@
 <%@ Language=VBScript %>
 <!--#include file="connect.inc" -->
-
-
 <html>
 <head>
 <TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 <style>
-table, td, th {border: 0px solid black;font-family:'Tahoma', Georgia, Serif;text-align:center}
+table, td, th {border: 0px solid black;font-family:'Tahoma', Georgia, Serif;}
 td {font-size:'30px'}
-table {width: 500px;}
+table {width: 1000px;}
 th {height: 50px;}
 </style>
 </HEAD>
 <!--#include file="Header.inc" -->
+<BODY>
   <TR>
   	<TD COLSPAN="4" ALIGN="center" Class="title">Import New Bill</TD>
    </TR>
+<tr>
+        <td colspan="4" align="left"><FONT color=#330099 size=2><A HREF="Default.asp">Main Menu</A></font></TD>
+</tr>
   <TR>
   	<TD COLSPAN="4"><HR style="LEFT: 10px; TOP: 59px" align=center></TD>
    </TR>
@@ -39,7 +41,7 @@ if not RS_Query.eof then
 	UserRole_ = RS_Query("RoleID")
 end if
 %>
-<BODY>
+
 
 <div>
   <%if (UserRole_= "Admin") then %>
@@ -51,18 +53,17 @@ end if
   <br>
    <table>
     <tr>
-      <td><input type="button" name="B1" value="VIPNET" onclick="window.location.href='ImportList.asp'"></td>
+      <td align="right"><input type="button" name="B1" value="VIPNET" onclick="window.location.href='ImportList.asp'"></td>
+	  <td></td><td></td><td></td><td></td>
       <td><button name="B2">T-COM</button></td>
     </tr>
   </table>
 </div>
-<%else %>
-  <div>
-  	You do not have permission to access this site.
-  </div>
-  <div>
-  	<td>Please <a href="http://zagrebws03.eur.state.sbu/WebPASS/eservices/MainPage.asp">Submit Request </a> or contact Zagreb ISC Helpdesk at ext.3333.</td>
-<  /div>
+<%
+else
+%>
+<br><br>
+<!--#include file="NoAccess.asp" -->
 <%end if %>
 </BODY>
 </HTML>

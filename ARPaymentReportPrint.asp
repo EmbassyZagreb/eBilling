@@ -40,7 +40,7 @@ Section_ = request("Section")
 EmpID_ = request("EmpID")
 PaymentType_ = request("PaymentType")
 %>
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </HEAD>
@@ -89,26 +89,26 @@ if not DataRS.eof Then
 <!-- <div align="right"><input type="submit" name="btnApproval" value="Approve" /></div> -->
 <table border="1" bordercolor="#000000" cellpadding="2" cellspacing="0" width="100%"  class="FontText">
     <TR align="center">
-         <TD width="3%" align="right"><strong>No.</strong></TD>
-         <TD width="15%"><strong>Employee Name</strong></TD>
-         <TD width="6%"><strong>Number</strong></TD>
-         <TD width="6%"><strong>Billing Period</strong></TD>
-         <TD width="6%"><strong>Section</strong></TD>
-	 <TD width="6%"><strong>Billing Amount (Kn.)</strong></TD>
-         <TD width="6%"><strong>Paid Date</strong></TD>
-         <TD width="6%"><strong>Receipt No.</strong></TD>
-         <TD width="6%"><strong>Receipt Type</strong></TD>
-         <TD width="6%"><strong>Receipt Amount</strong></TD>
-<!--         <TD><strong>Receipt Currency</strong></TD> -->
-         <TD width="6%"><strong>Age (day)</strong></TD>
-         <TD width="15%"><strong>Funding Agency</strong></TD>
+         <TD width="3%" align="right"><b>No.</b></TD>
+         <TD width="15%"><b>Employee Name</b></TD>
+         <TD width="6%"><b>Number</b></TD>
+         <TD width="6%"><b>Billing Period</b></TD>
+         <TD width="6%"><b>Section</b></TD>
+	 <TD width="6%"><b>Billing Amount (Kn.)</b></TD>
+         <TD width="6%"><b>Paid Date</b></TD>
+         <TD width="6%"><b>Receipt No.</b></TD>
+         <TD width="6%"><b>Receipt Type</b></TD>
+         <TD width="6%"><b>Receipt Amount</b></TD>
+<!--         <TD><b>Receipt Currency</b></TD> -->
+         <TD width="6%"><b>Age (day)</b></TD>
+         <TD width="15%"><b>Funding Agency</b></TD>
     </TR>
 <!--     <tr align="center">
-        <TD width="10%"><strong>Home Phone</strong></TD>
-         <TD width="10%"><strong>Office Phone</strong></TD>
-         <TD width="10%"><strong>Mobile Phone</strong></TD>
-         <TD width="10%"><strong>Shuttle Bus</strong></TD>
-         <TD width="8%"><strong>Total</strong></TD>
+        <TD width="10%"><b>Home Phone</b></TD>
+         <TD width="10%"><b>Office Phone</b></TD>
+         <TD width="10%"><b>Mobile Phone</b></TD>
+         <TD width="10%"><b>Shuttle Bus</b></TD>
+         <TD width="8%"><b>Total</b></TD>
     </tr> -->
 
 <% 

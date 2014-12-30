@@ -3,7 +3,7 @@
 <html>
 <head>
 <script language="JavaScript" src="calendar.js"></script>
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
@@ -33,10 +33,10 @@ if ExemptedIfOfficialCallType_ = "" or IsNull(ExemptedIfOfficialCallType_) Then 
  
 user_ = request.servervariables("remote_user")
 user1_ = user_  'user1_ = right(user_,len(user_)-4)
-strsql3 = "select * from Users where loginId='" & user1_ & "'"
+strsql = "select * from Users where loginId='" & user1_ & "'"
 set RS_Query = server.createobject("adodb.recordset")
 'response.write strsql & "<br>"
-set RS_Query = BillingCon.execute(strsql3)
+set RS_Query = BillingCon.execute(strsql)
 
 if not RS_Query.eof then
 	UserRole_ = RS_Query("RoleID")
@@ -51,8 +51,8 @@ YearP = Request.Form("YearList")
 'EmpID = Request.Form("cmbEmp")
 MobilePhone = Request.Form("cmbMobilePhone")
  
-strsql2 = "select * from ExchangeRate where ExchangeMonth='" & MonthP & "' and ExchangeYear='" & YearP & "'"
-set RS_Query = BillingCon.execute(strsql2)
+strsql = "select * from ExchangeRate where ExchangeMonth='" & MonthP & "' and ExchangeYear='" & YearP & "'"
+set RS_Query = BillingCon.execute(strsql)
 If RS_Query.eof then
 
 '********************  added to avoid exchange rate info  ******************** 
@@ -66,7 +66,7 @@ If RS_Query.eof then
         BillingCon.execute strsql
 '*****************************************************************************
 
-	'response.write "<div class='Hint'>Please input exchange rate for period :<strong> " & MonthP & " - " & YearP & "</strong>, before generates monthly bill !!!</div>"
+	'response.write "<div class='Hint'>Please input exchange rate for period :<b> " & MonthP & " - " & YearP & "</b>, before generates monthly bill !!!</div>"
 'else
 end if
 
@@ -75,9 +75,9 @@ end if
 	response.write "<div class='Hint2'>Process generates monthly bill completed !!!</div>"
 
 
-	strsql1 = "Select * from vwProgressLog Where MonthP='" & MonthP & "' and YearP='" & YearP & "' order by Description"
+	strsql = "Select * from vwProgressLog Where MonthP='" & MonthP & "' and YearP='" & YearP & "' order by Description"
 	set SummaryRS = server.createobject("adodb.recordset")
-	set SummaryRS = BillingCon.execute(strsql1)
+	set SummaryRS = BillingCon.execute(strsql)
 '	response.write strsql 
 	if not SummaryRS.eof then
 %>

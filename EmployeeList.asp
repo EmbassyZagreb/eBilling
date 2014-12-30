@@ -54,7 +54,7 @@ function checkall(obj)
 }
 
 </script>
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
@@ -299,6 +299,7 @@ set RS_Query = BillingCon.execute(strsql)
 					<Option value="AgencyFunding" <%if SortBy_ ="AgencyFunding" then %>Selected<%End If%> >Funding Agency</Option>
 					<Option value="PostName" <%if SortBy_ ="PostName" then %>Selected<%End If%> >Post</Option>
 					<Option value="ReportToName" <%if SortBy_ ="ReportToName" then %>Selected<%End If%> >Supervisor</Option>
+					<Option value="Type" <%if SortBy_ ="Type" then %>Selected<%End If%> >Type</Option>
 				</Select>&nbsp;
 				<Select name="OrderList">
 					<Option value="Asc" <%if Order_ ="Asc" then %>Selected<%End If%> >Asc</Option>

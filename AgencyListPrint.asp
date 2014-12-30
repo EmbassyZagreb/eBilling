@@ -12,7 +12,7 @@ Response.Clear()
 
 <META name=VI60_defaultClientScript content=VBScript>
 <meta NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <!--#include file="connect.inc" -->
 
 

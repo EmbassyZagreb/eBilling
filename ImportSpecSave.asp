@@ -8,7 +8,7 @@
 <link href="style.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 .tblMain { background-color:white;border-collapse:collapse;width:370px }
-.tblMain td, .tblMain th {padding:10px;border:0px solid #000;font-size:13px }
+.tblMain td, .tblMain th {padding:5px;border:0px solid #000;font-size:13px }
 .body {font-family:"Tahoma";font-size:16px }
 </style>
 <script language="Javascript">
@@ -19,19 +19,31 @@ function validateForm() {
         return false;
     }
 }
+EnableSubmit = function()
+{
+    var sbmt = document.getElementById("Disable");
+    {
+        sbmt.disabled = true;
+		document.getElementById("Upload").submit();
+    }
+}
+
 </script>
 </HEAD>
-
 <!--#include file="Header.inc" -->
+<BODY>
   <TR>
   	<TD COLSPAN="4" ALIGN="center" Class="title">Import New Bill</TD>
    </TR>
+	<tr>
+        <td colspan="4" align="left"><FONT color=#330099 size=2><A HREF="Default.asp">Main Menu</A></font></TD>
+	</tr>
   <TR>
   	<TD COLSPAN="4"><HR style="LEFT: 10px; TOP: 59px" align=center></TD>
    </TR>
   </TABLE>
 
-<BODY>
+
 <div>
 <table class="tblMain">	
 
@@ -69,7 +81,7 @@ FileFullPath=objFolder & "\" & FilePath
     if rs.recordcount <> 0 then
       response.write "<tr><td colspan='2'>You uploaded CSV file for month and year that alredy exist in the system.</td></tr>"
       response.write "<tr><td colspan='2'>Please use different CSV file.</td></tr>"
-      response.write "<tr><td colspan='2'>This page will refresh in 10 seconds.</td></tr>"
+      response.write "<tr><td colspan='2'><i>This page will refresh in 10 seconds.</i></td></tr>"
       response.write "<td><button type='cancel' onclick=""window.location='ImportSpec.asp';return false;"">Go Back</button></td>"
       rs.close()
       Response.AddHeader "REFRESH","8;URL=ImportSpec.asp"
@@ -78,19 +90,19 @@ FileFullPath=objFolder & "\" & FilePath
         response.write "<tr><td colspan='2'>File name:  " & strFileName & "</td></tr>"
         response.write "<tr><td colspan='2'>Month: " & strFileMonth & "</td></tr>"
         response.write "<tr><td colspan='2'>Year:  " & strFileYear & "</td></tr>"
-        response.write "<tr><td colspan='2'>If this information is correct, please click on "%><button type="submit" form="Upload" value="Submit">next</button> to continue.</td></tr><%
-        response.write "<tr><td colspan='2'>Please be patient. This process can take several minutes to complete.</td></tr>"
-        response.write "<tr><td colspan='2'>Do not close this page. It will refresh once import is finished.</td></tr>"
+        response.write "<tr><td colspan='2'>If this information is correct, please click on "%><button type="submit" id="Disable" form="Upload" onclick="EnableSubmit();" value="Submit">next</button> to continue.</td></tr><%
+        response.write "<tr><td colspan='2'>Please be patient. This process can take up to 10 minutes to complete.</td></tr>"
+        response.write "<tr><td colspan='2'><i>Do not close this page. It will refresh once import is finished.</i></td></tr>"
         rs.close()
     end if
   else
     Response.write "<tr><td colspan='2'>You uploaded wrong file name. Please upload <b>'spec_YYYYMM.csv'</b> file only.</td></tr>"
-    response.write "<tr><td colspan='2'>This page will refresh in 10 seconds.</td></tr>"
+    response.write "<tr><td colspan='2'><i>This page will refresh in 5 seconds.</i></td></tr>"
     response.write "<td><button type='cancel' onclick=""window.location='ImportSpec.asp';return false;"">Go Back</button></td>"
     Set objFSO = Server.CreateObject("Scripting.FileSystemObject")
     Set objFolder = objFSO.GetFolder(Server.MapPath("uploads"))
     objFSO.deletefile objFolder & "/" & FilePath
-    Response.AddHeader "REFRESH","8;URL=ImportSpec.asp"
+    Response.AddHeader "REFRESH","6;URL=ImportSpec.asp"
   end if
 %>
 </table>

@@ -195,11 +195,11 @@ end if
 NoRecord_ = request("NoRecord")
 if NoRecord_ = "" Then NoRecord_ = Request.Form("cmbNoRecord")
 if NoRecord_ = "" then
-	NoRecord_ = 1
+	NoRecord_ = 25
 end if
 
 %>
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </HEAD>
@@ -430,10 +430,10 @@ If (UserRole_ = "Admin") or (UserRole_ = "Voucher") or (UserRole_ = "FMC") Then
 			<td>:</td>
 			<td>
 				<Select name="cmbNoRecord">
-					<Option value="1" <%if NoRecord_ = "1" then %>Selected<%End If%> >All</Option>
+				<!--	<Option value="1" <%if NoRecord_ = "1" then %>Selected<%End If%> >All</Option>  -->
+					<Option value="10" <%if NoRecord_ = "10" then %>Selected<%End If%> >10</Option>
 					<Option value="25" <%if NoRecord_ = "25" then %>Selected<%End If%> >25</Option>
-					<Option value="50" <%if NoRecord_ = "50" then %>Selected<%End If%> >50</Option>
-					<Option value="100" <%if NoRecord_ = "100" then %>Selected<%End If%> >100</Option>
+				<!--	<Option value="100" <%if NoRecord_ = "100" then %>Selected<%End If%> >100</Option>  -->
 				</Select>&nbsp;per Page
 			</td>			
 			<td align="right">Sort By&nbsp;</td>
@@ -477,8 +477,6 @@ End If
 sPeriod = sYearP&sMonthP
 ePeriod = eYearP&eMonthP
 'response.write sPeriod & ePeriod 
-'strsql = "Select * From vwMonthlyBilling Where ProgressID=5 and YearP+MonthP>='" & sPeriod & "' and YearP+MonthP<='" & ePeriod & "'"
-'strsql = "Select * From vwMonthlyBilling Where ProgressID=1 and YearP+MonthP>='" & sPeriod & "' and YearP+MonthP<='" & ePeriod & "'"
 strsql = "Select * From vwMonthlyBilling Where YearP+MonthP>='" & sPeriod & "' and YearP+MonthP<='" & ePeriod & "'"
 strFilter=""
 If Agency_ <> "X" then
@@ -507,11 +505,7 @@ End If
 
 'response.write EmpID_ 
 If Status_ <> "0" then
-'	if Status_ ="99" Then
-'		strFilter =strFilter & " and ProgressID=6 and CellPhonePrsBillRp<=" & CeilingAmount_ 
-'	else
 		strFilter =strFilter & " and ProgressID=" & Status_
-'	end if
 End If
 
 If SentStatus_ <> "0" then
@@ -574,31 +568,6 @@ if not DataRS.eof Then
 	<td align="Right"><input type="submit" name="btnSendNotice" value="Send Notice(s)" /></td>
 </tr>
 </table>
-<%If BillType = "X" then %>
-	<table border="1" bordercolor="#EEEEEE" cellpadding="0" cellspacing="0" width="100%"  class="FontText">
-	    <TR BGCOLOR="#330099" align="center">
-        	 <TD rowspan="2" width="35px" align="right"><strong><label STYLE=color:#FFFFFF>No.</label></strong></TD>
-	         <TD rowspan="2" Width="15%"><strong><label STYLE=color:#FFFFFF>Employee Name</label></strong></TD>
-        	 <TD rowspan="2"><strong><label STYLE=color:#FFFFFF>Billing<br>Period</label></strong></TD>
-	         <TD rowspan="2"><strong><label STYLE=color:#FFFFFF>Section</label></strong></TD>
-	         <TD rowspan="2" Width="7%"><strong><label STYLE=color:#FFFFFF>Phone<br>Number</label></strong></TD>
-		 <TD colspan="3"><strong><label STYLE=color:#FFFFFF>Billing Amount (Kn.)</label></strong></TD>
-	         <TD rowspan="2" Width="30px">
-			<input type="checkbox" name="cbAll" value="true" onclick="checkall(this)" />
-		 </TD>
-	         <TD rowspan="2" align="center"><strong><label STYLE=color:#FFFFFF>Sent<br>Status</label></strong></TD>
-	         <TD rowspan="2"><strong><label STYLE=color:#FFFFFF>Sent Date</label></strong></TD>
-	         <TD rowspan="2"><strong><label STYLE=color:#FFFFFF>Email</label></strong></TD>
-	         <TD rowspan="2"><strong><label STYLE=color:#FFFFFF>Status</label></strong></TD>
-	    </TR>
-	    <tr BGCOLOR="#330099" align="center">
-        	<!--  <TD width="7%"><strong><label STYLE=color:#FFFFFF>Home Phone</label></strong></TD>  -->
-	         <TD width="7%"><strong><label STYLE=color:#FFFFFF>Office Phone</label></strong></TD>
-        	 <TD width="7%"><strong><label STYLE=color:#FFFFFF>Mobile Phone</label></strong></TD>
-	        <!--  <TD width="7%"><strong><label STYLE=color:#FFFFFF>Shuttle Bus</label></strong></TD>  -->
-        	 <TD width="7%"><strong><label STYLE=color:#FFFFFF>Total</label></strong></TD>
-	    </tr>
-<%else%>
 	<table border="1" bordercolor="#EEEEEE" cellpadding="0" cellspacing="0" width="100%"  class="FontText">
 	    <TR BGCOLOR="#330099" align="center">
         	 <TD width="35px" align="right"><strong><label STYLE=color:#FFFFFF>No.</label></strong></TD>
@@ -606,7 +575,6 @@ if not DataRS.eof Then
         	 <TD><strong><label STYLE=color:#FFFFFF>Billing<br>Period</label></strong></TD>
 	         <TD><strong><label STYLE=color:#FFFFFF>Section</label></strong></TD>
 	         <TD Width="7%"><strong><label STYLE=color:#FFFFFF>Phone<br>Number</label></strong></TD>
-	    <!--     <TD rowspan="2" width="100px"><strong><label STYLE=color:#FFFFFF>Bill Type</label></strong></TD>  -->
 		 <TD Width="9%"><strong><label STYLE=color:#FFFFFF>Billing Amount (Kn.)</label></strong></TD>
 		 <TD Width="9%"><strong><label STYLE=color:#FFFFFF>Personal Usage (Kn.)</label></strong></TD>
 	         <TD Width="3%">
@@ -617,11 +585,7 @@ if not DataRS.eof Then
 	         <TD><strong><label STYLE=color:#FFFFFF>Email</label></strong></TD>
 	         <TD><strong><label STYLE=color:#FFFFFF>Status</label></strong></TD>
 	    </TR>
-	 <!--    <tr BGCOLOR="#330099" align="center">
-        	 <TD width="6%"><strong><label STYLE=color:#FFFFFF>In Kuna (Kn.)</label></strong></TD>
-	         <TD width="6%"><strong><label STYLE=color:#FFFFFF>in US Dollar ($)</label></strong></TD>
-	    </tr>  -->
-<%end if%>
+
 <%   
  dim no_  
   
@@ -809,6 +773,7 @@ Else
 	        <TD>&nbsp;<%=DataRS("EmpName") %></TD>
 	        <TD align="right">&nbsp;<%= DataRS("MonthP")%>-<%= DataRS("YearP")%></font>&nbsp;</TD>
 	        <TD>&nbsp;<%=DataRS("Office") %> </font></TD>
+			<TD>&nbsp;<%=DataRS("MobilePhone") %> </font></TD>
 <%If BillType <> "X" then 
 		If BillType ="O" then
 			BillTypeDesc ="Office Phone"
@@ -820,7 +785,7 @@ Else
 			BillTypeDesc ="Shuttle Bus"
 		End If
 %>
-	        <TD>&nbsp;<%=BillTypeDesc %> </font></TD>
+	    <!--    <TD>&nbsp;<%=BillTypeDesc %> </font></TD>  -->
 <%end if%>
 <%		If (BillType = "H") or (BillType = "X") Then 
 			If CDbl(DataRS("HomePhonePrsBillRp")) > 0 then %>
@@ -843,11 +808,11 @@ Else
 <%			End If%>
 <%		End If %>
 <%		If (BillType = "C")  or (BillType = "X") Then 
-			If CDbl(DataRS("CellPhonePrsBillRp")) > 0 then %>
+			If CDbl(DataRS("CellPhoneBillRp")) > 0 then %>
 				<td align="right">
-					<a href="CellPhoneDetail.asp?CellPhone=<%=DataRS("MobilePhone")%>&MonthP=<%= DataRS("MonthP")%>&YearP=<%= DataRS("YearP")%>" target="_blank"><%= formatnumber(DataRS("CellPhonePrsBillRp"),-1) %></a>
+					<a href="CellPhoneDetail.asp?CellPhone=<%=DataRS("MobilePhone")%>&MonthP=<%= DataRS("MonthP")%>&YearP=<%= DataRS("YearP")%>" target="_blank"><%= formatnumber(DataRS("CellPhoneBillRp"),-1) %></a>
 				</td>
-<%			TotalBillingRp_ = cdbl(TotalBillingRp_ )+cdbl(DataRS("CellPhonePrsBillRp"))%>
+<%			TotalBillingRp_ = cdbl(TotalBillingRp_ )+cdbl(DataRS("CellPhoneBillRp"))%>
 <%			Else %>
 				<td align="right">-&nbsp;</td>
 <%			End If%>
@@ -919,7 +884,7 @@ Else
 <%		ElseIf (CDbl(DataRS("OfficePhonePrsBillDlr")) = 0) and (BillType = "O") Then %>
 			<td align="right">-&nbsp;</td>
 <%		End If %>
-<%		If CDbl(DataRS("CellPhonePrsBillDlr")) > 0 Then
+<!-- <%		If CDbl(DataRS("CellPhonePrsBillDlr")) > 0 Then
 			If (BillType = "C") Then %>
 			<td align="right">
 				<a href="CellPhoneDetail.asp?CellPhone=<%=DataRS("MobilePhone")%>&MonthP=<%= DataRS("MonthP")%>&YearP=<%= DataRS("YearP")%>" target="_blank"><%= formatnumber(DataRS("CellPhonePrsBillDlr"),-1) %></a>
@@ -927,7 +892,7 @@ Else
 <%			End If %>
 <%		ElseIf (CDbl(DataRS("CellPhonePrsBillDlr")) = 0) and (BillType = "C")  Then %>
 			<td align="right">-&nbsp;</td>
-<%		End If %>
+<%		End If %>  -->
 <%		If CDbl(DataRS("TotalShuttleBillDlr")) > 0 Then
 			If (BillType = "S") Then %>
 				<td align="right">
@@ -952,7 +917,7 @@ Else
 	        <TD>&nbsp;<%=DataRS("SendMailStatusDesc") %> </font></TD>
 	        <TD>&nbsp;<%=DataRS("SendMailDate") %> </font></TD>
 	        <TD>&nbsp;<%=DataRS("EmailAddress") %> </font></TD>
-	        <TD>&nbsp;<%=DataRS("ProgressDesc") %> </font></TD>
+	        <TD><a title="click to update the status" href="ChangeProgressStatus.asp?EmpID=<%=DataRS("EmpID")%>&CellPhone=<%= DataRS("MobilePhone")%>&MonthP=<%= DataRS("MonthP")%>&YearP=<%= DataRS("YearP")%>" target="_blank"><%=DataRS("ProgressDesc") %> </font></a></TD>
 	    </TR>
 
 <%   

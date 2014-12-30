@@ -1,5 +1,5 @@
 <!--#include file="connect.inc" -->
-<%Server.ScriptTimeout=600%>
+<%Server.ScriptTimeout=800%>
 <html>
 <head>
 <title>Import CSV file to SQL</title>

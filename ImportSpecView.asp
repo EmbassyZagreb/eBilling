@@ -1,14 +1,13 @@
 <%@ Language=VBScript %>
 <%Server.ScriptTimeout=600%>
 <!--#include file="connect.inc" -->
-
 <html>
 <head>
 
 <TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
 	<script src="jquery-latest.js" type="text/javascript"></script>
 	<script src="jquery.tablesorter.js" type="text/javascript"></script>
-	<link rel="stylesheet" type="text/css" href="style-tablesorter.css" />
+	<link href="style.css" rel="stylesheet" type="text/css">
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250" />
 	<script type="text/javascript">
 	$(function() {
@@ -17,18 +16,8 @@
 	</script>
 </head>
 <!--#include file="Header.inc" -->
-  <TR>
-  	<TD COLSPAN="4" ALIGN="center" Class="title">Import New Bill</TD>
-   </TR>
-  <TR>
-  	<TD COLSPAN="4"><HR style="LEFT: 10px; TOP: 59px" align=center></TD>
-   </TR>
-  </TABLE>
-
 <body>
-<Center>
 <%
-
 Dim objFSO
 Dim Conn, objExec
 dim rs, rs2, updateSQL
@@ -40,8 +29,37 @@ translation=request.querystring ("translation")
 if isempty(translation)=true then translation="english"
 sort="PhoneNumber"
 
+dim user_ 
+ dim user1_  
+ dim rst 
+ dim strsql
+ 
+user_ = request.servervariables("remote_user")
+user1_ = user_  'user1_ = right(user_,len(user_)-4)
+strsql = "select * from Users where loginId='" & user1_ & "'"
+set RS_Query = server.createobject("adodb.recordset")
+'response.write strsql & "<br>"
+set RS_Query = BillingCon.execute(strsql)
+
+if not RS_Query.eof then
+	UserRole_ = RS_Query("RoleID")
+end if
 %>
-<table>
+  <TR>
+  	<TD COLSPAN="4" ALIGN="center" Class="title">Import New Bill</TD>
+   </TR>
+	<tr>
+        <td colspan="4" align="left"><FONT color=#330099 size=2><A HREF="Default.asp">Main Menu</A></font></TD>
+	</tr>
+  <TR>
+  	<TD COLSPAN="4"><HR style="LEFT: 10px; TOP: 59px" align=center></TD>
+   </TR>
+  </TABLE>
+
+  <%if (UserRole_= "Admin") then %>
+  
+<Center>
+
 <%
 Set Rs = Server.CreateObject("ADODB.Recordset")
 Set Rs2 = Server.CreateObject("ADODB.Recordset")
@@ -49,7 +67,7 @@ Rs.open ("qCallTypeMissing"), BillingCon,1,3
 Rs2.open ("qMissingCallDescription"), BillingCon,1,3
 
 if rs.recordcount<>0 then
-   response.write "New call types updated."
+   response.write "New call types updated. &nbsp;&nbsp;&nbsp;"
    Set objExec = BillingCon.Execute("spAddNewCallType")
 %>
 <button type="submit" onclick="window.location='TranslationTable.asp';return false;">Update call desctriptions</button>
@@ -59,7 +77,7 @@ else if rs2.recordcount<>0 then%>
      <button type="submit" onclick="window.location='TranslationTable.asp';return false;">Update call desctriptions</button>  
      <%rs2.close() 
    else
-%>No new call types. <button type="submit" onclick="window.location='ImportSaveFinal.asp';return false;">Final Import</button><%
+%>No new call types. &nbsp;&nbsp;&nbsp;<button type="submit" onclick="window.location='ImportSaveFinal.asp';return false;">Final Import</button><%
    end if
 end if
 rs.close()
@@ -78,8 +96,7 @@ else
 
 <table border="0" cellpadding="1" cellspacing="1" class="tablesorter"> 
   <tr>
-    <td>Import Main</td>
-    <td>Number of rows to display: <select name="rows" onchange="this.form.submit();">
+    <td align="right">Number of rows to display: <select name="rows" onchange="this.form.submit();">
 <%
 Response.Write "<option value='100'"
        if rows = 100 then
@@ -98,7 +115,7 @@ Response.Write "<option value='10000'"
 Response.Write ">10000</option>"
 %>
 </select>
-    <td>Change call descriptions to: <select name="translation" onchange="this.form.submit();">
+    <td>Call descriptions is set to: <select name="translation" onchange="this.form.submit();">
 <%
 Response.Write "<option value='english'"
        if translation = "english" then
@@ -182,5 +199,11 @@ set rs = nothing
 
 %>
 </form>
+<%
+else
+%>
+<br><br>
+<!--#include file="NoAccess.asp" -->
+<%end if %>
 </body>
 </html>

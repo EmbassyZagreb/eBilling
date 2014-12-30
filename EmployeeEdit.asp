@@ -94,7 +94,7 @@ function validate_form()
  State_ = request("State")
 
 %> 
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
@@ -122,7 +122,7 @@ function validate_form()
  dim strsql
  dim SectionRS
 
- strsql = "Select EmpID, EmpName, PostName, Agency, Office, Type, ReportToID, ReportToName, EmailAddress, LoginID, AlternateEmail, AgencyId, AgencyFundingCode, AgencyFunding From vwDirectReport where EmpID ='" & EmpID_ & "' And Type='" & EmpType_ & "'"
+ strsql = "Select EmpID, EmpName, PostName, Agency, Office, Type, ReportToID, ReportToName, EmailAddress, LoginID, AlternateEmail, Status, AgencyId, AgencyFundingCode, AgencyFunding From vwDirectReport where EmpID ='" & EmpID_ & "' And Type='" & EmpType_ & "'"
 
 
  'strsql = "Select EmpID, EmpName, PostName, Agency, Office, Type, ReportToID, ReportToName, EmailAddress, LoginID, AlternateEmail, AgencyId, AgencyFundingCode, AgencyFunding From vwDirectReport where EmpID ='" & EmpID_ & "' And Type='" & EmpType_ & "'"
@@ -141,7 +141,7 @@ function validate_form()
 	LoginID_ = rsData("LoginID")
 	AlternateEmail_ = rsData("AlternateEmail")
 	AgencyFundingCodeEmp_ = rsData("AgencyId")
-
+	Status_ = rsData("Status")
 	'Remark_ = rsData("Remark") 
 	'Remark = "No reMark"
   end if
@@ -352,7 +352,7 @@ function validate_form()
 
 <table border="0" bordercolor="#FFFFFF" cellpadding="2" cellspacing="0" width="65%"  class="FontText">
 	<tr>
-		<td><u><strong>Historical assignment of Funding Agency:<strong></u></td>
+		<td><u><b>Historical assignment of Funding Agency:<b></u></td>
 	</tr>
 	<tr>
 		<td class="Hint" align="left">*To alter historical data 'Generate Monthly Billing' procedure must be executed. Procedure sets bill to 'Pending' status.</td>

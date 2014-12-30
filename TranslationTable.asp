@@ -8,7 +8,7 @@
 	<script src="jquery-latest.js" type="text/javascript"></script>
 	<script src="jquery.tablesorter.js" type="text/javascript"></script>
 	<script src="jquery.tablesorter.pager.js" type="text/javascript"></script>
-	<link rel="stylesheet" type="text/css" href="style-tablesorter.css" />
+	<link href="style.css" rel="stylesheet" type="text/css">
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250" />
 	<script type="text/javascript">
 	$(function() {
@@ -16,17 +16,20 @@
 	});
 	</script>
 </HEAD>
+<body>
 
 <!--#include file="Header.inc" -->
   <TR>
   	<TD COLSPAN="4" ALIGN="center" Class="title">Import New Bill</TD>
    </TR>
+	<tr>
+        <td colspan="4" align="left"><FONT color=#330099 size=2><A HREF="Default.asp">Main Menu</A></font></TD>
+	</tr>
   <TR>
   	<TD COLSPAN="4"><HR style="LEFT: 10px; TOP: 59px" align=center></TD>
    </TR>
   </TABLE>
 
-<body>
 <%
 dim transID
 dim rs, bg
@@ -72,19 +75,18 @@ if isempty(transID)=false then
 
 %>
 </div>
-<br>
+  <tr>
+    <button type="submit" name="back" onclick="window.location='ImportSpecView.asp';return false;">Back</button>
+  </tr>
 <div>
 <form action="" id="form1" name="form1" method="GET">
 <%
  Set rs = Server.CreateObject("ADODB.Recordset")
  rs.Open "SELECT * from CallTypeTranslation order by English;", BillingCon, 1,3
 %>
-</table>
-<table border="0" bordercolor="#EEEEEE" cellpadding="1" cellspacing="0" width="30%">
-  <tr>
-    <button type="submit" name="back" onclick="window.location='ImportSpecView.asp';return false;">Back</button>
-  </tr>
-</table>
+
+
+
 
 <table border="1" bordercolor="#EEEEEE" cellpadding="1" cellspacing="1" class="tablesorter" id="myTable">
  <thead>

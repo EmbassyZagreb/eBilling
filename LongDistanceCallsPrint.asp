@@ -36,7 +36,7 @@ CallType_ = Request("CallType")
 SortBy_ = Request("SortBy")	
 Order_ = Request("Order")	
 %>
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </HEAD>
@@ -93,15 +93,15 @@ If (UserRole_ <> "") Then
 	<table cellpadding="1" cellspacing="0" width="100%" class="FontText">
 	<tr>
 		<td>&nbsp;</td>
-		<td><strong>Total Call Duration</strong></td>
+		<td><b>Total Call Duration</b></td>
 		<td width="1%">:</td>
-		<td><strong><%=formatnumber(sumRS("TotalDuration"),-1)%></strong>second(s)</td>
+		<td><b><%=formatnumber(sumRS("TotalDuration"),-1)%></b>second(s)</td>
 	</tr>
 	<tr>
 		<td width="50%">&nbsp;</td>
-		<td><strong>Total Cost</strong></td>
+		<td><b>Total Cost</b></td>
 		<td width="1%">:</td>
-		<td><strong>Kn. <%=formatnumber(sumRS("TotalCost"),-1)%></strong></td>
+		<td><b>Kn. <%=formatnumber(sumRS("TotalCost"),-1)%></b></td>
 	</tr>
 	</table>
 	<table align="center" cellpadding="1" cellspacing="0" width="100%" border="1" bordercolor="black"  class="FontText"> 

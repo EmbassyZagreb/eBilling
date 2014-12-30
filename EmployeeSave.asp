@@ -41,7 +41,7 @@ user_ = request.servervariables("remote_user")
 UserName_ = right(user_,len(user_)-4)
 
 %>
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 
 <meta http-equiv="refresh" content="1;url=EmployeeList.asp">

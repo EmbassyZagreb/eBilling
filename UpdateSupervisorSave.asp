@@ -11,7 +11,7 @@ CurEmpID_ = request.form("cmbEmpTo")
 user_ = request.servervariables("remote_user")
 user1_ = user_  'user1_ = right(user_,len(user_)-4)
 %>
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 
 <meta http-equiv="refresh" content="1;url=Default.asp">
 

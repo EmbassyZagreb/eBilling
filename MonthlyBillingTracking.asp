@@ -73,7 +73,7 @@ if Status = "" then
 end if
 
 %> 
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </HEAD>
@@ -210,11 +210,11 @@ if not DataRS.eof Then
 	<td align="Left">
 	<table cellspadding="1" border="1" bordercolor="black" cellspacing="0" width="100%" bgColor="white" border="0">  
 	<tr align="center" height=26>
-		<td width=20%><strong>Action</strong></td>
-		<td width=20%><strong>Billing Period</strong></td>
-		<td width=20%><strong>Status</strong></td>
-		<td width=20%><strong>Total Bill Amount (Kn.)</strong></td>
-		<td width=20%><strong>Personal Amount Due (Kn.)</strong></td>
+		<td width=20%><b>Action</b></td>
+		<td width=20%><b>Billing Period</b></td>
+		<td width=20%><b>Status</b></td>
+		<td width=20%><b>Total Bill Amount (Kn.)</b></td>
+		<td width=20%><b>Personal Amount Due (Kn.)</b></td>
 	</tr>
 
 <% 
@@ -228,8 +228,8 @@ if not DataRS.eof Then
 		SubTotalPrs_ = 0
 %>
 		<tr BGCOLOR="#999999" height=26>
-			<td colspan="2" style="border: none;"><FONT color=#FFFFFF><strong>&nbsp;Employee Name : <%=DataRS("EmpName") %></strong></font></td>
-			<td colspan="3" style="border: none;" align="right"><FONT color=#FFFFFF><strong>Phone Number : <%=DataRS("MobilePhone") %>&nbsp;</strong></font></td>
+			<td colspan="2" style="border: none;"><FONT color=#FFFFFF><b>&nbsp;Employee Name : <%=DataRS("EmpName") %></b></font></td>
+			<td colspan="3" style="border: none;" align="right"><FONT color=#FFFFFF><b>Phone Number : <%=DataRS("MobilePhone") %>&nbsp;</b></font></td>
 
 		</tr>		
 <%
@@ -259,7 +259,7 @@ if not DataRS.eof Then
 	<td align="Left">
 	<table cellspadding="1" border="1" bordercolor="black" cellspacing="0" width="65%" bgColor="white" border="0">  
 	<tr align="center" BGCOLOR="#999999" height=26>
-		<td><FONT color=#FFFFFF><strong>There are no bills for your cell phone(s).</strong></font></td>
+		<td><FONT color=#FFFFFF><b>There are no bills for your cell phone(s).</b></font></td>
 	</tr>
 
 

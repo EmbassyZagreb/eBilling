@@ -77,7 +77,7 @@ if eYearP = "" then
 end if
 
 %>
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 </HEAD>
@@ -207,7 +207,7 @@ if not DataRS.eof Then
 %>
 <table border="0" bordercolor="#FFFFFF" cellpadding="2" cellspacing="0" width="65%"  class="FontText">
 	<tr>
-		<td><u><strong>Real time monitor:<strong></u></td>
+		<td><u><b>Real time monitor:<b></u></td>
 	</tr>
 
 </table>
@@ -251,9 +251,9 @@ if not DataRS.eof Then
 	if DataRS.eof then
 %>
 	<TR bgcolor="<%=bg%>">
-	        <TD align="center" colspan="3"><strong>Total</strong></font></TD>
-	        <TD align="right"><strong><%=formatnumber(TotRecordNo_,0) %></strong>&nbsp;</font></TD>
-	        <TD align="right"><strong><%=formatnumber(TotBillingAmount_,2) %>&nbsp;</strong></font></TD>
+	        <TD align="center" colspan="3"><b>Total</b></font></TD>
+	        <TD align="right"><b><%=formatnumber(TotRecordNo_,0) %></b>&nbsp;</font></TD>
+	        <TD align="right"><b><%=formatnumber(TotBillingAmount_,2) %>&nbsp;</b></font></TD>
 	   </TR>
 <%	
 	end if   
@@ -314,7 +314,7 @@ if not DataRS.eof Then
 		<td>&nbsp;</td>
 	</tr>
 	<tr>
-		<td><u><strong>Status on <%=LastMohican_%> when last Generate Monthly Billing procedure was executed:<strong></u></td>
+		<td><u><b>Status on <%=LastMohican_%> when last Generate Monthly Billing procedure was executed:<b></u></td>
 	</tr>
 	<tr>
 		<td class="Hint" align="left">*To alter historical data 'Generate Monthly Billing' procedure must be executed.</td>
@@ -368,9 +368,9 @@ if not DataRS.eof Then
 	if DataRS.eof then
 %>
 	<TR bgcolor="<%=bg%>">
-		<TD align="center" colspan="3">&nbsp;&nbsp;<strong>Total</strong></TD>
-	        <TD align="right"><strong><%=formatnumber(TotRecordNo_,0) %></strong>&nbsp;</font></TD>
-	        <TD align="right"><strong><%=formatnumber(TotBillingAmount_,2) %>&nbsp;</strong></font></TD>
+		<TD align="center" colspan="3">&nbsp;&nbsp;<b>Total</b></TD>
+	        <TD align="right"><b><%=formatnumber(TotRecordNo_,0) %></b>&nbsp;</font></TD>
+	        <TD align="right"><b><%=formatnumber(TotBillingAmount_,2) %>&nbsp;</b></font></TD>
 	   </TR>
 <%	
 	end if   

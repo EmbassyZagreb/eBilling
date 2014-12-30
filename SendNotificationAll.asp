@@ -3,7 +3,7 @@
 <html>
 <head>
 <script language="JavaScript" src="calendar.js"></script>
-<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+<TITLE>U.S. Embassy Zagreb - eBilling Application</TITLE>
 <META http-equiv="Content-Type" content="text/html; charset=windows-1250">
 <link href="style.css" rel="stylesheet" type="text/css">
 <script language="javascript">
@@ -79,7 +79,7 @@
 		</script>
 </head>
 <BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0080FF" ALINK="0080FF" VLINK="#0055AA" MARGINWIDTH="8" MARGINHEIGHT="0" LEFTMARGIN="8" TOPMARGIN="0">
-  <Center><FONT COLOR=#009900><strong>SENSITIVE BUT UNCLASSIFIED</Center></FONT></strong>
+  <Center><FONT COLOR=#009900><B>SENSITIVE BUT UNCLASSIFIED</Center></FONT></B>
   <BR>
 <CENTER>
   <IMG SRC="images/embassytitle2.jpeg" WIDTH="661" HEIGHT="80" BORDER="0"> 

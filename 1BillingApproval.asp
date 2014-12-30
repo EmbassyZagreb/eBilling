@@ -11,6 +11,9 @@ On Error Resume Next
 <html>
 <head>
 	<TITLE>U.S. Embassy Zagreb - zBilling Application</TITLE>
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+	<meta http-equiv="Pragma" content="no-cache"/>
+	<meta http-equiv="Expires" content="0"/>
 	<script src="jquery-latest.js" type="text/javascript"></script>
 	<script src="jquery.tablesorter.js" type="text/javascript"></script>
 	<script src="menu.js" type="text/javascript"></script>
@@ -33,6 +36,19 @@ function checkall(obj)
 		}
 	}
 }
+function show(ele) {
+         var srcElement = document.getElementById(ele);
+         if(srcElement != null) {
+	   if(srcElement.style.display == "block") {
+     		  srcElement.style.display= 'none';
+   	    }
+            else {
+                   srcElement.style.display='block';
+            }
+            return false;
+       }
+}
+
 </script>
 	<script type="text/javascript">
 	$(function() {
@@ -113,7 +129,7 @@ Dim strsql, arrResultSet, rs, rsApprovalEmpty, arrNumberList, rsYourStaffEmpty, 
 Dim DataRS
 
 user_ = request.servervariables("remote_user")
-'user_ = "eur\luffmanae"
+
 
 strsql = "Select Max(YearP+MonthP) As Period From vwMonthlyBilling"
 set rsPeriod = server.createobject("adodb.recordset")
@@ -306,19 +322,20 @@ End If
 							Response.Write "<table border=""0"" cellspacing=""0"" cellpadding=""0""  id=""chart3_table"">"
 							Response.Write "<tr><td colspan=""" & (8)  & """ class=""selector_title"">Total Bill / Personal Amount Due</td><td colspan=""" & (4)  & """ class=""selector_graph_top""><img src=""" & IMAGES_PATH & "asc.gif" & """>" & eYearP & "<img src=""" & IMAGES_PATH & "desc.gif" & """></td></tr>"
 							Response.Write "<tr>"
+							
 							j = 0
 							For i = 0 To (NrOfMonths - 1)
 								m = Month(DateAdd("m", i, CDate(sMonthP& "/01/" &sYearP)))
 								y = Year(DateAdd("m", i, CDate(sMonthP& "/01/" &sYearP)))
 								iMonth = MonthName(m ,True)
-								iOfficial = ""
-								iPersonal = ""
-								iAccumulatedDebt = ""
+								iOfficial = 0
+								iPersonal = 0
+								iAccumulatedDebt = 0
 								iHeightOfficial = 0
 								iHeightPersonal = 0
 								iHeightAccumulatedDebt = 0
 								iStatus = 0
-								iTotal = ""
+								iTotal = 0
 								If (CInt(arrResultSet (6,j)) = m AND CInt(arrResultSet (7,j)) = y) Then
 									iOfficial = CLng(arrResultSet (0,j))
 									iPersonal = CLng(arrResultSet (1,j))
@@ -330,30 +347,30 @@ End If
 									iTotal = iOfficial + iPersonal
 									j = j + 1
 								End If
+								iVoid = GraphHeight - iHeightOfficial - iHeightPersonal
 								If m < 10 Then m = "0" & CStr(m) Else m = CStr(m)
+
 								Response.Write "<td valign=""top"" class=""barcell"">"
-								If iTotal <> "" Then
+								If iTotal > 0 Then
 									Response.Write "<a href=""1BillingApproval.asp?CellPhone=" & MobilePhone_ & "&MonthP=" & m & "&YearP=" & y & "&LoginID=" & LoginID_ & "&EmpID=" & EmpID_ & "&Nav=" & Nav_ & """ style=""display:block; text-decoration: none;"">"
+									If iVoid > 0  Then Response.Write "<img src=""" & TransparentPix & """ width=""0"" height=""" & iVoid & """ alt="""" title="""" /><br>"
+									Response.Write iTotal & "<br>"
 								Else
 									Response.Write "<a href=""#"" style=""display:block; text-decoration: none;"">"
+									Response.Write "<img src=""" & TransparentPix & """ width=""0"" height=""" & iVoid & """ alt="""" title="""" /><br>&nbsp;<br>"
 								End If
-								Response.Write "<img src=""" & TransparentPix & """ width=""0"" height=""" & _
-													GraphHeight - iHeightOfficial - iHeightPersonal & """ alt="""" title="""" />" & _
-												"<br />" & _
-												iTotal & "<br /><img src=""" & m_arrBarColor(0,iStatus) & """ width=""" & BarWidth & """ height=""" & _
-													iHeightOfficial & """ alt="""" title=""" & iOfficial & """ />" & _
-												"<br /><img src=""" & m_arrBarColor(1,iStatus) & """ width=""" & BarWidth & """ height=""" & _
-													iHeightPersonal & """ alt="""" title=""" & iPersonal & """ />"
+								If iOfficial > 0  Then Response.Write "<img src=""" & m_arrBarColor(0,iStatus) & """ width=""" & BarWidth & """ height=""" & iHeightOfficial & """ alt="""" title=""" & iOfficial & """ /><br>"
+								If iPersonal > 0  Then Response.Write "<img src=""" & m_arrBarColor(1,iStatus) & """ width=""" & BarWidth & """ height=""" & iHeightPersonal & """ alt="""" title=""" & iPersonal & """ />"
 								If m = MonthP Then
 									Response.Write "<div class=""chart3_labels_active"">" & iMonth & "</div>"
 								Else
 									Response.Write "<div class=""chart3_labels"">" & iMonth & "</div>"
 								End If
-								Response.Write "<div valign=""top"" class=""chart3_barcell_bottom""><img src=""" & m_arrBarColor(2,iStatus) & """ width=""" & BarWidth & """ height=""" & _
-													iHeightAccumulatedDebt & """ alt="""" title=""Accumulated Debt"" />" & _
-												"<br />" & iAccumulatedDebt & "<br><img src=""" & TransparentPix & """ width=""0"" height=""" & _
-													GraphHeight - iHeightAccumulatedDebt & """ alt="""" title=""Accumulated Debt"" /></div></a></td>"
+								Response.Write "<div valign=""top"" class=""chart3_barcell_bottom"">"
+								If iAccumulatedDebt > 0  Then Response.Write "<img src=""" & m_arrBarColor(2,iStatus) & """ width=""" & BarWidth & """ height=""" & iHeightAccumulatedDebt & """ alt="""" title=""Accumulated Debt"" /><br>" & iAccumulatedDebt & ""	
+								Response.Write "<br><img src=""" & TransparentPix & """ width=""0"" height=""" & GraphHeight - iHeightAccumulatedDebt & """ alt="""" title=""Accumulated Debt"" /></div></a></td>"
 							Next
+							
 							Response.Write "</tr>"
 							Response.Write "<tr><td colspan=""" & NrOfMonths & """ class=""selector_graph_bottom"" align=""right"">Accumulated Debt</td></tr>"
 							Response.Write "</table>"
@@ -438,8 +455,9 @@ if ProgressStatus_ <> "Not assigned for this month" Then
 				Total_= rsCellPhone("Total")
 			end if
 		%>
-		<div class="details_header">USAGE SUMMARY</div>
-
+		<div class="details_header"><a href="#" onclick="show('Summary')">BILL SUMMARY</a></div>		
+		<DIV ID="Summary" style="display:none">	
+		
 		<table class="details">
 		<tr class="details_title">
 			<td  colspan="3">Monthly Fees</strong> / <i>Mjesecne pretplate:</i></td>
@@ -536,8 +554,8 @@ if ProgressStatus_ <> "Not assigned for this month" Then
 
 
 
+		</div>
 		<div class="details_header">USAGE DETAIL</div>
-		<form method="post" action="1BillingApproval.asp?Func=2" name="frmCellPhoneBilling">
 		<table id="myTable" class="tablesorter">
 		<thead>
 		<tr>
@@ -547,9 +565,6 @@ if ProgressStatus_ <> "Not assigned for this month" Then
 			<th>Call Duration</th>
 			<th>Amount (Kn.)</th>
 			<th>Check if<br>personal
-<%			if ProgressID_ < 4 then %>
-				<input type="checkbox" name="cbAll" value="true" onclick="checkall(this)" />
-<%			end if %>
 			</th>
 		</tr>
 		</thead>
@@ -580,25 +595,13 @@ end if
 		        	<td>&nbsp;<%=rsCellPhone("CallType")%></td>
 		        	<td>&nbsp;<%=rsCellPhone("CallDuration")%></td>
 			        <td align="right"><%=formatnumber(rsCellPhone("Cost"),-1)%></td>
-
-
-<%			if (((cdbl(ProgressID_) < 4 or cdbl(ProgressID_) = 8) and (InStr(1,rsCellPhone("CallType"),ExemptedIfOfficialCallType_,1) = 0 and InStr(1,rsCellPhone("CallType"),AlwaysExemptedCallType_,1) = 0))) then %>
-		 	       <td align="center">
-				<%if rsCellPhone("isPersonal") = "Y" then%>
-					<Input type="Checkbox" Id="cbPersonal" name="cbPersonal" Value='<%=rsCellPhone("CallRecordID")%>' Checked>
-				<%else%>
-					<Input type="Checkbox" Id="cbPersonal" name="cbPersonal" Value='<%=rsCellPhone("CallRecordID")%>' >
-				<%end if%>
-				</td>
-<%			else%>
-		 	       <td align="center">
+					<td align="center">
 				<%if rsCellPhone("isPersonal") = "Y" then%>
 					<Input type="Checkbox" Id="cbPersonal" name="cbPersonal" Value='<%=rsCellPhone("CallRecordID")%>' Checked disabled>
 				<%else%>
 					<Input type="Checkbox" Id="cbPersonal" name="cbPersonal" Value='<%=rsCellPhone("CallRecordID")%>'  disabled>
 				<%end if%>
-				</td>
-<%			end if %>
+					</td>
 
 			</tr>
 		<%      end if
@@ -607,18 +610,7 @@ end if
 		loop
 		%>
 		</tbody>
-		<%
-		if ((ProgressID_< 4 and no_ >1) or (ProgressID_ = 4 and AlternateEmailFlag_="Y")) then%>
-				<input type="submit" name="btnSubmit" Value="Update Change(s)" />&nbsp;&nbsp;
-				<input type="button" value="Cancel" onClick="javascript:location.href='MonthlyBilling.asp?CellPhone=<%=MobilePhone_%>&MonthP=<%=MonthP%>&YearP=<%=YearP%>'">
-
-				<input type="hidden" name="txtMobilePhone" value='<%=MobilePhone_ %>' />
-				<input type="hidden" name="txtMonthP" value='<%=MonthP%>' />
-				<input type="hidden" name="txtYearP" value='<%=YearP%>' />
-				<input type="hidden" name="txtEmpID" value='<%=EmpID_ %>' />
-		<%end if%>
 		</table>
-		</form>
 <%else%>
 <table width="100%">
 <tr>
@@ -642,36 +634,6 @@ end if
 
 
 <%
-Case 2
-	MobilePhone_ = Request.Form("txtMobilePhone")
-	EmpID_ = Request.Form("txtEmpID")
-	MonthP_ = Request.Form("txtMonthP")
-	YearP_ = Request.Form("txtYearP")
-
-	'Save Detail
-	strsql = "Update CellPhoneDt Set isPersonal='' Where PhoneNumber='" & MobilePhone_ & "' And MonthP='" & MonthP_ & "' And YearP='" & YearP_ & "'"
-	BillingCon.execute(strsql)
-
-	For Each loopIndex in Request.Form("cbPersonal")
-	'	response.write loopIndex
-
-		strsql = "Update CellPhoneDt Set isPersonal='Y' Where PhoneNumber='" & MobilePhone_ & "' And MonthP='" & MonthP_ & "' And YearP='" & YearP_ &"' And CallRecordID= " & loopIndex
-		'response.write strsql & "<Br>"
-		BillingCon.execute(strsql)
-	next
-
-	'Update table MonthlyBilling
-	strsql = "spUpdateTotPersonalCall '3','" & EmpID_ & "','" & MobilePhone_ & "','" & MonthP_ & "','" & YearP_ & "'"
-	'response.write strsql & "<Br>"
-	BillingCon.execute(strsql)
-
-	'Close the connection with the database and free all database resources
-	BillingCon.Close
-	Set BillingCon = Nothing
-
-Response.AddHeader "REFRESH","0;URL=1BillingApproval.asp?CellPhone=" & MobilePhone_ & "&MonthP=" & MonthP_ & "&YearP=" & YearP_ & ""
-
-
 Case 3
 
 	Status_ = Request.Form("SupervisorSign")
@@ -740,7 +702,7 @@ Case 3
 		ObjMail.HTMLBody = ObjMail.HTMLBody & " "_
 
 		& " <title>e-Billing Application</title> "_
-		& " <meta name='Microsoft Border' content='none, default'><style type='text/css'><!--.FontContent {font-family: verdana;font-size: 11px;color: black;}--></style> "_
+		& " <meta name='Microsoft Border' content='none, default'><style type='text/css'><!--.FontContent {font-family: verdana;font-size: 13px;color: black;}--></style> "_
 		& " </head><body bgcolor='#ffffff'> "_
 		& " <p><table cellspadding='1' cellspacing='0' width='80%' bgColor='white'>"
 
@@ -750,7 +712,7 @@ Case 3
 
   		ObjMail.HTMLBody = ObjMail.HTMLBody & " "_
 		& "    <tr> "_
-		& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#999999' size='5'>eBilling Approval Notification</font></td></tr> "_
+		& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#999999' size='6'>eBilling Approval Notification</font></td></tr> "_
 		& "    <tr> "_
 		& "        <td colspan='6'>&nbsp; </td></tr> " _
 		& "    <tr> "_
@@ -762,7 +724,7 @@ Case 3
 
   		ObjMail.HTMLBody = ObjMail.HTMLBody & " "_
 		& "    <tr> "_
-		& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#990000' size='5'>eBilling Correction Notification</font></td></tr> "_
+		& "        <td colspan='6' align='center'><font face='Verdana, Arial, Helvetica' color='#990000' size='6'>eBilling Correction Notification</font></td></tr> "_
 		& "    <tr> "_
 		& "        <td colspan='6'>&nbsp; </td></tr> " _
 		& "    <tr> "_
@@ -813,7 +775,7 @@ Case 3
 		& "    		<td width='25%' class='FontContent'><strong>Personal Amount Due (Kn.)</strong></td> "_
 		& "    	</tr> "_
 		& "    	<tr height=26> "_
-		& "    	<td class='FontContent'>&nbsp;<a href='" & WebSiteAddress & "/MonthlyBilling.asp?CellPhone=" & MobilePhone_ & "&MonthP=" & MonthP_ & "&YearP=" & YearP_ & "' target='_blank'>Review Your Bill</a></td> "
+		& "    	<td class='FontContent'>&nbsp;<a href='" & WebSiteAddress & "/1MonthlyBilling.asp?CellPhone=" & MobilePhone_ & "&MonthP=" & MonthP_ & "&YearP=" & YearP_ & "' target='_blank'>Review Your Bill</a></td> "
 
 		if cdbl(TotalCost_ ) > 0 Then
 
